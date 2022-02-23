@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { CONST } from '../components/BottomNav/style';
+import { PATH } from '../constants/index';
 
 export const getIcon = (title: string, isActive?: boolean): JSX.Element | undefined => {
   switch (title) {
@@ -19,13 +20,13 @@ export const getIcon = (title: string, isActive?: boolean): JSX.Element | undefi
 export const getPath = (title: 'ホーム' | '計画' | '記録' | 'グラフ') => {
   switch (title) {
     case 'ホーム':
-      return '/';
+      return PATH.HOME;
     case '計画':
-      return '/plan';
+      return PATH.PLAN;
     case '記録':
-      return '/record';
+      return PATH.RECORD;
     case 'グラフ':
-      return '/graph';
+      return PATH.GRAPH;
     default:
       return './';
   }
