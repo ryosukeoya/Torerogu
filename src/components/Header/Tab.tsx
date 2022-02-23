@@ -1,4 +1,3 @@
-import React from 'react';
 import type { VFC } from 'react';
 import { styles } from './style';
 
@@ -7,12 +6,10 @@ type Props = {
   activeIndex: number;
   title: string;
   isToggle?: boolean;
-  onClick?: (index: number) => void;
+  onClick: (index:number) => void;
 };
 
 const Tab: VFC<Props> = ({index, activeIndex, title, isToggle, onClick }) => {
-  console.log(index);
-  
   let isActive = false;
   if (isToggle) {
     if (index === activeIndex) {
@@ -21,7 +18,7 @@ const Tab: VFC<Props> = ({index, activeIndex, title, isToggle, onClick }) => {
   }
 
   return (
-    <li onClick={onClick && (() => onClick(index))} css={styles.tab(isActive)}>
+    <li onClick={() => onClick(index)} css={styles.tab(isActive)}>
       {title}
     </li>
   );
