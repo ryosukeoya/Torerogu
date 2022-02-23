@@ -1,8 +1,8 @@
 export const APP_NAME = 'Recot';
 
 export const PATH = {
-    HOME: '/',
-    PLAN: '/plan',
-    RECORD: '/record',
-    GRAPH: '/graph',
-}
+  ホーム: '/',
+  計画: '/plan',
+  記録: '/record',
+  グラフ: '/graph',
+};

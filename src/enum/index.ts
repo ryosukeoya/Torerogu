@@ -2,13 +2,13 @@ import { PATH } from '../constants/index';
 
 export const getIndex = (pathName: string): number => {
   switch (pathName) {
-    case PATH.HOME:
+    case PATH.ホーム:
       return 0;
-    case PATH.PLAN:
+    case PATH.計画:
       return 1;
-    case PATH.RECORD:
+    case PATH.記録:
       return 2;
-    case PATH.GRAPH:
+    case PATH.グラフ:
       return 3;
     default:
       return 0;
