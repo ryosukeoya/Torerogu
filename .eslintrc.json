@@ -1,3 +1,4 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "rules": { "no-console": ["error", { "allow": ["warn", "error", "info"] }], "no-var": "error" }
 }
