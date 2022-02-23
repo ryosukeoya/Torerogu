@@ -11,7 +11,7 @@ type Props = RequireOne<{
   _css: SerializedStyles;
 }>;
 
-export const Input: React.VFC<Props> = ({ isInput, isTextArea, type, placeholder, _css }) => {
+export const Input: React.VFC<Props> = ({ isInput, isTextArea, type, placeholder }) => {
   if (isInput) {
     return <input css={inputStyle} type={type} placeholder={placeholder} />;
   } else if (isTextArea) {

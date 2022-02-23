@@ -17,7 +17,7 @@ const Tabs: VFC = () => {
   return (
     <ul css={styles.tabs}>
       {titles?.map((title: string, index: number) => {
-        return <Tab key={title.toString()} onClick={changeActiveIndex} index={index} activeIndex={activeIndex} title={title} isToggle={true} />;
+        return <Tab key={index} onClick={changeActiveIndex} index={index} activeIndex={activeIndex} title={title} isToggle={true} />;
       })}
     </ul>
   );

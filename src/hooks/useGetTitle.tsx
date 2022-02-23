@@ -5,13 +5,13 @@ export const useGetTitle = (): string[] | null => {
   const router = useRouter();
   const { pathname } = router;
   switch (pathname) {
-    case PATH.HOME:
+    case PATH.ホーム:
       return ['体重', 'トレーニング'];
-    case PATH.PLAN:
+    case PATH.計画:
       return ['体重', 'トレーニング'];
-    case PATH.RECORD:
+    case PATH.記録:
       return ['身体', 'トレーニング'];
-    case PATH.GRAPH:
+    case PATH.グラフ:
       return ['体重', '体脂肪率', '種目'];
     default:
       return null;

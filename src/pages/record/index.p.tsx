@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import React from 'react';
-import Link from 'next/link';
 import { css } from '@emotion/react';
 import { useQuery } from '@apollo/client';
 import {} from '../../libs/graphql/queries/training_categories';
@@ -46,22 +45,19 @@ const Record: NextPage = () => {
         {data?.training_categories.map((training_category) => {
           return (
             <>
-              <div key={training_category.toString()}>{training_category.name}</div>
+              <div key={training_category.id}>{training_category.name}</div>
             </>
           );
         })}
         {data?.training_types.map((training_type) => {
           return (
             <>
-              <Card key={training_type.toString()} _css={cardStyle}>
+              <Card key={training_type.id} _css={cardStyle}>
                 {training_type.name}
               </Card>
             </>
           );
         })}
-        <Link href='/' passHref>
-          home
-        </Link>
       </>
     );
   }

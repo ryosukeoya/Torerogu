@@ -13,9 +13,9 @@ const Select: VFC<Props> = ({ name, values, _css }) => {
   return (
     <select css={_css} name={name}>
       <option hidden >{name}</option>
-      {values?.map((value) => {
+      {values?.map((value,index) => {
         return (
-          <option key={value.toString()} value={value}>
+          <option key={index} value={value}>
             {value}
           </option>
         );
