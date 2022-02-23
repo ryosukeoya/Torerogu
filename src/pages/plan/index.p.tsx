@@ -1,10 +1,9 @@
-import Link from 'next/link';
 import type { NextPage } from 'next';
 import React, { VFC } from 'react';
 import { css } from '@emotion/react';
 import { Input, Button, Select } from '../../components/_indexs';
 import { inputStyle, buttonStyle } from '../../components/_styles';
-import { BORDER, COLOR, FONT } from '../../styles/const';
+import { BORDER, FONT } from '../../styles/const';
 import { headerTabIndexAtom } from '../../store';
 import { useRecoilValue } from 'recoil';
 

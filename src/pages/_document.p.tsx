@@ -1,11 +1,9 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document';
-import { HEAD } from '../constants/head';
+import { Html, Head, Main, NextScript } from 'next/document';
 
 const MyDocument = () => {
   return (
     <Html lang='ja-JP'>
-      <Head>
-      </Head>
+      <Head></Head>
       <body>
         <Main />
         <NextScript />

@@ -1,9 +1,7 @@
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { styles } from './style';
 import Tab from './Tab';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 
 const Tabs: VFC = () => {
