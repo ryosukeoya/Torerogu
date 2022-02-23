@@ -1,0 +1,19 @@
+overwrite: true
+schema: "https://workout-220216.hasura.app/v1/graphql"
+documents: 
+  - "src/libs/graphql/queries/*.ts"
+  - "src/libs/graphql/mutations/*.ts"
+generates:
+  src/types/generated/graphql.d.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config: 
+      useIndexSignature: true
+      withComponent: false
+      withHooks: true
+      withHOC: false
+  src/types/generated/schema.graphql:
+    plugins:
+      - "schema-ast"
