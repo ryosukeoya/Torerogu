@@ -3,6 +3,7 @@ import { styles } from './style';
 import Tab from './Tab';
 import { useRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
+import { useGetTitle } from '../../hooks/useGetTitle';
 
 const Tabs: VFC = () => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
@@ -11,10 +12,13 @@ const Tabs: VFC = () => {
     setActiveIndex(index);
   };
 
+  const titles = useGetTitle();
+
   return (
     <ul css={styles.tabs}>
-      <Tab onClick={changeActiveIndex} index={0} activeIndex={activeIndex} title={'身体'} isToggle={true} />
-      <Tab onClick={changeActiveIndex} index={1} activeIndex={activeIndex} title={'トレーニング'} isToggle={true} />
+      {titles?.map((title: string, index: number) => {
+        return <Tab key={title.toString()} onClick={changeActiveIndex} index={index} activeIndex={activeIndex} title={title} isToggle={true} />;
+      })}
     </ul>
   );
 };
