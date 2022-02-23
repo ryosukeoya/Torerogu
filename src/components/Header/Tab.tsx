@@ -1,11 +1,10 @@
 import type { VFC } from 'react';
 import { styles } from './style';
-import { Title } from '../../types';
 
 type Props = {
   index: number;
   activeIndex: number;
-  title: Title;
+  title: string;
   isToggle?: boolean;
   onClick: (index: number) => void;
 };
