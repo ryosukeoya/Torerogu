@@ -6,10 +6,10 @@ type Props = {
   activeIndex: number;
   title: string;
   isToggle?: boolean;
-  onClick: (index:number) => void;
+  onClick: (index: number) => void;
 };
 
-const Tab: VFC<Props> = ({index, activeIndex, title, isToggle, onClick }) => {
+const Tab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
   let isActive = false;
   if (isToggle) {
     if (index === activeIndex) {
