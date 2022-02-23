@@ -1,14 +1,14 @@
-import { PATH } from '../constants/index';
+import { PAGE_PATH } from '../constants/index';
 
-export const getIndex = (pathName: string): number => {
+export const getPathIndex = (pathName: string): number => {
   switch (pathName) {
-    case PATH.ホーム:
+    case PAGE_PATH.ホーム:
       return 0;
-    case PATH.計画:
+    case PAGE_PATH.計画:
       return 1;
-    case PATH.記録:
+    case PAGE_PATH.記録:
       return 2;
-    case PATH.グラフ:
+    case PAGE_PATH.グラフ:
       return 3;
     default:
       return 0;

@@ -3,10 +3,11 @@ import type { VFC } from 'react';
 import Link from 'next/link';
 import { styles } from './style';
 import { getIcon } from '../../utils/index';
-import { PATH } from '../../constants/index';
+import { PAGE_PATH } from '../../constants/index';
+import { Title } from '../../types/index';
 
 interface Props {
-  title: 'ホーム' | '計画' | '記録' | 'グラフ';
+  title: Title ;
   index: number;
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
@@ -19,7 +20,7 @@ const Tab: VFC<Props> = (props) => {
   }
 
   return (
-    <Link href={PATH[props.title]} passHref>
+    <Link href={PAGE_PATH[props.title]} passHref>
       <a onClick={() => props.setActiveIndex(props.index)} css={styles.box}>
         {getIcon(props.title, isActive)}
         <p css={styles.title(isActive)}>{props.title}</p>

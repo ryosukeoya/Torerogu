@@ -31,10 +31,4 @@ export const CONST = {
     HEIGHT: '28px',
     WIDTH: '28px',
   },
-  ICON_ALT: {
-    HOME: 'ホーム',
-    PLAN: '計画',
-    RECORD: '記録',
-    GRAPH: 'グラフ',
-  },
 };
