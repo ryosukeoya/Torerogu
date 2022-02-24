@@ -27,12 +27,12 @@ const Record: NextPage = () => {
         </h2>
         <div css={styles.content}>
           <p>体重</p>
-          <Input isInput={true} type='text' placeholder='60' _css={inputStyle} />
+          <Input type={'isInput'} typeAttr='text' placeholder='60' _css={inputStyle} />
           <span>kg</span>
         </div>
         <div css={styles.content}>
           <p>体脂肪率</p>
-          <Input isInput={true} type='text' placeholder='10' _css={inputStyle} />
+          <Input type={'isInput'} typeAttr='text' placeholder='10' _css={inputStyle} />
           <span>%</span>
         </div>
 
