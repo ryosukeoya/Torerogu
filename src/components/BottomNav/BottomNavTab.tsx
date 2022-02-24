@@ -5,15 +5,20 @@ import { styles } from './style';
 import { getIcon } from '../../utils/index';
 import { PAGE_PATH } from '../../constants/index';
 import { PageTitle } from '../../types/index';
+import { useRecoilState } from 'recoil';
+import { headerTabIndexAtom } from '../../store';
 
 type Props = {
-  title: PageTitle ;
+  isResetIndex : boolean;
+  title: PageTitle;
   index: number;
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
-}
+};
 
 const BottomNavTab: VFC<Props> = (props) => {
+  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
+
   let isActive = false;
   if (props.activeIndex === props.index) {
     isActive = true;
@@ -21,7 +26,13 @@ const BottomNavTab: VFC<Props> = (props) => {
 
   return (
     <Link href={PAGE_PATH[props.title]} passHref>
-      <a onClick={() => props.setActiveIndex(props.index)} css={styles.box}>
+      <a
+        onClick={() => {
+          props.setActiveIndex(props.index);
+          props.isResetIndex && setActiveIndex(0);
+        }}
+        css={styles.box}
+      >
         {getIcon(props.title, isActive)}
         <p css={styles.title(isActive)}>{props.title}</p>
       </a>
