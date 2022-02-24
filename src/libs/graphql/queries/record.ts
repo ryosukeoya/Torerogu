@@ -9,6 +9,7 @@ export const GET_RECORD_PAGE_PROPS = gql`
     training_types {
       id
       name
+      training_category_id
     }
   }
 `;

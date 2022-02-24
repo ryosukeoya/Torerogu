@@ -1608,7 +1608,7 @@ export type Users_Variance_Fields = {
 export type GetRecordPagePropsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetRecordPagePropsQuery = { __typename?: 'query_root', training_categories: Array<{ __typename?: 'training_categories', id: number, name: string }>, training_types: Array<{ __typename?: 'training_types', id: number, name: string }> };
+export type GetRecordPagePropsQuery = { __typename?: 'query_root', training_categories: Array<{ __typename?: 'training_categories', id: number, name: string }>, training_types: Array<{ __typename?: 'training_types', id: number, name: string, training_category_id: number }> };
 
 export type GetTrainingCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1630,6 +1630,7 @@ export const GetRecordPagePropsDocument = gql`
   training_types {
     id
     name
+    training_category_id
   }
 }
     `;

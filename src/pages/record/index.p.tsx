@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import React from 'react';
+import React, { useState } from 'react';
 import { css } from '@emotion/react';
 import { useQuery } from '@apollo/client';
 import {} from '../../libs/graphql/queries/training_categories';
@@ -13,11 +13,30 @@ import { inputStyle, buttonStyle, cardStyle } from '../../components/_styles';
 import { getDate } from '../../utils';
 import { FONT } from '../../styles/const';
 
+type TrainingTypes =
+  | {
+      __typename?: 'training_types' | undefined;
+      id: number;
+      name: string;
+      training_category_id: number;
+    }[]
+  | undefined;
+
 const Record: NextPage = () => {
   const activeIndex = useRecoilValue(headerTabIndexAtom);
+  const [categoryID, setCategoryID] = useState(1);
   const { data, error, loading } = useQuery<GetRecordPagePropsQuery>(GET_RECORD_PAGE_PROPS);
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+
   const date = getDate();
+
+  const getTrainingTypes = (): TrainingTypes => {
+    const slectedTrainingTypes = data?.training_types.filter(function (training_type) {
+      return training_type.training_category_id === categoryID;
+    });
+    return slectedTrainingTypes;
+  };
 
   if (activeIndex === 0) {
     return (
@@ -45,11 +64,13 @@ const Record: NextPage = () => {
         {data?.training_categories.map((training_category) => {
           return (
             <>
-              <div key={training_category.id}>{training_category.name}</div>
+              <div key={training_category.id} onClick={() => setCategoryID(training_category.id)}>
+                {training_category.name}
+              </div>
             </>
           );
         })}
-        {data?.training_types.map((training_type) => {
+        {getTrainingTypes()?.map((training_type) => {
           return (
             <>
               <Card key={training_type.id} _css={cardStyle}>
