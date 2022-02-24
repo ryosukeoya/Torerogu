@@ -1,32 +1,31 @@
-import React from 'react';
-import { RequireOne } from '../../types/utile';
-import { css, SerializedStyles } from '@emotion/react';
-import { BORDER } from '../../styles/const';
+import type { VFC } from 'react';
+import { SerializedStyles } from '@emotion/react';
+import { inputStyle } from './style';
 
-type Props = RequireOne<{
-  isInput?: boolean;
-  isTextArea?: boolean;
-  type: string;
+interface PropsBase<T extends 'isInput' | 'isTextArea'> {
+  type: T;
   placeholder?: string;
   _css: SerializedStyles;
-}>;
+}
+interface InputProps extends PropsBase<'isInput'> {
+  typeAttr: string;
+}
 
-export const Input: React.VFC<Props> = ({ isInput, isTextArea, type, placeholder }) => {
-  if (isInput) {
-    return <input css={inputStyle} type={type} placeholder={placeholder} />;
-  } else if (isTextArea) {
-    return <textarea name='' id='' cols={30} rows={10} />;
-  } else {
-    return null;
+interface TextAreaProps extends PropsBase<'isTextArea'> {
+  name: string;
+  cols: number;
+  rows: number;
+}
+
+const Input: VFC<InputProps | TextAreaProps> = (props) => {
+  switch (props.type) {
+    case 'isInput':
+      return <input css={inputStyle} type={props.typeAttr} placeholder={props.placeholder} />;
+    case 'isTextArea':
+      return <textarea name={props.name} id='' cols={props.cols} rows={props.rows} />;
+    default:
+      return null;
   }
 };
 
-export const inputStyle = css`
-  width: 100px;
-  border: 1px solid ${BORDER.GRAY};
-  border-radius: 5px;
-  &::placeholder {
-    text-align: right;
-    padding-right: 10%;
-  }
-`;
+export default Input;

@@ -9,7 +9,7 @@ type Props = {
   onClick: (index: number) => void;
 };
 
-const Tab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
+const HeaderTab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
   let isActive = false;
   if (isToggle) {
     if (index === activeIndex) {
@@ -24,4 +24,4 @@ const Tab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
   );
 };
 
-export default Tab;
+export default HeaderTab;

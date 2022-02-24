@@ -1,6 +1,7 @@
 import { PAGE_PATH } from '../constants/index';
+import { PageTitle } from '../types/index';
 
-export const getPathIndex = (pathName: string): number => {
+export const getPathIndex = (pathName: PageTitle | string): number => {
   switch (pathName) {
     case PAGE_PATH.ホーム:
       return 0;

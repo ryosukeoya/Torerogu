@@ -3,20 +3,19 @@ import type { VFC } from 'react';
 import { SerializedStyles } from '@emotion/react';
 
 type Props = {
-  name: string;
-  // option: string[];
-  values: string[];
+  title: string;
+  texts: string[];
   _css: SerializedStyles;
 };
 
-const Select: VFC<Props> = ({ name, values, _css }) => {
+const Select: VFC<Props> = ({ title, texts, _css }) => {
   return (
-    <select css={_css} name={name}>
-      <option hidden >{name}</option>
-      {values?.map((value,index) => {
+    <select css={_css} name={title}>
+      <option hidden>{title}</option>
+      {texts?.map((text: string, index: number) => {
         return (
-          <option key={index} value={value}>
-            {value}
+          <option key={index} value={text}>
+            {text}
           </option>
         );
       })}

@@ -17,6 +17,6 @@
     "noImplicitAny": true,
     "types": ["@emotion/react/types/css-prop","jest"],
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "src/**/*", "__tests__/**/*"],
   "exclude": ["node_modules"]
 }

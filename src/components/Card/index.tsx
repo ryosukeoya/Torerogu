@@ -6,6 +6,8 @@ type Props = {
   _css: SerializedStyles;
 };
 
-export const Card: FC<Props> = ({ children, _css }) => {
+const Card: FC<Props> = ({ children, _css }) => {
   return <div css={_css}>{children}</div>;
 };
+
+export default Card;
