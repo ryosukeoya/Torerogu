@@ -4,16 +4,16 @@ import Link from 'next/link';
 import { styles } from './style';
 import { getIcon } from '../../utils/index';
 import { PAGE_PATH } from '../../constants/index';
-import { Title } from '../../types/index';
+import { PageTitle } from '../../types/index';
 
-interface Props {
-  title: Title ;
+type Props = {
+  title: PageTitle ;
   index: number;
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Tab: VFC<Props> = (props) => {
+const BottomNavTab: VFC<Props> = (props) => {
   let isActive = false;
   if (props.activeIndex === props.index) {
     isActive = true;
@@ -29,4 +29,4 @@ const Tab: VFC<Props> = (props) => {
   );
 };
 
-export default Tab;
+export default BottomNavTab;

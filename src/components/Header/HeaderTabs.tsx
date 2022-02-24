@@ -1,11 +1,11 @@
 import type { VFC } from 'react';
 import { styles } from './style';
-import Tab from './Tab';
+import Tab from './HeaderTab';
 import { useRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { useGetTitle } from '../../hooks/useGetTitle';
 
-const Tabs: VFC = () => {
+const HeaderTabs: VFC = () => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
 
   const changeActiveIndex = (index: number) => {
@@ -23,4 +23,4 @@ const Tabs: VFC = () => {
   );
 };
 
-export default Tabs;
+export default HeaderTabs;

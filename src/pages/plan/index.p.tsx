@@ -16,11 +16,11 @@ const Plan: NextPage<VFC> = () => {
           <h2 css={styles.title}>✏️ 目標体重を設定する</h2>
           <div css={styles.content}>
             <p>日付</p>
-            <Input isInput={true} type='date' _css={inputStyle} />
+            <Input type={'isInput'} typeAttr='date' _css={inputStyle} />
           </div>
           <div css={styles.content}>
             <p>体重</p>
-            <Input isInput={true} type='text' placeholder='60' _css={inputStyle} />
+            <Input type={'isInput'} typeAttr='text' placeholder='60' _css={inputStyle} />
             kg
           </div>
         </div>
@@ -34,42 +34,42 @@ const Plan: NextPage<VFC> = () => {
       <div>
         <div style={{ display: 'flex', flexDirection: 'column' }} css={styles.contentArea}>
           <h2 css={styles.title}>✏️ 週ごとの設定</h2>
-          <Input isInput={true} type='date' _css={inputStyle} />
+          <Input type={'isInput'} typeAttr='date' _css={inputStyle} />
           <Select
-            name={'曜日'}
-            values={['月', '火', '水', '木', '金', '土', '日']}
+            title={'曜日'}
+            texts={['月', '火', '水', '木', '金', '土', '日']}
             _css={css`
               width: 100px;
               border: 1px solid ${BORDER.GRAY};
             `}
           />
           <Select
-            name={'カテゴリ'}
-            values={['月', '火', '水', '木', '金', '土', '日']}
+            title={'カテゴリ'}
+            texts={['月', '火', '水', '木', '金', '土', '日']}
             _css={css`
               width: 100px;
               border: 1px solid ${BORDER.GRAY};
             `}
           />
           <Select
-            name={'種目'}
-            values={['月', '火', '水', '木', '金', '土', '日']}
+            title={'種目'}
+            texts={['月', '火', '水', '木', '金', '土', '日']}
             _css={css`
               width: 100px;
               border: 1px solid ${BORDER.GRAY};
             `}
           />
           <Select
-            name={'セット数'}
-            values={['月', '火', '水', '木', '金', '土', '日']}
+            title={'セット数'}
+            texts={['月', '火', '水', '木', '金', '土', '日']}
             _css={css`
               width: 100px;
               border: 1px solid ${BORDER.GRAY};
             `}
           />
           <Select
-            name={'回数'}
-            values={['月', '火', '水', '木', '金', '土', '日']}
+            title={'回数'}
+            texts={['月', '火', '水', '木', '金', '土', '日']}
             _css={css`
               width: 100px;
               border: 1px solid ${BORDER.GRAY};
@@ -77,11 +77,7 @@ const Plan: NextPage<VFC> = () => {
           />
         </div>
 
-        <Button
-          type={'isButton'}
-          text={'記録する'}
-          _css={buttonStyle(10)}
-        />
+        <Button type={'isButton'} text={'記録する'} _css={buttonStyle(10)} />
       </div>
     );
   } else {
