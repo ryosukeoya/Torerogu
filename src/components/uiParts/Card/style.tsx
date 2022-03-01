@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { COLOR, BORDER } from '../../styles/const';
+import { COLOR, BORDER } from '../../../styles/const';
 
 export const cardStyle = (mbValue?: number) => css`
   box-shadow: 0 1px 1px 1px ${BORDER.GRAY}; //x軸 y軸 ぼかし 広がり カラー;

@@ -2,13 +2,16 @@ import type { NextPage } from 'next';
 import React, { VFC } from 'react';
 import { css } from '@emotion/react';
 import { Input, Button, Select } from '../../components/_indexs';
-import { inputStyle, buttonStyle } from '../../components/_styles';
-import { BORDER, FONT } from '../../styles/const';
+import { inputStyle, buttonStyle, selectStyle } from '../../components/_styles';
+import { FONT } from '../../styles/const';
 import { headerTabIndexAtom } from '../../store';
 import { useRecoilValue } from 'recoil';
 
+const titles = ['曜日', 'カテゴリ', '種目', 'セット数', '回数'];
+
 const Plan: NextPage<VFC> = () => {
   const activeIndex = useRecoilValue(headerTabIndexAtom);
+
   if (activeIndex === 0) {
     return (
       <>
@@ -29,52 +32,14 @@ const Plan: NextPage<VFC> = () => {
       </>
     );
   } else if (activeIndex === 1) {
-    //TODO:リファ
     return (
       <div>
         <div style={{ display: 'flex', flexDirection: 'column' }} css={styles.contentArea}>
           <h2 css={styles.title}>✏️ 週ごとの設定</h2>
           <Input type={'isInput'} typeAttr='date' _css={inputStyle} />
-          <Select
-            title={'曜日'}
-            texts={['月', '火', '水', '木', '金', '土', '日']}
-            _css={css`
-              width: 100px;
-              border: 1px solid ${BORDER.GRAY};
-            `}
-          />
-          <Select
-            title={'カテゴリ'}
-            texts={['月', '火', '水', '木', '金', '土', '日']}
-            _css={css`
-              width: 100px;
-              border: 1px solid ${BORDER.GRAY};
-            `}
-          />
-          <Select
-            title={'種目'}
-            texts={['月', '火', '水', '木', '金', '土', '日']}
-            _css={css`
-              width: 100px;
-              border: 1px solid ${BORDER.GRAY};
-            `}
-          />
-          <Select
-            title={'セット数'}
-            texts={['月', '火', '水', '木', '金', '土', '日']}
-            _css={css`
-              width: 100px;
-              border: 1px solid ${BORDER.GRAY};
-            `}
-          />
-          <Select
-            title={'回数'}
-            texts={['月', '火', '水', '木', '金', '土', '日']}
-            _css={css`
-              width: 100px;
-              border: 1px solid ${BORDER.GRAY};
-            `}
-          />
+          {titles.map((title, i) => {
+            return <Select key={i} title={title} texts={['月', '火', '水', '木', '金', '土', '日']} _css={selectStyle} />;
+          })}
         </div>
 
         <Button type={'isButton'} text={'記録する'} _css={buttonStyle(10)} />

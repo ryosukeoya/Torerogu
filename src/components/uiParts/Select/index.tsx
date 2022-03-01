@@ -12,9 +12,9 @@ const Select: VFC<Props> = ({ title, texts, _css }) => {
   return (
     <select css={_css} name={title}>
       <option hidden>{title}</option>
-      {texts?.map((text: string, index: number) => {
+      {texts?.map((text: string, i: number) => {
         return (
-          <option key={index} value={text}>
+          <option key={i} value={text}>
             {text}
           </option>
         );

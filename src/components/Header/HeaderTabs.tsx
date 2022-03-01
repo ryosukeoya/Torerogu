@@ -1,5 +1,5 @@
 import type { VFC } from 'react';
-import { styles } from './style';
+import { css } from '@emotion/react';
 import Tab from './HeaderTab';
 import { useRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
@@ -16,11 +16,20 @@ const HeaderTabs: VFC = () => {
 
   return (
     <ul css={styles.tabs}>
-      {titles?.map((title: string, index: number) => {
-        return <Tab key={index} onClick={changeActiveIndex} index={index} activeIndex={activeIndex} title={title} isToggle={true} />;
+      {titles?.map((title: string, i: number) => {
+        return <Tab key={i} onClick={changeActiveIndex} index={i} activeIndex={activeIndex} title={title} isToggle={true} />;
       })}
     </ul>
   );
 };
 
 export default HeaderTabs;
+
+const styles = {
+  tabs: css`
+    clear: both;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  `,
+};

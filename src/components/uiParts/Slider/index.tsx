@@ -8,14 +8,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-type TrainingTypes = {
+type ItemType = {
   __typename?: string | undefined;
   id: number;
   name: string;
 };
 
 type Props = {
-  items?: TrainingTypes[];
+  items?: ItemType[];
   setState?: Dispatch<SetStateAction<number>>;
   sliderStyle: typeof sliderStyle;
 };
@@ -33,7 +33,7 @@ const Slider: VFC<Props> = ({ items, setState, sliderStyle }) => {
       // onSwiper={(swiper) => console.log(swiper)}
       // onSlideChange={() => console.log('slide change')}
     >
-      {items?.map((item: Pick<TrainingTypes, 'id' | 'name'>) => {
+      {items?.map((item: Pick<ItemType, 'id' | 'name'>) => {
         return (
           <SwiperSlide onClick={() => setState && setState(item.id)} key={item.id}>
             <div css={sliderStyle.slider}>{item.name}</div>

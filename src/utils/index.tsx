@@ -1,7 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import { CONST } from '../components/BottomNav/style';
-import { PAGE_TITLE,PAGE_PATH } from '../constants/index';
+import { PAGE_TITLE, PAGE_PATH } from '../constants/index';
+
+const CONST = {
+  ICON: {
+    HEIGHT: '28px',
+    WIDTH: '28px',
+  },
+};
 
 export const getIcon = (title: string, isActive?: boolean): JSX.Element | undefined => {
   const TITLE: string[] = Object.keys(PAGE_PATH);

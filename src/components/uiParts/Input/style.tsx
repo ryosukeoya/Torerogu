@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { BORDER } from '../../styles/const';
+import { BORDER } from '../../../styles/const';
 
 export const inputStyle = css`
   width: 100px;

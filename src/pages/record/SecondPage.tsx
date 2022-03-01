@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import type { GetRecordPagePropsQuery } from '../../types/generated/graphql';
-import { Slider, Space } from '../../components/_indexs';
+import { Slider, Space, Card } from '../../components/_indexs';
 import { cardStyle, sliderStyle } from '../../components/_styles';
-import { Card } from '../../components/_indexs';
 
 type TrainingTypes =
   | {
@@ -23,7 +22,7 @@ const SecondPage: VFC<Props> = ({ data }) => {
   const [typeID, setTypeID] = useState<number | undefined>();
   const [isSelected, setIsSelected] = useState(false);
 
-  const toggleSelected = (id: number) => {
+  const handleClick = (id: number) => {
     setIsSelected((prev) => !prev);
     setTypeID(id);
   };
@@ -49,7 +48,7 @@ const SecondPage: VFC<Props> = ({ data }) => {
         <Slider items={data?.training_categories} setState={setCategoryID} sliderStyle={sliderStyle} />
         {getTrainingTypes()?.map((training_type) => {
           return (
-            <Card id={training_type.id} handleClick={toggleSelected} key={training_type.id} _css={cardStyle(15)}>
+            <Card id={training_type.id} handleClick={handleClick} key={training_type.id} _css={cardStyle(15)}>
               {training_type.name}
             </Card>
           );
