@@ -3,11 +3,17 @@ import { SerializedStyles } from '@emotion/react';
 
 type Props = {
   children: ReactNode;
+  handleClick: (id: number) => void;
+  id: number;
   _css: SerializedStyles;
 };
 
-const Card: FC<Props> = ({ children, _css }) => {
-  return <div css={_css}>{children}</div>;
+const Card: FC<Props> = ({ children, handleClick, id, _css }) => {
+  return (
+    <div onClick={() => handleClick(id)} css={_css}>
+      {children}
+    </div>
+  );
 };
 
 export default Card;
