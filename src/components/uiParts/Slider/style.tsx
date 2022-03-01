@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { COLOR } from '../../styles/const';
+import { COLOR } from '../../../styles/const';
 
 export const sliderStyle = {
   sliders: (mbValue?:number) => css`

@@ -1,5 +1,6 @@
 import type { VFC } from 'react';
-import { styles } from './style';
+import { css, SerializedStyles } from '@emotion/react';
+import { FONT, COLOR } from '../../styles/const';
 
 type Props = {
   index: number;
@@ -25,3 +26,12 @@ const HeaderTab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick })
 };
 
 export default HeaderTab;
+
+const styles = {
+  tab: (isActive?: boolean): SerializedStyles => css`
+    color: ${isActive ? COLOR.ORANGE : 'black'};
+    ${isActive && `border-bottom:1px solid ${COLOR.ORANGE}`};
+    padding: 20px 15px 20px 15px;
+    font-size: ${FONT.BASE};
+  `,
+};

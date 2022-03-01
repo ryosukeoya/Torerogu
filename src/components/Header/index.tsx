@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
 import type { VFC } from 'react';
-import { styles } from './style';
+import { css } from '@emotion/react';
 import Tabs from './HeaderTabs';
 import { APP } from '../../constants';
+import { BORDER, COLOR, FONT } from '../../styles/const';
 
 const Header: VFC = () => {
   return (
@@ -20,3 +21,29 @@ const Header: VFC = () => {
 };
 
 export default Header;
+
+const styles = {
+  header: css`
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    width: 100vw;
+    border-bottom: 1px solid ${BORDER.GRAY};
+    padding: 10px 25px 0 25px;
+  `,
+  area: css`
+    text-align: center;
+  `,
+  title: css`
+    font-size: ${FONT.X2_LARGE};
+    color: ${COLOR.RED};
+    display: inline-block;
+  `,
+  profile: css`
+    float: right;
+    border-radius: 50%;
+    background-color: #b6babb;
+    padding: 8px;
+  `,
+};

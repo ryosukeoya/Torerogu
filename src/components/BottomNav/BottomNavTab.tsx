@@ -1,15 +1,16 @@
+import Link from 'next/link';
 import React from 'react';
 import type { VFC } from 'react';
-import Link from 'next/link';
-import { styles } from './style';
+import { css, SerializedStyles } from '@emotion/react';
 import { getIcon } from '../../utils/index';
 import { PAGE_PATH } from '../../constants/index';
-import { PageTitle } from '../../types/index';
+import type { PageTitle } from '../../types/index';
 import { useRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
+import { COLOR } from '../../styles/const';
 
 type Props = {
-  isResetIndex : boolean;
+  isResetIndex: boolean;
   title: PageTitle;
   index: number;
   activeIndex: number;
@@ -41,3 +42,15 @@ const BottomNavTab: VFC<Props> = (props) => {
 };
 
 export default BottomNavTab;
+
+const styles = {
+  box: css`
+    display: block;
+    text-align: center;
+  `,
+  title: (isActive?: boolean): SerializedStyles => css`
+    color: ${isActive ? COLOR.RED : 'black'};
+    padding-top: 5px;
+    font-size: 11px;
+  `,
+};

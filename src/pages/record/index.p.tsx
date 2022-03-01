@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import { useQuery } from '@apollo/client';
-import {} from '../../libs/graphql/queries/training_categories';
 import { GET_RECORD_PAGE_PROPS } from '../../libs/graphql/queries/record';
 import { GetRecordPagePropsQuery } from '../../types/generated/graphql';
 import { useRecoilValue } from 'recoil';

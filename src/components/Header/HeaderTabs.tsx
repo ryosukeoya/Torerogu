@@ -1,5 +1,5 @@
 import type { VFC } from 'react';
-import { styles } from './style';
+import { css } from '@emotion/react';
 import Tab from './HeaderTab';
 import { useRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
@@ -24,3 +24,12 @@ const HeaderTabs: VFC = () => {
 };
 
 export default HeaderTabs;
+
+const styles = {
+  tabs: css`
+    clear: both;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  `,
+};
