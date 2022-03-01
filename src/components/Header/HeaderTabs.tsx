@@ -16,8 +16,8 @@ const HeaderTabs: VFC = () => {
 
   return (
     <ul css={styles.tabs}>
-      {titles?.map((title: string, index: number) => {
-        return <Tab key={index} onClick={changeActiveIndex} index={index} activeIndex={activeIndex} title={title} isToggle={true} />;
+      {titles?.map((title: string, i: number) => {
+        return <Tab key={i} onClick={changeActiveIndex} index={i} activeIndex={activeIndex} title={title} isToggle={true} />;
       })}
     </ul>
   );
