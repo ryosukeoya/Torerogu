@@ -8,8 +8,8 @@ import { GetRecordPagePropsQuery } from '../../types/generated/graphql';
 import { Card } from '../../components/_indexs';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
-import { Input, Button } from '../../components/_indexs';
-import { inputStyle, buttonStyle, cardStyle } from '../../components/_styles';
+import { Input, Button, Slider, Space } from '../../components/_indexs';
+import { inputStyle, buttonStyle, cardStyle, sliderStyle } from '../../components/_styles';
 import { getDate } from '../../utils';
 import { FONT } from '../../styles/const';
 
@@ -61,22 +61,13 @@ const Record: NextPage = () => {
   } else {
     return (
       <>
-        {data?.training_categories.map((training_category) => {
-          return (
-            <>
-              <div key={training_category.id} onClick={() => setCategoryID(training_category.id)}>
-                {training_category.name}
-              </div>
-            </>
-          );
-        })}
+        <Space height={20}/>
+        <Slider items={data?.training_categories} setState={setCategoryID} sliderStyle={sliderStyle} />
         {getTrainingTypes()?.map((training_type) => {
           return (
-            <>
-              <Card key={training_type.id} _css={cardStyle}>
-                {training_type.name}
-              </Card>
-            </>
+            <Card key={training_type.id} _css={cardStyle(15)}>
+              {training_type.name}
+            </Card>
           );
         })}
       </>
