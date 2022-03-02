@@ -6,6 +6,7 @@ import { inputStyle, buttonStyle, selectStyle } from '../../components/_styles';
 import { FONT } from '../../styles/const';
 import { headerTabIndexAtom } from '../../store';
 import { useRecoilValue } from 'recoil';
+import { WEEK_DAYS } from '../../constants';
 
 const titles = ['曜日', 'カテゴリ', '種目', 'セット数', '回数'];
 
@@ -38,7 +39,7 @@ const Plan: NextPage<VFC> = () => {
           <h2 css={styles.title}>✏️ 週ごとの設定</h2>
           <Input type={'isInput'} typeAttr='date' _css={inputStyle} />
           {titles.map((title, i) => {
-            return <Select key={i} title={title} texts={['月', '火', '水', '木', '金', '土', '日']} _css={selectStyle} />;
+            return <Select key={i} title={title} texts={WEEK_DAYS} _css={selectStyle} />;
           })}
         </div>
 

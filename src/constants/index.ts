@@ -14,3 +14,5 @@ export const PAGE_PATH = {
   [PAGE_TITLE[2]]: '/record',
   [PAGE_TITLE[3]]: '/graph',
 };
+
+export const WEEK_DAYS = ['日', '月', '火', '水', '木', '金', '土'];

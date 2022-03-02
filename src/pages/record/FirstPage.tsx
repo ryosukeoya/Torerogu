@@ -3,16 +3,16 @@ import type { VFC } from 'react';
 import { css } from '@emotion/react';
 import { Input, Button } from '../../components/_indexs';
 import { inputStyle, buttonStyle } from '../../components/_styles';
-import { getDate } from '../../utils';
+import { getDateInfo } from '../../utils';
 import { FONT } from '../../styles/const';
 
 const FirstPage: VFC = () => {
-  const date = getDate();
+  const date = getDateInfo();
 
   return (
     <div css={styles.contentArea}>
       <h2 css={styles.title}>
-        ✏️ {date.month} / {date.day} の記録
+        ✏️ {date.month} / {date.day} ({date.weekday}) の記録
       </h2>
       <div css={styles.content}>
         <p>体重</p>

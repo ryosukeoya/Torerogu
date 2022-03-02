@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { PAGE_TITLE, PAGE_PATH } from '../constants/index';
+import { PAGE_TITLE, PAGE_PATH, WEEK_DAYS } from '../constants/index';
 
 const CONST = {
   ICON: {
@@ -26,11 +26,13 @@ export const getIcon = (title: string, isActive?: boolean): JSX.Element | undefi
   }
 };
 
-export const getDate = () => {
+export const getDateInfo = () => {
   const date = new Date();
-  const dateObj = {
+  const weekdayIndex: number = date.getDay();
+  const dateInfo = {
+    weekday:  WEEK_DAYS[weekdayIndex],
     month: date.getMonth() + 1,
     day: date.getDate(),
   };
-  return dateObj;
+  return dateInfo;
 };
