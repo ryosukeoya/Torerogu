@@ -1,7 +1,6 @@
 import { PageTitles } from '../types/index';
 
 export const APP = {
-  URL: 'https://workout-nu.vercel.app/',
   NAME: 'Recot',
   DESC: '筋トレアプリ',
 };
