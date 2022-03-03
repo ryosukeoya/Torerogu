@@ -14,6 +14,21 @@ directive @cached(
 ) on QUERY
 
 """
+Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'.
+"""
+input Boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean!]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean!]
+}
+
+"""
 Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'.
 """
 input Int_comparison_exp {
@@ -85,7 +100,14 @@ input String_comparison_exp {
 columns and relationships of "body_info_data_histories"
 """
 type body_info_data_histories {
+  body_fat_percentage: Int
+  created_at: timestamptz!
+  date: timestamptz!
+  height: numeric
   id: Int!
+  updated_at: timestamptz!
+  user_id: Int!
+  weight: numeric!
 }
 
 """
@@ -115,7 +137,11 @@ type body_info_data_histories_aggregate_fields {
 
 """aggregate avg on columns"""
 type body_info_data_histories_avg_fields {
+  body_fat_percentage: Float
+  height: Float
   id: Float
+  user_id: Float
+  weight: Float
 }
 
 """
@@ -125,7 +151,14 @@ input body_info_data_histories_bool_exp {
   _and: [body_info_data_histories_bool_exp!]
   _not: body_info_data_histories_bool_exp
   _or: [body_info_data_histories_bool_exp!]
+  body_fat_percentage: Int_comparison_exp
+  created_at: timestamptz_comparison_exp
+  date: timestamptz_comparison_exp
+  height: numeric_comparison_exp
   id: Int_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  user_id: Int_comparison_exp
+  weight: numeric_comparison_exp
 }
 
 """
@@ -140,24 +173,49 @@ enum body_info_data_histories_constraint {
 input type for incrementing numeric columns in table "body_info_data_histories"
 """
 input body_info_data_histories_inc_input {
+  body_fat_percentage: Int
+  height: numeric
   id: Int
+  user_id: Int
+  weight: numeric
 }
 
 """
 input type for inserting data into table "body_info_data_histories"
 """
 input body_info_data_histories_insert_input {
+  body_fat_percentage: Int
+  created_at: timestamptz
+  date: timestamptz
+  height: numeric
   id: Int
+  updated_at: timestamptz
+  user_id: Int
+  weight: numeric
 }
 
 """aggregate max on columns"""
 type body_info_data_histories_max_fields {
+  body_fat_percentage: Int
+  created_at: timestamptz
+  date: timestamptz
+  height: numeric
   id: Int
+  updated_at: timestamptz
+  user_id: Int
+  weight: numeric
 }
 
 """aggregate min on columns"""
 type body_info_data_histories_min_fields {
+  body_fat_percentage: Int
+  created_at: timestamptz
+  date: timestamptz
+  height: numeric
   id: Int
+  updated_at: timestamptz
+  user_id: Int
+  weight: numeric
 }
 
 """
@@ -172,7 +230,7 @@ type body_info_data_histories_mutation_response {
 }
 
 """
-on conflict condition type for table "body_info_data_histories"
+on_conflict condition type for table "body_info_data_histories"
 """
 input body_info_data_histories_on_conflict {
   constraint: body_info_data_histories_constraint!
@@ -182,7 +240,14 @@ input body_info_data_histories_on_conflict {
 
 """Ordering options when selecting data from "body_info_data_histories"."""
 input body_info_data_histories_order_by {
+  body_fat_percentage: order_by
+  created_at: order_by
+  date: order_by
+  height: order_by
   id: order_by
+  updated_at: order_by
+  user_id: order_by
+  weight: order_by
 }
 
 """primary key columns input for table: body_info_data_histories"""
@@ -195,34 +260,78 @@ select columns of table "body_info_data_histories"
 """
 enum body_info_data_histories_select_column {
   """column name"""
+  body_fat_percentage
+
+  """column name"""
+  created_at
+
+  """column name"""
+  date
+
+  """column name"""
+  height
+
+  """column name"""
   id
+
+  """column name"""
+  updated_at
+
+  """column name"""
+  user_id
+
+  """column name"""
+  weight
 }
 
 """
 input type for updating data in table "body_info_data_histories"
 """
 input body_info_data_histories_set_input {
+  body_fat_percentage: Int
+  created_at: timestamptz
+  date: timestamptz
+  height: numeric
   id: Int
+  updated_at: timestamptz
+  user_id: Int
+  weight: numeric
 }
 
 """aggregate stddev on columns"""
 type body_info_data_histories_stddev_fields {
+  body_fat_percentage: Float
+  height: Float
   id: Float
+  user_id: Float
+  weight: Float
 }
 
 """aggregate stddev_pop on columns"""
 type body_info_data_histories_stddev_pop_fields {
+  body_fat_percentage: Float
+  height: Float
   id: Float
+  user_id: Float
+  weight: Float
 }
 
 """aggregate stddev_samp on columns"""
 type body_info_data_histories_stddev_samp_fields {
+  body_fat_percentage: Float
+  height: Float
   id: Float
+  user_id: Float
+  weight: Float
 }
 
 """aggregate sum on columns"""
 type body_info_data_histories_sum_fields {
+  body_fat_percentage: Int
+  height: numeric
   id: Int
+  user_id: Int
+  weight: numeric
 }
 
 """
@@ -230,22 +339,55 @@ update columns of table "body_info_data_histories"
 """
 enum body_info_data_histories_update_column {
   """column name"""
+  body_fat_percentage
+
+  """column name"""
+  created_at
+
+  """column name"""
+  date
+
+  """column name"""
+  height
+
+  """column name"""
   id
+
+  """column name"""
+  updated_at
+
+  """column name"""
+  user_id
+
+  """column name"""
+  weight
 }
 
 """aggregate var_pop on columns"""
 type body_info_data_histories_var_pop_fields {
+  body_fat_percentage: Float
+  height: Float
   id: Float
+  user_id: Float
+  weight: Float
 }
 
 """aggregate var_samp on columns"""
 type body_info_data_histories_var_samp_fields {
+  body_fat_percentage: Float
+  height: Float
   id: Float
+  user_id: Float
+  weight: Float
 }
 
 """aggregate variance on columns"""
 type body_info_data_histories_variance_fields {
+  body_fat_percentage: Float
+  height: Float
   id: Float
+  user_id: Float
+  weight: Float
 }
 
 """mutation root"""
@@ -322,7 +464,7 @@ type mutation_root {
     """the rows to be inserted"""
     objects: [body_info_data_histories_insert_input!]!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: body_info_data_histories_on_conflict
   ): body_info_data_histories_mutation_response
 
@@ -333,7 +475,7 @@ type mutation_root {
     """the row to be inserted"""
     object: body_info_data_histories_insert_input!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: body_info_data_histories_on_conflict
   ): body_info_data_histories
 
@@ -344,7 +486,7 @@ type mutation_root {
     """the rows to be inserted"""
     objects: [training_categories_insert_input!]!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: training_categories_on_conflict
   ): training_categories_mutation_response
 
@@ -355,7 +497,7 @@ type mutation_root {
     """the row to be inserted"""
     object: training_categories_insert_input!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: training_categories_on_conflict
   ): training_categories
 
@@ -366,7 +508,7 @@ type mutation_root {
     """the rows to be inserted"""
     objects: [training_types_insert_input!]!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: training_types_on_conflict
   ): training_types_mutation_response
 
@@ -377,7 +519,7 @@ type mutation_root {
     """the row to be inserted"""
     object: training_types_insert_input!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: training_types_on_conflict
   ): training_types
 
@@ -388,7 +530,7 @@ type mutation_root {
     """the rows to be inserted"""
     objects: [trainings_insert_input!]!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: trainings_on_conflict
   ): trainings_mutation_response
 
@@ -399,7 +541,7 @@ type mutation_root {
     """the row to be inserted"""
     object: trainings_insert_input!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: trainings_on_conflict
   ): trainings
 
@@ -410,7 +552,7 @@ type mutation_root {
     """the rows to be inserted"""
     objects: [users_insert_input!]!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: users_on_conflict
   ): users_mutation_response
 
@@ -421,7 +563,7 @@ type mutation_root {
     """the row to be inserted"""
     object: users_insert_input!
 
-    """on conflict condition"""
+    """upsert condition"""
     on_conflict: users_on_conflict
   ): users
 
@@ -554,6 +696,23 @@ type mutation_root {
     _set: users_set_input
     pk_columns: users_pk_columns_input!
   ): users
+}
+
+scalar numeric
+
+"""
+Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'.
+"""
+input numeric_comparison_exp {
+  _eq: numeric
+  _gt: numeric
+  _gte: numeric
+  _in: [numeric!]
+  _is_null: Boolean
+  _lt: numeric
+  _lte: numeric
+  _neq: numeric
+  _nin: [numeric!]
 }
 
 """column ordering options"""
@@ -1142,7 +1301,7 @@ type training_categories_mutation_response {
 }
 
 """
-on conflict condition type for table "training_categories"
+on_conflict condition type for table "training_categories"
 """
 input training_categories_on_conflict {
   constraint: training_categories_constraint!
@@ -1369,7 +1528,7 @@ type training_types_mutation_response {
 }
 
 """
-on conflict condition type for table "training_types"
+on_conflict condition type for table "training_types"
 """
 input training_types_on_conflict {
   constraint: training_types_constraint!
@@ -1518,7 +1677,16 @@ type training_types_variance_fields {
 columns and relationships of "trainings"
 """
 type trainings {
+  created_at: timestamptz!
+  date: timestamptz!
   id: Int!
+  is_finish: Boolean!
+  training_count: Int
+  training_set: Int
+  training_type_id: Int!
+  training_weight: numeric
+  updated_at: timestamptz!
+  user_id: Int
 }
 
 """
@@ -1549,6 +1717,11 @@ type trainings_aggregate_fields {
 """aggregate avg on columns"""
 type trainings_avg_fields {
   id: Float
+  training_count: Float
+  training_set: Float
+  training_type_id: Float
+  training_weight: Float
+  user_id: Float
 }
 
 """
@@ -1558,7 +1731,16 @@ input trainings_bool_exp {
   _and: [trainings_bool_exp!]
   _not: trainings_bool_exp
   _or: [trainings_bool_exp!]
+  created_at: timestamptz_comparison_exp
+  date: timestamptz_comparison_exp
   id: Int_comparison_exp
+  is_finish: Boolean_comparison_exp
+  training_count: Int_comparison_exp
+  training_set: Int_comparison_exp
+  training_type_id: Int_comparison_exp
+  training_weight: numeric_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  user_id: Int_comparison_exp
 }
 
 """
@@ -1574,23 +1756,53 @@ input type for incrementing numeric columns in table "trainings"
 """
 input trainings_inc_input {
   id: Int
+  training_count: Int
+  training_set: Int
+  training_type_id: Int
+  training_weight: numeric
+  user_id: Int
 }
 
 """
 input type for inserting data into table "trainings"
 """
 input trainings_insert_input {
+  created_at: timestamptz
+  date: timestamptz
   id: Int
+  is_finish: Boolean
+  training_count: Int
+  training_set: Int
+  training_type_id: Int
+  training_weight: numeric
+  updated_at: timestamptz
+  user_id: Int
 }
 
 """aggregate max on columns"""
 type trainings_max_fields {
+  created_at: timestamptz
+  date: timestamptz
   id: Int
+  training_count: Int
+  training_set: Int
+  training_type_id: Int
+  training_weight: numeric
+  updated_at: timestamptz
+  user_id: Int
 }
 
 """aggregate min on columns"""
 type trainings_min_fields {
+  created_at: timestamptz
+  date: timestamptz
   id: Int
+  training_count: Int
+  training_set: Int
+  training_type_id: Int
+  training_weight: numeric
+  updated_at: timestamptz
+  user_id: Int
 }
 
 """
@@ -1605,7 +1817,7 @@ type trainings_mutation_response {
 }
 
 """
-on conflict condition type for table "trainings"
+on_conflict condition type for table "trainings"
 """
 input trainings_on_conflict {
   constraint: trainings_constraint!
@@ -1615,7 +1827,16 @@ input trainings_on_conflict {
 
 """Ordering options when selecting data from "trainings"."""
 input trainings_order_by {
+  created_at: order_by
+  date: order_by
   id: order_by
+  is_finish: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  updated_at: order_by
+  user_id: order_by
 }
 
 """primary key columns input for table: trainings"""
@@ -1628,34 +1849,90 @@ select columns of table "trainings"
 """
 enum trainings_select_column {
   """column name"""
+  created_at
+
+  """column name"""
+  date
+
+  """column name"""
   id
+
+  """column name"""
+  is_finish
+
+  """column name"""
+  training_count
+
+  """column name"""
+  training_set
+
+  """column name"""
+  training_type_id
+
+  """column name"""
+  training_weight
+
+  """column name"""
+  updated_at
+
+  """column name"""
+  user_id
 }
 
 """
 input type for updating data in table "trainings"
 """
 input trainings_set_input {
+  created_at: timestamptz
+  date: timestamptz
   id: Int
+  is_finish: Boolean
+  training_count: Int
+  training_set: Int
+  training_type_id: Int
+  training_weight: numeric
+  updated_at: timestamptz
+  user_id: Int
 }
 
 """aggregate stddev on columns"""
 type trainings_stddev_fields {
   id: Float
+  training_count: Float
+  training_set: Float
+  training_type_id: Float
+  training_weight: Float
+  user_id: Float
 }
 
 """aggregate stddev_pop on columns"""
 type trainings_stddev_pop_fields {
   id: Float
+  training_count: Float
+  training_set: Float
+  training_type_id: Float
+  training_weight: Float
+  user_id: Float
 }
 
 """aggregate stddev_samp on columns"""
 type trainings_stddev_samp_fields {
   id: Float
+  training_count: Float
+  training_set: Float
+  training_type_id: Float
+  training_weight: Float
+  user_id: Float
 }
 
 """aggregate sum on columns"""
 type trainings_sum_fields {
   id: Int
+  training_count: Int
+  training_set: Int
+  training_type_id: Int
+  training_weight: numeric
+  user_id: Int
 }
 
 """
@@ -1663,22 +1940,64 @@ update columns of table "trainings"
 """
 enum trainings_update_column {
   """column name"""
+  created_at
+
+  """column name"""
+  date
+
+  """column name"""
   id
+
+  """column name"""
+  is_finish
+
+  """column name"""
+  training_count
+
+  """column name"""
+  training_set
+
+  """column name"""
+  training_type_id
+
+  """column name"""
+  training_weight
+
+  """column name"""
+  updated_at
+
+  """column name"""
+  user_id
 }
 
 """aggregate var_pop on columns"""
 type trainings_var_pop_fields {
   id: Float
+  training_count: Float
+  training_set: Float
+  training_type_id: Float
+  training_weight: Float
+  user_id: Float
 }
 
 """aggregate var_samp on columns"""
 type trainings_var_samp_fields {
   id: Float
+  training_count: Float
+  training_set: Float
+  training_type_id: Float
+  training_weight: Float
+  user_id: Float
 }
 
 """aggregate variance on columns"""
 type trainings_variance_fields {
   id: Float
+  training_count: Float
+  training_set: Float
+  training_type_id: Float
+  training_weight: Float
+  user_id: Float
 }
 
 """
@@ -1772,7 +2091,7 @@ type users_mutation_response {
 }
 
 """
-on conflict condition type for table "users"
+on_conflict condition type for table "users"
 """
 input users_on_conflict {
   constraint: users_constraint!
