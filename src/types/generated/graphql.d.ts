@@ -13,7 +13,21 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  numeric: any;
   timestamptz: any;
+};
+
+/** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
+export type Boolean_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['Boolean']>;
+  _gt?: InputMaybe<Scalars['Boolean']>;
+  _gte?: InputMaybe<Scalars['Boolean']>;
+  _in?: InputMaybe<Array<Scalars['Boolean']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['Boolean']>;
+  _lte?: InputMaybe<Scalars['Boolean']>;
+  _neq?: InputMaybe<Scalars['Boolean']>;
+  _nin?: InputMaybe<Array<Scalars['Boolean']>>;
 };
 
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
@@ -65,7 +79,14 @@ export type String_Comparison_Exp = {
 /** columns and relationships of "body_info_data_histories" */
 export type Body_Info_Data_Histories = {
   __typename?: 'body_info_data_histories';
+  body_fat_percentage?: Maybe<Scalars['Int']>;
+  created_at: Scalars['timestamptz'];
+  date: Scalars['timestamptz'];
+  height?: Maybe<Scalars['numeric']>;
   id: Scalars['Int'];
+  updated_at: Scalars['timestamptz'];
+  user_id: Scalars['Int'];
+  weight: Scalars['numeric'];
 };
 
 /** aggregated selection of "body_info_data_histories" */
@@ -101,7 +122,11 @@ export type Body_Info_Data_Histories_Aggregate_FieldsCountArgs = {
 /** aggregate avg on columns */
 export type Body_Info_Data_Histories_Avg_Fields = {
   __typename?: 'body_info_data_histories_avg_fields';
+  body_fat_percentage?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+  weight?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "body_info_data_histories". All fields are combined with a logical 'AND'. */
@@ -109,7 +134,14 @@ export type Body_Info_Data_Histories_Bool_Exp = {
   _and?: InputMaybe<Array<Body_Info_Data_Histories_Bool_Exp>>;
   _not?: InputMaybe<Body_Info_Data_Histories_Bool_Exp>;
   _or?: InputMaybe<Array<Body_Info_Data_Histories_Bool_Exp>>;
+  body_fat_percentage?: InputMaybe<Int_Comparison_Exp>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  date?: InputMaybe<Timestamptz_Comparison_Exp>;
+  height?: InputMaybe<Numeric_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Int_Comparison_Exp>;
+  weight?: InputMaybe<Numeric_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "body_info_data_histories" */
@@ -120,24 +152,49 @@ export enum Body_Info_Data_Histories_Constraint {
 
 /** input type for incrementing numeric columns in table "body_info_data_histories" */
 export type Body_Info_Data_Histories_Inc_Input = {
+  body_fat_percentage?: InputMaybe<Scalars['Int']>;
+  height?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['Int']>;
+  user_id?: InputMaybe<Scalars['Int']>;
+  weight?: InputMaybe<Scalars['numeric']>;
 };
 
 /** input type for inserting data into table "body_info_data_histories" */
 export type Body_Info_Data_Histories_Insert_Input = {
+  body_fat_percentage?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  date?: InputMaybe<Scalars['timestamptz']>;
+  height?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['Int']>;
+  weight?: InputMaybe<Scalars['numeric']>;
 };
 
 /** aggregate max on columns */
 export type Body_Info_Data_Histories_Max_Fields = {
   __typename?: 'body_info_data_histories_max_fields';
+  body_fat_percentage?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  date?: Maybe<Scalars['timestamptz']>;
+  height?: Maybe<Scalars['numeric']>;
   id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['Int']>;
+  weight?: Maybe<Scalars['numeric']>;
 };
 
 /** aggregate min on columns */
 export type Body_Info_Data_Histories_Min_Fields = {
   __typename?: 'body_info_data_histories_min_fields';
+  body_fat_percentage?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  date?: Maybe<Scalars['timestamptz']>;
+  height?: Maybe<Scalars['numeric']>;
   id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['Int']>;
+  weight?: Maybe<Scalars['numeric']>;
 };
 
 /** response of any mutation on the table "body_info_data_histories" */
@@ -149,7 +206,7 @@ export type Body_Info_Data_Histories_Mutation_Response = {
   returning: Array<Body_Info_Data_Histories>;
 };
 
-/** on conflict condition type for table "body_info_data_histories" */
+/** on_conflict condition type for table "body_info_data_histories" */
 export type Body_Info_Data_Histories_On_Conflict = {
   constraint: Body_Info_Data_Histories_Constraint;
   update_columns?: Array<Body_Info_Data_Histories_Update_Column>;
@@ -158,7 +215,14 @@ export type Body_Info_Data_Histories_On_Conflict = {
 
 /** Ordering options when selecting data from "body_info_data_histories". */
 export type Body_Info_Data_Histories_Order_By = {
+  body_fat_percentage?: InputMaybe<Order_By>;
+  created_at?: InputMaybe<Order_By>;
+  date?: InputMaybe<Order_By>;
+  height?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+  weight?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: body_info_data_histories */
@@ -169,60 +233,123 @@ export type Body_Info_Data_Histories_Pk_Columns_Input = {
 /** select columns of table "body_info_data_histories" */
 export enum Body_Info_Data_Histories_Select_Column {
   /** column name */
-  Id = 'id'
+  BodyFatPercentage = 'body_fat_percentage',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Date = 'date',
+  /** column name */
+  Height = 'height',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id',
+  /** column name */
+  Weight = 'weight'
 }
 
 /** input type for updating data in table "body_info_data_histories" */
 export type Body_Info_Data_Histories_Set_Input = {
+  body_fat_percentage?: InputMaybe<Scalars['Int']>;
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  date?: InputMaybe<Scalars['timestamptz']>;
+  height?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['Int']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['Int']>;
+  weight?: InputMaybe<Scalars['numeric']>;
 };
 
 /** aggregate stddev on columns */
 export type Body_Info_Data_Histories_Stddev_Fields = {
   __typename?: 'body_info_data_histories_stddev_fields';
+  body_fat_percentage?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+  weight?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Body_Info_Data_Histories_Stddev_Pop_Fields = {
   __typename?: 'body_info_data_histories_stddev_pop_fields';
+  body_fat_percentage?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+  weight?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Body_Info_Data_Histories_Stddev_Samp_Fields = {
   __typename?: 'body_info_data_histories_stddev_samp_fields';
+  body_fat_percentage?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+  weight?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
 export type Body_Info_Data_Histories_Sum_Fields = {
   __typename?: 'body_info_data_histories_sum_fields';
+  body_fat_percentage?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['numeric']>;
   id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['Int']>;
+  weight?: Maybe<Scalars['numeric']>;
 };
 
 /** update columns of table "body_info_data_histories" */
 export enum Body_Info_Data_Histories_Update_Column {
   /** column name */
-  Id = 'id'
+  BodyFatPercentage = 'body_fat_percentage',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Date = 'date',
+  /** column name */
+  Height = 'height',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id',
+  /** column name */
+  Weight = 'weight'
 }
 
 /** aggregate var_pop on columns */
 export type Body_Info_Data_Histories_Var_Pop_Fields = {
   __typename?: 'body_info_data_histories_var_pop_fields';
+  body_fat_percentage?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+  weight?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
 export type Body_Info_Data_Histories_Var_Samp_Fields = {
   __typename?: 'body_info_data_histories_var_samp_fields';
+  body_fat_percentage?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+  weight?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
 export type Body_Info_Data_Histories_Variance_Fields = {
   __typename?: 'body_info_data_histories_variance_fields';
+  body_fat_percentage?: Maybe<Scalars['Float']>;
+  height?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+  weight?: Maybe<Scalars['Float']>;
 };
 
 /** mutation root */
@@ -498,6 +625,19 @@ export type Mutation_RootUpdate_Users_By_PkArgs = {
   _inc?: InputMaybe<Users_Inc_Input>;
   _set?: InputMaybe<Users_Set_Input>;
   pk_columns: Users_Pk_Columns_Input;
+};
+
+/** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
+export type Numeric_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['numeric']>;
+  _gt?: InputMaybe<Scalars['numeric']>;
+  _gte?: InputMaybe<Scalars['numeric']>;
+  _in?: InputMaybe<Array<Scalars['numeric']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['numeric']>;
+  _lte?: InputMaybe<Scalars['numeric']>;
+  _neq?: InputMaybe<Scalars['numeric']>;
+  _nin?: InputMaybe<Array<Scalars['numeric']>>;
 };
 
 /** column ordering options */
@@ -929,7 +1069,7 @@ export type Training_Categories_Mutation_Response = {
   returning: Array<Training_Categories>;
 };
 
-/** on conflict condition type for table "training_categories" */
+/** on_conflict condition type for table "training_categories" */
 export type Training_Categories_On_Conflict = {
   constraint: Training_Categories_Constraint;
   update_columns?: Array<Training_Categories_Update_Column>;
@@ -1146,7 +1286,7 @@ export type Training_Types_Mutation_Response = {
   returning: Array<Training_Types>;
 };
 
-/** on conflict condition type for table "training_types" */
+/** on_conflict condition type for table "training_types" */
 export type Training_Types_On_Conflict = {
   constraint: Training_Types_Constraint;
   update_columns?: Array<Training_Types_Update_Column>;
@@ -1282,7 +1422,16 @@ export type Training_Types_Variance_Fields = {
 /** columns and relationships of "trainings" */
 export type Trainings = {
   __typename?: 'trainings';
+  created_at: Scalars['timestamptz'];
+  date: Scalars['timestamptz'];
   id: Scalars['Int'];
+  is_finish: Scalars['Boolean'];
+  training_count?: Maybe<Scalars['Int']>;
+  training_set?: Maybe<Scalars['Int']>;
+  training_type_id: Scalars['Int'];
+  training_weight?: Maybe<Scalars['numeric']>;
+  updated_at: Scalars['timestamptz'];
+  user_id?: Maybe<Scalars['Int']>;
 };
 
 /** aggregated selection of "trainings" */
@@ -1319,6 +1468,11 @@ export type Trainings_Aggregate_FieldsCountArgs = {
 export type Trainings_Avg_Fields = {
   __typename?: 'trainings_avg_fields';
   id?: Maybe<Scalars['Float']>;
+  training_count?: Maybe<Scalars['Float']>;
+  training_set?: Maybe<Scalars['Float']>;
+  training_type_id?: Maybe<Scalars['Float']>;
+  training_weight?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "trainings". All fields are combined with a logical 'AND'. */
@@ -1326,7 +1480,16 @@ export type Trainings_Bool_Exp = {
   _and?: InputMaybe<Array<Trainings_Bool_Exp>>;
   _not?: InputMaybe<Trainings_Bool_Exp>;
   _or?: InputMaybe<Array<Trainings_Bool_Exp>>;
+  created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  date?: InputMaybe<Timestamptz_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
+  is_finish?: InputMaybe<Boolean_Comparison_Exp>;
+  training_count?: InputMaybe<Int_Comparison_Exp>;
+  training_set?: InputMaybe<Int_Comparison_Exp>;
+  training_type_id?: InputMaybe<Int_Comparison_Exp>;
+  training_weight?: InputMaybe<Numeric_Comparison_Exp>;
+  updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+  user_id?: InputMaybe<Int_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "trainings" */
@@ -1338,23 +1501,53 @@ export enum Trainings_Constraint {
 /** input type for incrementing numeric columns in table "trainings" */
 export type Trainings_Inc_Input = {
   id?: InputMaybe<Scalars['Int']>;
+  training_count?: InputMaybe<Scalars['Int']>;
+  training_set?: InputMaybe<Scalars['Int']>;
+  training_type_id?: InputMaybe<Scalars['Int']>;
+  training_weight?: InputMaybe<Scalars['numeric']>;
+  user_id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "trainings" */
 export type Trainings_Insert_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  date?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['Int']>;
+  is_finish?: InputMaybe<Scalars['Boolean']>;
+  training_count?: InputMaybe<Scalars['Int']>;
+  training_set?: InputMaybe<Scalars['Int']>;
+  training_type_id?: InputMaybe<Scalars['Int']>;
+  training_weight?: InputMaybe<Scalars['numeric']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate max on columns */
 export type Trainings_Max_Fields = {
   __typename?: 'trainings_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  date?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['Int']>;
+  training_count?: Maybe<Scalars['Int']>;
+  training_set?: Maybe<Scalars['Int']>;
+  training_type_id?: Maybe<Scalars['Int']>;
+  training_weight?: Maybe<Scalars['numeric']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['Int']>;
 };
 
 /** aggregate min on columns */
 export type Trainings_Min_Fields = {
   __typename?: 'trainings_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  date?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['Int']>;
+  training_count?: Maybe<Scalars['Int']>;
+  training_set?: Maybe<Scalars['Int']>;
+  training_type_id?: Maybe<Scalars['Int']>;
+  training_weight?: Maybe<Scalars['numeric']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['Int']>;
 };
 
 /** response of any mutation on the table "trainings" */
@@ -1366,7 +1559,7 @@ export type Trainings_Mutation_Response = {
   returning: Array<Trainings>;
 };
 
-/** on conflict condition type for table "trainings" */
+/** on_conflict condition type for table "trainings" */
 export type Trainings_On_Conflict = {
   constraint: Trainings_Constraint;
   update_columns?: Array<Trainings_Update_Column>;
@@ -1375,7 +1568,16 @@ export type Trainings_On_Conflict = {
 
 /** Ordering options when selecting data from "trainings". */
 export type Trainings_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  date?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  is_finish?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** primary key columns input for table: trainings */
@@ -1386,60 +1588,140 @@ export type Trainings_Pk_Columns_Input = {
 /** select columns of table "trainings" */
 export enum Trainings_Select_Column {
   /** column name */
-  Id = 'id'
+  CreatedAt = 'created_at',
+  /** column name */
+  Date = 'date',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  IsFinish = 'is_finish',
+  /** column name */
+  TrainingCount = 'training_count',
+  /** column name */
+  TrainingSet = 'training_set',
+  /** column name */
+  TrainingTypeId = 'training_type_id',
+  /** column name */
+  TrainingWeight = 'training_weight',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
 }
 
 /** input type for updating data in table "trainings" */
 export type Trainings_Set_Input = {
+  created_at?: InputMaybe<Scalars['timestamptz']>;
+  date?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['Int']>;
+  is_finish?: InputMaybe<Scalars['Boolean']>;
+  training_count?: InputMaybe<Scalars['Int']>;
+  training_set?: InputMaybe<Scalars['Int']>;
+  training_type_id?: InputMaybe<Scalars['Int']>;
+  training_weight?: InputMaybe<Scalars['numeric']>;
+  updated_at?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['Int']>;
 };
 
 /** aggregate stddev on columns */
 export type Trainings_Stddev_Fields = {
   __typename?: 'trainings_stddev_fields';
   id?: Maybe<Scalars['Float']>;
+  training_count?: Maybe<Scalars['Float']>;
+  training_set?: Maybe<Scalars['Float']>;
+  training_type_id?: Maybe<Scalars['Float']>;
+  training_weight?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Trainings_Stddev_Pop_Fields = {
   __typename?: 'trainings_stddev_pop_fields';
   id?: Maybe<Scalars['Float']>;
+  training_count?: Maybe<Scalars['Float']>;
+  training_set?: Maybe<Scalars['Float']>;
+  training_type_id?: Maybe<Scalars['Float']>;
+  training_weight?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Trainings_Stddev_Samp_Fields = {
   __typename?: 'trainings_stddev_samp_fields';
   id?: Maybe<Scalars['Float']>;
+  training_count?: Maybe<Scalars['Float']>;
+  training_set?: Maybe<Scalars['Float']>;
+  training_type_id?: Maybe<Scalars['Float']>;
+  training_weight?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
 export type Trainings_Sum_Fields = {
   __typename?: 'trainings_sum_fields';
   id?: Maybe<Scalars['Int']>;
+  training_count?: Maybe<Scalars['Int']>;
+  training_set?: Maybe<Scalars['Int']>;
+  training_type_id?: Maybe<Scalars['Int']>;
+  training_weight?: Maybe<Scalars['numeric']>;
+  user_id?: Maybe<Scalars['Int']>;
 };
 
 /** update columns of table "trainings" */
 export enum Trainings_Update_Column {
   /** column name */
-  Id = 'id'
+  CreatedAt = 'created_at',
+  /** column name */
+  Date = 'date',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  IsFinish = 'is_finish',
+  /** column name */
+  TrainingCount = 'training_count',
+  /** column name */
+  TrainingSet = 'training_set',
+  /** column name */
+  TrainingTypeId = 'training_type_id',
+  /** column name */
+  TrainingWeight = 'training_weight',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
 }
 
 /** aggregate var_pop on columns */
 export type Trainings_Var_Pop_Fields = {
   __typename?: 'trainings_var_pop_fields';
   id?: Maybe<Scalars['Float']>;
+  training_count?: Maybe<Scalars['Float']>;
+  training_set?: Maybe<Scalars['Float']>;
+  training_type_id?: Maybe<Scalars['Float']>;
+  training_weight?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
 export type Trainings_Var_Samp_Fields = {
   __typename?: 'trainings_var_samp_fields';
   id?: Maybe<Scalars['Float']>;
+  training_count?: Maybe<Scalars['Float']>;
+  training_set?: Maybe<Scalars['Float']>;
+  training_type_id?: Maybe<Scalars['Float']>;
+  training_weight?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
 export type Trainings_Variance_Fields = {
   __typename?: 'trainings_variance_fields';
   id?: Maybe<Scalars['Float']>;
+  training_count?: Maybe<Scalars['Float']>;
+  training_set?: Maybe<Scalars['Float']>;
+  training_type_id?: Maybe<Scalars['Float']>;
+  training_weight?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** columns and relationships of "users" */
@@ -1529,7 +1811,7 @@ export type Users_Mutation_Response = {
   returning: Array<Users>;
 };
 
-/** on conflict condition type for table "users" */
+/** on_conflict condition type for table "users" */
 export type Users_On_Conflict = {
   constraint: Users_Constraint;
   update_columns?: Array<Users_Update_Column>;
@@ -1605,6 +1887,16 @@ export type Users_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+export type CreateBodyInfoHistoriesMutationVariables = Exact<{
+  height: Scalars['numeric'];
+  weight?: InputMaybe<Scalars['numeric']>;
+  body_fat_percentage?: InputMaybe<Scalars['Int']>;
+  date?: InputMaybe<Scalars['timestamptz']>;
+}>;
+
+
+export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any } | null };
+
 export type GetRecordPagePropsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1621,6 +1913,49 @@ export type GetTrainingCategoriesLocalQueryVariables = Exact<{ [key: string]: ne
 export type GetTrainingCategoriesLocalQuery = { __typename?: 'query_root', training_categories: Array<{ __typename?: 'training_categories', id: number, name: string }> };
 
 
+export const CreateBodyInfoHistoriesDocument = gql`
+    mutation CreateBodyInfoHistories($height: numeric!, $weight: numeric, $body_fat_percentage: Int, $date: timestamptz) {
+  insert_body_info_data_histories_one(
+    object: {height: $height, body_fat_percentage: $body_fat_percentage, date: $date, weight: $weight, user_id: 1}
+  ) {
+    id
+    user_id
+    height
+    weight
+    body_fat_percentage
+    date
+  }
+}
+    `;
+export type CreateBodyInfoHistoriesMutationFn = Apollo.MutationFunction<CreateBodyInfoHistoriesMutation, CreateBodyInfoHistoriesMutationVariables>;
+
+/**
+ * __useCreateBodyInfoHistoriesMutation__
+ *
+ * To run a mutation, you first call `useCreateBodyInfoHistoriesMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateBodyInfoHistoriesMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createBodyInfoHistoriesMutation, { data, loading, error }] = useCreateBodyInfoHistoriesMutation({
+ *   variables: {
+ *      height: // value for 'height'
+ *      weight: // value for 'weight'
+ *      body_fat_percentage: // value for 'body_fat_percentage'
+ *      date: // value for 'date'
+ *   },
+ * });
+ */
+export function useCreateBodyInfoHistoriesMutation(baseOptions?: Apollo.MutationHookOptions<CreateBodyInfoHistoriesMutation, CreateBodyInfoHistoriesMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateBodyInfoHistoriesMutation, CreateBodyInfoHistoriesMutationVariables>(CreateBodyInfoHistoriesDocument, options);
+      }
+export type CreateBodyInfoHistoriesMutationHookResult = ReturnType<typeof useCreateBodyInfoHistoriesMutation>;
+export type CreateBodyInfoHistoriesMutationResult = Apollo.MutationResult<CreateBodyInfoHistoriesMutation>;
+export type CreateBodyInfoHistoriesMutationOptions = Apollo.BaseMutationOptions<CreateBodyInfoHistoriesMutation, CreateBodyInfoHistoriesMutationVariables>;
 export const GetRecordPagePropsDocument = gql`
     query GetRecordPageProps {
   training_categories(order_by: {id: asc}) {

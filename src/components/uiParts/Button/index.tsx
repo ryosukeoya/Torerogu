@@ -19,7 +19,7 @@ const Button: React.VFC<ButtonProps | LinkButtonProps> = (props) => {
   switch (props.type) {
     case 'isButton':
       return (
-        <button css={style(props._css)} onClick={() => props.onClick}>
+        <button css={style(props._css)} onClick={props.onClick}>
           {props.text}
         </button>
       );

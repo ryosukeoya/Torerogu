@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import type { GetRecordPagePropsQuery } from '../../types/generated/graphql';
-import { Slider, Space, Card } from '../../components/_indexs';
-import { cardStyle, sliderStyle } from '../../components/_styles';
+import { Slider, Space, Card, Button } from '../../components/_indexs';
+import { cardStyle, sliderStyle, buttonStyle } from '../../components/_styles';
 
 type TrainingTypes =
   | {
@@ -38,6 +38,7 @@ const SecondPage: VFC<Props> = ({ data }) => {
     return (
       <>
         <p>{typeID}</p>
+        <Button type={'isButton'} text={'記録する'} _css={buttonStyle()} />
         <p onClick={() => setIsSelected(false)}>カテゴリ選択に戻る</p>
       </>
     );
