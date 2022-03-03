@@ -9,7 +9,7 @@ interface PropsBase<T extends 'isInput' | 'isTextArea'> {
 interface InputProps extends PropsBase<'isInput'> {
   typeAttr: string;
   value?: string | number;
-  setState?: Dispatch<SetStateAction<any>>
+  setState?: Dispatch<SetStateAction<unknown>>
 }
 
 interface TextAreaProps extends PropsBase<'isTextArea'> {

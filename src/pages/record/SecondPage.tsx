@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import type { GetRecordPagePropsQuery } from '../../types/generated/graphql';
+import { GetRecordPagePropsQuery } from '../../types/generated/graphql';
 import { Slider, Space, Card, Button } from '../../components/_indexs';
 import { cardStyle, sliderStyle, buttonStyle } from '../../components/_styles';
 
 type TrainingTypes =
   | {
-      __typename?: 'training_types' | undefined;
       id: number;
       name: string;
       training_category_id: number;
