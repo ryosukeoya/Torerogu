@@ -1,6 +1,5 @@
 import type { VFC, Dispatch, SetStateAction } from 'react';
 import { SerializedStyles } from '@emotion/react';
-import { inputStyle } from './style';
 
 interface PropsBase<T extends 'isInput' | 'isTextArea'> {
   type: T;
@@ -10,7 +9,7 @@ interface PropsBase<T extends 'isInput' | 'isTextArea'> {
 interface InputProps extends PropsBase<'isInput'> {
   typeAttr: string;
   value?: string | number;
-  setState?: Dispatch<SetStateAction<any>>;
+  setState?: Dispatch<SetStateAction<any>>
 }
 
 interface TextAreaProps extends PropsBase<'isTextArea'> {
@@ -22,7 +21,7 @@ interface TextAreaProps extends PropsBase<'isTextArea'> {
 const Input: VFC<InputProps | TextAreaProps> = (props) => {
   switch (props.type) {
     case 'isInput':
-      return <input onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={inputStyle} type={props.typeAttr} placeholder={props.placeholder} />;
+      return <input onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={props._css} type={props.typeAttr} placeholder={props.placeholder} />;
     case 'isTextArea':
       return <textarea name={props.name} id='' cols={props.cols} rows={props.rows} />;
     default:
