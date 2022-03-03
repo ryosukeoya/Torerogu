@@ -13,7 +13,7 @@ const createApolloClient = () => {
   });
 };
 
-export const initializeApollo = (initialState = null) => {
+export const initializeApollo = () => {
   const _apolloClient = apolloClient ?? createApolloClient();
 
   // For SSG and SSR always create a new Apollo Client
