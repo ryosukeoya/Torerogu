@@ -1,15 +1,15 @@
 import type { VFC, Dispatch, SetStateAction } from 'react';
-import { SerializedStyles } from '@emotion/react';
+import { inputStyle } from './style';
 
 interface PropsBase<T extends 'isInput' | 'isTextArea'> {
   type: T;
   placeholder?: string;
-  _css: SerializedStyles;
+  _css: typeof inputStyle;
 }
 interface InputProps extends PropsBase<'isInput'> {
   typeAttr: string;
   value?: string | number;
-  setState?: Dispatch<SetStateAction<unknown>>
+  setState?: Dispatch<SetStateAction<unknown>>;
 }
 
 interface TextAreaProps extends PropsBase<'isTextArea'> {

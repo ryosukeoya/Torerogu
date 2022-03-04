@@ -6,7 +6,7 @@ export const inputStyle = css`
   border: 1px solid ${BORDER.GRAY};
   border-radius: 5px;
   text-align: right;
-  padding-right: 10px;
+  padding: 2px 10px;
   &::placeholder {
   }
   &:focus {
