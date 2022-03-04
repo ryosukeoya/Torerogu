@@ -6,7 +6,7 @@ import { getDateInfo } from '../../utils';
 import { useMutation } from '@apollo/client';
 import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations/record';
 import type { CreateBodyInfoHistoriesMutation } from '../../types/generated/graphql';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { templates } from '../../styles/template';
 
 type BodyInfoHistories = {
@@ -25,7 +25,7 @@ const FirstPage: VFC = () => {
 
   const [insertBodyInfo] = useMutation<CreateBodyInfoHistoriesMutation>(CREATE_BODY_INFO_HISTORIES);
 
-  const registerBodyInfo = (data: BodyInfoHistories) => {
+  const registerBodyInfo: SubmitHandler<BodyInfoHistories> = (data) => {
     // TODO:FIX
     const user_id = 1;
     if (data.bodyFatPercentage === '') {
