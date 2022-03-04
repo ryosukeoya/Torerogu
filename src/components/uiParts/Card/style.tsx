@@ -9,7 +9,7 @@ export const cardStyle = (mbValue?: number) => css`
   width: 90vw;
   margin: 0 auto;
   margin-bottom: ${mbValue}px;
-  padding: 15px;
+  padding: 25px 15px;
   cursor: pointer;
   &:hover {
     background-color: ${COLOR.HOVER};

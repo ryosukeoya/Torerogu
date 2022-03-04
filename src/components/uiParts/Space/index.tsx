@@ -5,11 +5,11 @@ type Props = {
   height: number;
 };
 
-const Space: VFC<Props> = (props) => {
+const Space: VFC<Props> = ({height}) => {
   return (
     <div
       css={css`
-        height: ${props.height}px;
+        height: ${height}px;
       `}
     ></div>
   );

@@ -8,14 +8,6 @@ import { templates } from '../../styles/template';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 
-type TrainingTypes =
-  | {
-      id: number;
-      name: string;
-      training_category_id: number;
-    }[]
-  | undefined;
-
 type TrainingType = {
   id: number;
   name: string;
@@ -33,8 +25,8 @@ type Props = {
 };
 
 const SecondPage: VFC<Props> = ({ data }) => {
-  const [categoryID, setCategoryID] = useState<number>(1);
-  const [trainingType, setTrainingType] = useState<TrainingType | null>(null);
+  const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
+  const [selectedTrainingType, setSelectedTrainingType] = useState<TrainingType | null>(null);
 
   const {
     register,
@@ -45,27 +37,29 @@ const SecondPage: VFC<Props> = ({ data }) => {
   const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING);
 
   const handleClick = (data: TrainingType) => {
-    setTrainingType(data);
+    setSelectedTrainingType(data);
   };
 
-  const getTrainingTypes = (): TrainingTypes => {
+  const getTrainingTypes = (): TrainingType[] | undefined => {
     const slectedTrainingTypes = data?.training_types.filter(function (training_type) {
-      return training_type.training_category_id === categoryID;
+      return training_type.training_category_id === selectedCategoryID;
     });
     return slectedTrainingTypes;
   };
 
   const registerTraining: SubmitHandler<TrainingFormValues> = (data) => {
-    insertTraining({ variables: { user_id: 1, training_type_id: trainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.setCount, is_finish: true, date: new Date() } });
+    insertTraining({ variables: { user_id: 1, training_type_id: selectedTrainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.setCount, is_finish: true, date: new Date() } });
   };
 
-  if (trainingType) {
+  if (error) return <p>記録に失敗しました、もう一度実行してください</p>;
+
+  if (selectedTrainingType) {
     //TODO:回数ではない場合、ex.ランニング
     return (
       <>
         <form onSubmit={handleSubmit(registerTraining)}>
           <div css={templates.contentArea}>
-            <h2 css={templates.title}>✏️ {trainingType.name}</h2>
+            <h2 css={templates.title}>✏️ {selectedTrainingType.name}</h2>
             <div css={templates.content}>
               <p css={templates.contentTitle}>
                 重量<span css={templates.require}>*必須</span>
@@ -100,7 +94,7 @@ const SecondPage: VFC<Props> = ({ data }) => {
               </p>
             </div>
             <Input type={'isInput'} typeAttr='submit' _css={buttonStyle(10)} value={'記録する'} />
-            <p css={templates.back} onClick={() => setTrainingType(null)}>
+            <p css={templates.back} onClick={() => setSelectedTrainingType(null)}>
               ＜ カテゴリ選択に戻る
             </p>
           </div>
@@ -111,7 +105,7 @@ const SecondPage: VFC<Props> = ({ data }) => {
     return (
       <>
         <Space height={20} />
-        <Slider items={data?.training_categories} setState={setCategoryID} sliderStyle={sliderStyle} />
+        <Slider items={data?.training_categories} setState={setSelectedCategoryID} sliderStyle={sliderStyle} />
         {getTrainingTypes()?.map((training_type) => {
           return (
             <Card data={training_type} id={training_type.id} handleClick={handleClick} key={training_type.id} _css={cardStyle(15)}>
