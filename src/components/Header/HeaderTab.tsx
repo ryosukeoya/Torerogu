@@ -31,7 +31,7 @@ const styles = {
   tab: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.ORANGE : 'black'};
     ${isActive && `border-bottom:1px solid ${COLOR.ORANGE}`};
-    padding: 20px 15px 20px 15px;
+    padding: 15px;
     font-size: ${FONT.BASE};
   `,
 };

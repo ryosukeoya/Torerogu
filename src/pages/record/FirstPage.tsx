@@ -9,7 +9,7 @@ import type { CreateBodyInfoHistoriesMutation } from '../../types/generated/grap
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { templates } from '../../styles/template';
 
-type BodyInfoHistories = {
+type BodyInfoFormValues = {
   weight: number | '';
   bodyFatPercentage: number | '' | null;
 };
@@ -19,13 +19,13 @@ const FirstPage: VFC = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<NonNullable<BodyInfoHistories>>();
+  } = useForm<NonNullable<BodyInfoFormValues>>();
 
   const date = getDateInfo();
 
   const [insertBodyInfo] = useMutation<CreateBodyInfoHistoriesMutation>(CREATE_BODY_INFO_HISTORIES);
 
-  const registerBodyInfo: SubmitHandler<BodyInfoHistories> = (data) => {
+  const registerBodyInfo: SubmitHandler<BodyInfoFormValues> = (data) => {
     // TODO:FIX
     const user_id = 1;
     if (data.bodyFatPercentage === '') {
