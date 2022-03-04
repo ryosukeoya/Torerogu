@@ -9,7 +9,7 @@ const CONST = {
   },
 };
 
-export const getIcon = (title: string, isActive?: boolean): JSX.Element | undefined => {
+const getIcon = (title: string, isActive?: boolean): JSX.Element | undefined => {
   const TITLE: string[] = Object.keys(PAGE_PATH);
 
   switch (title) {
@@ -26,13 +26,15 @@ export const getIcon = (title: string, isActive?: boolean): JSX.Element | undefi
   }
 };
 
-export const getDateInfo = () => {
+const getDateInfo = () => {
   const date = new Date();
   const weekdayIndex: number = date.getDay();
   const dateInfo = {
-    weekday:  WEEK_DAYS[weekdayIndex],
+    weekday: WEEK_DAYS[weekdayIndex],
     month: date.getMonth() + 1,
     day: date.getDate(),
   };
   return dateInfo;
 };
+
+export { getIcon, getDateInfo };

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { useQuery } from '@apollo/client';
 import { GET_RECORD_PAGE_PROPS } from '../../libs/graphql/queries/record';
-import { GetRecordPagePropsQuery } from '../../types/generated/graphql';
+import type { GetRecordPagePropsQuery } from '../../types/generated/graphql';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { default as PhysicalPage } from './FirstPage';

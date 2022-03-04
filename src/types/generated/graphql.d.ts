@@ -1168,8 +1168,8 @@ export type Training_Types = {
   __typename?: 'training_types';
   created_at: Scalars['timestamptz'];
   id: Scalars['Int'];
-  max_weight?: Maybe<Scalars['Int']>;
-  min_weight?: Maybe<Scalars['Int']>;
+  max_weight?: Maybe<Scalars['numeric']>;
+  min_weight?: Maybe<Scalars['numeric']>;
   name: Scalars['String'];
   training_category_id: Scalars['Int'];
   updated_at: Scalars['timestamptz'];
@@ -1221,8 +1221,8 @@ export type Training_Types_Bool_Exp = {
   _or?: InputMaybe<Array<Training_Types_Bool_Exp>>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
-  max_weight?: InputMaybe<Int_Comparison_Exp>;
-  min_weight?: InputMaybe<Int_Comparison_Exp>;
+  max_weight?: InputMaybe<Numeric_Comparison_Exp>;
+  min_weight?: InputMaybe<Numeric_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   training_category_id?: InputMaybe<Int_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -1237,8 +1237,8 @@ export enum Training_Types_Constraint {
 /** input type for incrementing numeric columns in table "training_types" */
 export type Training_Types_Inc_Input = {
   id?: InputMaybe<Scalars['Int']>;
-  max_weight?: InputMaybe<Scalars['Int']>;
-  min_weight?: InputMaybe<Scalars['Int']>;
+  max_weight?: InputMaybe<Scalars['numeric']>;
+  min_weight?: InputMaybe<Scalars['numeric']>;
   training_category_id?: InputMaybe<Scalars['Int']>;
 };
 
@@ -1246,8 +1246,8 @@ export type Training_Types_Inc_Input = {
 export type Training_Types_Insert_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['Int']>;
-  max_weight?: InputMaybe<Scalars['Int']>;
-  min_weight?: InputMaybe<Scalars['Int']>;
+  max_weight?: InputMaybe<Scalars['numeric']>;
+  min_weight?: InputMaybe<Scalars['numeric']>;
   name?: InputMaybe<Scalars['String']>;
   training_category_id?: InputMaybe<Scalars['Int']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -1258,8 +1258,8 @@ export type Training_Types_Max_Fields = {
   __typename?: 'training_types_max_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['Int']>;
-  max_weight?: Maybe<Scalars['Int']>;
-  min_weight?: Maybe<Scalars['Int']>;
+  max_weight?: Maybe<Scalars['numeric']>;
+  min_weight?: Maybe<Scalars['numeric']>;
   name?: Maybe<Scalars['String']>;
   training_category_id?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -1270,8 +1270,8 @@ export type Training_Types_Min_Fields = {
   __typename?: 'training_types_min_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['Int']>;
-  max_weight?: Maybe<Scalars['Int']>;
-  min_weight?: Maybe<Scalars['Int']>;
+  max_weight?: Maybe<Scalars['numeric']>;
+  min_weight?: Maybe<Scalars['numeric']>;
   name?: Maybe<Scalars['String']>;
   training_category_id?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -1331,8 +1331,8 @@ export enum Training_Types_Select_Column {
 export type Training_Types_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
   id?: InputMaybe<Scalars['Int']>;
-  max_weight?: InputMaybe<Scalars['Int']>;
-  min_weight?: InputMaybe<Scalars['Int']>;
+  max_weight?: InputMaybe<Scalars['numeric']>;
+  min_weight?: InputMaybe<Scalars['numeric']>;
   name?: InputMaybe<Scalars['String']>;
   training_category_id?: InputMaybe<Scalars['Int']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -1369,8 +1369,8 @@ export type Training_Types_Stddev_Samp_Fields = {
 export type Training_Types_Sum_Fields = {
   __typename?: 'training_types_sum_fields';
   id?: Maybe<Scalars['Int']>;
-  max_weight?: Maybe<Scalars['Int']>;
-  min_weight?: Maybe<Scalars['Int']>;
+  max_weight?: Maybe<Scalars['numeric']>;
+  min_weight?: Maybe<Scalars['numeric']>;
   training_category_id?: Maybe<Scalars['Int']>;
 };
 
@@ -1431,7 +1431,7 @@ export type Trainings = {
   training_type_id: Scalars['Int'];
   training_weight?: Maybe<Scalars['numeric']>;
   updated_at: Scalars['timestamptz'];
-  user_id?: Maybe<Scalars['Int']>;
+  user_id: Scalars['Int'];
 };
 
 /** aggregated selection of "trainings" */
@@ -1890,33 +1890,37 @@ export type Users_Variance_Fields = {
 export type CreateBodyInfoHistoriesMutationVariables = Exact<{
   height: Scalars['numeric'];
   weight?: InputMaybe<Scalars['numeric']>;
-  body_fat_percentage?: InputMaybe<Scalars['Int']>;
+  body_fat_percentage: Scalars['Int'];
   date?: InputMaybe<Scalars['timestamptz']>;
+  user_id?: InputMaybe<Scalars['Int']>;
 }>;
 
 
 export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any } | null };
+
+export type CreateTrainingMutationVariables = Exact<{
+  user_id?: InputMaybe<Scalars['Int']>;
+  training_type_id?: InputMaybe<Scalars['Int']>;
+  training_weight: Scalars['numeric'];
+  training_count: Scalars['Int'];
+  training_set: Scalars['Int'];
+  is_finish?: InputMaybe<Scalars['Boolean']>;
+  date?: InputMaybe<Scalars['timestamptz']>;
+}>;
+
+
+export type CreateTrainingMutation = { __typename?: 'mutation_root', insert_trainings_one?: { __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any } | null };
 
 export type GetRecordPagePropsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetRecordPagePropsQuery = { __typename?: 'query_root', training_categories: Array<{ __typename?: 'training_categories', id: number, name: string }>, training_types: Array<{ __typename?: 'training_types', id: number, name: string, training_category_id: number }> };
 
-export type GetTrainingCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetTrainingCategoriesQuery = { __typename?: 'query_root', training_categories: Array<{ __typename?: 'training_categories', id: number, name: string }> };
-
-export type GetTrainingCategoriesLocalQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetTrainingCategoriesLocalQuery = { __typename?: 'query_root', training_categories: Array<{ __typename?: 'training_categories', id: number, name: string }> };
-
 
 export const CreateBodyInfoHistoriesDocument = gql`
-    mutation CreateBodyInfoHistories($height: numeric!, $weight: numeric, $body_fat_percentage: Int, $date: timestamptz) {
+    mutation CreateBodyInfoHistories($height: numeric!, $weight: numeric, $body_fat_percentage: Int!, $date: timestamptz, $user_id: Int) {
   insert_body_info_data_histories_one(
-    object: {height: $height, body_fat_percentage: $body_fat_percentage, date: $date, weight: $weight, user_id: 1}
+    object: {height: $height, body_fat_percentage: $body_fat_percentage, date: $date, weight: $weight, user_id: $user_id}
   ) {
     id
     user_id
@@ -1946,6 +1950,7 @@ export type CreateBodyInfoHistoriesMutationFn = Apollo.MutationFunction<CreateBo
  *      weight: // value for 'weight'
  *      body_fat_percentage: // value for 'body_fat_percentage'
  *      date: // value for 'date'
+ *      user_id: // value for 'user_id'
  *   },
  * });
  */
@@ -1956,6 +1961,54 @@ export function useCreateBodyInfoHistoriesMutation(baseOptions?: Apollo.Mutation
 export type CreateBodyInfoHistoriesMutationHookResult = ReturnType<typeof useCreateBodyInfoHistoriesMutation>;
 export type CreateBodyInfoHistoriesMutationResult = Apollo.MutationResult<CreateBodyInfoHistoriesMutation>;
 export type CreateBodyInfoHistoriesMutationOptions = Apollo.BaseMutationOptions<CreateBodyInfoHistoriesMutation, CreateBodyInfoHistoriesMutationVariables>;
+export const CreateTrainingDocument = gql`
+    mutation CreateTraining($user_id: Int, $training_type_id: Int, $training_weight: numeric!, $training_count: Int!, $training_set: Int!, $is_finish: Boolean, $date: timestamptz) {
+  insert_trainings_one(
+    object: {user_id: $user_id, training_type_id: $training_type_id, training_weight: $training_weight, training_count: $training_count, training_set: $training_set, is_finish: $is_finish, date: $date}
+  ) {
+    id
+    user_id
+    training_type_id
+    training_weight
+    training_count
+    training_set
+    is_finish
+    date
+  }
+}
+    `;
+export type CreateTrainingMutationFn = Apollo.MutationFunction<CreateTrainingMutation, CreateTrainingMutationVariables>;
+
+/**
+ * __useCreateTrainingMutation__
+ *
+ * To run a mutation, you first call `useCreateTrainingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateTrainingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createTrainingMutation, { data, loading, error }] = useCreateTrainingMutation({
+ *   variables: {
+ *      user_id: // value for 'user_id'
+ *      training_type_id: // value for 'training_type_id'
+ *      training_weight: // value for 'training_weight'
+ *      training_count: // value for 'training_count'
+ *      training_set: // value for 'training_set'
+ *      is_finish: // value for 'is_finish'
+ *      date: // value for 'date'
+ *   },
+ * });
+ */
+export function useCreateTrainingMutation(baseOptions?: Apollo.MutationHookOptions<CreateTrainingMutation, CreateTrainingMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateTrainingMutation, CreateTrainingMutationVariables>(CreateTrainingDocument, options);
+      }
+export type CreateTrainingMutationHookResult = ReturnType<typeof useCreateTrainingMutation>;
+export type CreateTrainingMutationResult = Apollo.MutationResult<CreateTrainingMutation>;
+export type CreateTrainingMutationOptions = Apollo.BaseMutationOptions<CreateTrainingMutation, CreateTrainingMutationVariables>;
 export const GetRecordPagePropsDocument = gql`
     query GetRecordPageProps {
   training_categories(order_by: {id: asc}) {
@@ -1996,73 +2049,3 @@ export function useGetRecordPagePropsLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type GetRecordPagePropsQueryHookResult = ReturnType<typeof useGetRecordPagePropsQuery>;
 export type GetRecordPagePropsLazyQueryHookResult = ReturnType<typeof useGetRecordPagePropsLazyQuery>;
 export type GetRecordPagePropsQueryResult = Apollo.QueryResult<GetRecordPagePropsQuery, GetRecordPagePropsQueryVariables>;
-export const GetTrainingCategoriesDocument = gql`
-    query GetTrainingCategories {
-  training_categories(order_by: {id: asc}) {
-    id
-    name
-  }
-}
-    `;
-
-/**
- * __useGetTrainingCategoriesQuery__
- *
- * To run a query within a React component, call `useGetTrainingCategoriesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetTrainingCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetTrainingCategoriesQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetTrainingCategoriesQuery(baseOptions?: Apollo.QueryHookOptions<GetTrainingCategoriesQuery, GetTrainingCategoriesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetTrainingCategoriesQuery, GetTrainingCategoriesQueryVariables>(GetTrainingCategoriesDocument, options);
-      }
-export function useGetTrainingCategoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTrainingCategoriesQuery, GetTrainingCategoriesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetTrainingCategoriesQuery, GetTrainingCategoriesQueryVariables>(GetTrainingCategoriesDocument, options);
-        }
-export type GetTrainingCategoriesQueryHookResult = ReturnType<typeof useGetTrainingCategoriesQuery>;
-export type GetTrainingCategoriesLazyQueryHookResult = ReturnType<typeof useGetTrainingCategoriesLazyQuery>;
-export type GetTrainingCategoriesQueryResult = Apollo.QueryResult<GetTrainingCategoriesQuery, GetTrainingCategoriesQueryVariables>;
-export const GetTrainingCategoriesLocalDocument = gql`
-    query GetTrainingCategoriesLocal {
-  training_categories(order_by: {id: asc}) @client {
-    id
-    name
-  }
-}
-    `;
-
-/**
- * __useGetTrainingCategoriesLocalQuery__
- *
- * To run a query within a React component, call `useGetTrainingCategoriesLocalQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetTrainingCategoriesLocalQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetTrainingCategoriesLocalQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetTrainingCategoriesLocalQuery(baseOptions?: Apollo.QueryHookOptions<GetTrainingCategoriesLocalQuery, GetTrainingCategoriesLocalQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetTrainingCategoriesLocalQuery, GetTrainingCategoriesLocalQueryVariables>(GetTrainingCategoriesLocalDocument, options);
-      }
-export function useGetTrainingCategoriesLocalLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTrainingCategoriesLocalQuery, GetTrainingCategoriesLocalQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetTrainingCategoriesLocalQuery, GetTrainingCategoriesLocalQueryVariables>(GetTrainingCategoriesLocalDocument, options);
-        }
-export type GetTrainingCategoriesLocalQueryHookResult = ReturnType<typeof useGetTrainingCategoriesLocalQuery>;
-export type GetTrainingCategoriesLocalLazyQueryHookResult = ReturnType<typeof useGetTrainingCategoriesLocalLazyQuery>;
-export type GetTrainingCategoriesLocalQueryResult = Apollo.QueryResult<GetTrainingCategoriesLocalQuery, GetTrainingCategoriesLocalQueryVariables>;

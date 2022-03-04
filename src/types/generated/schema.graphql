@@ -1407,8 +1407,8 @@ columns and relationships of "training_types"
 type training_types {
   created_at: timestamptz!
   id: Int!
-  max_weight: Int
-  min_weight: Int
+  max_weight: numeric
+  min_weight: numeric
   name: String!
   training_category_id: Int!
   updated_at: timestamptz!
@@ -1456,8 +1456,8 @@ input training_types_bool_exp {
   _or: [training_types_bool_exp!]
   created_at: timestamptz_comparison_exp
   id: Int_comparison_exp
-  max_weight: Int_comparison_exp
-  min_weight: Int_comparison_exp
+  max_weight: numeric_comparison_exp
+  min_weight: numeric_comparison_exp
   name: String_comparison_exp
   training_category_id: Int_comparison_exp
   updated_at: timestamptz_comparison_exp
@@ -1476,8 +1476,8 @@ input type for incrementing numeric columns in table "training_types"
 """
 input training_types_inc_input {
   id: Int
-  max_weight: Int
-  min_weight: Int
+  max_weight: numeric
+  min_weight: numeric
   training_category_id: Int
 }
 
@@ -1487,8 +1487,8 @@ input type for inserting data into table "training_types"
 input training_types_insert_input {
   created_at: timestamptz
   id: Int
-  max_weight: Int
-  min_weight: Int
+  max_weight: numeric
+  min_weight: numeric
   name: String
   training_category_id: Int
   updated_at: timestamptz
@@ -1498,8 +1498,8 @@ input training_types_insert_input {
 type training_types_max_fields {
   created_at: timestamptz
   id: Int
-  max_weight: Int
-  min_weight: Int
+  max_weight: numeric
+  min_weight: numeric
   name: String
   training_category_id: Int
   updated_at: timestamptz
@@ -1509,8 +1509,8 @@ type training_types_max_fields {
 type training_types_min_fields {
   created_at: timestamptz
   id: Int
-  max_weight: Int
-  min_weight: Int
+  max_weight: numeric
+  min_weight: numeric
   name: String
   training_category_id: Int
   updated_at: timestamptz
@@ -1584,8 +1584,8 @@ input type for updating data in table "training_types"
 input training_types_set_input {
   created_at: timestamptz
   id: Int
-  max_weight: Int
-  min_weight: Int
+  max_weight: numeric
+  min_weight: numeric
   name: String
   training_category_id: Int
   updated_at: timestamptz
@@ -1618,8 +1618,8 @@ type training_types_stddev_samp_fields {
 """aggregate sum on columns"""
 type training_types_sum_fields {
   id: Int
-  max_weight: Int
-  min_weight: Int
+  max_weight: numeric
+  min_weight: numeric
   training_category_id: Int
 }
 
@@ -1686,7 +1686,7 @@ type trainings {
   training_type_id: Int!
   training_weight: numeric
   updated_at: timestamptz!
-  user_id: Int
+  user_id: Int!
 }
 
 """
