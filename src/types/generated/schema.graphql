@@ -390,6 +390,23 @@ type body_info_data_histories_variance_fields {
   weight: Float
 }
 
+scalar date
+
+"""
+Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'.
+"""
+input date_comparison_exp {
+  _eq: date
+  _gt: date
+  _gte: date
+  _in: [date!]
+  _is_null: Boolean
+  _lt: date
+  _lte: date
+  _neq: date
+  _nin: [date!]
+}
+
 """mutation root"""
 type mutation_root {
   """
@@ -890,9 +907,7 @@ type query_root {
     where: trainings_bool_exp
   ): [trainings!]!
 
-  """
-  fetch aggregated fields from the table: "trainings"
-  """
+  """An aggregate relationship"""
   trainings_aggregate(
     """distinct select on columns"""
     distinct_on: [trainings_select_column!]
@@ -1111,9 +1126,7 @@ type subscription_root {
     where: trainings_bool_exp
   ): [trainings!]!
 
-  """
-  fetch aggregated fields from the table: "trainings"
-  """
+  """An aggregate relationship"""
   trainings_aggregate(
     """distinct select on columns"""
     distinct_on: [trainings_select_column!]
@@ -1301,6 +1314,16 @@ type training_categories_mutation_response {
 }
 
 """
+input type for inserting object relation for remote table "training_categories"
+"""
+input training_categories_obj_rel_insert_input {
+  data: training_categories_insert_input!
+
+  """upsert condition"""
+  on_conflict: training_categories_on_conflict
+}
+
+"""
 on_conflict condition type for table "training_categories"
 """
 input training_categories_on_conflict {
@@ -1410,7 +1433,48 @@ type training_types {
   max_weight: numeric
   min_weight: numeric
   name: String!
+
+  """An object relationship"""
+  training_category: training_categories!
   training_category_id: Int!
+
+  """
+  fetch data from the table: "trainings"
+  """
+  trainings(
+    """distinct select on columns"""
+    distinct_on: [trainings_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [trainings_order_by!]
+
+    """filter the rows returned"""
+    where: trainings_bool_exp
+  ): [trainings!]!
+
+  """An aggregate relationship"""
+  trainings_aggregate(
+    """distinct select on columns"""
+    distinct_on: [trainings_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [trainings_order_by!]
+
+    """filter the rows returned"""
+    where: trainings_bool_exp
+  ): trainings_aggregate!
   updated_at: timestamptz!
 }
 
@@ -1459,7 +1523,9 @@ input training_types_bool_exp {
   max_weight: numeric_comparison_exp
   min_weight: numeric_comparison_exp
   name: String_comparison_exp
+  training_category: training_categories_bool_exp
   training_category_id: Int_comparison_exp
+  trainings: trainings_bool_exp
   updated_at: timestamptz_comparison_exp
 }
 
@@ -1490,7 +1556,9 @@ input training_types_insert_input {
   max_weight: numeric
   min_weight: numeric
   name: String
+  training_category: training_categories_obj_rel_insert_input
   training_category_id: Int
+  trainings: trainings_arr_rel_insert_input
   updated_at: timestamptz
 }
 
@@ -1528,6 +1596,16 @@ type training_types_mutation_response {
 }
 
 """
+input type for inserting object relation for remote table "training_types"
+"""
+input training_types_obj_rel_insert_input {
+  data: training_types_insert_input!
+
+  """upsert condition"""
+  on_conflict: training_types_on_conflict
+}
+
+"""
 on_conflict condition type for table "training_types"
 """
 input training_types_on_conflict {
@@ -1543,7 +1621,9 @@ input training_types_order_by {
   max_weight: order_by
   min_weight: order_by
   name: order_by
+  training_category: training_categories_order_by
   training_category_id: order_by
+  trainings_aggregate: trainings_aggregate_order_by
   updated_at: order_by
 }
 
@@ -1678,11 +1758,14 @@ columns and relationships of "trainings"
 """
 type trainings {
   created_at: timestamptz!
-  date: timestamptz!
+  date: date!
   id: Int!
   is_finish: Boolean!
   training_count: Int
   training_set: Int
+
+  """An object relationship"""
+  training_type: training_types!
   training_type_id: Int!
   training_weight: numeric
   updated_at: timestamptz!
@@ -1714,6 +1797,33 @@ type trainings_aggregate_fields {
   variance: trainings_variance_fields
 }
 
+"""
+order by aggregate values of table "trainings"
+"""
+input trainings_aggregate_order_by {
+  avg: trainings_avg_order_by
+  count: order_by
+  max: trainings_max_order_by
+  min: trainings_min_order_by
+  stddev: trainings_stddev_order_by
+  stddev_pop: trainings_stddev_pop_order_by
+  stddev_samp: trainings_stddev_samp_order_by
+  sum: trainings_sum_order_by
+  var_pop: trainings_var_pop_order_by
+  var_samp: trainings_var_samp_order_by
+  variance: trainings_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "trainings"
+"""
+input trainings_arr_rel_insert_input {
+  data: [trainings_insert_input!]!
+
+  """upsert condition"""
+  on_conflict: trainings_on_conflict
+}
+
 """aggregate avg on columns"""
 type trainings_avg_fields {
   id: Float
@@ -1725,6 +1835,18 @@ type trainings_avg_fields {
 }
 
 """
+order by avg() on columns of table "trainings"
+"""
+input trainings_avg_order_by {
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  user_id: order_by
+}
+
+"""
 Boolean expression to filter rows from the table "trainings". All fields are combined with a logical 'AND'.
 """
 input trainings_bool_exp {
@@ -1732,11 +1854,12 @@ input trainings_bool_exp {
   _not: trainings_bool_exp
   _or: [trainings_bool_exp!]
   created_at: timestamptz_comparison_exp
-  date: timestamptz_comparison_exp
+  date: date_comparison_exp
   id: Int_comparison_exp
   is_finish: Boolean_comparison_exp
   training_count: Int_comparison_exp
   training_set: Int_comparison_exp
+  training_type: training_types_bool_exp
   training_type_id: Int_comparison_exp
   training_weight: numeric_comparison_exp
   updated_at: timestamptz_comparison_exp
@@ -1768,11 +1891,12 @@ input type for inserting data into table "trainings"
 """
 input trainings_insert_input {
   created_at: timestamptz
-  date: timestamptz
+  date: date
   id: Int
   is_finish: Boolean
   training_count: Int
   training_set: Int
+  training_type: training_types_obj_rel_insert_input
   training_type_id: Int
   training_weight: numeric
   updated_at: timestamptz
@@ -1782,7 +1906,7 @@ input trainings_insert_input {
 """aggregate max on columns"""
 type trainings_max_fields {
   created_at: timestamptz
-  date: timestamptz
+  date: date
   id: Int
   training_count: Int
   training_set: Int
@@ -1792,10 +1916,25 @@ type trainings_max_fields {
   user_id: Int
 }
 
+"""
+order by max() on columns of table "trainings"
+"""
+input trainings_max_order_by {
+  created_at: order_by
+  date: order_by
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  updated_at: order_by
+  user_id: order_by
+}
+
 """aggregate min on columns"""
 type trainings_min_fields {
   created_at: timestamptz
-  date: timestamptz
+  date: date
   id: Int
   training_count: Int
   training_set: Int
@@ -1803,6 +1942,21 @@ type trainings_min_fields {
   training_weight: numeric
   updated_at: timestamptz
   user_id: Int
+}
+
+"""
+order by min() on columns of table "trainings"
+"""
+input trainings_min_order_by {
+  created_at: order_by
+  date: order_by
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  updated_at: order_by
+  user_id: order_by
 }
 
 """
@@ -1833,6 +1987,7 @@ input trainings_order_by {
   is_finish: order_by
   training_count: order_by
   training_set: order_by
+  training_type: training_types_order_by
   training_type_id: order_by
   training_weight: order_by
   updated_at: order_by
@@ -1884,7 +2039,7 @@ input type for updating data in table "trainings"
 """
 input trainings_set_input {
   created_at: timestamptz
-  date: timestamptz
+  date: date
   id: Int
   is_finish: Boolean
   training_count: Int
@@ -1905,6 +2060,18 @@ type trainings_stddev_fields {
   user_id: Float
 }
 
+"""
+order by stddev() on columns of table "trainings"
+"""
+input trainings_stddev_order_by {
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  user_id: order_by
+}
+
 """aggregate stddev_pop on columns"""
 type trainings_stddev_pop_fields {
   id: Float
@@ -1913,6 +2080,18 @@ type trainings_stddev_pop_fields {
   training_type_id: Float
   training_weight: Float
   user_id: Float
+}
+
+"""
+order by stddev_pop() on columns of table "trainings"
+"""
+input trainings_stddev_pop_order_by {
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  user_id: order_by
 }
 
 """aggregate stddev_samp on columns"""
@@ -1925,6 +2104,18 @@ type trainings_stddev_samp_fields {
   user_id: Float
 }
 
+"""
+order by stddev_samp() on columns of table "trainings"
+"""
+input trainings_stddev_samp_order_by {
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  user_id: order_by
+}
+
 """aggregate sum on columns"""
 type trainings_sum_fields {
   id: Int
@@ -1933,6 +2124,18 @@ type trainings_sum_fields {
   training_type_id: Int
   training_weight: numeric
   user_id: Int
+}
+
+"""
+order by sum() on columns of table "trainings"
+"""
+input trainings_sum_order_by {
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  user_id: order_by
 }
 
 """
@@ -1980,6 +2183,18 @@ type trainings_var_pop_fields {
   user_id: Float
 }
 
+"""
+order by var_pop() on columns of table "trainings"
+"""
+input trainings_var_pop_order_by {
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  user_id: order_by
+}
+
 """aggregate var_samp on columns"""
 type trainings_var_samp_fields {
   id: Float
@@ -1990,6 +2205,18 @@ type trainings_var_samp_fields {
   user_id: Float
 }
 
+"""
+order by var_samp() on columns of table "trainings"
+"""
+input trainings_var_samp_order_by {
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  user_id: order_by
+}
+
 """aggregate variance on columns"""
 type trainings_variance_fields {
   id: Float
@@ -1998,6 +2225,18 @@ type trainings_variance_fields {
   training_type_id: Float
   training_weight: Float
   user_id: Float
+}
+
+"""
+order by variance() on columns of table "trainings"
+"""
+input trainings_variance_order_by {
+  id: order_by
+  training_count: order_by
+  training_set: order_by
+  training_type_id: order_by
+  training_weight: order_by
+  user_id: order_by
 }
 
 """
