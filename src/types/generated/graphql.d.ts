@@ -1911,6 +1911,21 @@ export type CreateTrainingMutationVariables = Exact<{
 
 export type CreateTrainingMutation = { __typename?: 'mutation_root', insert_trainings_one?: { __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any } | null };
 
+export type GetGraphPagePropsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetGraphPagePropsQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any }>, body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, weight: any, date: any }> };
+
+export type GetTrainingQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTrainingQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any }> };
+
+export type GetBodyInfoDataHistoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetBodyInfoDataHistoriesQuery = { __typename?: 'query_root', body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any }> };
+
 export type GetRecordPagePropsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2009,6 +2024,133 @@ export function useCreateTrainingMutation(baseOptions?: Apollo.MutationHookOptio
 export type CreateTrainingMutationHookResult = ReturnType<typeof useCreateTrainingMutation>;
 export type CreateTrainingMutationResult = Apollo.MutationResult<CreateTrainingMutation>;
 export type CreateTrainingMutationOptions = Apollo.BaseMutationOptions<CreateTrainingMutation, CreateTrainingMutationVariables>;
+export const GetGraphPagePropsDocument = gql`
+    query GetGraphPageProps {
+  trainings(order_by: {id: asc}) {
+    id
+    user_id
+    training_type_id
+    training_weight
+    training_count
+    training_set
+    is_finish
+    date
+  }
+  body_info_data_histories(order_by: {id: asc}) {
+    id
+    user_id
+    weight
+    date
+  }
+}
+    `;
+
+/**
+ * __useGetGraphPagePropsQuery__
+ *
+ * To run a query within a React component, call `useGetGraphPagePropsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetGraphPagePropsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetGraphPagePropsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetGraphPagePropsQuery(baseOptions?: Apollo.QueryHookOptions<GetGraphPagePropsQuery, GetGraphPagePropsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetGraphPagePropsQuery, GetGraphPagePropsQueryVariables>(GetGraphPagePropsDocument, options);
+      }
+export function useGetGraphPagePropsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetGraphPagePropsQuery, GetGraphPagePropsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetGraphPagePropsQuery, GetGraphPagePropsQueryVariables>(GetGraphPagePropsDocument, options);
+        }
+export type GetGraphPagePropsQueryHookResult = ReturnType<typeof useGetGraphPagePropsQuery>;
+export type GetGraphPagePropsLazyQueryHookResult = ReturnType<typeof useGetGraphPagePropsLazyQuery>;
+export type GetGraphPagePropsQueryResult = Apollo.QueryResult<GetGraphPagePropsQuery, GetGraphPagePropsQueryVariables>;
+export const GetTrainingDocument = gql`
+    query GetTraining {
+  trainings(order_by: {id: asc}) {
+    id
+    user_id
+    training_type_id
+    training_weight
+    training_count
+    training_set
+    is_finish
+    date
+  }
+}
+    `;
+
+/**
+ * __useGetTrainingQuery__
+ *
+ * To run a query within a React component, call `useGetTrainingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTrainingQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTrainingQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetTrainingQuery(baseOptions?: Apollo.QueryHookOptions<GetTrainingQuery, GetTrainingQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTrainingQuery, GetTrainingQueryVariables>(GetTrainingDocument, options);
+      }
+export function useGetTrainingLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTrainingQuery, GetTrainingQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTrainingQuery, GetTrainingQueryVariables>(GetTrainingDocument, options);
+        }
+export type GetTrainingQueryHookResult = ReturnType<typeof useGetTrainingQuery>;
+export type GetTrainingLazyQueryHookResult = ReturnType<typeof useGetTrainingLazyQuery>;
+export type GetTrainingQueryResult = Apollo.QueryResult<GetTrainingQuery, GetTrainingQueryVariables>;
+export const GetBodyInfoDataHistoriesDocument = gql`
+    query GetBodyInfoDataHistories {
+  body_info_data_histories(order_by: {id: asc}) {
+    id
+    user_id
+    height
+    weight
+    body_fat_percentage
+    date
+  }
+}
+    `;
+
+/**
+ * __useGetBodyInfoDataHistoriesQuery__
+ *
+ * To run a query within a React component, call `useGetBodyInfoDataHistoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetBodyInfoDataHistoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetBodyInfoDataHistoriesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetBodyInfoDataHistoriesQuery(baseOptions?: Apollo.QueryHookOptions<GetBodyInfoDataHistoriesQuery, GetBodyInfoDataHistoriesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetBodyInfoDataHistoriesQuery, GetBodyInfoDataHistoriesQueryVariables>(GetBodyInfoDataHistoriesDocument, options);
+      }
+export function useGetBodyInfoDataHistoriesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBodyInfoDataHistoriesQuery, GetBodyInfoDataHistoriesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetBodyInfoDataHistoriesQuery, GetBodyInfoDataHistoriesQueryVariables>(GetBodyInfoDataHistoriesDocument, options);
+        }
+export type GetBodyInfoDataHistoriesQueryHookResult = ReturnType<typeof useGetBodyInfoDataHistoriesQuery>;
+export type GetBodyInfoDataHistoriesLazyQueryHookResult = ReturnType<typeof useGetBodyInfoDataHistoriesLazyQuery>;
+export type GetBodyInfoDataHistoriesQueryResult = Apollo.QueryResult<GetBodyInfoDataHistoriesQuery, GetBodyInfoDataHistoriesQueryVariables>;
 export const GetRecordPagePropsDocument = gql`
     query GetRecordPageProps {
   training_categories(order_by: {id: asc}) {

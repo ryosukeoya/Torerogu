@@ -4,28 +4,63 @@ import { Space, Navigation } from '../../components/_indexs';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { COLOR } from '../../styles/const';
+import { useQuery } from '@apollo/client';
+import { GET_GRAPH_PAGE_PROPS, GET_BODY_INFO_DATA_HISTORIES, GET_TRAINING } from '../../libs/graphql/queries/graph';
+import { GetGraphPagePropsQuery, GetBodyInfoDataHistoriesQuery, GetTrainingQuery } from '../../types/generated/graphql';
 
-const dummyData = [
-  { date: new Date('2022-03-01').getTime(), weight: 60 },
-  { date: new Date('2022-03-05').getTime(), weight: 66 },
-  { date: new Date('2022-03-07').getTime(), weight: 67 },
-  { date: new Date('2022-03-08').getTime(), weight: 65 },
-  { date: new Date('2022-03-15').getTime(), weight: 57 },
-  { date: new Date('2022-03-20').getTime(), weight: 59 },
-  { date: new Date('2022-03-22').getTime(), weight: 53 },
-];
+
+type BodyInfoDataHistory = {
+  __typename?: 'body_info_data_histories' | undefined;
+  id: number;
+  user_id: number;
+  weight: any;
+  date: any;
+};
+
+type ChartData = {
+  date: number;
+  weight: any;
+};
+
+//TODO:無駄なfetch削除
+//TODO:new Date()
 
 const Graph: VFC = () => {
+  const { data, error, loading } = useQuery<GetGraphPagePropsQuery>(GET_GRAPH_PAGE_PROPS);
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
+
+  // const convert = (data: Pick<GetGraphPagePropsQuery, 'body_info_data_histories'>) => {
+  const convert = (data: BodyInfoDataHistory[] | undefined) => {
+    const result = data?.map((d: BodyInfoDataHistory) => {
+      return {
+        date: new Date(d.date).getTime(),
+        weight: d.weight,
+      };
+    });
+
+    result?.sort(function (a: ChartData, b: ChartData) {
+      if (a.date === b.date) {
+        return 0;
+      } else if (a.date < b.date) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+
+    return result;
+  };
 
   if (activeIndex === 0) {
     return (
       <>
         <Space height={50} />
         <ResponsiveContainer width='100%' height={400}>
-          <LineChart data={dummyData} margin={{ top: 5, right: 30, bottom: 5, left: 0 }}>
+          <LineChart data={convert(data?.body_info_data_histories)} margin={{ top: 5, right: 30, bottom: 5, left: 0 }}>
+            {/* <LineChart data={dummyData} margin={{ top: 5, right: 30, bottom: 5, left: 0 }}> */}
             <Line type='monotone' dataKey='weight' stroke={COLOR.ORANGE} strokeWidth={2.5} dot={{ stroke: COLOR.ORANGE, strokeWidth: 2 }} />
             <CartesianGrid strokeDasharray='3 5' />
+            {/* domain:横軸の表示幅を指定、tickFormatter:横軸の表示形式を指定、label:横軸のラベルを指定 */}
             <XAxis dataKey='date' domain={['dataMin', 'dataMax']} tickFormatter={(unixTime) => new Date(unixTime).toLocaleDateString()} type='number' />
             <YAxis />
           </LineChart>
