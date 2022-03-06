@@ -3,6 +3,8 @@ schema: "https://workout-220216.hasura.app/v1/graphql"
 documents: 
   - "src/libs/graphql/queries/*.ts"
   - "src/libs/graphql/mutations/*.ts"
+  - "src/libs/graphql/queries/*.graphql"
+  - "src/libs/graphql/mutations/*.graphql"
 generates:
   src/types/generated/graphql.d.ts:
     plugins:

@@ -5,31 +5,28 @@ import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { COLOR } from '../../styles/const';
 import { useQuery } from '@apollo/client';
-import { GET_GRAPH_PAGE_PROPS, GET_BODY_INFO_DATA_HISTORIES, GET_TRAINING } from '../../libs/graphql/queries/graph';
-import { GetGraphPagePropsQuery, GetBodyInfoDataHistoriesQuery, GetTrainingQuery } from '../../types/generated/graphql';
-
+import { GET_GRAPH_PAGE_PROPS } from '../../libs/graphql/queries/graph';
+import type { GetGraphPagePropsQuery } from '../../types/generated/graphql';
 
 type BodyInfoDataHistory = {
   __typename?: 'body_info_data_histories' | undefined;
   id: number;
   user_id: number;
-  weight: any;
-  date: any;
+  weight: number;
+  date: Date;
 };
 
 type ChartData = {
   date: number;
-  weight: any;
+  weight: number;
 };
 
-//TODO:無駄なfetch削除
-//TODO:new Date()
-
 const Graph: VFC = () => {
-  const { data, error, loading } = useQuery<GetGraphPagePropsQuery>(GET_GRAPH_PAGE_PROPS);
+  const { data, error } = useQuery<GetGraphPagePropsQuery>(GET_GRAPH_PAGE_PROPS);
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
 
-  // const convert = (data: Pick<GetGraphPagePropsQuery, 'body_info_data_histories'>) => {
+  if (error) return <p>Error: {error.message}</p>;
+
   const convert = (data: BodyInfoDataHistory[] | undefined) => {
     const result = data?.map((d: BodyInfoDataHistory) => {
       return {
