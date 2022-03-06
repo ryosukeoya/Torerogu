@@ -6,30 +6,43 @@ import { templates } from '../styles/template';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../store';
 
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 const Home: NextPage = () => {
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
   const { data, error, loading } = useQuery<GetHomePagePropsQuery>(GET_HOME_PAGE_PROPS);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-
+  console.log(data);
+  
   if (activeIndex === 0) {
     return (
       <>
         <div css={templates.contentArea}>
           <h2 css={templates.title}>✏️ 本日のトレーニング</h2>
-          <div>
-            {data?.trainings.map((training) => {
-              return (
-                <div key={training.id} style={{ backgroundColor: '#dadada', marginBottom: '20px' }}>
-                  <span>{training.is_finish && '✅'}</span>
-                  <p style={{display:'inline-block'}}>{training.training_type.name}</p>
-                  <p>{training.training_set}セット</p>
-                  <p>{training.training_count}回</p>
-                  <p>{training.training_weight}kg</p>
-                </div>
-              );
-            })}
-          </div>
+          {data?.trainings.map((training) => {
+            return (
+              <>
+                <Accordion>
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+                    <Typography>
+                      <span style={{ display: 'inline-block', paddingRight: '10px' }}>{training.is_finish ? '✅' : '□'}</span>
+                      {training.training_type.name}
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails sx={{ backgroundColor: '#f0f0f0' }}>
+                    <Typography>{training.training_set}セット</Typography>
+                    <Typography>{training.training_count}回</Typography>
+                    <Typography>{training.training_weight}kg</Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </>
+            );
+          })}
         </div>
       </>
     );

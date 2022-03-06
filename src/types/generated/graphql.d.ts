@@ -2351,7 +2351,7 @@ export type GetBodyInfoDataHistoriesLazyQueryHookResult = ReturnType<typeof useG
 export type GetBodyInfoDataHistoriesQueryResult = Apollo.QueryResult<GetBodyInfoDataHistoriesQuery, GetBodyInfoDataHistoriesQueryVariables>;
 export const GetHomePagePropsDocument = gql`
     query GetHomePageProps {
-  trainings {
+  trainings(where: {date: {_eq: "2022-03-04"}}) {
     id
     user_id
     training_type_id
