@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { Input } from '../../components/_indexs';
-import { inputStyle, buttonStyle } from '../../components/_styles';
+import { inputStyle, simpleButton } from '../../components/_styles';
 import { getDateInfo } from '../../utils';
 import { useMutation } from '@apollo/client';
 import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations/record';
@@ -74,7 +74,7 @@ const FirstPage: VFC = () => {
             {errors.bodyFatPercentage?.type === 'maxLength' && '2桁以下にしてください'}
           </p>
         </div>
-        <Input type={'isInput'} typeAttr='submit' _css={buttonStyle(10)} value={'記録する'} />
+        <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
       </div>
       <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import React, { VFC } from 'react';
 import { Input, Button, Select } from '../../components/_indexs';
-import { inputStyle, buttonStyle, selectStyle } from '../../components/_styles';
+import { inputStyle, simpleButton, selectStyle } from '../../components/_styles';
 import { headerTabIndexAtom } from '../../store';
 import { useRecoilValue } from 'recoil';
 import { WEEK_DAYS } from '../../constants';
@@ -28,7 +28,7 @@ const Plan: NextPage<VFC> = () => {
           </div>
         </div>
 
-        <Button type={'isButton'} text={'記録する'} _css={buttonStyle(10)} />
+        <Button type={'isButton'} text={'記録する'} _css={simpleButton(10)} />
       </>
     );
   } else if (activeIndex === 1) {
@@ -42,7 +42,7 @@ const Plan: NextPage<VFC> = () => {
           })}
         </div>
 
-        <Button type={'isButton'} text={'記録する'} _css={buttonStyle(10)} />
+        <Button type={'isButton'} text={'記録する'} _css={simpleButton(10)} />
       </div>
     );
   } else {
