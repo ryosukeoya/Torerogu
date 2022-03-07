@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { Input } from '../../components/_indexs';
 import { inputStyle, buttonStyle } from '../../components/_styles';
@@ -8,6 +8,12 @@ import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations/record'
 import type { CreateBodyInfoHistoriesMutation } from '../../types/generated/graphql';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { templates } from '../../styles/template';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
+});
 
 type BodyInfoFormValues = {
   weight: number | '';
@@ -20,10 +26,16 @@ const FirstPage: VFC = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<NonNullable<BodyInfoFormValues>>();
+  const [open, setOpen] = useState(false);
+  const [insertBodyInfo, {}] = useMutation<CreateBodyInfoHistoriesMutation>(CREATE_BODY_INFO_HISTORIES, {
+    onCompleted: () => setOpen(true),
+  });
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const date = getDateInfo();
-
-  const [insertBodyInfo] = useMutation<CreateBodyInfoHistoriesMutation>(CREATE_BODY_INFO_HISTORIES);
 
   const registerBodyInfo: SubmitHandler<BodyInfoFormValues> = (data) => {
     // TODO:FIX
@@ -64,6 +76,11 @@ const FirstPage: VFC = () => {
         </div>
         <Input type={'isInput'} typeAttr='submit' _css={buttonStyle(10)} value={'記録する'} />
       </div>
+      <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
+          記録しました！
+        </Alert>
+      </Snackbar>
     </form>
   );
 };
