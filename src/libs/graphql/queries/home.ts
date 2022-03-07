@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_HOME_PAGE_PROPS = gql`
-  query GetHomePageProps {
-    trainings(where: { date: { _eq: "2022-03-04" } }) {
+  query GetHomePageProps($date: date ) {
+    trainings(where: { date: { _eq: $date } }) {
       id
       user_id
       training_type_id

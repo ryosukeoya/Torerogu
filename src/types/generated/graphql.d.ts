@@ -2119,7 +2119,9 @@ export type GetBodyInfoDataHistoriesQueryVariables = Exact<{ [key: string]: neve
 
 export type GetBodyInfoDataHistoriesQuery = { __typename?: 'query_root', body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any }> };
 
-export type GetHomePagePropsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetHomePagePropsQueryVariables = Exact<{
+  date?: InputMaybe<Scalars['date']>;
+}>;
 
 
 export type GetHomePagePropsQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any, training_type: { __typename?: 'training_types', id: number, name: string } }> };
@@ -2350,8 +2352,8 @@ export type GetBodyInfoDataHistoriesQueryHookResult = ReturnType<typeof useGetBo
 export type GetBodyInfoDataHistoriesLazyQueryHookResult = ReturnType<typeof useGetBodyInfoDataHistoriesLazyQuery>;
 export type GetBodyInfoDataHistoriesQueryResult = Apollo.QueryResult<GetBodyInfoDataHistoriesQuery, GetBodyInfoDataHistoriesQueryVariables>;
 export const GetHomePagePropsDocument = gql`
-    query GetHomePageProps {
-  trainings(where: {date: {_eq: "2022-03-04"}}) {
+    query GetHomePageProps($date: date) {
+  trainings(where: {date: {_eq: $date}}) {
     id
     user_id
     training_type_id
@@ -2380,6 +2382,7 @@ export const GetHomePagePropsDocument = gql`
  * @example
  * const { data, loading, error } = useGetHomePagePropsQuery({
  *   variables: {
+ *      date: // value for 'date'
  *   },
  * });
  */

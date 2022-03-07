@@ -5,20 +5,23 @@ import { useQuery } from '@apollo/client';
 import { templates } from '../styles/template';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../store';
-
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { getCurrentDate } from '../utils/index';
 
 const Home: NextPage = () => {
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
-  const { data, error, loading } = useQuery<GetHomePagePropsQuery>(GET_HOME_PAGE_PROPS);
+
+  const { data, error, loading } = useQuery<GetHomePagePropsQuery>(GET_HOME_PAGE_PROPS, {
+    variables: { date: getCurrentDate(new Date()) },
+    fetchPolicy: 'network-only',
+  });
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-  console.log(data);
-  
+
   if (activeIndex === 0) {
     return (
       <>
@@ -34,7 +37,7 @@ const Home: NextPage = () => {
                       {training.training_type.name}
                     </Typography>
                   </AccordionSummary>
-                  <AccordionDetails sx={{ backgroundColor: '#f0f0f0' }}>
+                  <AccordionDetails sx={{ backgroundColor: '#fcfcfc', borderTop: '1px solid #e3e3e3' }}>
                     <Typography>{training.training_set}セット</Typography>
                     <Typography>{training.training_count}回</Typography>
                     <Typography>{training.training_weight}kg</Typography>
