@@ -46,6 +46,7 @@ const Home: NextPage = () => {
               </div>
             );
           })}
+          {data?.trainings.length === 0 && <p>※ 本日予定のトレーニングはありません</p>}
         </div>
       </>
     );

@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import type { GetRecordPagePropsQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations/record';
 import { Slider, Space, Card, Input } from '../../components/_indexs';
-import { cardStyle, sliderStyle, buttonStyle, inputStyle } from '../../components/_styles';
+import { cardStyle, sliderStyle, simpleButton, inputStyle } from '../../components/_styles';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
@@ -93,7 +93,7 @@ const SecondPage: VFC<Props> = ({ data }) => {
                 {errors.count?.type === 'pattern' && '数値を入力してください'}
               </p>
             </div>
-            <Input type={'isInput'} typeAttr='submit' _css={buttonStyle(10)} value={'記録する'} />
+            <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
             <p css={templates.back} onClick={() => setSelectedTrainingType(null)}>
               ＜ カテゴリ選択に戻る
             </p>

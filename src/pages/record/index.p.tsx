@@ -6,12 +6,27 @@ import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { default as PhysicalPage } from './FirstPage';
 import { default as TrainingPage } from './SecondPage';
+import { initializeApollo } from '../../libs/graphql/apolloClient';
 
-const Record: NextPage = () => {
+export async function getStaticProps() {
+  const apolloClient = initializeApollo();
+
+  const data = await apolloClient.query({
+    query: GET_RECORD_PAGE_PROPS,
+  });
+
+  return {
+    props: data,
+  };
+
+}
+
+type Props = {
+  data?: GetRecordPagePropsQuery;
+};
+
+const Record: NextPage<Props> = ({ data }) => {
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
-  const { data, error, loading } = useQuery<GetRecordPagePropsQuery>(GET_RECORD_PAGE_PROPS);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
 
   if (activeIndex === 0) {
     return <PhysicalPage />;
