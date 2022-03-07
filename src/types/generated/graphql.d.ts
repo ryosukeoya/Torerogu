@@ -13,6 +13,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  date: any;
   numeric: any;
   timestamptz: any;
 };
@@ -352,6 +353,19 @@ export type Body_Info_Data_Histories_Variance_Fields = {
   weight?: Maybe<Scalars['Float']>;
 };
 
+/** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
+export type Date_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['date']>;
+  _gt?: InputMaybe<Scalars['date']>;
+  _gte?: InputMaybe<Scalars['date']>;
+  _in?: InputMaybe<Array<Scalars['date']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['date']>;
+  _lte?: InputMaybe<Scalars['date']>;
+  _neq?: InputMaybe<Scalars['date']>;
+  _nin?: InputMaybe<Array<Scalars['date']>>;
+};
+
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
@@ -678,7 +692,7 @@ export type Query_Root = {
   training_types_by_pk?: Maybe<Training_Types>;
   /** fetch data from the table: "trainings" */
   trainings: Array<Trainings>;
-  /** fetch aggregated fields from the table: "trainings" */
+  /** An aggregate relationship */
   trainings_aggregate: Trainings_Aggregate;
   /** fetch data from the table: "trainings" using primary key columns */
   trainings_by_pk?: Maybe<Trainings>;
@@ -827,7 +841,7 @@ export type Subscription_Root = {
   training_types_by_pk?: Maybe<Training_Types>;
   /** fetch data from the table: "trainings" */
   trainings: Array<Trainings>;
-  /** fetch aggregated fields from the table: "trainings" */
+  /** An aggregate relationship */
   trainings_aggregate: Trainings_Aggregate;
   /** fetch data from the table: "trainings" using primary key columns */
   trainings_by_pk?: Maybe<Trainings>;
@@ -1069,6 +1083,13 @@ export type Training_Categories_Mutation_Response = {
   returning: Array<Training_Categories>;
 };
 
+/** input type for inserting object relation for remote table "training_categories" */
+export type Training_Categories_Obj_Rel_Insert_Input = {
+  data: Training_Categories_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Training_Categories_On_Conflict>;
+};
+
 /** on_conflict condition type for table "training_categories" */
 export type Training_Categories_On_Conflict = {
   constraint: Training_Categories_Constraint;
@@ -1171,8 +1192,34 @@ export type Training_Types = {
   max_weight?: Maybe<Scalars['numeric']>;
   min_weight?: Maybe<Scalars['numeric']>;
   name: Scalars['String'];
+  /** An object relationship */
+  training_category: Training_Categories;
   training_category_id: Scalars['Int'];
+  /** fetch data from the table: "trainings" */
+  trainings: Array<Trainings>;
+  /** An aggregate relationship */
+  trainings_aggregate: Trainings_Aggregate;
   updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "training_types" */
+export type Training_TypesTrainingsArgs = {
+  distinct_on?: InputMaybe<Array<Trainings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Trainings_Order_By>>;
+  where?: InputMaybe<Trainings_Bool_Exp>;
+};
+
+
+/** columns and relationships of "training_types" */
+export type Training_TypesTrainings_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Trainings_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Trainings_Order_By>>;
+  where?: InputMaybe<Trainings_Bool_Exp>;
 };
 
 /** aggregated selection of "training_types" */
@@ -1224,7 +1271,9 @@ export type Training_Types_Bool_Exp = {
   max_weight?: InputMaybe<Numeric_Comparison_Exp>;
   min_weight?: InputMaybe<Numeric_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  training_category?: InputMaybe<Training_Categories_Bool_Exp>;
   training_category_id?: InputMaybe<Int_Comparison_Exp>;
+  trainings?: InputMaybe<Trainings_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -1249,7 +1298,9 @@ export type Training_Types_Insert_Input = {
   max_weight?: InputMaybe<Scalars['numeric']>;
   min_weight?: InputMaybe<Scalars['numeric']>;
   name?: InputMaybe<Scalars['String']>;
+  training_category?: InputMaybe<Training_Categories_Obj_Rel_Insert_Input>;
   training_category_id?: InputMaybe<Scalars['Int']>;
+  trainings?: InputMaybe<Trainings_Arr_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
 };
 
@@ -1286,6 +1337,13 @@ export type Training_Types_Mutation_Response = {
   returning: Array<Training_Types>;
 };
 
+/** input type for inserting object relation for remote table "training_types" */
+export type Training_Types_Obj_Rel_Insert_Input = {
+  data: Training_Types_Insert_Input;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Training_Types_On_Conflict>;
+};
+
 /** on_conflict condition type for table "training_types" */
 export type Training_Types_On_Conflict = {
   constraint: Training_Types_Constraint;
@@ -1300,7 +1358,9 @@ export type Training_Types_Order_By = {
   max_weight?: InputMaybe<Order_By>;
   min_weight?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  training_category?: InputMaybe<Training_Categories_Order_By>;
   training_category_id?: InputMaybe<Order_By>;
+  trainings_aggregate?: InputMaybe<Trainings_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -1423,11 +1483,13 @@ export type Training_Types_Variance_Fields = {
 export type Trainings = {
   __typename?: 'trainings';
   created_at: Scalars['timestamptz'];
-  date: Scalars['timestamptz'];
+  date: Scalars['date'];
   id: Scalars['Int'];
   is_finish: Scalars['Boolean'];
   training_count?: Maybe<Scalars['Int']>;
   training_set?: Maybe<Scalars['Int']>;
+  /** An object relationship */
+  training_type: Training_Types;
   training_type_id: Scalars['Int'];
   training_weight?: Maybe<Scalars['numeric']>;
   updated_at: Scalars['timestamptz'];
@@ -1464,6 +1526,28 @@ export type Trainings_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "trainings" */
+export type Trainings_Aggregate_Order_By = {
+  avg?: InputMaybe<Trainings_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Trainings_Max_Order_By>;
+  min?: InputMaybe<Trainings_Min_Order_By>;
+  stddev?: InputMaybe<Trainings_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Trainings_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Trainings_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Trainings_Sum_Order_By>;
+  var_pop?: InputMaybe<Trainings_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Trainings_Var_Samp_Order_By>;
+  variance?: InputMaybe<Trainings_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "trainings" */
+export type Trainings_Arr_Rel_Insert_Input = {
+  data: Array<Trainings_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Trainings_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Trainings_Avg_Fields = {
   __typename?: 'trainings_avg_fields';
@@ -1475,17 +1559,28 @@ export type Trainings_Avg_Fields = {
   user_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by avg() on columns of table "trainings" */
+export type Trainings_Avg_Order_By = {
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** Boolean expression to filter rows from the table "trainings". All fields are combined with a logical 'AND'. */
 export type Trainings_Bool_Exp = {
   _and?: InputMaybe<Array<Trainings_Bool_Exp>>;
   _not?: InputMaybe<Trainings_Bool_Exp>;
   _or?: InputMaybe<Array<Trainings_Bool_Exp>>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-  date?: InputMaybe<Timestamptz_Comparison_Exp>;
+  date?: InputMaybe<Date_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   is_finish?: InputMaybe<Boolean_Comparison_Exp>;
   training_count?: InputMaybe<Int_Comparison_Exp>;
   training_set?: InputMaybe<Int_Comparison_Exp>;
+  training_type?: InputMaybe<Training_Types_Bool_Exp>;
   training_type_id?: InputMaybe<Int_Comparison_Exp>;
   training_weight?: InputMaybe<Numeric_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
@@ -1511,11 +1606,12 @@ export type Trainings_Inc_Input = {
 /** input type for inserting data into table "trainings" */
 export type Trainings_Insert_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
-  date?: InputMaybe<Scalars['timestamptz']>;
+  date?: InputMaybe<Scalars['date']>;
   id?: InputMaybe<Scalars['Int']>;
   is_finish?: InputMaybe<Scalars['Boolean']>;
   training_count?: InputMaybe<Scalars['Int']>;
   training_set?: InputMaybe<Scalars['Int']>;
+  training_type?: InputMaybe<Training_Types_Obj_Rel_Insert_Input>;
   training_type_id?: InputMaybe<Scalars['Int']>;
   training_weight?: InputMaybe<Scalars['numeric']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
@@ -1526,7 +1622,7 @@ export type Trainings_Insert_Input = {
 export type Trainings_Max_Fields = {
   __typename?: 'trainings_max_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
-  date?: Maybe<Scalars['timestamptz']>;
+  date?: Maybe<Scalars['date']>;
   id?: Maybe<Scalars['Int']>;
   training_count?: Maybe<Scalars['Int']>;
   training_set?: Maybe<Scalars['Int']>;
@@ -1536,11 +1632,24 @@ export type Trainings_Max_Fields = {
   user_id?: Maybe<Scalars['Int']>;
 };
 
+/** order by max() on columns of table "trainings" */
+export type Trainings_Max_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  date?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Trainings_Min_Fields = {
   __typename?: 'trainings_min_fields';
   created_at?: Maybe<Scalars['timestamptz']>;
-  date?: Maybe<Scalars['timestamptz']>;
+  date?: Maybe<Scalars['date']>;
   id?: Maybe<Scalars['Int']>;
   training_count?: Maybe<Scalars['Int']>;
   training_set?: Maybe<Scalars['Int']>;
@@ -1548,6 +1657,19 @@ export type Trainings_Min_Fields = {
   training_weight?: Maybe<Scalars['numeric']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
   user_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by min() on columns of table "trainings" */
+export type Trainings_Min_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  date?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "trainings" */
@@ -1574,6 +1696,7 @@ export type Trainings_Order_By = {
   is_finish?: InputMaybe<Order_By>;
   training_count?: InputMaybe<Order_By>;
   training_set?: InputMaybe<Order_By>;
+  training_type?: InputMaybe<Training_Types_Order_By>;
   training_type_id?: InputMaybe<Order_By>;
   training_weight?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
@@ -1612,7 +1735,7 @@ export enum Trainings_Select_Column {
 /** input type for updating data in table "trainings" */
 export type Trainings_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>;
-  date?: InputMaybe<Scalars['timestamptz']>;
+  date?: InputMaybe<Scalars['date']>;
   id?: InputMaybe<Scalars['Int']>;
   is_finish?: InputMaybe<Scalars['Boolean']>;
   training_count?: InputMaybe<Scalars['Int']>;
@@ -1634,6 +1757,16 @@ export type Trainings_Stddev_Fields = {
   user_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "trainings" */
+export type Trainings_Stddev_Order_By = {
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Trainings_Stddev_Pop_Fields = {
   __typename?: 'trainings_stddev_pop_fields';
@@ -1643,6 +1776,16 @@ export type Trainings_Stddev_Pop_Fields = {
   training_type_id?: Maybe<Scalars['Float']>;
   training_weight?: Maybe<Scalars['Float']>;
   user_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "trainings" */
+export type Trainings_Stddev_Pop_Order_By = {
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -1656,6 +1799,16 @@ export type Trainings_Stddev_Samp_Fields = {
   user_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "trainings" */
+export type Trainings_Stddev_Samp_Order_By = {
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Trainings_Sum_Fields = {
   __typename?: 'trainings_sum_fields';
@@ -1665,6 +1818,16 @@ export type Trainings_Sum_Fields = {
   training_type_id?: Maybe<Scalars['Int']>;
   training_weight?: Maybe<Scalars['numeric']>;
   user_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "trainings" */
+export type Trainings_Sum_Order_By = {
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "trainings" */
@@ -1702,6 +1865,16 @@ export type Trainings_Var_Pop_Fields = {
   user_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "trainings" */
+export type Trainings_Var_Pop_Order_By = {
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Trainings_Var_Samp_Fields = {
   __typename?: 'trainings_var_samp_fields';
@@ -1713,6 +1886,16 @@ export type Trainings_Var_Samp_Fields = {
   user_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_samp() on columns of table "trainings" */
+export type Trainings_Var_Samp_Order_By = {
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate variance on columns */
 export type Trainings_Variance_Fields = {
   __typename?: 'trainings_variance_fields';
@@ -1722,6 +1905,16 @@ export type Trainings_Variance_Fields = {
   training_type_id?: Maybe<Scalars['Float']>;
   training_weight?: Maybe<Scalars['Float']>;
   user_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "trainings" */
+export type Trainings_Variance_Order_By = {
+  id?: InputMaybe<Order_By>;
+  training_count?: InputMaybe<Order_By>;
+  training_set?: InputMaybe<Order_By>;
+  training_type_id?: InputMaybe<Order_By>;
+  training_weight?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** columns and relationships of "users" */
@@ -1905,7 +2098,7 @@ export type CreateTrainingMutationVariables = Exact<{
   training_count: Scalars['Int'];
   training_set: Scalars['Int'];
   is_finish?: InputMaybe<Scalars['Boolean']>;
-  date?: InputMaybe<Scalars['timestamptz']>;
+  date?: InputMaybe<Scalars['date']>;
 }>;
 
 
@@ -1925,6 +2118,13 @@ export type GetBodyInfoDataHistoriesQueryVariables = Exact<{ [key: string]: neve
 
 
 export type GetBodyInfoDataHistoriesQuery = { __typename?: 'query_root', body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any }> };
+
+export type GetHomePagePropsQueryVariables = Exact<{
+  date?: InputMaybe<Scalars['date']>;
+}>;
+
+
+export type GetHomePagePropsQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any, training_type: { __typename?: 'training_types', id: number, name: string } }> };
 
 export type GetRecordPagePropsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1977,7 +2177,7 @@ export type CreateBodyInfoHistoriesMutationHookResult = ReturnType<typeof useCre
 export type CreateBodyInfoHistoriesMutationResult = Apollo.MutationResult<CreateBodyInfoHistoriesMutation>;
 export type CreateBodyInfoHistoriesMutationOptions = Apollo.BaseMutationOptions<CreateBodyInfoHistoriesMutation, CreateBodyInfoHistoriesMutationVariables>;
 export const CreateTrainingDocument = gql`
-    mutation CreateTraining($user_id: Int, $training_type_id: Int, $training_weight: numeric!, $training_count: Int!, $training_set: Int!, $is_finish: Boolean, $date: timestamptz) {
+    mutation CreateTraining($user_id: Int, $training_type_id: Int, $training_weight: numeric!, $training_count: Int!, $training_set: Int!, $is_finish: Boolean, $date: date) {
   insert_trainings_one(
     object: {user_id: $user_id, training_type_id: $training_type_id, training_weight: $training_weight, training_count: $training_count, training_set: $training_set, is_finish: $is_finish, date: $date}
   ) {
@@ -2151,6 +2351,52 @@ export function useGetBodyInfoDataHistoriesLazyQuery(baseOptions?: Apollo.LazyQu
 export type GetBodyInfoDataHistoriesQueryHookResult = ReturnType<typeof useGetBodyInfoDataHistoriesQuery>;
 export type GetBodyInfoDataHistoriesLazyQueryHookResult = ReturnType<typeof useGetBodyInfoDataHistoriesLazyQuery>;
 export type GetBodyInfoDataHistoriesQueryResult = Apollo.QueryResult<GetBodyInfoDataHistoriesQuery, GetBodyInfoDataHistoriesQueryVariables>;
+export const GetHomePagePropsDocument = gql`
+    query GetHomePageProps($date: date) {
+  trainings(where: {date: {_eq: $date}}) {
+    id
+    user_id
+    training_type_id
+    training_weight
+    training_count
+    training_set
+    is_finish
+    date
+    training_type {
+      id
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetHomePagePropsQuery__
+ *
+ * To run a query within a React component, call `useGetHomePagePropsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetHomePagePropsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetHomePagePropsQuery({
+ *   variables: {
+ *      date: // value for 'date'
+ *   },
+ * });
+ */
+export function useGetHomePagePropsQuery(baseOptions?: Apollo.QueryHookOptions<GetHomePagePropsQuery, GetHomePagePropsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetHomePagePropsQuery, GetHomePagePropsQueryVariables>(GetHomePagePropsDocument, options);
+      }
+export function useGetHomePagePropsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetHomePagePropsQuery, GetHomePagePropsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetHomePagePropsQuery, GetHomePagePropsQueryVariables>(GetHomePagePropsDocument, options);
+        }
+export type GetHomePagePropsQueryHookResult = ReturnType<typeof useGetHomePagePropsQuery>;
+export type GetHomePagePropsLazyQueryHookResult = ReturnType<typeof useGetHomePagePropsLazyQuery>;
+export type GetHomePagePropsQueryResult = Apollo.QueryResult<GetHomePagePropsQuery, GetHomePagePropsQueryVariables>;
 export const GetRecordPagePropsDocument = gql`
     query GetRecordPageProps {
   training_categories(order_by: {id: asc}) {

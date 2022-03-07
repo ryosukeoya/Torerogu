@@ -37,4 +37,11 @@ const getDateInfo = () => {
   return dateInfo;
 };
 
-export { getIcon, getDateInfo };
+const getCurrentDate = (date:Date): string => {
+  const Year = date.getFullYear();
+  const Month = date.getMonth() + 1;
+  const Day = date.getDate();
+  return `${Year}-${Month}-${Day}`;
+};
+
+export { getIcon, getDateInfo, getCurrentDate };
