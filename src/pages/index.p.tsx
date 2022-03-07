@@ -29,7 +29,7 @@ const Home: NextPage = () => {
           <h2 css={templates.title}>✏️ 本日のトレーニング</h2>
           {data?.trainings.map((training) => {
             return (
-              <>
+              <div key={training.id}>
                 <Accordion>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
                     <Typography>
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
                     <Typography>{training.training_weight}kg</Typography>
                   </AccordionDetails>
                 </Accordion>
-              </>
+              </div>
             );
           })}
         </div>

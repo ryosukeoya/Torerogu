@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const middleware = (req: NextRequest) => {
-  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === 'development') {
     return null;
   }
   const basicAuth = req.headers.get('authorization');
