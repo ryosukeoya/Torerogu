@@ -18,7 +18,7 @@ type Props = {
 };
 
 const BottomNavTab: VFC<Props> = (props) => {
-  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
+  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
 
   let isActive = false;
   if (props.activeIndex === props.index) {

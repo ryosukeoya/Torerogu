@@ -11,6 +11,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { getCurrentDate } from '../utils/index';
+import RippleButton from '../components/uiParts/RippleButton';
 
 const Home: NextPage = () => {
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
@@ -51,7 +52,12 @@ const Home: NextPage = () => {
       </>
     );
   } else {
-    return <p>history page</p>;
+    return (
+      <>
+        <p>history page</p>
+        <RippleButton onClick={(e) => console.log(e)}>Click me</RippleButton>
+      </>
+    );
   }
 };
 
