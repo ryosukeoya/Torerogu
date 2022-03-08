@@ -55,7 +55,7 @@ const Home: NextPage = () => {
     return (
       <>
         <p>history page</p>
-        <RippleButton onClick={(e) => console.log(e)}>Click me</RippleButton>
+        <RippleButton onClick={() => {null}}>Click me</RippleButton>
       </>
     );
   }

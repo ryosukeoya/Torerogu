@@ -7,6 +7,8 @@ import { cardStyle, sliderStyle, simpleButton, inputStyle } from '../../componen
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
 type TrainingType = {
   id: number;
@@ -24,7 +26,12 @@ type Props = {
   data?: GetRecordPagePropsQuery;
 };
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
+});
+
 const SecondPage: VFC<Props> = ({ data }) => {
+  const [open, setOpen] = useState(false);
   const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
   const [selectedTrainingType, setSelectedTrainingType] = useState<TrainingType | null>(null);
 
@@ -34,7 +41,9 @@ const SecondPage: VFC<Props> = ({ data }) => {
     handleSubmit,
   } = useForm<TrainingFormValues>();
 
-  const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING);
+  const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
+    onCompleted: () => setOpen(true),
+  });
 
   const handleClick = (data: TrainingType) => {
     setSelectedTrainingType(data);
@@ -49,6 +58,10 @@ const SecondPage: VFC<Props> = ({ data }) => {
 
   const registerTraining: SubmitHandler<TrainingFormValues> = (data) => {
     insertTraining({ variables: { user_id: 1, training_type_id: selectedTrainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.setCount, is_finish: true, date: new Date() } });
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   if (error) return <p>記録に失敗しました、もう一度実行してください</p>;
@@ -98,6 +111,11 @@ const SecondPage: VFC<Props> = ({ data }) => {
               ＜ カテゴリ選択に戻る
             </p>
           </div>
+          <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
+              記録しました！
+            </Alert>
+          </Snackbar>
         </form>
       </>
     );
