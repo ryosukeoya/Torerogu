@@ -47,6 +47,7 @@ const styles = {
   box: css`
     display: block;
     text-align: center;
+    padding:10px;
   `,
   title: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.RED : 'black'};
