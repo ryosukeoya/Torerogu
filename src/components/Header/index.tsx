@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 import type { VFC } from 'react';
@@ -5,17 +6,31 @@ import { css } from '@emotion/react';
 import Tabs from './HeaderTabs';
 import { APP } from '../../constants';
 import { BORDER, COLOR, FONT } from '../../styles/const';
+import { useRecoilState } from 'recoil';
+import { headerTabIndexAtom } from '../../store';
 
 const Header: VFC = () => {
+  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
+
   return (
     <header css={styles.header}>
       <div css={styles.area}>
-        <h1 css={styles.title}>{APP.NAME}</h1>
+        <h1 css={styles.title}>
+          <Link href='/' passHref>
+            <a
+              onClick={() => {
+                setActiveIndex(0);
+              }}
+            >
+              {APP.NAME}
+            </a>
+          </Link>
+        </h1>
         <p css={styles.profile}>
           <Image src='/imgs/profile.png' width={28} height={28} alt={'プロフィール'} />
         </p>
       </div>
-      <Tabs />
+      <Tabs activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>
     </header>
   );
 };
@@ -36,9 +51,11 @@ const styles = {
     text-align: center;
   `,
   title: css`
+    padding: 5px 9px;
     font-size: ${FONT.X2_LARGE};
     color: ${COLOR.RED};
     display: inline-block;
+    cursor: pointer;
   `,
   profile: css`
     float: right;

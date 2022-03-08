@@ -33,5 +33,10 @@ const styles = {
     ${isActive && `border-bottom:1px solid ${COLOR.ORANGE}`};
     padding: 15px;
     font-size: ${FONT.BASE};
+    cursor: pointer;
+    &:hover {
+      background-color: #fff8f1;
+      /* background-color: #f8f8f8; */
+    }
   `,
 };
