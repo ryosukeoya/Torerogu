@@ -37,10 +37,11 @@ const getDateInfo = () => {
   return dateInfo;
 };
 
-const getCurrentDate = (date:Date): string => {
+const getCurrentDate = (date: Date): string => {
   const Year = date.getFullYear();
   const Month = date.getMonth() + 1;
   const Day = date.getDate();
+
   return `${Year}-${Month}-${Day}`;
 };
 
