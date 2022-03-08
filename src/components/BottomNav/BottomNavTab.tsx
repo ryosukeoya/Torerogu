@@ -18,7 +18,7 @@ type Props = {
 };
 
 const BottomNavTab: VFC<Props> = (props) => {
-  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
+  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
 
   let isActive = false;
   if (props.activeIndex === props.index) {
@@ -47,6 +47,7 @@ const styles = {
   box: css`
     display: block;
     text-align: center;
+    padding:10px;
   `,
   title: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.RED : 'black'};

@@ -1,13 +1,15 @@
 import type { VFC } from 'react';
+import type { SetterOrUpdater } from 'recoil';
 import { css } from '@emotion/react';
 import Tab from './HeaderTab';
-import { useRecoilState } from 'recoil';
-import { headerTabIndexAtom } from '../../store';
 import { useGetTitle } from '../../hooks/useGetTitle';
 
-const HeaderTabs: VFC = () => {
-  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
+type Props = {
+  activeIndex: number;
+  setActiveIndex: SetterOrUpdater<number>;
+};
 
+const HeaderTabs: VFC<Props> = ({ activeIndex, setActiveIndex }) => {
   const changeActiveIndex = (index: number) => {
     setActiveIndex(index);
   };

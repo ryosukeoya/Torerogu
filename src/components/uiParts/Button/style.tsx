@@ -1,13 +1,15 @@
 import { css } from '@emotion/react';
 import { COLOR } from '../../../styles/const';
 
-const buttonBase = (marginTop?: number) => css`
+export const buttonBase = (marginTop?: number) => css`
   display: block;
+  box-sizing: border-box;
   width: 80vw;
+  padding: 13px;
   margin: 0 auto;
   text-align: center;
-  border-radius: 18px;
-  padding: 10px;
+  border-radius: 22px;
+  border: none;
   margin-top: ${marginTop}px;
   cursor: pointer;
 `;

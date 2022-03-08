@@ -4,6 +4,9 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "no-console": ["error", { "allow": ["warn", "error", "info", "debug"] }],
-    "no-var": "error"
+    "no-var": "error",
+    "default-case": ["warn", { "commentPattern": "^skip\\sdefault" }],
+    "max-params": ["error", { "max": 4 }],
+    "max-depth": ["error", { "max": 3 }]
   }
 }
