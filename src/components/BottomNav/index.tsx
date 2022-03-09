@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { VFC, useState } from 'react';
+import React, { VFC, useState, useEffect } from 'react';
 import Tab from './BottomNavTab';
 import { PAGE_PATH } from '../../constants/index';
 import type { PageTitles, PageTitle } from '../../types/index';
@@ -9,10 +9,14 @@ import { BORDER } from '../../styles/const';
 
 const BottomNav: VFC = () => {
   const router = useRouter();
-  const initialIndex = getPathIndex(router.pathname);
+  const pathIndex = getPathIndex(router.pathname);
+  const [activeIndex, setActiveIndex] = useState<number>(pathIndex);
 
-  const [activeIndex, setActiveIndex] = useState<number>(initialIndex);
   const titles = Object.keys(PAGE_PATH) as PageTitles;
+
+  useEffect(() => {
+    setActiveIndex(pathIndex);
+  }, [pathIndex]);
 
   return (
     <nav css={styles.bottomNav}>
