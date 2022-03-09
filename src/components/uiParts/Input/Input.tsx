@@ -18,10 +18,16 @@ interface TextAreaProps extends PropsBase<'isTextArea'> {
   rows: number;
 }
 
+export type { InputProps, TextAreaProps };
+
 const Input: VFC<InputProps | TextAreaProps> = (props) => {
   switch (props.type) {
     case 'isInput':
-      return <input onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={props._css} type={props.typeAttr} placeholder={props.placeholder} />;
+      return (
+        <>
+          <input onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={props._css} type={props.typeAttr} placeholder={props.placeholder} />
+        </>
+      );
     case 'isTextArea':
       return <textarea name={props.name} id='' cols={props.cols} rows={props.rows} />;
     default:

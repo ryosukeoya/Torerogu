@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { BORDER } from '../../../styles/const';
 
 export const inputStyle = css`
-  width: 100px;
+  width: 200px;
   border: 1px solid ${BORDER.GRAY};
   background-color: #fff;
   border-radius: 5px;
