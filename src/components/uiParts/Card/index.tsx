@@ -1,9 +1,9 @@
-import type { FC, ReactNode } from 'react';
+import type { FC, ReactChild } from 'react';
 import { SerializedStyles } from '@emotion/react';
 
 type Props = {
   data: object;
-  children: ReactNode;
+  children: ReactChild;
   handleClick: (data: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
   _css: SerializedStyles;
 };

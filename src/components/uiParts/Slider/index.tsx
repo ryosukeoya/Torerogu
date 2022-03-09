@@ -28,9 +28,6 @@ const Slider: VFC<Props> = ({ items, setState, sliderStyle }) => {
       navigation
       pagination={{ clickable: true }}
       css={sliderStyle.sliders(30)}
-      // scrollbar={{ draggable: true }}
-      // onSwiper={(swiper) => console.log(swiper)}
-      // onSlideChange={() => console.log('slide change')}
     >
       {items?.map((item: Pick<ItemType, 'id' | 'name'>) => {
         return (

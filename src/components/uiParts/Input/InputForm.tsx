@@ -21,6 +21,7 @@ const InputForm: VFC<InputFormProps | TextAreaFormProps> = (props) => {
     case 'isInput':
       return (
         <>
+          {props.title && <p>{props.title}</p>}
           <input {...(props.form && { ...register(props.form.name, props.form.option) })} onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={props._css} type={props.typeAttr} placeholder={props.placeholder} />
           <p css={templates.errorMessage}>{errors[props.form.name]?.type === 'required' && '必須項目です'}</p>
         </>
@@ -28,6 +29,7 @@ const InputForm: VFC<InputFormProps | TextAreaFormProps> = (props) => {
     case 'isTextArea':
       return (
         <>
+          {props.title && <p>{props.title}</p>}
           <textarea {...(props.form && { ...register(props.form.name, props.form.option) })} name={props.name} id='' cols={props.cols} rows={props.rows} />
           <p css={templates.errorMessage}>{errors[props.form.name]?.type === 'required' && '必須項目です'}</p>
         </>

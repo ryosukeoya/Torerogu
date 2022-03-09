@@ -17,7 +17,7 @@ const BodyInfoPage: VFC = () => {
   } = useForm<PlanBodyInfoFormValues>();
 
   const registerBodyInfo: SubmitHandler<PlanBodyInfoFormValues> = (data) => {
-    // console.log(`registerBody!!${data}`);
+    console.debug(`registerBody!!${data}`);
   };
 
   return (
