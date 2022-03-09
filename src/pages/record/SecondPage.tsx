@@ -126,7 +126,7 @@ const SecondPage: VFC<Props> = ({ data }) => {
         <Slider items={data?.training_categories} setState={setSelectedCategoryID} sliderStyle={sliderStyle} />
         {getTrainingTypes()?.map((training_type) => {
           return (
-            <Card data={training_type} id={training_type.id} handleClick={handleClick} key={training_type.id} _css={cardStyle(15)}>
+            <Card data={training_type} handleClick={handleClick} key={training_type.id} _css={cardStyle(15)}>
               {training_type.name}
             </Card>
           );

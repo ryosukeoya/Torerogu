@@ -15,7 +15,7 @@ interface LinkButtonProps extends PropsBase<'isLinkButton'> {
   href: string;
 }
 
-const Button: React.VFC<ButtonProps | LinkButtonProps> = (props) => {
+const PrimaryButton: React.VFC<ButtonProps | LinkButtonProps> = (props) => {
   switch (props.type) {
     case 'isButton':
       return (
@@ -34,7 +34,7 @@ const Button: React.VFC<ButtonProps | LinkButtonProps> = (props) => {
   }
 };
 
-export default Button;
+export default PrimaryButton;
 
 const style = (_css: SerializedStyles): SerializedStyles => css`
   ${_css}
