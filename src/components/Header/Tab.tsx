@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import type { VFC } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { FONT, COLOR } from '../../styles/const';
@@ -10,13 +11,17 @@ type Props = {
   onClick: (index: number) => void;
 };
 
-const HeaderTab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
-  let isActive = false;
-  if (isToggle) {
-    if (index === activeIndex) {
-      isActive = true;
+const Tab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    index === activeIndex && setIsActive(true);
+    if (isToggle && index === activeIndex) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
     }
-  }
+  }, [isToggle, index, activeIndex]);
 
   return (
     <li onClick={() => onClick(index)} css={styles.tab(isActive)}>
@@ -25,7 +30,7 @@ const HeaderTab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick })
   );
 };
 
-export default HeaderTab;
+export default Tab;
 
 const styles = {
   tab: (isActive?: boolean): SerializedStyles => css`

@@ -1,10 +1,13 @@
 export { default as BottomNav } from './BottomNav';
-export { default as Button } from './uiParts/Button';
+export { default as PrimaryButton } from './uiParts/PrimaryButton';
+export { default as RippleButton } from './uiParts/RippleButton';
 export { default as Card } from './uiParts/Card';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
-export { default as Input } from './uiParts/Input';
+export { default as Input } from './uiParts/Input/Input';
+export { default as InputForm } from './uiParts/Input/InputForm';
 export { default as Navigation } from './uiParts/Navigation';
 export { default as Select } from './uiParts/Select';
 export { default as Slider } from './uiParts/Slider';
 export { default as Space } from './uiParts/Space';
+export { default as Snackbar } from './uiParts/Snackbar';

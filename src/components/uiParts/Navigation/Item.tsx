@@ -10,12 +10,10 @@ type Props = {
   onClick: (index: number) => void;
 };
 
-const DateNavigation: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
+const Item: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
   let isActive = false;
-  if (isToggle) {
-    if (index === activeIndex) {
-      isActive = true;
-    }
+  if (isToggle && index === activeIndex) {
+    isActive = true;
   }
 
   return (
@@ -25,7 +23,7 @@ const DateNavigation: VFC<Props> = ({ index, activeIndex, title, isToggle, onCli
   );
 };
 
-export default DateNavigation;
+export default Item;
 
 const styles = {
   item: css`

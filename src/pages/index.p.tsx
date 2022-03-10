@@ -11,7 +11,8 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { getCurrentDate } from '../utils/index';
-import RippleButton from '../components/uiParts/RippleButton';
+import { RippleButton, PrimaryButton, Input } from '../components/entryPoints';
+import { textareaStyle } from '../components/uiParts/Input/style';
 
 const Home: NextPage = () => {
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
@@ -55,7 +56,22 @@ const Home: NextPage = () => {
     return (
       <>
         <p>history page</p>
-        <RippleButton onClick={() => {null}}>Click me</RippleButton>
+        <RippleButton
+          onClick={() => {
+            null;
+          }}
+        >
+          Click me
+        </RippleButton>
+        <PrimaryButton type={'isButton'} text={'buttonSample'} theme={'simple'} />
+        <Input
+          type={'isTextArea'}
+          title={'sample'}
+          css={textareaStyle()}
+          placeholder='テキストを入力してください'
+          cols={30}
+          rows={10}
+        />
       </>
     );
   }

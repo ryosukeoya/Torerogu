@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import type { VFC } from 'react';
 import { css } from '@emotion/react';
-import Tabs from './HeaderTabs';
+import Tabs from './Tabs';
 import { APP } from '../../constants';
 import { BORDER, COLOR, FONT } from '../../styles/const';
 import { useRecoilState } from 'recoil';

@@ -1,11 +1,10 @@
 import type { NextPage } from 'next';
-import { useQuery } from '@apollo/client';
 import { GET_RECORD_PAGE_PROPS } from '../../libs/graphql/queries/record';
 import type { GetRecordPagePropsQuery } from '../../types/generated/graphql';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
-import { default as PhysicalPage } from './FirstPage';
-import { default as TrainingPage } from './SecondPage';
+import { default as PhysicalPage } from './BodyInfoPage';
+import { default as TrainingPage } from './TrainingPage';
 import { initializeApollo } from '../../libs/graphql/apolloClient';
 
 export async function getStaticProps() {

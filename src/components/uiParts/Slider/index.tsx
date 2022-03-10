@@ -2,7 +2,6 @@ import type { VFC, Dispatch, SetStateAction } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { sliderStyle } from './style';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -29,9 +28,6 @@ const Slider: VFC<Props> = ({ items, setState, sliderStyle }) => {
       navigation
       pagination={{ clickable: true }}
       css={sliderStyle.sliders(30)}
-      // scrollbar={{ draggable: true }}
-      // onSwiper={(swiper) => console.log(swiper)}
-      // onSlideChange={() => console.log('slide change')}
     >
       {items?.map((item: Pick<ItemType, 'id' | 'name'>) => {
         return (

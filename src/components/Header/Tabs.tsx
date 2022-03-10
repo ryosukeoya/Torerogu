@@ -1,7 +1,7 @@
 import type { VFC } from 'react';
 import type { SetterOrUpdater } from 'recoil';
 import { css } from '@emotion/react';
-import Tab from './HeaderTab';
+import Tab from './Tab';
 import { useGetTitle } from '../../hooks/useGetTitle';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   setActiveIndex: SetterOrUpdater<number>;
 };
 
-const HeaderTabs: VFC<Props> = ({ activeIndex, setActiveIndex }) => {
+const Tabs: VFC<Props> = ({ activeIndex, setActiveIndex }) => {
   const changeActiveIndex = (index: number) => {
     setActiveIndex(index);
   };
@@ -25,7 +25,7 @@ const HeaderTabs: VFC<Props> = ({ activeIndex, setActiveIndex }) => {
   );
 };
 
-export default HeaderTabs;
+export default Tabs;
 
 const styles = {
   tabs: css`

@@ -1,18 +1,14 @@
-import { useState } from 'react';
 import type { VFC } from 'react';
 import { css } from '@emotion/react';
 import Item from './Item';
+import { useNavigation } from './useNavigation';
 
 type Props = {
   titles: string[];
 };
 
 const Navigation: VFC<Props> = ({ titles }) => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-
-  const changeActiveIndex = (index: number) => {
-    setActiveIndex(index);
-  };
+  const { activeIndex, changeActiveIndex } = useNavigation(0);
 
   return (
     <ul css={styles.items}>

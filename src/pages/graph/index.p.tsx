@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { Space, Navigation } from '../../components/_indexs';
+import { Space, Navigation } from '../../components/entryPoints';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { COLOR } from '../../styles/const';
