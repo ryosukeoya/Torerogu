@@ -28,7 +28,7 @@ const TrainingPage: VFC = () => {
         <div>
           <div style={{ display: 'flex', flexDirection: 'column' }} css={templates.contentArea}>
             <h2 css={templates.title}>✏️ 日ごとの設定</h2>
-            <InputForm typeAttr={'date'} type={'isInput'} placeholder={''} _css={inputStyle} form={{ name: 'date', title: '日付', option: { required: true } }} />
+            <InputForm typeAttr={'date'} type={'isInput'} placeholder={''} _css={inputStyle} form={{ name: 'date', option: { required: true } }} />
             {names.map((name, i) => {
               return <Select name={name} title={titles[i]} texts={texts[i]} option={{ required: true }} key={i} _css={selectStyle} />;
             })}

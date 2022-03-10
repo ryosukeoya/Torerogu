@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import { Input } from '../../components/entryPoints';
+import { Input, InputForm } from '../../components/entryPoints';
 import { inputStyle, simpleButton } from '../../components/styleEntryPoints';
 import { getDateInfo } from '../../utils';
 import { useMutation } from '@apollo/client';
 import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations/record';
 import type { CreateBodyInfoHistoriesMutation } from '../../types/generated/graphql';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { templates } from '../../styles/template';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
@@ -21,15 +21,12 @@ type BodyInfoFormValues = {
 };
 
 const BodyInfoPage: VFC = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<NonNullable<BodyInfoFormValues>>();
   const [open, setOpen] = useState(false);
   const [insertBodyInfo, {}] = useMutation<CreateBodyInfoHistoriesMutation>(CREATE_BODY_INFO_HISTORIES, {
     onCompleted: () => setOpen(true),
   });
+  const method = useForm<BodyInfoFormValues>();
+  const { handleSubmit } = method;
 
   const handleClose = () => {
     setOpen(false);
@@ -47,41 +44,23 @@ const BodyInfoPage: VFC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(registerBodyInfo)}>
-      <div css={templates.contentArea}>
-        <h2 css={templates.title}>
-          ✏️ {date.month} / {date.day} ({date.weekday}) の記録
-        </h2>
-        <div css={templates.content}>
-          <p css={templates.contentTitle}>
-            体重
-            <span css={templates.require}>*必須</span>
-          </p>
-          <input {...register('weight', { required: true, maxLength: 3, pattern: /[0-9]/ })} placeholder={'60'} css={inputStyle} />
-          <span css={templates.unit}>kg</span>
-          <p css={templates.errorMessage}>
-            {errors.weight?.type === 'required' && '必須項目です'}
-            {errors.weight?.type === 'pattern' && '数値を入力してください'}
-            {errors.weight?.type === 'maxLength' && '3桁以下にしてください'}
-          </p>
+    <FormProvider {...method}>
+      <form onSubmit={handleSubmit(registerBodyInfo)}>
+        <div css={templates.contentArea}>
+          <h2 css={templates.title}>
+            ✏️ {date.month} / {date.day} ({date.weekday}) の記録
+          </h2>
+          <InputForm title={'体重'} typeAttr={'text'} unit={'kg'} type={'isInput'} placeholder={'60'} _css={inputStyle} form={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
+          <InputForm title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} _css={inputStyle} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
+          <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
         </div>
-        <div css={templates.content}>
-          <p css={templates.contentTitle}>体脂肪率</p>
-          <input {...register('bodyFatPercentage', { maxLength: 2, pattern: /[0-9]/ })} placeholder={'10'} css={inputStyle} />
-          <span css={templates.unit}>%</span>
-          <p css={templates.errorMessage}>
-            {errors.bodyFatPercentage?.type === 'pattern' && '数値を入力してください'}
-            {errors.bodyFatPercentage?.type === 'maxLength' && '2桁以下にしてください'}
-          </p>
-        </div>
-        <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
-      </div>
-      <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
-          記録しました！
-        </Alert>
-      </Snackbar>
-    </form>
+        <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
+            記録しました！
+          </Alert>
+        </Snackbar>
+      </form>
+    </FormProvider>
   );
 };
 
