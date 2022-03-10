@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
-import { Header, BottomNav } from '../components/_indexs';
+import { Header, BottomNav } from '../components/entryPoints';
 import { APP } from '../constants';
 import { css } from '@emotion/react';
 

@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
-import { Input } from '../../components/_indexs';
-import { inputStyle, simpleButton } from '../../components/_styles';
+import { Input } from '../../components/entryPoints';
+import { inputStyle, simpleButton } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm } from 'react-hook-form';
 

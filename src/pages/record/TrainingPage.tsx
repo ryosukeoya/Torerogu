@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import type { VFC } from 'react';
 import type { GetRecordPagePropsQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations/record';
-import { Slider, Space, Card, Input } from '../../components/_indexs';
-import { cardStyle, sliderStyle, simpleButton, inputStyle } from '../../components/_styles';
+import { Slider, Space, Card, Input } from '../../components/entryPoints';
+import { cardStyle, sliderStyle, simpleButton, inputStyle } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
@@ -30,7 +30,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props,
   return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
 });
 
-const SecondPage: VFC<Props> = ({ data }) => {
+const TrainingPage: VFC<Props> = ({ data }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
   const [selectedTrainingType, setSelectedTrainingType] = useState<TrainingType | null>(null);
@@ -136,4 +136,4 @@ const SecondPage: VFC<Props> = ({ data }) => {
   }
 };
 
-export default SecondPage;
+export default TrainingPage;

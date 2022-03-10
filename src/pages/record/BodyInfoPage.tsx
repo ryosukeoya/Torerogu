@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import { Input } from '../../components/_indexs';
-import { inputStyle, simpleButton } from '../../components/_styles';
+import { Input } from '../../components/entryPoints';
+import { inputStyle, simpleButton } from '../../components/styleEntryPoints';
 import { getDateInfo } from '../../utils';
 import { useMutation } from '@apollo/client';
 import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations/record';
@@ -20,7 +20,7 @@ type BodyInfoFormValues = {
   bodyFatPercentage: number | '' | null;
 };
 
-const FirstPage: VFC = () => {
+const BodyInfoPage: VFC = () => {
   const {
     register,
     formState: { errors },
@@ -85,4 +85,4 @@ const FirstPage: VFC = () => {
   );
 };
 
-export default FirstPage;
+export default BodyInfoPage;
