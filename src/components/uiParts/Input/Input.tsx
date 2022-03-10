@@ -1,4 +1,5 @@
 import type { VFC, Dispatch, SetStateAction } from 'react';
+import { templates } from '../../../styles/template';
 import { inputStyle } from './style';
 
 interface PropsBase<T extends 'isInput' | 'isTextArea'> {
@@ -25,18 +26,17 @@ const Input: VFC<InputProps | TextAreaProps> = (props) => {
   switch (props.type) {
     case 'isInput':
       return (
-        <>
-          {props.title && <p>{props.title}</p>}
+        <div css={templates.content}>
+          {props.title && <p css={templates.contentTitle}>{props.title}</p>}
           <input onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={props._css} type={props.typeAttr} placeholder={props.placeholder} />
-        </>
+        </div>
       );
     case 'isTextArea':
       return (
-        <>
-          {props.title && <p>{props.title}</p>}
+        <div css={templates.content}>
+          {props.title && <p css={templates.contentTitle}>{props.title}</p>}
           <textarea name={props.name} id='' cols={props.cols} rows={props.rows} />
-          );
-        </>
+        </div>
       );
     default:
       return null;
