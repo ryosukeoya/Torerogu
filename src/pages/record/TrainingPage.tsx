@@ -40,11 +40,11 @@ const TrainingPage: VFC<Props> = ({ data }) => {
     onCompleted: () => setOpen(true),
   });
 
-  const handleClick = (data: TrainingType) => {
+  const handleClick = (data: Readonly<TrainingType>) => {
     setSelectedTrainingType(data);
   };
 
-  const getTrainingTypes = (): TrainingType[] | undefined => {
+  const getTrainingTypes = (): Readonly<TrainingType>[] | undefined => {
     const slectedTrainingTypes = data?.training_types.filter(function (training_type) {
       return training_type.training_category_id === selectedCategoryID;
     });
@@ -106,7 +106,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
               ＜ カテゴリ選択に戻る
             </p>
           </div>
-          <Snackbar open={open} handleClose={handleClose} />
+          <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />
         </form>
       </>
     );

@@ -26,7 +26,7 @@ const TrainingPage: VFC = () => {
 
   const { handleSubmit } = method;
 
-  const registerTraining: SubmitHandler<PlanTrainingFormValue> = (data) => {
+  const registerTraining: SubmitHandler<Readonly<PlanTrainingFormValue>> = (data) => {
     console.debug(data);
   };
 

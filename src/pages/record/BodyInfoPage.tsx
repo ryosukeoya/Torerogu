@@ -48,7 +48,7 @@ const BodyInfoPage: VFC = () => {
           <InputForm title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} _css={inputStyle} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
           <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
         </div>
-        <Snackbar open={open} handleClose={handleClose} />
+        <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />
       </form>
     </FormProvider>
   );
