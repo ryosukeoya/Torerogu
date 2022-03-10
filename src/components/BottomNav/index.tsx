@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { VFC, useState, useEffect } from 'react';
-import Tab from './BottomNavTab';
+import Tab from './Tab';
 import { PAGE_PATH } from '../../constants/index';
 import type { PageTitles, PageTitle } from '../../types/index';
 import { getPathIndex } from '../../enum';

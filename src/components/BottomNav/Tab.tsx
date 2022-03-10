@@ -17,7 +17,7 @@ type Props = {
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const BottomNavTab: VFC<Props> = (props) => {
+const Tab: VFC<Props> = (props) => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
 
   let isActive = false;
@@ -41,7 +41,7 @@ const BottomNavTab: VFC<Props> = (props) => {
   );
 };
 
-export default BottomNavTab;
+export default Tab;
 
 const styles = {
   box: css`
