@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import type { VFC } from 'react';
 import type { GetRecordPagePropsQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations/record';
-import { Slider, Space, Card, Input } from '../../components/entryPoints';
+import { Slider, Space, Card, Input, InputForm } from '../../components/entryPoints';
 import { cardStyle, sliderStyle, simpleButton, inputStyle } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import Snackbar from '../../components/uiParts/Snackbar';
 
@@ -30,11 +30,14 @@ const TrainingPage: VFC<Props> = ({ data }) => {
   const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
   const [selectedTrainingType, setSelectedTrainingType] = useState<TrainingType | null>(null);
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<TrainingFormValues>();
+  // const {
+  //   register,
+  //   formState: { errors },
+  //   handleSubmit,
+  // } = useForm<TrainingFormValues>();
+  const method = useForm<TrainingFormValues>();
+
+  const { handleSubmit } = method;
 
   const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
     onCompleted: () => setOpen(true),
@@ -64,43 +67,13 @@ const TrainingPage: VFC<Props> = ({ data }) => {
   if (selectedTrainingType) {
     //TODO:回数ではない場合、ex.ランニング
     return (
-      <>
+      <FormProvider {...method}>
         <form onSubmit={handleSubmit(registerTraining)}>
           <div css={templates.contentArea}>
             <h2 css={templates.title}>✏️ {selectedTrainingType.name}</h2>
-            <div css={templates.content}>
-              <p css={templates.contentTitle}>
-                重量<span css={templates.require}>*必須</span>
-              </p>
-              <input {...register('trainingWeight', { required: true, pattern: /[0-9]/ })} type='text' css={inputStyle} />
-              <span css={templates.unit}>kg</span>
-              <p css={templates.errorMessage}>
-                {errors.trainingWeight?.type === 'required' && '必須項目です'}
-                {errors.trainingWeight?.type === 'pattern' && '数値を入力してください'}
-              </p>
-            </div>
-            <div css={templates.content}>
-              <p css={templates.contentTitle}>
-                セット数<span css={templates.require}>*必須</span>
-              </p>
-              <input {...register('setCount', { required: true, pattern: /[0-9]/ })} type='text' css={inputStyle} />
-              <span css={templates.unit}>set</span>
-              <p css={templates.errorMessage}>
-                {errors.setCount?.type === 'required' && '必須項目です'}
-                {errors.setCount?.type === 'pattern' && '数値を入力してください'}
-              </p>
-            </div>
-            <div css={templates.content}>
-              <p css={templates.contentTitle}>
-                回数<span css={templates.require}>*必須</span>
-              </p>
-              <input {...register('count', { required: true, pattern: /[0-9]/ })} type='text' css={inputStyle} />
-              <span css={templates.unit}>回</span>
-              <p css={templates.errorMessage}>
-                {errors.count?.type === 'required' && '必須項目です'}
-                {errors.count?.type === 'pattern' && '数値を入力してください'}
-              </p>
-            </div>
+            <InputForm title={'重量'} unit={'kg'} typeAttr={'text'} type={'isInput'} placeholder={'60'} _css={inputStyle} form={{ name: 'trainingWeight', option: { required: true, pattern: /[0-9]/ } }} />
+            <InputForm title={'セット数'} unit={'set'} typeAttr={'text'} type={'isInput'} placeholder={'5'} _css={inputStyle} form={{ name: 'set', option: { required: true, pattern: /[0-9]/ } }} />
+            <InputForm title={'回数'} unit={'回'} typeAttr={'text'} type={'isInput'} placeholder={'10'} _css={inputStyle} form={{ name: 'count', option: { required: true, pattern: /[0-9]/ } }} />
             <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
             <p css={templates.back} onClick={() => setSelectedTrainingType(null)}>
               ＜ カテゴリ選択に戻る
@@ -108,7 +81,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
           </div>
           <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />
         </form>
-      </>
+      </FormProvider>
     );
   } else {
     return (

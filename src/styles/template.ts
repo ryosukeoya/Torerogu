@@ -32,8 +32,10 @@ export const templates = {
     color: ${COLOR.RED};
   `,
   back: css`
+    display: inline-block;
     color: #5959eb;
-    padding-top: 30px;
+    padding: 20px 20px 20px 0px;
+    margin-top: 10px;
     font-size: ${FONT.BASE};
     cursor: pointer;
     &:hover {
