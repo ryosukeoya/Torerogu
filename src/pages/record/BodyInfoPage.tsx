@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { Input, InputForm, Snackbar } from '../../components/entryPoints';
-import { inputStyle, simpleButton } from '../../components/styleEntryPoints';
+import { simpleButton } from '../../components/styleEntryPoints';
 import { getDateInfo } from '../../utils';
 import { useMutation } from '@apollo/client';
 import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations/record';
@@ -44,9 +44,9 @@ const BodyInfoPage: VFC = () => {
           <h2 css={templates.title}>
             ✏️ {date.month} / {date.day} ({date.weekday}) の記録
           </h2>
-          <InputForm title={'体重'} typeAttr={'text'} unit={'kg'} type={'isInput'} placeholder={'60'} _css={inputStyle} form={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
-          <InputForm title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} _css={inputStyle} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
-          <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
+          <InputForm title={'体重'} typeAttr={'text'} unit={'kg'} type={'isInput'} placeholder={'60'} form={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
+          <InputForm title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
+          <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} value={'記録する'} />
         </div>
         <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />
       </form>

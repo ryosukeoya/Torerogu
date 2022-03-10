@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import type { GetRecordPagePropsQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations/record';
 import { Slider, Space, Card, Input, InputForm } from '../../components/entryPoints';
-import { cardStyle, sliderStyle, simpleButton, inputStyle } from '../../components/styleEntryPoints';
+import { cardStyle, sliderStyle, simpleButton } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
@@ -71,10 +71,10 @@ const TrainingPage: VFC<Props> = ({ data }) => {
         <form onSubmit={handleSubmit(registerTraining)}>
           <div css={templates.contentArea}>
             <h2 css={templates.title}>✏️ {selectedTrainingType.name}</h2>
-            <InputForm title={'重量'} unit={'kg'} typeAttr={'text'} type={'isInput'} placeholder={'60'} _css={inputStyle} form={{ name: 'trainingWeight', option: { required: true, pattern: /[0-9]/ } }} />
-            <InputForm title={'セット数'} unit={'set'} typeAttr={'text'} type={'isInput'} placeholder={'5'} _css={inputStyle} form={{ name: 'set', option: { required: true, pattern: /[0-9]/ } }} />
-            <InputForm title={'回数'} unit={'回'} typeAttr={'text'} type={'isInput'} placeholder={'10'} _css={inputStyle} form={{ name: 'count', option: { required: true, pattern: /[0-9]/ } }} />
-            <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
+            <InputForm title={'重量'} unit={'kg'} typeAttr={'text'} type={'isInput'} placeholder={'60'} form={{ name: 'trainingWeight', option: { required: true, pattern: /[0-9]/ } }} />
+            <InputForm title={'セット数'} unit={'set'} typeAttr={'text'} type={'isInput'} placeholder={'5'} form={{ name: 'set', option: { required: true, pattern: /[0-9]/ } }} />
+            <InputForm title={'回数'} unit={'回'} typeAttr={'text'} type={'isInput'} placeholder={'10'} form={{ name: 'count', option: { required: true, pattern: /[0-9]/ } }} />
+            <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} value={'記録する'} />
             <p css={templates.back} onClick={() => setSelectedTrainingType(null)}>
               ＜ カテゴリ選択に戻る
             </p>

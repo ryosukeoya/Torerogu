@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import { InputForm, Select, Input } from '../../components/entryPoints';
-import { inputStyle, simpleButton, selectStyle } from '../../components/styleEntryPoints';
+import { simpleButton, selectStyle } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { css } from '@emotion/react';
@@ -36,12 +36,12 @@ const TrainingPage: VFC = () => {
       <form onSubmit={handleSubmit(registerTraining)}>
         <div css={[styles.columnWrap, templates.contentArea]}>
           <h2 css={templates.title}>✏️ 日ごとの設定</h2>
-          <InputForm typeAttr={'date'} type={'isInput'} placeholder={''} _css={inputStyle} form={{ name: 'date', option: { required: true } }} />
+          <InputForm typeAttr={'date'} type={'isInput'} placeholder={''} form={{ name: 'date', option: { required: true } }} />
           {names.map((name, i) => {
             return <Select form={{ name: name, option: { required: true } }} title={titles[i]} texts={texts[i]} key={i} _css={selectStyle(10)} />;
           })}
         </div>
-        <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
+        <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} value={'記録する'} />
       </form>
     </FormProvider>
   );
