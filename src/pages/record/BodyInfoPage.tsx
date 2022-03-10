@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import { Input, InputForm } from '../../components/entryPoints';
+import { Input, InputForm, Snackbar } from '../../components/entryPoints';
 import { inputStyle, simpleButton } from '../../components/styleEntryPoints';
 import { getDateInfo } from '../../utils';
 import { useMutation } from '@apollo/client';
@@ -8,12 +8,6 @@ import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations/record'
 import type { CreateBodyInfoHistoriesMutation } from '../../types/generated/graphql';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { templates } from '../../styles/template';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
-
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
-});
 
 type BodyInfoFormValues = {
   weight: number | '';
@@ -54,11 +48,7 @@ const BodyInfoPage: VFC = () => {
           <InputForm title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} _css={inputStyle} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
           <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />
         </div>
-        <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
-            記録しました！
-          </Alert>
-        </Snackbar>
+        <Snackbar open={open} handleClose={handleClose} />
       </form>
     </FormProvider>
   );

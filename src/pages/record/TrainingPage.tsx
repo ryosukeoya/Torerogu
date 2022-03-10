@@ -7,8 +7,7 @@ import { cardStyle, sliderStyle, simpleButton, inputStyle } from '../../componen
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Snackbar from '../../components/uiParts/Snackbar';
 
 type TrainingType = {
   id: number;
@@ -25,10 +24,6 @@ type TrainingFormValues = {
 type Props = {
   data?: GetRecordPagePropsQuery;
 };
-
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
-});
 
 const TrainingPage: VFC<Props> = ({ data }) => {
   const [open, setOpen] = useState(false);
@@ -111,11 +106,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
               ＜ カテゴリ選択に戻る
             </p>
           </div>
-          <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
-              記録しました！
-            </Alert>
-          </Snackbar>
+          <Snackbar open={open} handleClose={handleClose} />
         </form>
       </>
     );
