@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
 import { COLOR } from '../../../styles/const';
 
 export const buttonBase = (marginTop?: number) => css`
@@ -14,16 +14,17 @@ export const buttonBase = (marginTop?: number) => css`
   cursor: pointer;
 `;
 
-export const simpleButton = (marginTop?: number) => css`
+export const simpleButton = (marginTop?: number, customCss?: SerializedStyles) => css`
   ${buttonBase(marginTop)};
   color: white;
   background-color: ${COLOR.ORANGE};
   &:hover {
     opacity: 0.8;
   }
+  ${customCss}
 `;
 
-export const toggleColorButton = (marginTop?: number) => css`
+export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyles) => css`
   ${buttonBase(marginTop)};
   color: ${COLOR.ORANGE};
   background-color: white;
@@ -32,4 +33,5 @@ export const toggleColorButton = (marginTop?: number) => css`
     color: white;
     background-color: ${COLOR.ORANGE};
   }
+  ${customCss}
 `;

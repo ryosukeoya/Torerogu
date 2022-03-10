@@ -1,5 +1,6 @@
 export { default as BottomNav } from './BottomNav';
 export { default as PrimaryButton } from './uiParts/PrimaryButton';
+export { default as RippleButton } from './uiParts/RippleButton';
 export { default as Card } from './uiParts/Card';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
