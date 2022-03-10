@@ -13,13 +13,21 @@ const texts: string[][] = [
   ['10', '20'],
 ];
 
+type PlanTrainingFormValue = {
+  date: Date;
+  category: string;
+  type: string;
+  set: string;
+  count: string;
+};
+
 const TrainingPage: VFC = () => {
-  const method = useForm();
+  const method = useForm<PlanTrainingFormValue>();
 
   const { handleSubmit } = method;
 
-  const registerTraining: SubmitHandler<Record<string, any>> = (data) => {
-    // console.log(data);
+  const registerTraining: SubmitHandler<PlanTrainingFormValue> = (data) => {
+    console.debug(data);
   };
 
   return (
@@ -30,7 +38,7 @@ const TrainingPage: VFC = () => {
             <h2 css={templates.title}>✏️ 日ごとの設定</h2>
             <InputForm typeAttr={'date'} type={'isInput'} placeholder={''} _css={inputStyle} form={{ name: 'date', option: { required: true } }} />
             {names.map((name, i) => {
-              return <Select name={name} title={titles[i]} texts={texts[i]} option={{ required: true }} key={i} _css={selectStyle} />;
+              return <Select form={{ name: name, option: { required: true } }} title={titles[i]} texts={texts[i]} key={i} _css={selectStyle()} />;
             })}
           </div>
           <Input type={'isInput'} typeAttr='submit' _css={simpleButton(10)} value={'記録する'} />

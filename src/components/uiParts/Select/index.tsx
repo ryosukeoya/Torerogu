@@ -5,14 +5,13 @@ import { templates } from '../../../styles/template';
 import { useFormContext } from 'react-hook-form';
 
 type Props = {
-  name: string;
   title: string;
   texts: string[];
-  option: { required: boolean };
+  form: { name: string; option: { required: boolean } };
   _css: SerializedStyles;
 };
 
-const Select: VFC<Props> = ({ name, title, texts, option, _css }) => {
+const Select: VFC<Props> = ({ title, texts, form, _css }) => {
   const {
     register,
     formState: { errors },
@@ -20,8 +19,8 @@ const Select: VFC<Props> = ({ name, title, texts, option, _css }) => {
 
   return (
     <>
-      <select {...register(name, option)} css={_css}>
-        <option value={title} hidden>
+      <select {...register(form.name, form.option)} css={_css} required>
+        <option value="" hidden>
           {title}
         </option>
         {texts?.map((text, i) => {
