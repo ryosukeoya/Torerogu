@@ -21,14 +21,7 @@ type Props = {
 
 const Slider: VFC<Props> = ({ items, setState, sliderStyle }) => {
   return (
-    <Swiper
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={50}
-      slidesPerView={3}
-      navigation
-      pagination={{ clickable: true }}
-      css={sliderStyle.sliders(30)}
-    >
+    <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={50} slidesPerView={3} navigation pagination={{ clickable: true }} css={sliderStyle.sliders(30)}>
       {items?.map((item: Pick<ItemType, 'id' | 'name'>) => {
         return (
           <SwiperSlide onClick={() => setState && setState(item.id)} key={item.id}>

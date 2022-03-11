@@ -4,7 +4,7 @@ import { Input, InputForm, Snackbar } from '../../components/entryPoints';
 import { simpleButton } from '../../components/styleEntryPoints';
 import { getDateInfo } from '../../utils';
 import { useMutation } from '@apollo/client';
-import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations/record';
+import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations/common';
 import type { CreateBodyInfoHistoriesMutation } from '../../types/generated/graphql';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { templates } from '../../styles/template';

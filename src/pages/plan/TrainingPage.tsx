@@ -4,12 +4,16 @@ import { simpleButton, selectStyle } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { css } from '@emotion/react';
+import { CREATE_TRAINING } from '../../libs/graphql/mutations/common';
+import type { CreateTrainingMutation } from '../../types/generated/graphql';
+import { useMutation } from '@apollo/client';
 
-const names = ['category', 'type', 'set', 'count'];
-const titles = ['カテゴリ', '種目', 'セット数', '回数'];
+const names = ['category', 'type', 'trainingWeight', 'count', 'set'];
+const titles = ['カテゴリ', '種目', '重量', '回数', 'セット数'];
 const texts: string[][] = [
   ['胸', '背中'],
   ['ベンチプレス', 'スクワット'],
+  ['10', '20', '30'],
   ['10', '20'],
   ['10', '20'],
 ];
@@ -18,17 +22,21 @@ type PlanTrainingFormValue = {
   date: Date;
   category: string;
   type: string;
-  set: string;
+  trainingWeight: string;
   count: string;
+  set: string;
 };
 
 const TrainingPage: VFC = () => {
+  const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING);
   const method = useForm<PlanTrainingFormValue>();
 
   const { handleSubmit } = method;
 
   const registerTraining: SubmitHandler<Readonly<PlanTrainingFormValue>> = (data) => {
-    console.debug(data);
+    console.log(data);
+    //TODO:FIX user_id
+    insertTraining({ variables: { user_id: 1, training_type_id: 1, training_weight: data.trainingWeight, training_count: data.count, training_set: data.count, is_finish: false, date: data.date } });
   };
 
   return (
