@@ -45,8 +45,8 @@ const TrainingPage: VFC = () => {
         <div css={[styles.columnWrap, templates.contentArea]}>
           <h2 css={templates.title}>✏️ 日ごとの設定</h2>
           <InputForm typeAttr={'date'} type={'isInput'} placeholder={''} form={{ name: 'date', option: { required: true } }} />
-          <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_types} marginBottom={10} />
-          <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={data?.training_categories} marginBottom={10} />
+          <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={10} />
+          <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={data?.training_types} marginBottom={10} />
           {/* TODO:FIX texts */}
           <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={['10', '20', '30']} marginBottom={10} />
           <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={['10', '20']} marginBottom={10} />

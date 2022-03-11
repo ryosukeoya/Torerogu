@@ -28,8 +28,7 @@ const Select: VFC<Props> = ({ title, texts, form, marginBottom: mb = 0, customCs
         {texts?.map((text:any, i:number) => {
           return (
             <option key={i} value={text}>
-              {text?.name ?? text}
-              {text?.name}
+              {text?.name ? text.name : text}
             </option>
           );
         })}
