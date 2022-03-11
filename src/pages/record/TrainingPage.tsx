@@ -8,6 +8,7 @@ import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import Snackbar from '../../components/uiParts/Snackbar';
+import { css } from '@emotion/react';
 
 type TrainingType = {
   id: number;
@@ -90,7 +91,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
         <Slider items={data?.training_categories} setState={setSelectedCategoryID} sliderStyle={sliderStyle} />
         {getTrainingTypes()?.map((training_type) => {
           return (
-            <Card data={training_type} handleClick={handleClick} key={training_type.id} _css={cardStyle(15)}>
+            <Card data={training_type} handleClick={handleClick} key={training_type.id} customCss={styles.card}>
               {training_type.name}
             </Card>
           );
@@ -101,3 +102,9 @@ const TrainingPage: VFC<Props> = ({ data }) => {
 };
 
 export default TrainingPage;
+
+const styles = {
+  card: css`
+    margin-bottom: 15px;
+  `,
+};
