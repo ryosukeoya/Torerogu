@@ -1,5 +1,6 @@
-import React, { VFC } from 'react';
-import { InputForm, Select, Input } from '../../components/entryPoints';
+import React, { useState } from 'react';
+import type { VFC } from 'react';
+import { InputForm, Select, Input, Snackbar } from '../../components/entryPoints';
 import { simpleButton, selectStyle } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
@@ -28,15 +29,23 @@ type PlanTrainingFormValue = {
 };
 
 const TrainingPage: VFC = () => {
-  const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING);
+  const [open, setOpen] = useState(false);
+  const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
+    onCompleted: () => setOpen(true),
+  });
   const method = useForm<PlanTrainingFormValue>();
 
   const { handleSubmit } = method;
 
   const registerTraining: SubmitHandler<Readonly<PlanTrainingFormValue>> = (data) => {
-    console.log(data);
+    console.debug(data);
     //TODO:FIX user_id
+    //TODO:FIX training_type_id
     insertTraining({ variables: { user_id: 1, training_type_id: 1, training_weight: data.trainingWeight, training_count: data.count, training_set: data.count, is_finish: false, date: data.date } });
+  };
+
+  const handleClose = () => {
+    setOpen(true);
   };
 
   return (
@@ -50,6 +59,7 @@ const TrainingPage: VFC = () => {
           })}
         </div>
         <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} value={'記録する'} />
+        <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />
       </form>
     </FormProvider>
   );

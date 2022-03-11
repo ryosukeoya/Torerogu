@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import type { VFC } from 'react';
 import type { GetRecordPagePropsQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations/common';
-import { Slider, Space, Card, Input, InputForm } from '../../components/entryPoints';
+import { Slider, Space, Card, Input, InputForm, Snackbar } from '../../components/entryPoints';
 import { sliderStyle, simpleButton } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
-import Snackbar from '../../components/uiParts/Snackbar';
 import { css } from '@emotion/react';
 
 type TrainingType = {
@@ -51,7 +50,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
   };
 
   const registerTraining: SubmitHandler<TrainingFormValues> = (data) => {
-    insertTraining({ variables: { user_id: 1, training_type_id: selectedTrainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.setCount, is_finish: true, date: new Date() } });
+    insertTraining({ variables: { user_id: 1, training_type_id: selectedTrainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.count, is_finish: true, date: new Date() } });
   };
 
   const handleClose = () => {

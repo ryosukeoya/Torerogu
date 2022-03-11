@@ -32,11 +32,15 @@ const Home: NextPage = () => {
           {data?.trainings.map((training) => {
             return (
               <div key={training.id}>
-                <Accordion>
+                <Accordion sx={{ marginBottom: '5px' }}>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
                     <Typography>
-                      <span style={{ display: 'inline-block', paddingRight: '10px' }}>{training.is_finish ? '✅' : '□'}</span>
-                      {training.training_type.name}
+                      <>
+                        {training.is_finish ? <input type='checkbox' checked /> : <input type='checkbox' />}
+                        <span style={{ paddingLeft: '20px' }}>{training.training_type.name}</span>
+                      </>
+                      {/* <span style={{ display: 'inline-block', paddingRight: '10px' }}>{training.is_finish ? '✅' : '◼︎'}</span> */}
+                      {/* {training.training_type.name} */}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails sx={{ backgroundColor: '#fcfcfc', borderTop: '1px solid #e3e3e3' }}>
@@ -64,14 +68,7 @@ const Home: NextPage = () => {
           Click me
         </RippleButton>
         <PrimaryButton type={'isButton'} text={'buttonSample'} theme={'simple'} />
-        <Input
-          type={'isTextArea'}
-          title={'sample'}
-          css={textareaStyle()}
-          placeholder='テキストを入力してください'
-          cols={30}
-          rows={10}
-        />
+        <Input type={'isTextArea'} title={'sample'} css={textareaStyle()} placeholder='テキストを入力してください' cols={30} rows={10} />
       </>
     );
   }
