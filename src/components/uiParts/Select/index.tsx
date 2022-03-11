@@ -3,15 +3,17 @@ import type { VFC } from 'react';
 import { SerializedStyles } from '@emotion/react';
 import { templates } from '../../../styles/template';
 import { useFormContext } from 'react-hook-form';
+import { selectStyle } from './style';
 
 type Props = {
   title: string;
-  texts: string[];
+  texts: any[] | undefined; // eslint-disable-line @typescript-eslint/no-explicit-any
   form: { name: string; option: { required: boolean } };
-  _css: SerializedStyles;
+  marginBottom?: number;
+  customCss?: SerializedStyles;
 };
 
-const Select: VFC<Props> = ({ title, texts, form, _css }) => {
+const Select: VFC<Props> = ({ title, texts, form, marginBottom: mb = 0, customCss }) => {
   const {
     register,
     formState: { errors },
@@ -19,14 +21,15 @@ const Select: VFC<Props> = ({ title, texts, form, _css }) => {
 
   return (
     <>
-      <select {...register(form.name, form.option)} css={_css} required>
-        <option value="" hidden>
+      <select {...register(form.name, form.option)} css={selectStyle(mb, customCss)} required>
+        <option value='' hidden>
           {title}
         </option>
-        {texts?.map((text, i) => {
+        {texts?.map((text:any, i:number) => {
           return (
             <option key={i} value={text}>
-              {text}
+              {text?.name ?? text}
+              {text?.name}
             </option>
           );
         })}

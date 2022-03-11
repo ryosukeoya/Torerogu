@@ -5,20 +5,10 @@ import { simpleButton, selectStyle } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { css } from '@emotion/react';
+import { GET_TRAINING_CATEGORY_WITH_TYPE } from '../../libs/graphql/queries';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations';
-import type { CreateTrainingMutation } from '../../types/generated/graphql';
+import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
-
-//TODO:FIX
-const names = ['category', 'type', 'trainingWeight', 'count', 'set'];
-const titles = ['カテゴリ', '種目', '重量', '回数', 'セット数'];
-const texts: string[][] = [
-  ['胸', '背中'],
-  ['ベンチプレス', 'スクワット'],
-  ['10', '20', '30'],
-  ['10', '20'],
-  ['10', '20'],
-];
 
 type PlanTrainingFormValue = {
   date: Date;
@@ -31,11 +21,11 @@ type PlanTrainingFormValue = {
 
 const TrainingPage: VFC = () => {
   const [open, setOpen] = useState(false);
-  const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
+  const { data, error, loading } = useQuery<GetTrainingCategoryWithTypeQuery>(GET_TRAINING_CATEGORY_WITH_TYPE);
+  const [insertTraining, { error: mutationError }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
     onCompleted: () => setOpen(true),
   });
   const method = useForm<PlanTrainingFormValue>();
-
   const { handleSubmit } = method;
 
   const registerTraining: SubmitHandler<Readonly<PlanTrainingFormValue>> = (data) => {
@@ -55,9 +45,12 @@ const TrainingPage: VFC = () => {
         <div css={[styles.columnWrap, templates.contentArea]}>
           <h2 css={templates.title}>✏️ 日ごとの設定</h2>
           <InputForm typeAttr={'date'} type={'isInput'} placeholder={''} form={{ name: 'date', option: { required: true } }} />
-          {names.map((name, i) => {
-            return <Select form={{ name: name, option: { required: true } }} title={titles[i]} texts={texts[i]} key={i} _css={selectStyle(10)} />;
-          })}
+          <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_types} marginBottom={10} />
+          <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={data?.training_categories} marginBottom={10} />
+          {/* TODO:FIX texts */}
+          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={['10', '20', '30']} marginBottom={10} />
+          <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={['10', '20']} marginBottom={10} />
+          <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={['10', '20']} marginBottom={10} />
         </div>
         <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} value={'記録する'} />
         <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />

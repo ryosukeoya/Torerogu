@@ -1,17 +1,15 @@
-import type { FC, ReactChild } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { SerializedStyles } from '@emotion/react';
 import { cardStyle } from './style';
 
 type Props = {
-  data: object;
-  children: ReactChild;
-  handleClick: (data: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
+  handleClick?: VoidFunction;
   customCss?: SerializedStyles;
 };
 
-const Card: FC<Props> = ({ data, children, handleClick, customCss }) => {
+const Card: FC<PropsWithChildren<Props>> = ({ children, handleClick, customCss }) => {
   return (
-    <div onClick={() => handleClick(data)} css={cardStyle(customCss)}>
+    <div onClick={handleClick && handleClick} css={cardStyle(customCss)}>
       {children}
     </div>
   );

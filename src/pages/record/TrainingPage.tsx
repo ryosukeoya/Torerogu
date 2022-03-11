@@ -9,11 +9,7 @@ import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { css } from '@emotion/react';
 
-type TrainingType = {
-  id: number;
-  name: string;
-  training_category_id: number;
-};
+type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
 
 type TrainingFormValues = {
   trainingWeight: number;
@@ -85,7 +81,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
         <Slider items={data?.training_categories} setState={setSelectedCategoryID} sliderStyle={sliderStyle} />
         {getTrainingTypes()?.map((training_type) => {
           return (
-            <Card data={training_type} handleClick={handleClick} key={training_type.id} customCss={styles.card}>
+            <Card handleClick={() => handleClick(training_type)} key={training_type.id} customCss={styles.card}>
               {training_type.name}
             </Card>
           );
