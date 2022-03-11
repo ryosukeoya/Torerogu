@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import type { GetRecordPagePropsQuery, CreateTrainingMutation } from '../../types/generated/graphql';
-import { CREATE_TRAINING } from '../../libs/graphql/mutations/common';
+import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
+import { CREATE_TRAINING } from '../../libs/graphql/mutations';
 import { Slider, Space, Card, Input, InputForm, Snackbar } from '../../components/entryPoints';
 import { sliderStyle, simpleButton } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
@@ -22,7 +22,7 @@ type TrainingFormValues = {
 };
 
 type Props = {
-  data?: GetRecordPagePropsQuery;
+  data?: GetTrainingCategoryWithTypeQuery;
 };
 
 const TrainingPage: VFC<Props> = ({ data }) => {

@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { COLOR } from '../../styles/const';
 import { useQuery } from '@apollo/client';
-import { GET_GRAPH_PAGE_PROPS } from '../../libs/graphql/queries/graph';
+import { GET_GRAPH_PAGE_PROPS } from '../../libs/graphql/queries';
 import type { GetGraphPagePropsQuery } from '../../types/generated/graphql';
 
 type BodyInfoDataHistory = {

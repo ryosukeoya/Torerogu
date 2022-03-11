@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import type { GetHomePagePropsQuery } from '../types/generated/graphql';
-import { GET_HOME_PAGE_PROPS } from '../libs/graphql/queries/home';
+import { GET_HOME_PAGE_PROPS } from '../libs/graphql/queries';
 import { useQuery } from '@apollo/client';
 import { templates } from '../styles/template';
 import { useRecoilValue } from 'recoil';

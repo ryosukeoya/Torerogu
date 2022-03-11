@@ -5,10 +5,11 @@ import { simpleButton, selectStyle } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { css } from '@emotion/react';
-import { CREATE_TRAINING } from '../../libs/graphql/mutations/common';
+import { CREATE_TRAINING } from '../../libs/graphql/mutations';
 import type { CreateTrainingMutation } from '../../types/generated/graphql';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 
+//TODO:FIX
 const names = ['category', 'type', 'trainingWeight', 'count', 'set'];
 const titles = ['カテゴリ', '種目', '重量', '回数', 'セット数'];
 const texts: string[][] = [
