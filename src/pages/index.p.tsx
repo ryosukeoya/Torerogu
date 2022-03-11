@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
-import type { GetHomePagePropsQuery } from '../types/generated/graphql';
-import { GET_HOME_PAGE_PROPS } from '../libs/graphql/queries';
+import { GET_TRAINING_ONE_TYPE } from '../libs/graphql/queries';
+import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
 import { useQuery } from '@apollo/client';
 import { templates } from '../styles/template';
 import { useRecoilValue } from 'recoil';
@@ -17,7 +17,7 @@ import { textareaStyle } from '../components/uiParts/Input/style';
 const Home: NextPage = () => {
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
 
-  const { data, error, loading } = useQuery<GetHomePagePropsQuery>(GET_HOME_PAGE_PROPS, {
+  const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GET_TRAINING_ONE_TYPE, {
     variables: { date: getCurrentDate(new Date()) },
     fetchPolicy: 'network-only',
   });
