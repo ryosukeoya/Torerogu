@@ -25,10 +25,10 @@ const Select: VFC<Props> = ({ title, texts, form, marginBottom: mb = 0, customCs
         <option value='' hidden>
           {title}
         </option>
-        {texts?.map((text:any, i:number) => {
+        {texts?.map((text: any, i: number) => {
           return (
-            <option key={i} value={text}>
-              {text?.name ? text.name : text}
+            <option key={i} value={text?.id ? [text.id, text.name] : text}>
+              {text?.id ? text.name : text}
             </option>
           );
         })}

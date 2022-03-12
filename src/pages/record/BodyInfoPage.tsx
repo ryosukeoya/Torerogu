@@ -29,7 +29,7 @@ const BodyInfoPage: VFC = () => {
   const date = getDateInfo();
 
   const registerBodyInfo: SubmitHandler<BodyInfoFormValues> = (data) => {
-    // TODO:FIX
+    // TODO:FIX 
     const user_id = 1;
     if (data.bodyFatPercentage === '') {
       data.bodyFatPercentage = null;

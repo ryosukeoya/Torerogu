@@ -21,7 +21,13 @@ const Home: NextPage = () => {
     variables: { date: getCurrentDate(new Date()) },
     fetchPolicy: 'network-only',
   });
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <div css={templates.contentArea}>
+        <p>Loading...</p>
+      </div>
+    );
+  }
   if (error) return <p>Error: {error.message}</p>;
 
   if (activeIndex === 0) {
@@ -69,7 +75,7 @@ const Home: NextPage = () => {
         </RippleButton>
         <PrimaryButton type={'isButton'} text={'buttonSample'} theme={'simple'} />
         <Input type={'isTextArea'} title={'sample'} css={textareaStyle()} placeholder='テキストを入力してください' cols={30} rows={10} />
-        <Card >hoge</Card>
+        <Card>hoge</Card>
       </>
     );
   }
