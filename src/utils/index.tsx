@@ -51,4 +51,12 @@ const getCurrentDate = (date: Date, isMMDD: boolean): string => {
   }
 };
 
-export { getIcon, getDateInfo, getCurrentDate };
+const getNumArr = (init: number, max: number, diff: number): number[] => {
+  const numArr: number[] = [];
+  for (let i = init; i <= max; i = i + diff) {
+    numArr.push(i);
+  }
+  return numArr;
+};
+
+export { getIcon, getDateInfo, getCurrentDate, getNumArr };
