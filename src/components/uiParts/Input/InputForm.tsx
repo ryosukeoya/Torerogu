@@ -24,6 +24,7 @@ interface TextAreaFormProps extends TextAreaProps {
   form: { name: string; option: Record<string, unknown> };
   unit?: string;
 }
+
 const Container: VFC<PropsWithChildren<(InputFormProps & { errors: Record<string, any> }) | (TextAreaFormProps & { errors: Record<string, any> })>> = (props) => {
   return (
     <div css={templates.content}>
