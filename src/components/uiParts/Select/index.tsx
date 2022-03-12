@@ -23,7 +23,7 @@ const Select: VFC<Props> = ({ title, texts, form, marginBottom: mb = 0, customCs
     <>
       <select {...register(form.name, form.option)} css={selectStyle(mb, customCss)} required>
         <option hidden>{title}</option>
-        {texts?.map((text: any, i: number) => {
+        {texts?.map((text, i) => {
           return (
             <option key={i} value={text?.id ? [text.id, text.name] : text}>
               {text?.id ? text.name : text}

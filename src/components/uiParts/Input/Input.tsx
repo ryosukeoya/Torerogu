@@ -1,5 +1,5 @@
 import { SerializedStyles } from '@emotion/react';
-import type { VFC, Dispatch, SetStateAction } from 'react';
+import React, { VFC, Dispatch, SetStateAction, ReactNode } from 'react';
 import { templates } from '../../../styles/template';
 import { inputStyle, textareaStyle } from './style';
 
@@ -25,22 +25,28 @@ interface TextAreaProps extends PropsBase<'isTextArea'> {
 
 export type { InputProps, TextAreaProps };
 
-//TODO:リファ
+const Container: VFC<{ children: ReactNode; title: string | undefined }> = ({ children, title }) => {
+  return (
+    <div css={templates.content}>
+      {title && <p css={templates.contentTitle}>{title}</p>}
+      {children}
+    </div>
+  );
+};
+
 const Input: VFC<InputProps | TextAreaProps> = (props) => {
   switch (props.type) {
     case 'isInput':
       return (
-        <div css={templates.content}>
-          {props.title && <p css={templates.contentTitle}>{props.title}</p>}
+        <Container title={props.title}>
           <input type={props.typeAttr} {...props.options} onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={props.customCss ? props.customCss : inputStyle()} placeholder={props.placeholder} />
-        </div>
+        </Container>
       );
     case 'isTextArea':
       return (
-        <div css={templates.content}>
-          {props.title && <p css={templates.contentTitle}>{props.title}</p>}
+        <Container title={props.title}>
           <textarea {...props.options} name={props.name} placeholder={props.placeholder} css={textareaStyle()} id='' cols={props.cols} rows={props.rows} />
-        </div>
+        </Container>
       );
     default:
       return null;
