@@ -26,23 +26,29 @@ const getIcon = (title: string, isActive?: boolean): JSX.Element | undefined => 
   }
 };
 
-const getDateInfo = () => {
-  const date = new Date();
+const getDateInfo = (date: Date) => {
   const weekdayIndex: number = date.getDay();
   const dateInfo = {
     weekday: WEEK_DAYS[weekdayIndex],
     month: date.getMonth() + 1,
     day: date.getDate(),
+    mm: ('00' + (date.getMonth() + 1)).slice(-2),
+    dd: ('00' + date.getDate()).slice(-2),
   };
   return dateInfo;
 };
 
-const getCurrentDate = (date: Date): string => {
-  const Year = date.getFullYear();
-  const Month = date.getMonth() + 1;
-  const Day = date.getDate();
-
-  return `${Year}-${Month}-${Day}`;
+const getCurrentDate = (date: Date, isMMDD: boolean): string => {
+  const year = date.getFullYear();
+  if (isMMDD) {
+    const mm = ('00' + (date.getMonth() + 1)).slice(-2);
+    const dd = ('00' + date.getDate()).slice(-2);
+    return `${year}-${mm}-${dd}`;
+  } else {
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${year}-${month}-${day}`;
+  }
 };
 
 export { getIcon, getDateInfo, getCurrentDate };

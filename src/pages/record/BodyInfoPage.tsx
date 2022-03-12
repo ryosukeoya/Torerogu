@@ -26,7 +26,7 @@ const BodyInfoPage: VFC = () => {
     setOpen(false);
   };
 
-  const date = getDateInfo();
+  const date = getDateInfo(new Date());
 
   const registerBodyInfo: SubmitHandler<BodyInfoFormValues> = (data) => {
     // TODO:FIX 

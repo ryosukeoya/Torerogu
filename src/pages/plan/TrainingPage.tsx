@@ -9,6 +9,7 @@ import { GET_TRAINING_CATEGORY_WITH_TYPE } from '../../libs/graphql/queries';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
+import { getCurrentDate } from '../../utils';
 
 type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
 
@@ -34,7 +35,7 @@ const TrainingPage: VFC = () => {
   const categoryField: string = watch('category');
 
   useEffect(() => {
-    const categoryFieldArr:string[] = categoryField?.split(',');
+    const categoryFieldArr: string[] = categoryField?.split(',');
     categoryFieldArr && setSelectedCategoryID(parseInt(categoryFieldArr[0]));
   }, [categoryField]);
 
@@ -67,7 +68,7 @@ const TrainingPage: VFC = () => {
       <form onSubmit={handleSubmit(registerTraining)}>
         <div css={[styles.columnWrap, templates.contentArea]}>
           <h2 css={templates.title}>✏️ 日ごとの設定</h2>
-          <InputForm typeAttr={'date'} type={'isInput'} placeholder={''} form={{ name: 'date', option: { required: true } }} />
+          <InputForm options={{ min: getCurrentDate(new Date(), true) }} typeAttr={'date'} type={'isInput'} placeholder={''} form={{ name: 'date', option: { required: true } }} />
           <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={10} />
           <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypes()} marginBottom={10} />
           {/* TODO:FIX texts!!,セレクトボックスにするかテキストボックスにするか */}
