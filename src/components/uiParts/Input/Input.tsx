@@ -5,6 +5,7 @@ import { inputStyle, textareaStyle } from './style';
 
 interface PropsBase<T extends 'isInput' | 'isTextArea'> {
   type: T;
+  options?: Record<string, unknown>;
   title?: string;
   placeholder?: string;
 }
@@ -31,14 +32,14 @@ const Input: VFC<InputProps | TextAreaProps> = (props) => {
       return (
         <div css={templates.content}>
           {props.title && <p css={templates.contentTitle}>{props.title}</p>}
-          <input onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={props.customCss ? props.customCss : inputStyle()} type={props.typeAttr} placeholder={props.placeholder} />
+          <input type={props.typeAttr} {...props.options} onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={props.customCss ? props.customCss : inputStyle()} placeholder={props.placeholder} />
         </div>
       );
     case 'isTextArea':
       return (
         <div css={templates.content}>
           {props.title && <p css={templates.contentTitle}>{props.title}</p>}
-          <textarea name={props.name} placeholder={props.placeholder} css={textareaStyle()} id='' cols={props.cols} rows={props.rows} />
+          <textarea {...props.options} name={props.name} placeholder={props.placeholder} css={textareaStyle()} id='' cols={props.cols} rows={props.rows} />
         </div>
       );
     default:

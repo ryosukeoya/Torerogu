@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import type { GetRecordPagePropsQuery, CreateTrainingMutation } from '../../types/generated/graphql';
-import { CREATE_TRAINING } from '../../libs/graphql/mutations/record';
-import { Slider, Space, Card, Input, InputForm } from '../../components/entryPoints';
-import { cardStyle, sliderStyle, simpleButton } from '../../components/styleEntryPoints';
+import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
+import { CREATE_TRAINING } from '../../libs/graphql/mutations';
+import { Slider, Space, Card, Input, InputForm, Snackbar } from '../../components/entryPoints';
+import { sliderStyle, simpleButton } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
-import Snackbar from '../../components/uiParts/Snackbar';
+import { css } from '@emotion/react';
 
-type TrainingType = {
-  id: number;
-  name: string;
-  training_category_id: number;
-};
+type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
 
 type TrainingFormValues = {
   trainingWeight: number;
@@ -22,7 +18,7 @@ type TrainingFormValues = {
 };
 
 type Props = {
-  data?: GetRecordPagePropsQuery;
+  data?: GetTrainingCategoryWithTypeQuery;
 };
 
 const TrainingPage: VFC<Props> = ({ data }) => {
@@ -30,11 +26,6 @@ const TrainingPage: VFC<Props> = ({ data }) => {
   const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
   const [selectedTrainingType, setSelectedTrainingType] = useState<TrainingType | null>(null);
 
-  // const {
-  //   register,
-  //   formState: { errors },
-  //   handleSubmit,
-  // } = useForm<TrainingFormValues>();
   const method = useForm<TrainingFormValues>();
 
   const { handleSubmit } = method;
@@ -55,7 +46,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
   };
 
   const registerTraining: SubmitHandler<TrainingFormValues> = (data) => {
-    insertTraining({ variables: { user_id: 1, training_type_id: selectedTrainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.setCount, is_finish: true, date: new Date() } });
+    insertTraining({ variables: { user_id: 1, training_type_id: selectedTrainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.count, is_finish: true, date: new Date() } });
   };
 
   const handleClose = () => {
@@ -72,8 +63,8 @@ const TrainingPage: VFC<Props> = ({ data }) => {
           <div css={templates.contentArea}>
             <h2 css={templates.title}>✏️ {selectedTrainingType.name}</h2>
             <InputForm title={'重量'} unit={'kg'} typeAttr={'text'} type={'isInput'} placeholder={'60'} form={{ name: 'trainingWeight', option: { required: true, pattern: /[0-9]/ } }} />
-            <InputForm title={'セット数'} unit={'set'} typeAttr={'text'} type={'isInput'} placeholder={'5'} form={{ name: 'set', option: { required: true, pattern: /[0-9]/ } }} />
             <InputForm title={'回数'} unit={'回'} typeAttr={'text'} type={'isInput'} placeholder={'10'} form={{ name: 'count', option: { required: true, pattern: /[0-9]/ } }} />
+            <InputForm title={'セット数'} unit={'set'} typeAttr={'text'} type={'isInput'} placeholder={'5'} form={{ name: 'set', option: { required: true, pattern: /[0-9]/ } }} />
             <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} value={'記録する'} />
             <p css={templates.back} onClick={() => setSelectedTrainingType(null)}>
               ＜ カテゴリ選択に戻る
@@ -90,7 +81,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
         <Slider items={data?.training_categories} setState={setSelectedCategoryID} sliderStyle={sliderStyle} />
         {getTrainingTypes()?.map((training_type) => {
           return (
-            <Card data={training_type} handleClick={handleClick} key={training_type.id} _css={cardStyle(15)}>
+            <Card handleClick={() => handleClick(training_type)} key={training_type.id} customCss={styles.card}>
               {training_type.name}
             </Card>
           );
@@ -101,3 +92,9 @@ const TrainingPage: VFC<Props> = ({ data }) => {
 };
 
 export default TrainingPage;
+
+const styles = {
+  card: css`
+    margin-bottom: 15px;
+  `,
+};

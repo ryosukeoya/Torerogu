@@ -5,8 +5,8 @@ import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { COLOR } from '../../styles/const';
 import { useQuery } from '@apollo/client';
-import { GET_GRAPH_PAGE_PROPS } from '../../libs/graphql/queries/graph';
-import type { GetGraphPagePropsQuery } from '../../types/generated/graphql';
+import { GET_TRAINING_WITH_BODY_INFO } from '../../libs/graphql/queries';
+import type { GetTrainingWithBodyInfoQuery } from '../../types/generated/graphql';
 
 type BodyInfoDataHistory = {
   __typename?: 'body_info_data_histories' | undefined;
@@ -22,7 +22,7 @@ type ChartData = {
 };
 
 const Graph: VFC = () => {
-  const { data, error } = useQuery<GetGraphPagePropsQuery>(GET_GRAPH_PAGE_PROPS);
+  const { data, error } = useQuery<GetTrainingWithBodyInfoQuery>(GET_TRAINING_WITH_BODY_INFO);
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
 
   if (error) return <p>Error: {error.message}</p>;

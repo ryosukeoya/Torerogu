@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
-import { GET_RECORD_PAGE_PROPS } from '../../libs/graphql/queries/record';
-import type { GetRecordPagePropsQuery } from '../../types/generated/graphql';
+import { GET_TRAINING_CATEGORY_WITH_TYPE } from '../../libs/graphql/queries';
+import type { GetTrainingCategoryWithTypeQuery } from '../../types/generated/graphql';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { default as PhysicalPage } from './BodyInfoPage';
@@ -11,7 +11,7 @@ export async function getStaticProps() {
   const apolloClient = initializeApollo();
 
   const data = await apolloClient.query({
-    query: GET_RECORD_PAGE_PROPS,
+    query: GET_TRAINING_CATEGORY_WITH_TYPE,
   });
 
   return {
@@ -21,7 +21,7 @@ export async function getStaticProps() {
 }
 
 type Props = {
-  data?: GetRecordPagePropsQuery;
+  data?: GetTrainingCategoryWithTypeQuery;
 };
 
 const Record: NextPage<Props> = ({ data }) => {

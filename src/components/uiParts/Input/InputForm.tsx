@@ -42,7 +42,7 @@ const InputForm: VFC<InputFormProps | TextAreaFormProps> = (props) => {
               {'required' in props.form.option && <span css={templates.require}>*必須</span>}
             </p>
           )}
-          <input {...(props.form && { ...register(props.form.name, props.form.option) })} onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={inputStyle()} type={props.typeAttr} placeholder={props.placeholder} />
+          <input type={props.typeAttr} {...props.options} {...(props.form && { ...register(props.form.name, props.form.option) })} onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={inputStyle()} placeholder={props.placeholder} />
           <span css={templates.unit}>{props.unit}</span>
           <ErrorMessage errors={errors} form={props.form} />
         </div>
