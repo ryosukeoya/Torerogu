@@ -37,12 +37,10 @@ const BodyInfoPage: VFC = () => {
 
   return (
     <FormProvider {...method}>
-      <form onSubmit={handleSubmit(registerBodyInfo)}>
-        <FormContainer title={` ✏️ ${date.month} / ${date.day} ${date.weekday}) の記録`} open={open} handleClose={handleClose}>
+        <FormContainer handleSubmit={handleSubmit} submitFunc={registerBodyInfo} title={` ✏️ ${date.month} / ${date.day} ${date.weekday}) の記録`} open={open} handleClose={handleClose}>
           <InputForm title={'体重'} typeAttr={'text'} unit={'kg'} type={'isInput'} placeholder={'60'} form={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
           <InputForm title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
         </FormContainer>
-      </form>
     </FormProvider>
   );
 };
