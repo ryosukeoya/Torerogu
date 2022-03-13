@@ -21,7 +21,7 @@ const BottomNav: VFC = () => {
   return (
     <nav css={styles.bottomNav}>
       {titles.map((title: PageTitle, i: number) => {
-        return <Tab isResetIndex={true} key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />;
+        return <Tab isResetIndex={true} key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isToggle={true} />;
       })}
     </nav>
   );

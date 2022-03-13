@@ -8,8 +8,10 @@ import type { PageTitle } from '../../types/index';
 import { useRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { COLOR } from '../../styles/const';
+import { useIsActive } from '../../hooks/useIsActive';
 
 type Props = {
+  isToggle: boolean;
   isResetIndex: boolean;
   title: PageTitle;
   index: number;
@@ -19,11 +21,7 @@ type Props = {
 
 const Tab: VFC<Props> = (props) => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
-
-  let isActive = false;
-  if (props.activeIndex === props.index) {
-    isActive = true;
-  }
+  const isActive = useIsActive(props.isToggle, props.activeIndex, props.index);
 
   return (
     <Link href={PAGE_PATH[props.title]} passHref>
@@ -47,7 +45,7 @@ const styles = {
   box: css`
     display: block;
     text-align: center;
-    padding:10px;
+    padding: 10px;
   `,
   title: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.RED : 'black'};
