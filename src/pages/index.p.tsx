@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
 
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GET_TRAINING_ONE_TYPE, {
-    variables: { date: getCurrentDate(new Date(),false) },
+    variables: { date: getCurrentDate(new Date(), false) },
     fetchPolicy: 'network-only',
   });
   if (loading) {

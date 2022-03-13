@@ -31,7 +31,7 @@ export default Layout;
 
 const styles = {
   main: css`
-    min-height:100vh;
+    min-height: 100vh;
     margin-top: 104px;
     background-color: #fdfdfd;
   `,
