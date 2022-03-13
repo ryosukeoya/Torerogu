@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import type { VFC } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
-import { getIcon } from '../../utils/index';
+import { getIcon } from '../../utils/app';
 import { PAGE_PATH } from '../../constants/index';
 import type { PageTitle } from '../../types/index';
 import { useRecoilState } from 'recoil';

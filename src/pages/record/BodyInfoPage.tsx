@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { FormContainer, InputForm } from '../../components/entryPoints';
-import { getDateInfo } from '../../utils';
+import { getDateInfo } from '../../utils/app';
 import { useMutation } from '@apollo/client';
 import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations';
 import type { CreateBodyInfoHistoriesMutation } from '../../types/generated/graphql';
