@@ -6,8 +6,8 @@ import { simpleButton } from '../styleEntryPoints';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
 
 type ContainerInterface = {
-  handleSubmit: UseFormHandleSubmit<any>;
-  submitFunc: SubmitHandler<any>;
+  handleSubmit: UseFormHandleSubmit<Record<string, unknown>>;
+  submitFunc: SubmitHandler<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
   title: string;
   open: boolean;
   handleClose: () => void;
