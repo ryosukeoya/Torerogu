@@ -7,12 +7,12 @@ type Props = {
   index: number;
   activeIndex: number;
   title: string;
-  isToggle?: boolean;
+  isToggle?: true;
   onClick: (index: number) => void;
 };
 
 const Tab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
-  const isActive = useIsActive(isToggle, activeIndex, index);
+  const isActive = useIsActive(!!isToggle, activeIndex, index);
 
   return (
     <li onClick={() => onClick(index)} css={styles.tab(isActive)}>

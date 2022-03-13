@@ -10,7 +10,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { getCurrentDate } from '../utils/index';
+import { getCurrentDate } from '../utils/app';
 import { RippleButton, PrimaryButton, Input, Card } from '../components/entryPoints';
 import { textareaStyle } from '../components/uiParts/Input/style';
 
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
 
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GET_TRAINING_ONE_TYPE, {
-    variables: { date: getCurrentDate(new Date(),false) },
+    variables: { date: getCurrentDate(new Date(), false) },
     fetchPolicy: 'network-only',
   });
   if (loading) {

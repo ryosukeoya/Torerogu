@@ -6,9 +6,7 @@ import { GET_TRAINING_CATEGORY_WITH_TYPE } from '../../libs/graphql/queries';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
-import { getCurrentDate, getNumArr } from '../../utils';
-
-type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
+import { getCurrentDate, getNumArr, getTrainingTypes } from '../../utils';
 
 type PlanTrainingFormValue = {
   date: Date;
@@ -24,7 +22,7 @@ const TrainingPage: VFC = () => {
   const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
 
   const { data } = useQuery<GetTrainingCategoryWithTypeQuery>(GET_TRAINING_CATEGORY_WITH_TYPE);
-  const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
+  const [insertTraining] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
     onCompleted: () => setOpen(true),
   });
   const method = useForm<PlanTrainingFormValue>();
@@ -41,13 +39,6 @@ const TrainingPage: VFC = () => {
     insertTraining({ variables: { user_id: 1, training_type_id: data.type[0], training_weight: data.trainingWeight, training_count: data.count, training_set: data.count, is_finish: false, date: data.date } });
   };
 
-  const getTrainingTypes = (): Readonly<TrainingType>[] | undefined => {
-    const slectedTrainingTypes = data?.training_types.filter(function (training_type) {
-      return training_type.training_category_id === selectedCategoryID;
-    });
-    return slectedTrainingTypes;
-  };
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -57,7 +48,7 @@ const TrainingPage: VFC = () => {
       <FormContainer handleSubmit={handleSubmit} submitFunc={registerTraining} title={'✏️ 日ごとの設定'} open={open} handleClose={handleClose}>
         <InputForm options={{ value: getCurrentDate(new Date(), true), min: getCurrentDate(new Date(), true) }} typeAttr={'date'} type={'isInput'} form={{ name: 'date', option: { required: true } }} />
         <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={10} />
-        <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypes()} marginBottom={10} />
+        <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypes(data?.training_types, selectedCategoryID)} marginBottom={10} />
         <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} />
         <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} />
         <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} />

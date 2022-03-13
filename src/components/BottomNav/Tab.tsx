@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import type { VFC } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
-import { getIcon } from '../../utils/index';
+import { getIcon } from '../../utils/app';
 import { PAGE_PATH } from '../../constants/index';
 import type { PageTitle } from '../../types/index';
 import { useRecoilState } from 'recoil';
@@ -11,7 +11,7 @@ import { COLOR } from '../../styles/const';
 import { useIsActive } from '../../hooks/useIsActive';
 
 type Props = {
-  isToggle: boolean;
+  isToggle?: true;
   isResetIndex: boolean;
   title: PageTitle;
   index: number;
@@ -21,7 +21,7 @@ type Props = {
 
 const Tab: VFC<Props> = (props) => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
-  const isActive = useIsActive(props.isToggle, props.activeIndex, props.index);
+  const isActive = useIsActive(!!props.isToggle, props.activeIndex, props.index);
 
   return (
     <Link href={PAGE_PATH[props.title]} passHref>

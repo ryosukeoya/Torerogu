@@ -8,7 +8,7 @@ import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { css } from '@emotion/react';
-import { getNumArr } from '../../utils';
+import { getNumArr, getTrainingTypes } from '../../utils';
 
 type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
 
@@ -37,13 +37,6 @@ const TrainingPage: VFC<Props> = ({ data }) => {
 
   const handleClick = (data: Readonly<TrainingType>) => {
     setSelectedTrainingType(data);
-  };
-
-  const getTrainingTypes = (): Readonly<TrainingType>[] | undefined => {
-    const slectedTrainingTypes = data?.training_types.filter(function (training_type) {
-      return training_type.training_category_id === selectedCategoryID;
-    });
-    return slectedTrainingTypes;
   };
 
   const registerTraining: SubmitHandler<TrainingFormValues> = (data) => {
@@ -83,7 +76,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
       <>
         <Space height={20} />
         <Slider items={data?.training_categories} setState={setSelectedCategoryID} sliderStyle={sliderStyle} />
-        {getTrainingTypes()?.map((training_type) => {
+        {getTrainingTypes(data?.training_types, selectedCategoryID)?.map((training_type) => {
           return (
             <Card handleClick={() => handleClick(training_type)} key={training_type.id} customCss={styles.card}>
               {training_type.name}

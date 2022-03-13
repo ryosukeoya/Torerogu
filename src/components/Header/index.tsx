@@ -8,12 +8,15 @@ import { APP } from '../../constants';
 import { BORDER, COLOR, FONT } from '../../styles/const';
 import { useRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
+import useIsScrollDown from '../../hooks/useIsScrollDown';
 
 const Header: VFC = () => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
 
+  const isScrollDown: boolean = useIsScrollDown();
+  const headerStateCss = isScrollDown ? stateCss['visible'] : stateCss['hidden'];
   return (
-    <header css={styles.header}>
+    <header css={[styles.header, headerStateCss]}>
       <div css={styles.area}>
         <h1 css={styles.title}>
           <Link href='/' passHref>
@@ -30,7 +33,7 @@ const Header: VFC = () => {
           <Image src='/imgs/profile.png' width={28} height={28} alt={'プロフィール'} />
         </p>
       </div>
-      <Tabs activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>
+      <Tabs activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
     </header>
   );
 };
@@ -62,5 +65,15 @@ const styles = {
     border-radius: 50%;
     background-color: #b6babb;
     padding: 8px;
+  `,
+};
+
+const stateCss = {
+  visible: css`
+    transition: top 0.4s ease-out;
+  `,
+  hidden: css`
+    top: -55px;
+    transition: top 0.4s ease-out;
   `,
 };

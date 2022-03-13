@@ -19,7 +19,7 @@ const Tabs: VFC<Props> = ({ activeIndex, setActiveIndex }) => {
   return (
     <ul css={styles.tabs}>
       {titles?.map((title: string, i: number) => {
-        return <Tab key={i} onClick={changeActiveIndex} index={i} activeIndex={activeIndex} title={title} isToggle={true} />;
+        return <Tab key={i} onClick={changeActiveIndex} index={i} activeIndex={activeIndex} title={title} isToggle />;
       })}
     </ul>
   );
