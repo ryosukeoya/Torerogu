@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import type { VFC } from 'react';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations';
-import { Slider, Space, Card, Input, InputForm, Snackbar } from '../../components/entryPoints';
-import { sliderStyle, simpleButton } from '../../components/styleEntryPoints';
+import { Slider, Space, Select, Card, FormContainer } from '../../components/entryPoints';
+import { sliderStyle } from '../../components/styleEntryPoints';
 import { templates } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { css } from '@emotion/react';
+import { getNumArr } from '../../utils';
 
 type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
 
@@ -59,19 +60,22 @@ const TrainingPage: VFC<Props> = ({ data }) => {
     //TODO:回数ではない場合、ex.ランニング
     return (
       <FormProvider {...method}>
-        <form onSubmit={handleSubmit(registerTraining)}>
-          <div css={templates.contentArea}>
-            <h2 css={templates.title}>✏️ {selectedTrainingType.name}</h2>
-            <InputForm title={'重量'} unit={'kg'} typeAttr={'text'} type={'isInput'} placeholder={'60'} form={{ name: 'trainingWeight', option: { required: true, pattern: /[0-9]/ } }} />
-            <InputForm title={'回数'} unit={'回'} typeAttr={'text'} type={'isInput'} placeholder={'10'} form={{ name: 'count', option: { required: true, pattern: /[0-9]/ } }} />
-            <InputForm title={'セット数'} unit={'set'} typeAttr={'text'} type={'isInput'} placeholder={'5'} form={{ name: 'set', option: { required: true, pattern: /[0-9]/ } }} />
-            <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} value={'記録する'} />
+        <FormContainer
+          handleSubmit={handleSubmit}
+          submitFunc={registerTraining}
+          title={`✏️ ${selectedTrainingType.name}`}
+          open={open}
+          handleClose={handleClose}
+          OtherElm={
             <p css={templates.back} onClick={() => setSelectedTrainingType(null)}>
               ＜ カテゴリ選択に戻る
             </p>
-          </div>
-          <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />
-        </form>
+          }
+        >
+          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} />
+          <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} />
+          <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} />
+        </FormContainer>
       </FormProvider>
     );
   } else {

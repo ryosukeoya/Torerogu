@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import type { VFC } from 'react';
-import { InputForm, Select, Input, Snackbar } from '../../components/entryPoints';
-import { simpleButton } from '../../components/styleEntryPoints';
-import { templates } from '../../styles/template';
+import { InputForm, Select, FormContainer } from '../../components/entryPoints';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
-import { css } from '@emotion/react';
 import { GET_TRAINING_CATEGORY_WITH_TYPE } from '../../libs/graphql/queries';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
-import { getCurrentDate } from '../../utils';
+import { getCurrentDate, getNumArr } from '../../utils';
 
 type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
 
@@ -51,43 +48,22 @@ const TrainingPage: VFC = () => {
     return slectedTrainingTypes;
   };
 
-  const getNumArr = (init: number, max: number, diff: number): number[] => {
-    const numArr: number[] = [];
-    for (let i = init; i <= max; i = i + diff) {
-      numArr.push(i);
-    }
-    return numArr;
-  };
-
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <FormProvider {...method}>
-      <form onSubmit={handleSubmit(registerTraining)}>
-        <div css={[styles.columnWrap, templates.contentArea]}>
-          <h2 css={templates.title}>✏️ 日ごとの設定</h2>
-          <InputForm options={{ min: getCurrentDate(new Date(), true) }} typeAttr={'date'} type={'isInput'} placeholder={''} form={{ name: 'date', option: { required: true } }} />
-          <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={10} />
-          <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypes()} marginBottom={10} />
-          {/* TODO:FIX texts!!,セレクトボックスにするかテキストボックスにするか */}
-          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} />
-          <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} />
-          <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} />
-        </div>
-        <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} value={'記録する'} />
-        <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />
-      </form>
+      <FormContainer handleSubmit={handleSubmit} submitFunc={registerTraining} title={'✏️ 日ごとの設定'} open={open} handleClose={handleClose}>
+        <InputForm options={{ value: getCurrentDate(new Date(), true), min: getCurrentDate(new Date(), true) }} typeAttr={'date'} type={'isInput'} form={{ name: 'date', option: { required: true } }} />
+        <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={10} />
+        <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypes()} marginBottom={10} />
+        <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} />
+        <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} />
+        <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} />
+      </FormContainer>
     </FormProvider>
   );
 };
 
 export default TrainingPage;
-
-const styles = {
-  columnWrap: css`
-    display: flex;
-    flex-direction: column;
-  `,
-};

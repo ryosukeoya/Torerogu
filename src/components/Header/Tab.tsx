@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import type { VFC } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { FONT, COLOR } from '../../styles/const';
+import { useIsActive } from '../../hooks/useIsActive';
 
 type Props = {
   index: number;
@@ -12,16 +12,7 @@ type Props = {
 };
 
 const Tab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
-  const [isActive, setIsActive] = useState(false);
-
-  useEffect(() => {
-    index === activeIndex && setIsActive(true);
-    if (isToggle && index === activeIndex) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  }, [isToggle, index, activeIndex]);
+  const isActive = useIsActive(isToggle, activeIndex, index);
 
   return (
     <li onClick={() => onClick(index)} css={styles.tab(isActive)}>
@@ -40,6 +31,7 @@ const styles = {
     font-size: ${FONT.BASE};
     cursor: pointer;
     &:hover {
+      /* border-bottom: 1px solid #dad2c8; */
       background-color: #fff8f1;
       /* background-color: #f8f8f8; */
     }
