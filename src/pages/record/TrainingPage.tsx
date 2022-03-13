@@ -61,14 +61,20 @@ const TrainingPage: VFC<Props> = ({ data }) => {
     return (
       <FormProvider {...method}>
         <form onSubmit={handleSubmit(registerTraining)}>
-          <FormContainer title={`✏️ ${selectedTrainingType.name}`} open={open} handleClose={handleClose}>
+          <FormContainer
+            title={`✏️ ${selectedTrainingType.name}`}
+            open={open}
+            handleClose={handleClose}
+            OtherElm={
+              <p css={templates.back} onClick={() => setSelectedTrainingType(null)}>
+                ＜ カテゴリ選択に戻る
+              </p>
+            }
+          >
             <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} />
             <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} />
             <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} />
           </FormContainer>
-          <p css={templates.back} onClick={() => setSelectedTrainingType(null)}>
-            ＜ カテゴリ選択に戻る
-          </p>
         </form>
       </FormProvider>
     );
