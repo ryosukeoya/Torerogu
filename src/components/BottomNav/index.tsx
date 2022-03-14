@@ -4,10 +4,10 @@ import { PAGE_PATH } from '../../constants/index';
 import type { PageTitles, PageTitle } from '../../types/index';
 import { css } from '@emotion/react';
 import { BORDER } from '../../styles/const';
-import usePathIndex from '../../hooks/usePathIndex';
+import useActiveIndexFromPath from '../../hooks/useActiveIndexFromPath';
 
 const BottomNav: VFC = () => {
-  const [activeIndex, setActiveIndex] = usePathIndex();
+  const [activeIndex, setActiveIndex] = useActiveIndexFromPath();
   const titles = Object.keys(PAGE_PATH) as PageTitles;
 
   return (

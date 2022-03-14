@@ -12,8 +12,8 @@ import useIsScrollDown from '../../hooks/useIsScrollDown';
 
 const Header: VFC = () => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
-
   const isScrollDown: boolean = useIsScrollDown();
+
   const headerStateCss = isScrollDown ? stateCss['visible'] : stateCss['hidden'];
   
   return (
