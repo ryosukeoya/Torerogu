@@ -5,7 +5,7 @@ import { cardStyle } from './style';
 type Props = {
   handleClick?: VoidFunction;
   customCss?: SerializedStyles;
-  hoverTheme?: 'shadow' | 'darken';
+  hoverTheme?: 'scale' | 'darken';
 };
 
 const Card: FC<PropsWithChildren<Props>> = ({ children, handleClick, customCss, hoverTheme }) => {

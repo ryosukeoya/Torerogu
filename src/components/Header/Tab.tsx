@@ -1,6 +1,6 @@
 import type { VFC, Dispatch } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
-import { FONT, COLOR } from '../../styles/const';
+import { BREAKPOINT, FONT, COLOR } from '../../styles/const';
 import { useIsActive } from '../../hooks/useIsActive';
 import type { SetterOrUpdater } from 'recoil';
 
@@ -30,11 +30,14 @@ const styles = {
     ${isActive && `border-bottom:1px solid ${COLOR.ORANGE}`};
     padding: 15px;
     font-size: ${FONT.BASE};
+    background-color: #fff;
     cursor: pointer;
-    &:hover {
-      /* border-bottom: 1px solid #dad2c8; */
-      background-color: #fff8f1;
-      /* background-color: #f8f8f8; */
+    @media (min-width: ${BREAKPOINT.MD}) {
+      &:hover {
+        /* border-bottom: 1px solid #dad2c8; */
+        background-color: #fff8f1;
+        /* background-color: #f8f8f8; */
+      }
     }
   `,
 };
