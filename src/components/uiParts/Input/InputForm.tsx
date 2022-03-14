@@ -25,7 +25,8 @@ interface TextAreaFormProps extends TextAreaProps {
   unit?: string;
 }
 
-const Container: VFC<PropsWithChildren<(InputFormProps & { errors: Record<string, any> }) | (TextAreaFormProps & { errors: Record<string, any> })>> = (props) => {
+// prettier-ignore
+const Container: VFC<PropsWithChildren<(InputFormProps & { errors: Record<string, any> }) | (TextAreaFormProps & { errors: Record<string, any> })>> = (props) => { //  eslint-disable-line @typescript-eslint/no-explicit-any,
   return (
     <div css={templates.content}>
       {props.title && (
