@@ -19,21 +19,21 @@ type Props = {
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Tab: VFC<Props> = (props) => {
+const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: parentActiveIndex, setActiveIndex: parentSetActiveIndex }) => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
-  const isActive = useIsActive(!!props.isToggle, props.activeIndex, props.index);
+  const isActive = useIsActive(!!isToggle, parentActiveIndex, index);
 
   return (
-    <Link href={PAGE_PATH[props.title]} passHref>
+    <Link href={PAGE_PATH[title]} passHref>
       <a
         onClick={() => {
-          props.setActiveIndex(props.index);
-          props.isResetIndex && setActiveIndex(0);
+          parentSetActiveIndex(index);
+          isResetIndex && setActiveIndex(0);
         }}
         css={styles.box}
       >
-        {getIcon(props.title, isActive)}
-        <p css={styles.title(isActive)}>{props.title}</p>
+        {getIcon(title, isActive)}
+        <p css={styles.title(isActive)}>{title}</p>
       </a>
     </Link>
   );

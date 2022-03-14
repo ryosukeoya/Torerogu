@@ -16,10 +16,9 @@ type ItemType = {
 type Props = {
   items?: ItemType[];
   setState?: Dispatch<SetStateAction<number>>;
-  sliderStyle: typeof sliderStyle;
 };
 
-const Slider: VFC<Props> = ({ items, setState, sliderStyle }) => {
+const Slider: VFC<Props> = ({ items, setState }) => {
   return (
     <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={50} slidesPerView={3} navigation pagination={{ clickable: true }} css={sliderStyle.sliders(30)}>
       {items?.map((item: Pick<ItemType, 'id' | 'name'>) => {

@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { simpleButton, toggleColorButton } from './style';
 
 export const useGetTheme = (theme: string) => {
-  const themeStyle = useCallback(() => {
+  const themeCss = useCallback(() => {
     if (theme === 'simple') {
       return simpleButton();
     } else if (theme === 'toggle') {
@@ -11,5 +11,5 @@ export const useGetTheme = (theme: string) => {
       return;
     }
   }, [theme]);
-  return [themeStyle];
+  return [themeCss];
 };

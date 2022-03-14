@@ -1,6 +1,6 @@
 import { css, keyframes, SerializedStyles } from '@emotion/react';
 import { COLOR } from '../../../styles/const';
-import { buttonBase } from '../../styleEntryPoints';
+import { buttonBase } from '../../styleEntryPoint';
 
 const rippleEffect = keyframes`
   0% {

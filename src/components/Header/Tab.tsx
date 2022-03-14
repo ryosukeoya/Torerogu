@@ -1,21 +1,22 @@
-import type { VFC } from 'react';
+import type { VFC, Dispatch } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { FONT, COLOR } from '../../styles/const';
 import { useIsActive } from '../../hooks/useIsActive';
+import type { SetterOrUpdater } from 'recoil';
 
 type Props = {
   index: number;
   activeIndex: number;
   title: string;
   isToggle?: true;
-  onClick: (index: number) => void;
+  setState?: SetterOrUpdater<number> | Dispatch<React.SetStateAction<number>>;
 };
 
-const Tab: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
+const Tab: VFC<Props> = ({ index, activeIndex, title, isToggle, setState }) => {
   const isActive = useIsActive(!!isToggle, activeIndex, index);
 
   return (
-    <li onClick={() => onClick(index)} css={styles.tab(isActive)}>
+    <li onClick={() => setState && setState(index)} css={styles.tab(isActive)}>
       {title}
     </li>
   );

@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import { FormContainer, InputForm } from '../../components/entryPoints';
+import { FormContainer, InputForm } from '../../components/entryPoint';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { getCurrentDate } from '../../utils/app';
 

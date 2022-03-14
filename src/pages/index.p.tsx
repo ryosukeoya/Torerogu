@@ -11,7 +11,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { getCurrentDate } from '../utils/app';
-import { RippleButton, PrimaryButton, Input, Card } from '../components/entryPoints';
+import { RippleButton, PrimaryButton, Input, Card } from '../components/entryPoint';
 import { textareaStyle } from '../components/uiParts/Input/style';
 
 const Home: NextPage = () => {
