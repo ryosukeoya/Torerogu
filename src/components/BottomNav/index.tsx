@@ -1,22 +1,14 @@
-import { useRouter } from 'next/router';
-import React, { VFC, useState, useEffect } from 'react';
+import React, { VFC } from 'react';
 import Tab from './Tab';
 import { PAGE_PATH } from '../../constants/index';
 import type { PageTitles, PageTitle } from '../../types/index';
-import { getPathIndex } from '../../enum';
 import { css } from '@emotion/react';
 import { BORDER } from '../../styles/const';
+import usePathIndex from '../../hooks/usePathIndex';
 
 const BottomNav: VFC = () => {
-  const router = useRouter();
-  const pathIndex = getPathIndex(router.pathname);
-  const [activeIndex, setActiveIndex] = useState<number>(pathIndex);
-
+  const [activeIndex, setActiveIndex] = usePathIndex();
   const titles = Object.keys(PAGE_PATH) as PageTitles;
-
-  useEffect(() => {
-    setActiveIndex(pathIndex);
-  }, [pathIndex]);
 
   return (
     <nav css={styles.bottomNav}>
