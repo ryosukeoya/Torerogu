@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import type { FC, ReactNode } from 'react';
 import { rippleButton } from './style';
+import useRipple from './useRipple';
 
 type Props = {
   children: ReactNode;
@@ -8,19 +8,7 @@ type Props = {
 };
 
 const RippleButton: FC<Props> = ({ children, onClick }) => {
-  const [coords, setCoords] = useState({ x: -1, y: -1 });
-  const [isRippling, setIsRippling] = useState(false);
-
-  useEffect(() => {
-    if (coords.x !== -1 && coords.y !== -1) {
-      setIsRippling(true);
-      setTimeout(() => setIsRippling(false), 300);
-    } else setIsRippling(false);
-  }, [coords]);
-
-  useEffect(() => {
-    if (!isRippling) setCoords({ x: -1, y: -1 });
-  }, [isRippling]);
+  const [coords, setCoords, isRippling] = useRipple();
 
   return (
     <button
