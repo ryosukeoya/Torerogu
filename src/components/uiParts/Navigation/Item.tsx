@@ -1,23 +1,22 @@
-import type { VFC } from 'react';
+import type { VFC, Dispatch } from 'react';
 import { css } from '@emotion/react';
 import { COLOR } from '../../../styles/const';
+import { useIsActive } from '../../../hooks/useIsActive';
+import type { SetterOrUpdater } from 'recoil';
 
 type Props = {
+  isToggle?: true;
+  title: string;
   index: number;
   activeIndex: number;
-  title: string;
-  isToggle?: boolean;
-  onClick: (index: number) => void;
+  setActiveIndex: SetterOrUpdater<number> | Dispatch<React.SetStateAction<number>>;
 };
 
-const Item: VFC<Props> = ({ index, activeIndex, title, isToggle, onClick }) => {
-  let isActive = false;
-  if (isToggle && index === activeIndex) {
-    isActive = true;
-  }
+const Item: VFC<Props> = ({ isToggle, title, index, activeIndex, setActiveIndex }) => {
+  const isActive = useIsActive(!!isToggle, activeIndex, index);
 
   return (
-    <li onClick={() => onClick(index)} css={[styles.item, isActive && styles.active]}>
+    <li onClick={() => setActiveIndex(index)} css={[styles.item, isActive && styles.active]}>
       {title}
     </li>
   );
