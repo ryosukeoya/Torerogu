@@ -5,11 +5,12 @@ import { cardStyle } from './style';
 type Props = {
   handleClick?: VoidFunction;
   customCss?: SerializedStyles;
+  hoverTheme?: 'shadow' | 'darken';
 };
 
-const Card: FC<PropsWithChildren<Props>> = ({ children, handleClick, customCss }) => {
+const Card: FC<PropsWithChildren<Props>> = ({ children, handleClick, customCss, hoverTheme }) => {
   return (
-    <div onClick={handleClick && handleClick} css={cardStyle(customCss)}>
+    <div onClick={handleClick && handleClick} css={cardStyle(customCss, hoverTheme)}>
       {children}
     </div>
   );
