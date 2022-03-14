@@ -10,16 +10,10 @@ type Props = {
 };
 
 const Tabs: VFC<Props> = ({ activeIndex, setActiveIndex }) => {
-  const changeActiveIndex = (index: number) => {
-    setActiveIndex(index);
-  };
-
-  const titles = useGetTitle();
-
   return (
     <ul css={styles.tabs}>
-      {titles?.map((title: string, i: number) => {
-        return <Tab key={i} onClick={changeActiveIndex} index={i} activeIndex={activeIndex} title={title} isToggle />;
+      {useGetTitle()?.map((title: string, i: number) => {
+        return <Tab isToggle key={i} setState={setActiveIndex} index={i} activeIndex={activeIndex} title={title} />;
       })}
     </ul>
   );

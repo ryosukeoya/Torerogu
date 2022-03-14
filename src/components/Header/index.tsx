@@ -15,6 +15,7 @@ const Header: VFC = () => {
 
   const isScrollDown: boolean = useIsScrollDown();
   const headerStateCss = isScrollDown ? stateCss['visible'] : stateCss['hidden'];
+  
   return (
     <header css={[styles.header, headerStateCss]}>
       <div css={styles.area}>
