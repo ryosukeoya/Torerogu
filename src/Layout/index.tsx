@@ -19,6 +19,9 @@ const Layout: FC = (prop) => {
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='format-detection' content='telephone=no' />
         <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link href='https://fonts.googleapis.com/css2?family=Yomogi&display=swap' rel='stylesheet' />
       </Head>
       <Header />
       <main css={styles.main}>{prop.children}</main>
