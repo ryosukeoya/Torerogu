@@ -33,12 +33,8 @@ const Slider: VFC<Props> = ({ items, setState }) => {
       pagination={{ clickable: true }}
       css={sliderStyle.sliders(30)}
     >
-      {items?.map((item: Pick<ItemType, 'id' | 'name'>, i: number) => {
-        return (
-          <SwiperSlide onClick={() => setState && setState(i)} key={item.id}>
-            {({ isActive }) => <div css={sliderStyle.slider(isActive)}>{item.name}</div>}
-          </SwiperSlide>
-        );
+      {items?.map((item: Pick<ItemType, 'id' | 'name'>) => {
+        return <SwiperSlide key={item.id}>{({ isActive }) => <div css={sliderStyle.slider(isActive)}>{item.name}</div>}</SwiperSlide>;
       })}
     </Swiper>
   );
