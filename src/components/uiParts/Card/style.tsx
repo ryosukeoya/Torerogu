@@ -7,6 +7,7 @@ export const cardStyle = (customCss?: SerializedStyles, hoverTheme: 'scale' | 'd
   text-align: center;
   border-radius: 10px;
   width: 90vw;
+  max-width: 800px;
   margin: 0 auto;
   padding: 25px 15px;
   cursor: pointer;
