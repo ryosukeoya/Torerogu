@@ -20,11 +20,23 @@ type Props = {
 
 const Slider: VFC<Props> = ({ items, setState }) => {
   return (
-    <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={50} slidesPerView={3} navigation pagination={{ clickable: true }} css={sliderStyle.sliders(30)}>
-      {items?.map((item: Pick<ItemType, 'id' | 'name'>) => {
+    <Swiper
+      centeredSlides={true}
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      loop={true}
+      onRealIndexChange={(swiper) => {
+        setState && setState(swiper.realIndex);
+      }}
+      spaceBetween={50}
+      slidesPerView={3}
+      navigation
+      pagination={{ clickable: true }}
+      css={sliderStyle.sliders(30)}
+    >
+      {items?.map((item: Pick<ItemType, 'id' | 'name'>, i: number) => {
         return (
-          <SwiperSlide onClick={() => setState && setState(item.id)} key={item.id}>
-            <div css={sliderStyle.slider}>{item.name}</div>
+          <SwiperSlide onClick={() => setState && setState(i)} key={item.id}>
+            {({ isActive }) => <div css={sliderStyle.slider(isActive)}>{item.name}</div>}
           </SwiperSlide>
         );
       })}

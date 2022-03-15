@@ -23,7 +23,7 @@ type Props = {
 
 const TrainingPage: VFC<Props> = ({ data }) => {
   const [open, setOpen] = useState(false);
-  const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState<number>(0);
   const [selectedTrainingType, setSelectedTrainingType] = useState<TrainingType | null>(null);
 
   const method = useForm<TrainingFormValues>();
@@ -74,8 +74,8 @@ const TrainingPage: VFC<Props> = ({ data }) => {
     return (
       <>
         <Space height={20} />
-        <Slider items={data?.training_categories} setState={setSelectedCategoryID} />
-        {getTrainingTypes(data?.training_types, selectedCategoryID)?.map((training_type) => {
+        <Slider items={data?.training_categories} setState={setSelectedCategoryIndex} />
+        {getTrainingTypes(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
           return (
             <Card handleClick={() => handleClick(training_type)} key={training_type.id} customCss={styles.card}>
               {training_type.name}
