@@ -1,3 +1,9 @@
+const BREAKPOINT = {
+  SM: '640px',
+  MD: '768px',
+  LG: '1024px',
+};
+
 const COLOR = {
   RED: '#FF291B',
   ORANGE: '#FF9900',
@@ -16,4 +22,4 @@ const FONT = {
   X2_LARGE: '35px',
 };
 
-export { COLOR, BORDER, FONT };
+export { BREAKPOINT, COLOR, BORDER, FONT };

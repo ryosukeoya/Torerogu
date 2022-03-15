@@ -13,9 +13,8 @@ import useIsScrollDown from '../../hooks/useIsScrollDown';
 const Header: VFC = () => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
   const isScrollDown: boolean = useIsScrollDown();
+  const headerStateCss = isScrollDown ? stateCss['hidden'] : stateCss['visible'];
 
-  const headerStateCss = isScrollDown ? stateCss['visible'] : stateCss['hidden'];
-  
   return (
     <header css={[styles.header, headerStateCss]}>
       <div css={styles.area}>
@@ -71,10 +70,10 @@ const styles = {
 
 const stateCss = {
   visible: css`
-    transition: top 0.4s ease-out;
+    transition: top 0.1s ease-out;
   `,
   hidden: css`
     top: -55px;
-    transition: top 0.4s ease-out;
+    transition: top 0.1s ease-out;
   `,
 };
