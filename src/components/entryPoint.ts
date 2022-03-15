@@ -10,5 +10,5 @@ export { default as InputForm } from './uiParts/Input/InputForm';
 export { default as Navigation } from './uiParts/Navigation';
 export { default as Select } from './uiParts/Select';
 export { default as Slider } from './uiParts/Slider';
-export { default as Space } from './uiParts/Space';
+export { default as Space } from './uiParts/Spacer';
 export { default as Snackbar } from './uiParts/Snackbar';

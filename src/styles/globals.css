@@ -6,7 +6,6 @@ body {
 * {
   margin: 0;
   padding: 0;
-  border: 0;
   outline: 0;
   font-size: 100%;
   vertical-align: baseline;
@@ -42,7 +41,13 @@ hr {
   padding: 0;
 }
 
+/* NProgress */
 #nprogress .bar {
   background: rgb(255, 173, 21) !important;
   height: 3.2px !important;
+}
+
+/* Swiper */
+:root {
+  --swiper-theme-color: #8faf00 !important;
 }
