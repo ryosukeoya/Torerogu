@@ -1,8 +1,8 @@
 import React from 'react';
 import type { FC, ReactNode } from 'react';
-import { Input, Snackbar } from '../entryPoint';
-import { templates } from '../../styles/template';
-import { simpleButton } from '../styleEntryPoint';
+import { Input, Snackbar } from '../../entryPoint';
+import { templates } from '../../../styles/template';
+import { simpleButton } from '../../styleEntryPoint';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
 
 type ContainerInterface = {
