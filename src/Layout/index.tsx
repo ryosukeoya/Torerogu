@@ -18,7 +18,11 @@ const Layout: FC = (prop) => {
         <meta property='og:image' content={`${process.env.APP_URL}/ogp.png`} />
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='format-detection' content='telephone=no' />
-        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+        {/* favicon,icon */}
+        <link rel='shortcut icon' type='image/x-icon' href='icons/favicon.ico' sizes='192x192' />
+        <link rel='apple-touch-icon' href='icons/apple-touch-icon.png' sizes='180x180' />
+        <link rel='icon' type='image/png' href='icons/android-touch-icon.png' />
+
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' />
         <link href='https://fonts.googleapis.com/css2?family=Yomogi&display=swap' rel='stylesheet' />
