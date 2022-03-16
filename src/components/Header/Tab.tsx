@@ -3,6 +3,8 @@ import { css, SerializedStyles } from '@emotion/react';
 import { BREAKPOINT, FONT, COLOR } from '../../styles/const';
 import { useIsActive } from '../../hooks/useIsActive';
 import type { SetterOrUpdater } from 'recoil';
+import { useRecoilValue } from 'recoil';
+import { swiperAtom } from '../../store';
 
 type Props = {
   index: number;
@@ -13,10 +15,18 @@ type Props = {
 };
 
 const Tab: VFC<Props> = ({ index, activeIndex, title, isToggle, setState }) => {
+  const swiper = useRecoilValue(swiperAtom);
+
   const isActive = useIsActive(!!isToggle, activeIndex, index);
 
   return (
-    <li onClick={() => setState && setState(index)} css={styles.tab(isActive)}>
+    <li
+      onClick={() => {
+        swiper?.slideTo(index);
+        setState && setState(index);
+      }}
+      css={styles.tab(isActive)}
+    >
       {title}
     </li>
   );
