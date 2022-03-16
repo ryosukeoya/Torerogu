@@ -1,7 +1,7 @@
 import { PageTitles } from '../types/index';
 
 export const APP = {
-  NAME: 'Recot',
+  NAME: 'トレログ',
   DESC: '筋トレアプリ',
 } as const;
 
