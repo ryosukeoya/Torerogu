@@ -5,7 +5,7 @@ import { css, SerializedStyles } from '@emotion/react';
 import { getIcon } from '../../utils/app';
 import { PAGE_PATH } from '../../constants/index';
 import type { PageTitle } from '../../types/index';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '../../store';
 import { COLOR } from '../../styles/const';
 import { useIsActive } from '../../hooks/useIsActive';
@@ -20,7 +20,7 @@ type Props = {
 };
 
 const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: parentActiveIndex, setActiveIndex: parentSetActiveIndex }) => {
-  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
+  const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
   const isActive = useIsActive(!!isToggle, parentActiveIndex, index);
 
   return (
