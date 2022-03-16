@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { FONT, COLOR } from './const';
+import { BREAKPOINT, FONT, COLOR } from './const';
 
 export const templates = {
   contentArea: css`
@@ -38,8 +38,10 @@ export const templates = {
     margin-top: 10px;
     font-size: ${FONT.BASE};
     cursor: pointer;
-    &:hover {
-      opacity: 0.8;
+    @media (min-width: ${BREAKPOINT.MD}) {
+      &:hover {
+        opacity: 0.8;
+      }
     }
   `,
 };

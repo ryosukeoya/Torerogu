@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { COLOR } from '../../../styles/const';
+import { BREAKPOINT, COLOR } from '../../../styles/const';
 
 export const buttonBase = (marginTop?: number) => css`
   display: block;
@@ -18,8 +18,10 @@ export const simpleButton = (marginTop?: number, customCss?: SerializedStyles) =
   ${buttonBase(marginTop)};
   color: white;
   background-color: ${COLOR.ORANGE};
-  &:hover {
-    opacity: 0.8;
+  @media (min-width: ${BREAKPOINT.MD}) {
+    &:hover {
+      opacity: 0.8;
+    }
   }
   ${customCss}
 `;
@@ -29,9 +31,11 @@ export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyl
   color: ${COLOR.ORANGE};
   background-color: white;
   border: 1px solid ${COLOR.ORANGE};
-  &:hover {
-    color: white;
-    background-color: ${COLOR.ORANGE};
+  @media (min-width: ${BREAKPOINT.MD}) {
+    &:hover {
+      color: white;
+      background-color: ${COLOR.ORANGE};
+    }
   }
   ${customCss}
 `;
