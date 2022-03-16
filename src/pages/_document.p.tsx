@@ -3,7 +3,12 @@ import { Html, Head, Main, NextScript } from 'next/document';
 const MyDocument = () => {
   return (
     <Html lang='ja-JP'>
-      <Head></Head>
+      <Head>
+        {/* favicon,icon */}
+        <link rel='shortcut icon' type='image/x-icon' href='icons/favicon.ico' sizes='192x192' />
+        <link rel='apple-touch-icon' href='icons/apple-touch-icon.png' sizes='180x180' />
+        <link rel='icon' type='image/png' href='icons/android-touch-icon.png' />
+      </Head>
       <body>
         <Main />
         <NextScript />
