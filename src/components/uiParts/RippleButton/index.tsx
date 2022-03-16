@@ -8,7 +8,7 @@ type Props = {
 };
 
 const RippleButton: FC<Props> = ({ children, onClick }) => {
-  const [coords, setCoords, isRippling] = useRipple();
+  const [coords, setCoords, isRippling] = useRipple(300);
 
   return (
     <button

@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { COLOR, BORDER } from '../../../styles/const';
+import { BREAKPOINT, COLOR, BORDER } from '../../../styles/const';
 
 export const cardStyle = (customCss?: SerializedStyles, hoverTheme: 'scale' | 'darken' = 'scale') => css`
   background-color: #fff;
@@ -12,10 +12,12 @@ export const cardStyle = (customCss?: SerializedStyles, hoverTheme: 'scale' | 'd
   padding: 25px 15px;
   cursor: pointer;
   ${hoverTheme === 'scale' && 'transition: all 0.3s'};
-  &:hover {
-    ${hoverTheme === 'darken' && `background-color: ${COLOR.HOVER}`};
-    ${hoverTheme === 'scale' && `transform: scale(1.02);`};
-    ${hoverTheme === 'scale' && 'box-shadow: 0 1.5px 6px 3.5px #c4c4c4'};
+  @media (min-width: ${BREAKPOINT.MD}) {
+    &:hover {
+      ${hoverTheme === 'darken' && `background-color: ${COLOR.HOVER}`};
+      ${hoverTheme === 'scale' && `transform: scale(1.02);`};
+      ${hoverTheme === 'scale' && 'box-shadow: 0 1.5px 6px 3.5px #c4c4c4'};
+    }
   }
   ${customCss};
 `;

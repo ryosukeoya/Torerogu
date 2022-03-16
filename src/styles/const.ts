@@ -15,6 +15,7 @@ const BORDER = {
 };
 
 const FONT = {
+  X_SMALL: '11px',
   SMALL: '14px',
   BASE: '16px',
   LARGE: '18px',

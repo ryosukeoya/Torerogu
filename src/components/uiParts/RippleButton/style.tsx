@@ -1,5 +1,5 @@
 import { css, keyframes, SerializedStyles } from '@emotion/react';
-import { COLOR } from '../../../styles/const';
+import { BREAKPOINT, COLOR } from '../../../styles/const';
 import { buttonBase } from '../../styleEntryPoint';
 
 const rippleEffect = keyframes`
@@ -25,8 +25,10 @@ export const rippleButton = {
     overflow: hidden;
     position: relative;
     ${customStyle}
+    @media (min-width: ${BREAKPOINT.MD}) {
     &:hover {
       background:  #f59300;
+    }
   `,
   ripple: css`
     width: 100px;
@@ -37,7 +39,7 @@ export const rippleButton = {
     content: '';
     border-radius: 50%;
     opacity: 1;
-    animation: 3.0s ease 1 forwards ${rippleEffect};
+    animation: 3s ease 1 forwards ${rippleEffect};
   `,
   content: css`
     position: relative;
