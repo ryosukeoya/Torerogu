@@ -39,7 +39,6 @@ const TrainingPage: VFC<Props> = ({ data }) => {
   };
 
   const registerTraining: SubmitHandler<TrainingFormValues> = (data) => {
-  console.log("🚀 ~ file: TrainingPage.tsx ~ line 42 ~ data", data)
     insertTraining({ variables: { user_id: 1, training_type_id: selectedTrainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.count, is_finish: true, date: new Date() } });
   };
 
