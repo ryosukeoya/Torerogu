@@ -1,8 +1,9 @@
 import { css } from '@emotion/react';
 import { BREAKPOINT, FONT, COLOR } from './const';
 
-export const templates = {
+export const pageTemplate = {
   contentArea: css`
+    min-height: 100vh;
     width: 90vw;
     margin: 0 auto;
     padding-top: 30px;

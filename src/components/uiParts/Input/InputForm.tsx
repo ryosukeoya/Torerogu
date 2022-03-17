@@ -1,5 +1,5 @@
 import type { VFC, PropsWithChildren } from 'react';
-import { templates } from '../../../styles/template';
+import { pageTemplate } from '../../../styles/template';
 import { useFormContext, FieldErrors, FieldValues } from 'react-hook-form';
 import type { InputProps, TextAreaProps } from './Input';
 import { inputStyle, textareaStyle } from './style';
@@ -7,7 +7,7 @@ import React from 'react';
 
 const ErrorMessage: VFC<{ errors: FieldErrors<FieldValues>; form: InputFormProps['form'] }> = ({ errors, form }) => {
   return (
-    <p css={templates.errorMessage}>
+    <p css={pageTemplate.errorMessage}>
       {errors[form.name]?.type === 'required' && '必須項目です'}
       {errors[form.name]?.type === 'pattern' && '数値を入力してください'}
       {errors[form.name]?.type === 'maxLength' && '桁数を小さくしてください'}
@@ -28,15 +28,15 @@ interface TextAreaFormProps extends TextAreaProps {
 // prettier-ignore
 const Container: VFC<PropsWithChildren<(InputFormProps & { errors: Record<string, any> }) | (TextAreaFormProps & { errors: Record<string, any> })>> = (props) => { //  eslint-disable-line @typescript-eslint/no-explicit-any,
   return (
-    <div css={templates.content}>
+    <div css={pageTemplate.content}>
       {props.title && (
-        <p css={templates.contentTitle}>
+        <p css={pageTemplate.contentTitle}>
           {props.title}
-          {'required' in props.form.option && <span css={templates.require}>*必須</span>}
+          {'required' in props.form.option && <span css={pageTemplate.require}>*必須</span>}
         </p>
       )}
       {props.children}
-      <span css={templates.unit}>{props.unit}</span>
+      <span css={pageTemplate.unit}>{props.unit}</span>
       <ErrorMessage errors={props.errors} form={props.form} />
     </div>
   );

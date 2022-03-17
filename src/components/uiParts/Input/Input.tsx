@@ -1,6 +1,6 @@
 import { SerializedStyles } from '@emotion/react';
 import React, { VFC, Dispatch, SetStateAction, ReactNode } from 'react';
-import { templates } from '../../../styles/template';
+import { pageTemplate } from '../../../styles/template';
 import { inputStyle, textareaStyle } from './style';
 
 interface PropsBase<T extends 'isInput' | 'isTextArea'> {
@@ -11,7 +11,6 @@ interface PropsBase<T extends 'isInput' | 'isTextArea'> {
 }
 interface InputProps extends PropsBase<'isInput'> {
   typeAttr: string;
-  value?: string | number;
   setState?: Dispatch<SetStateAction<unknown>>;
   customCss?: SerializedStyles;
 }
@@ -27,8 +26,8 @@ export type { InputProps, TextAreaProps };
 
 const Container: VFC<{ children: ReactNode; title: string | undefined }> = ({ children, title }) => {
   return (
-    <div css={templates.content}>
-      {title && <p css={templates.contentTitle}>{title}</p>}
+    <div css={pageTemplate.content}>
+      {title && <p css={pageTemplate.contentTitle}>{title}</p>}
       {children}
     </div>
   );
