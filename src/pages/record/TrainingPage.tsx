@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations';
 import { Slider, Space, Select, Card, FormContainer } from '../../components/entryPoint';
-import { pageTemplate } from '../../styles/template';
+import { pageTemplate } from '../../styles/pageTemplate';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { css } from '@emotion/react';
@@ -64,9 +64,9 @@ const TrainingPage: VFC<Props> = ({ data }) => {
             </p>
           }
         >
-          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} isRequired/>
-          <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} isRequired/>
-          <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} isRequired/>
+          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} isRequired />
+          <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} isRequired />
+          <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} isRequired />
         </FormContainer>
       </FormProvider>
     );

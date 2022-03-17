@@ -1,7 +1,7 @@
 import React from 'react';
 import type { FC, ReactNode } from 'react';
 import { Input, Snackbar } from '../../entryPoint';
-import { pageTemplate } from '../../../styles/template';
+import { pageTemplate } from '../../../styles/pageTemplate';
 import { simpleButton } from '../../styleEntryPoint';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
 

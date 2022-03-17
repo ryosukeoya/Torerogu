@@ -15,7 +15,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props,
 
 const SnackbarAlert: VFC<Props> = ({ text, open, handleClose }) => {
   return (
-    <Snackbar open={open} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
+    <Snackbar open={open} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
       <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
         {text}
       </Alert>
