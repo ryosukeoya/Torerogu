@@ -21,7 +21,7 @@ const FormContainer: FC<ContainerInterface> = ({ handleSubmit, submitFunc, title
       <div css={pageTemplate.contentArea}>
         <h2 css={pageTemplate.title}>{title}</h2>
         {children}
-        <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} value={'記録する'} />
+        <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} />
         <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />
         {OtherElm}
       </div>
