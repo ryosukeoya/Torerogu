@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { GET_TRAINING_ONE_TYPE } from '../libs/graphql/queries';
 import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
 import { useQuery } from '@apollo/client';
-import { templates } from '../styles/template';
+import { pageTemplate } from '../styles/template';
 import { getCurrentDate } from '../utils/app';
 import Top from './Top';
 import History from './History';
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 
   if (loading) {
     return (
-      <div css={templates.contentArea}>
+      <div css={pageTemplate.contentArea}>
         <p>Loading...</p>
       </div>
     );

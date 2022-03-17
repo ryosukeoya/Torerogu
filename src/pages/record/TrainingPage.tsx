@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
 import { CREATE_TRAINING } from '../../libs/graphql/mutations';
 import { Slider, Space, Select, Card, FormContainer } from '../../components/entryPoint';
-import { templates } from '../../styles/template';
+import { pageTemplate } from '../../styles/template';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { css } from '@emotion/react';
@@ -59,7 +59,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
           open={open}
           handleClose={handleClose}
           OtherElm={
-            <p css={templates.back} onClick={() => setSelectedTrainingType(null)}>
+            <p css={pageTemplate.back} onClick={() => setSelectedTrainingType(null)}>
               ＜ カテゴリ選択に戻る
             </p>
           }
