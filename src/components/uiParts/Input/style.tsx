@@ -7,7 +7,8 @@ export const inputStyle = (customCss?: SerializedStyles) => css`
   background-color: #fff;
   border-radius: 5px;
   text-align: right;
-  padding: 2px 10px;
+  padding: 4px 10px;
+  color:black;
   &::placeholder {
   }
   &:focus {
