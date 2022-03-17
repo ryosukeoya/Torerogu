@@ -39,7 +39,7 @@ const Input: VFC<InputProps | TextAreaProps> = (props) => {
     case 'isInput':
       return (
         <Container title={props.title}>
-          <input type={props.typeAttr} {...props.options} onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={props.customCss ? props.customCss : inputStyle()} placeholder={props.placeholder} />
+          <input type={props.typeAttr} {...props.options} onChange={(e) => props.setState && props.setState(e.target.value)} css={props.customCss ? props.customCss : inputStyle()} placeholder={props.placeholder} />
         </Container>
       );
     case 'isTextArea':

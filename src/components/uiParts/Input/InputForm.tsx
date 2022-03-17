@@ -53,7 +53,7 @@ const InputForm: VFC<InputFormProps | TextAreaFormProps> = (props) => {
     case 'isInput':
       return (
         <Container {...props} errors={errors}>
-          <input type={props.typeAttr} {...props.options} {...(props.form && { ...register(props.form.name, props.form.option) })} onChange={(e) => props.setState && props.setState(e.target.value)} value={props.value} css={inputStyle()} placeholder={props.placeholder} />
+          <input type={props.typeAttr} {...props.options} {...(props.form && { ...register(props.form.name, props.form.option) })} onChange={(e) => props.setState && props.setState(e.target.value)} css={inputStyle()} placeholder={props.placeholder} />
         </Container>
       );
     case 'isTextArea':
