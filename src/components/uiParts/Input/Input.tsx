@@ -1,6 +1,6 @@
 import { SerializedStyles } from '@emotion/react';
 import React, { VFC, Dispatch, SetStateAction, ReactNode } from 'react';
-import { pageTemplate } from '../../../styles/template';
+import { pageTemplate } from '../../../styles/pageTemplate';
 import { inputStyle, textareaStyle } from './style';
 
 interface PropsBase<T extends 'isInput' | 'isTextArea'> {
