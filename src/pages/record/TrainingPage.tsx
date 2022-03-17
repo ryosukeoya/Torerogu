@@ -39,6 +39,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
   };
 
   const registerTraining: SubmitHandler<TrainingFormValues> = (data) => {
+  console.log("🚀 ~ file: TrainingPage.tsx ~ line 42 ~ data", data)
     insertTraining({ variables: { user_id: 1, training_type_id: selectedTrainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.count, is_finish: true, date: new Date() } });
   };
 
@@ -64,9 +65,9 @@ const TrainingPage: VFC<Props> = ({ data }) => {
             </p>
           }
         >
-          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} />
-          <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} />
-          <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} />
+          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} isRequired/>
+          <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} isRequired/>
+          <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} isRequired/>
         </FormContainer>
       </FormProvider>
     );
