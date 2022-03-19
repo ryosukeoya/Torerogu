@@ -2,7 +2,7 @@ import React from 'react';
 import type { FC, ReactNode } from 'react';
 import { Input, Snackbar } from '../../entryPoint';
 import { pageTemplate } from '../../../styles/share/pageTemplate';
-import { simpleButton } from '../../../styles/share/buttonLike';
+import { simpleButton } from '../../../styles/share/likeButton';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
 
 type ContainerInterface = {

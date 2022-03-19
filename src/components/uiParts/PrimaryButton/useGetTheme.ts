@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { simpleButton, toggleColorButton } from '../../../styles/share/buttonLike';
+import { simpleButton, toggleColorButton } from '../../../styles/share/likeButton';
 
 export const useGetTheme = (theme: string) => {
   const themeCss = useCallback(() => {
