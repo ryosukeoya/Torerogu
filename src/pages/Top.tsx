@@ -5,7 +5,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { pageTemplate } from '../styles/template';
+import { pageTemplate } from '../styles/pageTemplate';
 import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
 
 type Props = {

@@ -1,11 +1,12 @@
 import React from 'react';
 import type { FC, ReactNode } from 'react';
 import { Input, Snackbar } from '../../entryPoint';
-import { pageTemplate } from '../../../styles/template';
+import { pageTemplate } from '../../../styles/pageTemplate';
 import { simpleButton } from '../../styleEntryPoint';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
 
 type ContainerInterface = {
+  pageIndex: number;
   handleSubmit: UseFormHandleSubmit<Record<string, unknown>>;
   submitFunc: SubmitHandler<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
   title: string;
@@ -15,14 +16,14 @@ type ContainerInterface = {
   children: ReactNode;
 };
 
-const FormContainer: FC<ContainerInterface> = ({ handleSubmit, submitFunc, title, open, handleClose, OtherElm, children }) => {
+const FormContainer: FC<ContainerInterface> = ({ pageIndex, handleSubmit, submitFunc, title, open, handleClose, OtherElm, children }) => {
   return (
     <form onSubmit={handleSubmit(submitFunc)}>
       <div css={pageTemplate.contentArea}>
         <h2 css={pageTemplate.title}>{title}</h2>
         {children}
         <Input type={'isInput'} typeAttr='submit' customCss={simpleButton(10)} />
-        <Snackbar text={'記録しました！'} open={open} handleClose={handleClose} />
+        <Snackbar pageIndex={pageIndex} text={'記録しました！'} open={open} handleClose={handleClose} />
         {OtherElm}
       </div>
     </form>

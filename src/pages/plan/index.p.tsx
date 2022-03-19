@@ -7,8 +7,8 @@ import { SwiperContainer } from '../../components/entryPoint';
 const Plan: NextPage<VFC> = () => {
   return (
     <SwiperContainer>
-      <BodyInfoPage />
-      <TrainingPage />
+      <BodyInfoPage pageIndex={0}/>
+      <TrainingPage pageIndex={1}/>
     </SwiperContainer>
   );
 };

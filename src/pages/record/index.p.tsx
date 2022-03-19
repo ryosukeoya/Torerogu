@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import { GET_TRAINING_CATEGORY_WITH_TYPE } from '../../libs/graphql/queries';
 import type { GetTrainingCategoryWithTypeQuery } from '../../types/generated/graphql';
-import { default as PhysicalPage } from './BodyInfoPage';
-import { default as TrainingPage } from './TrainingPage';
+import BodyInfoPage from './BodyInfoPage';
+import TrainingPage from './TrainingPage';
 import { initializeApollo } from '../../libs/graphql/apolloClient';
 import { SwiperContainer } from '../../components/entryPoint';
 
@@ -25,8 +25,8 @@ type Props = {
 const Record: NextPage<Props> = ({ data }) => {
   return (
     <SwiperContainer>
-      <PhysicalPage />
-      <TrainingPage data={data} />
+      <BodyInfoPage pageIndex={0} />
+      <TrainingPage data={data} pageIndex={1} />
     </SwiperContainer>
   );
 };

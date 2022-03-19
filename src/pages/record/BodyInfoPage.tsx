@@ -12,7 +12,11 @@ type BodyInfoFormValues = {
   bodyFatPercentage: number | '' | null;
 };
 
-const BodyInfoPage: VFC = () => {
+type Props = {
+  pageIndex: number;
+};
+
+const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
   const [open, setOpen] = useState(false);
   const [insertBodyInfo, {}] = useMutation<CreateBodyInfoHistoriesMutation>(CREATE_BODY_INFO_HISTORIES, {
     onCompleted: () => setOpen(true),
@@ -37,10 +41,10 @@ const BodyInfoPage: VFC = () => {
 
   return (
     <FormProvider {...method}>
-        <FormContainer handleSubmit={handleSubmit} submitFunc={registerBodyInfo} title={` ✏️ ${date.month} / ${date.day} (${date.weekday}) の記録`} open={open} handleClose={handleClose}>
-          <InputForm title={'体重'} typeAttr={'text'} unit={'kg'} type={'isInput'} placeholder={'60'} form={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
-          <InputForm title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
-        </FormContainer>
+      <FormContainer pageIndex={pageIndex} handleSubmit={handleSubmit} submitFunc={registerBodyInfo} title={` ✏️ ${date.month} / ${date.day} (${date.weekday}) の記録`} open={open} handleClose={handleClose}>
+        <InputForm title={'体重'} typeAttr={'text'} unit={'kg'} type={'isInput'} placeholder={'60'} form={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
+        <InputForm title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
+      </FormContainer>
     </FormProvider>
   );
 };

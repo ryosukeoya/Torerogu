@@ -3,7 +3,7 @@ import { BREAKPOINT, FONT, COLOR } from './const';
 
 export const pageTemplate = {
   contentArea: css`
-    min-height: 100vh;
+    min-height: calc(100vh - 170px);
     width: 90vw;
     margin: 0 auto;
     padding-top: 30px;
