@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import type { VFC } from 'react';
-import { InputForm, Select, FormContainer } from '../../components/entryPoint';
+import { InputForm, Select, FormContainer } from '~/components/entryPoint';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
-import { GET_TRAINING_CATEGORY_WITH_TYPE } from '../../libs/graphql/queries';
-import { CREATE_TRAINING } from '../../libs/graphql/mutations';
-import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
+import { GET_TRAINING_CATEGORY_WITH_TYPE } from '~/libs/graphql/queries';
+import { CREATE_TRAINING } from '~/libs/graphql/mutations';
+import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
-import { getCurrentDate, getNumArr, getTrainingTypes } from '../../utils';
+import { getCurrentDate, getNumArr, getTrainingTypes } from '~/utils';
 
 type PlanTrainingFormValue = {
   date: Date;

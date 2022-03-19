@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import { FormContainer, InputForm } from '../../components/entryPoint';
+import { FormContainer, InputForm } from '~/components/entryPoint';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
-import { getCurrentDate } from '../../utils/app';
+import { getCurrentDate } from '~/utils/app';
 
 type PlanBodyInfoFormValues = {
   date: Date;

@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { BREAKPOINT, COLOR, BORDER } from '../../../styles/const';
+import { BREAKPOINT, COLOR, BORDER } from '~/styles/const';
 
 export const cardStyle = (customCss?: SerializedStyles, hoverTheme: 'scale' | 'darken' = 'scale') => css`
   background-color: #fff;

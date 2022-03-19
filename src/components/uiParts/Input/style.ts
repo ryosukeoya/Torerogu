@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { BORDER } from '../../../styles/const';
+import { BORDER } from '~/styles/const';
 
 export const inputStyle = (customCss?: SerializedStyles) => css`
   width: 200px;

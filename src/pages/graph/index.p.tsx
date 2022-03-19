@@ -1,12 +1,12 @@
 import React, { VFC } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { Space, Navigation } from '../../components/entryPoint';
+import { Space, Navigation } from '~/components/entryPoint';
 import { useRecoilValue } from 'recoil';
-import { headerTabIndexAtom } from '../../store';
-import { COLOR } from '../../styles/const';
+import { headerTabIndexAtom } from '~/store';
+import { COLOR } from '~/styles/const';
 import { useQuery } from '@apollo/client';
-import { GET_TRAINING_WITH_BODY_INFO } from '../../libs/graphql/queries';
-import type { GetTrainingWithBodyInfoQuery } from '../../types/generated/graphql';
+import { GET_TRAINING_WITH_BODY_INFO } from '~/libs/graphql/queries';
+import type { GetTrainingWithBodyInfoQuery } from '~/types/generated/graphql';
 import { getSortDate } from './logic';
 
 const Graph: VFC = () => {
