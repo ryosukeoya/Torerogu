@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import type { VFC } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import { getCustomCss } from './func';
 
 type Props = {
   text: string;
   open: boolean;
   handleClose: () => void;
+  pageIndex: number;
 };
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
+const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
 });
 
-const SnackbarAlert: VFC<Props> = ({ text, open, handleClose }) => {
+const SnackbarWrap: VFC<Props> = ({ text, open, handleClose, pageIndex }) => {
   return (
-    <Snackbar open={open} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose}>
+    <Snackbar open={open} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} autoHideDuration={3000} onClose={handleClose} sx={() => getCustomCss(pageIndex)}>
       <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
         {text}
       </Alert>
@@ -23,4 +25,4 @@ const SnackbarAlert: VFC<Props> = ({ text, open, handleClose }) => {
   );
 };
 
-export default SnackbarAlert;
+export default SnackbarWrap;

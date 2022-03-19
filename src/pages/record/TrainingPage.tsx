@@ -19,9 +19,10 @@ type TrainingFormValues = {
 
 type Props = {
   data?: GetTrainingCategoryWithTypeQuery;
+  pageIndex: number;
 };
 
-const TrainingPage: VFC<Props> = ({ data }) => {
+const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState<number>(0);
   const [selectedTrainingType, setSelectedTrainingType] = useState<TrainingType | null>(null);
@@ -53,6 +54,7 @@ const TrainingPage: VFC<Props> = ({ data }) => {
     return (
       <FormProvider {...method}>
         <FormContainer
+          pageIndex={pageIndex}
           handleSubmit={handleSubmit}
           submitFunc={registerTraining}
           title={`✏️ ${selectedTrainingType.name}`}

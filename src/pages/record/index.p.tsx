@@ -25,8 +25,8 @@ type Props = {
 const Record: NextPage<Props> = ({ data }) => {
   return (
     <SwiperContainer>
-      <BodyInfoPage />
-      <TrainingPage data={data} />
+      <BodyInfoPage pageIndex={0} />
+      <TrainingPage data={data} pageIndex={1} />
     </SwiperContainer>
   );
 };

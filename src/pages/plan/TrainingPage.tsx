@@ -17,7 +17,11 @@ type PlanTrainingFormValue = {
   set: string;
 };
 
-const TrainingPage: VFC = () => {
+type Props = {
+  pageIndex: number;
+};
+
+const TrainingPage: VFC<Props> = ({ pageIndex }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
 
@@ -47,7 +51,7 @@ const TrainingPage: VFC = () => {
 
   return (
     <FormProvider {...method}>
-      <FormContainer handleSubmit={handleSubmit} submitFunc={registerTraining} title={'✏️ 日ごとの設定'} open={true} handleClose={handleClose}>
+      <FormContainer pageIndex={pageIndex} handleSubmit={handleSubmit} submitFunc={registerTraining} title={'✏️ 日ごとの設定'} open={open} handleClose={handleClose}>
         <InputForm options={{ value: getCurrentDate(new Date(), true), min: getCurrentDate(new Date(), true) }} typeAttr={'date'} type={'isInput'} form={{ name: 'date', option: { required: true } }} />
         <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={10} isRequired />
         <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypes(selectedCategoryID, data?.training_types, data?.training_categories)} marginBottom={10} isRequired />
