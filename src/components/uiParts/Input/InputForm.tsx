@@ -3,7 +3,6 @@ import { pageTemplate } from '~/styles/share/pageTemplate';
 import { useFormContext, FieldErrors, FieldValues } from 'react-hook-form';
 import type { InputProps, TextAreaProps } from './Input';
 import { inputStyle, textareaStyle } from './style';
-import React from 'react';
 
 const ErrorMessage: VFC<{ errors: FieldErrors<FieldValues>; form: InputFormProps['form'] }> = ({ errors, form }) => {
   return (

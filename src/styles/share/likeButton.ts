@@ -5,7 +5,7 @@ export const buttonBase = (marginTop?: number) => css`
   display: block;
   box-sizing: border-box;
   width: 80vw;
-  padding: 13px;
+  padding: 13px 0;
   margin: 0 auto;
   text-align: center;
   border-radius: 22px;

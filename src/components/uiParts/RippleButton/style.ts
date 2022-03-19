@@ -31,11 +31,15 @@ export const rippleButton = {
     }
   `,
   ripple: css`
+    display: block;
     width: 100px;
     height: 100px;
     position: absolute;
+    /* top: 50%;
+    left: 50%; */
     background: #fa9a09;
-    display: block;
+    /* background: red; */
+    background: #ffb64a;
     content: '';
     border-radius: 50%;
     opacity: 1;
