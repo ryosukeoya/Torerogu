@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { BREAKPOINT, COLOR } from '../../../styles/const';
+import { BREAKPOINT, COLOR } from '../../styles/const';
 
 export const buttonBase = (marginTop?: number) => css`
   display: block;

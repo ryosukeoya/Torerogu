@@ -1,5 +1,5 @@
 import type { VFC, PropsWithChildren } from 'react';
-import { pageTemplate } from '../../../styles/pageTemplate';
+import { pageTemplate } from '../../../styles/share/pageTemplate';
 import { useFormContext, FieldErrors, FieldValues } from 'react-hook-form';
 import type { InputProps, TextAreaProps } from './Input';
 import { inputStyle, textareaStyle } from './style';

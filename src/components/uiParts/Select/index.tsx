@@ -1,7 +1,7 @@
 import React from 'react';
 import type { VFC } from 'react';
 import { SerializedStyles } from '@emotion/react';
-import { pageTemplate } from '../../../styles/pageTemplate';
+import { pageTemplate } from '../../../styles/share/pageTemplate';
 import { useFormContext } from 'react-hook-form';
 import { selectStyle } from './style';
 
