@@ -34,6 +34,7 @@ const Select: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: mb =
           );
         })}
       </select>
+      {isRequired && <span css={pageTemplate.require}>*必須</span>}
       <p css={pageTemplate.errorMessage}>{errors.name?.type === 'required' && '必須項目です'}</p>
     </>
   );
