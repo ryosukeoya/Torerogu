@@ -5,7 +5,7 @@ import { inputStyle, textareaStyle } from './style';
 import useRipple from '~/hooks/useRipple';
 import { rippleButton } from '../RippleButton/style';
 
-interface PropsBase<T extends 'isInput' | 'isTextArea'> {
+interface PropsBase<T extends 'isInput' | 'isTextArea' | 'base'> {
   type: T;
   options?: Record<string, unknown>;
   title?: string;
@@ -24,7 +24,7 @@ interface TextAreaProps extends PropsBase<'isTextArea'> {
   name?: string;
 }
 
-export type { InputProps, TextAreaProps };
+export type { PropsBase, InputProps, TextAreaProps };
 
 type ContainerProps = {
   children: ReactNode;
