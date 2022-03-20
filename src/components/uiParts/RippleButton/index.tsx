@@ -16,7 +16,7 @@ const RippleButton: FC<Props> = ({ children, onClick }) => {
       onClick={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
         setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-        onClick && onClick(e);
+        onClick(e);
       }}
     >
       {isRippling ? (
