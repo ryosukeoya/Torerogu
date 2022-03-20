@@ -35,11 +35,7 @@ export const rippleButton = {
     width: 100px;
     height: 100px;
     position: absolute;
-    /* top: 50%;
-    left: 50%; */
-    background: #fa9a09;
-    /* background: red; */
-    background: #ffb64a;
+    background: #ffbb54;
     content: '';
     border-radius: 50%;
     opacity: 1;

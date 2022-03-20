@@ -1,21 +1,30 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { BORDER } from '~/styles/const';
 
-export const inputStyle = (customCss?: SerializedStyles) => css`
-  width: 200px;
-  border: 1px solid ${BORDER.GRAY};
-  background-color: #fff;
-  border-radius: 5px;
-  text-align: right;
-  padding: 4px 10px;
-  color:black;
-  &::placeholder {
-  }
-  &:focus {
-    border: 1.5px solid rgba(255,153,0,0.7)};
-  }
-  ${customCss}
-`;
+export const inputStyle = {
+  input: (customCss?: SerializedStyles) => css`
+    width: 200px;
+    border: 1px solid ${BORDER.GRAY};
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: right;
+    padding: 4px 10px;
+    color:black;
+    &::placeholder {
+    }
+    &:focus {
+      border: 1.5px solid rgba(255,153,0,0.7)};
+    }
+    ${customCss}
+  `,
+  inputTitle: css`
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1000;
+  `,
+};
 
 export const textareaStyle = (customCss?: SerializedStyles) => css`
   border: 1px solid ${BORDER.GRAY};

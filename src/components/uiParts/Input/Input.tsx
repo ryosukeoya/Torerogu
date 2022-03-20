@@ -11,6 +11,7 @@ interface PropsBase<T extends 'isInput' | 'isTextArea' | 'base'> {
   title?: string;
   placeholder?: string;
 }
+
 interface InputProps extends PropsBase<'isInput'> {
   isRipple?: true;
   typeAttr: string;
@@ -58,7 +59,8 @@ const Input: VFC<InputProps | TextAreaProps> = ({ options, title, placeholder, .
               })
             }
           >
-            <input style={{ width: '100%', height: '100%' }} type={typeAttr} {...options} onChange={(e) => setState && setState(e.target.value)} css={customCss ? customCss : inputStyle()} placeholder={placeholder} />
+            {typeAttr === 'submit' && <span css={inputStyle.inputTitle}>記録する</span>}
+            <input value={''} style={{ width: '100%', height: '100%' }} type={typeAttr} {...options} onChange={(e) => setState && setState(e.target.value)} css={customCss ? customCss : inputStyle.input()} placeholder={placeholder} />
             {isRipple && isRippling ? (
               <span
                 css={rippleButton.ripple}
