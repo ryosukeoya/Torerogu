@@ -24,9 +24,7 @@ const FormContainer: FC<ContainerInterface> = ({ pageIndex, handleSubmit, submit
         <h2 css={pageTemplate.title}>{title}</h2>
         {children}
         <Input
-          isRipple
-          type={'isInput'}
-          typeAttr='submit'
+          type={'isSubmit'}
           customCss={css`
             background: ${COLOR.ORANGE};
             border: none;
