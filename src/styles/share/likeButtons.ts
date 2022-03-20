@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { BREAKPOINT, COLOR } from '../const';
 
-export const buttonBase = (marginTop?: number) => css`
+const buttonBase = (marginTop?: number) => css`
   display: block;
   box-sizing: border-box;
   width: 80vw;
@@ -14,6 +14,7 @@ export const buttonBase = (marginTop?: number) => css`
   cursor: pointer;
 `;
 
+// hover時は少し透明になる基本のボタン
 export const simpleButton = (marginTop?: number, customCss?: SerializedStyles) => css`
   ${buttonBase(marginTop)};
   color: white;
@@ -26,6 +27,7 @@ export const simpleButton = (marginTop?: number, customCss?: SerializedStyles) =
   ${customCss}
 `;
 
+//　hoverでボタンの文字色と背景の色が切り替わる
 export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyles) => css`
   ${buttonBase(marginTop)};
   color: ${COLOR.ORANGE};
@@ -38,4 +40,18 @@ export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyl
     }
   }
   ${customCss}
+`;
+
+// クリック時に波打つエフェクトを持つボタン用
+export const rippleButton = (customStyle?: SerializedStyles) => css`
+  ${buttonBase(30)};
+  background: ${COLOR.ORANGE};
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  ${customStyle}
+  @media (min-width: ${BREAKPOINT.MD}) {
+  &:hover {
+    background:  #f59300;
+  }
 `;

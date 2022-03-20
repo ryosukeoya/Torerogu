@@ -1,6 +1,4 @@
-import { css, keyframes, SerializedStyles } from '@emotion/react';
-import { BREAKPOINT, COLOR } from '~/styles/const';
-import { buttonBase } from '~/styles/share/likeButton';
+import { css, keyframes } from '@emotion/react';
 
 const rippleEffect = keyframes`
   0% {
@@ -17,19 +15,7 @@ const rippleEffect = keyframes`
   }
 `;
 
-export const rippleButton = {
-  rippleButton: (customStyle?: SerializedStyles) => css`
-    ${buttonBase(30)};
-    background: ${COLOR.ORANGE};
-    color: #fff;
-    overflow: hidden;
-    position: relative;
-    ${customStyle}
-    @media (min-width: ${BREAKPOINT.MD}) {
-    &:hover {
-      background:  #f59300;
-    }
-  `,
+export const ripple = {
   ripple: css`
     display: block;
     width: 100px;
