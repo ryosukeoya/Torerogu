@@ -5,6 +5,7 @@ import { inputStyle, textareaStyle } from './style';
 import useRipple from '~/hooks/useRipple';
 import { rippleButton } from '~/styles/share/likeButtons';
 import { ripple } from '~/styles/share/ripple';
+import { css } from '@emotion/react';
 
 interface PropsBase<T extends 'isInput' | 'isTextArea' | 'base'> {
   type: T;
@@ -51,7 +52,15 @@ const Input: VFC<InputProps | TextAreaProps> = ({ options, title, placeholder, .
       return (
         <Container title={title}>
           <div
-            css={isRipple && rippleButton()}
+            css={
+              isRipple &&
+              rippleButton(
+                30,
+                css`
+                  padding: 0;
+                `,
+              )
+            }
             onClick={
               isRipple &&
               ((e: React.MouseEvent<HTMLDivElement>) => {
@@ -61,7 +70,7 @@ const Input: VFC<InputProps | TextAreaProps> = ({ options, title, placeholder, .
             }
           >
             {typeAttr === 'submit' && <span css={inputStyle.inputTitle}>記録する</span>}
-            <input value={''} style={{ width: '100%', height: '100%' }} type={typeAttr} {...options} onChange={(e) => setState && setState(e.target.value)} css={customCss ? customCss : inputStyle.input()} placeholder={placeholder} />
+            <input value={''} style={{ display: 'block', width: '100%', height: '100%', padding: '13px 0' }} type={typeAttr} {...options} onChange={(e) => setState && setState(e.target.value)} css={customCss ? customCss : inputStyle.input()} placeholder={placeholder} />
             {isRipple && isRippling ? (
               <span
                 css={ripple.ripple}

@@ -21,8 +21,12 @@ export const inputStyle = {
     position: absolute;
     left: 0;
     right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     margin: auto;
     z-index: 1000;
+
+    pointer-events: none;
   `,
 };
 

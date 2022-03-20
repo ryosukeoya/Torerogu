@@ -17,7 +17,6 @@ const rippleEffect = keyframes`
 
 export const ripple = {
   ripple: css`
-    display: block;
     width: 100px;
     height: 100px;
     position: absolute;

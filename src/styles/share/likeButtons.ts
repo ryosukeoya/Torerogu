@@ -1,6 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { BREAKPOINT, COLOR } from '../const';
 
+// export禁止
 const buttonBase = (marginTop?: number) => css`
   display: block;
   box-sizing: border-box;
@@ -43,8 +44,8 @@ export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyl
 `;
 
 // クリック時に波打つエフェクトを持つボタン用
-export const rippleButton = (customStyle?: SerializedStyles) => css`
-  ${buttonBase(30)};
+export const rippleButton = (marginTop?: number, customStyle?: SerializedStyles) => css`
+  ${buttonBase(marginTop)};
   background: ${COLOR.ORANGE};
   color: #fff;
   overflow: hidden;
