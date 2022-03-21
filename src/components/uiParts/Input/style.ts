@@ -44,8 +44,9 @@ export const textareaStyle = (customCss?: SerializedStyles) => css`
 
 export const submitStyle = () => css`
   display: block;
-  border: none;
   width: 100%;
   height: 100%;
   padding: 13px 0;
+  border: 0;
+  border-radius: 22px;
 `;
