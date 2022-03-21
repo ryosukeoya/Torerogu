@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { css, keyframes } from '@emotion/react';
 import Tabs from './Tabs';
-import { APP } from '../../constants';
-import { BORDER, COLOR, FONT } from '../../styles/const';
+import { APP } from '~/constants';
+import { BORDER, COLOR, FONT } from '~/styles/const';
 import { useRecoilState } from 'recoil';
-import { headerTabIndexAtom } from '../../store';
-import useIsScrollDown from '../../hooks/useIsScrollDown';
+import { headerTabIndexAtom } from '~/store';
+import useIsScrollDown from '~/hooks/useIsScrollDown';
 
 const Header: VFC = () => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);

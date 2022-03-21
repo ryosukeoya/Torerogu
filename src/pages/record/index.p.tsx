@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import { GET_TRAINING_CATEGORY_WITH_TYPE } from '../../libs/graphql/queries';
-import type { GetTrainingCategoryWithTypeQuery } from '../../types/generated/graphql';
+import { GET_TRAINING_CATEGORY_WITH_TYPE } from '~/libs/graphql/queries';
+import type { GetTrainingCategoryWithTypeQuery } from '~/types/generated/graphql';
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
-import { initializeApollo } from '../../libs/graphql/apolloClient';
-import { SwiperContainer } from '../../components/entryPoint';
+import { initializeApollo } from '~/libs/graphql/apolloClient';
+import { SwiperContainer } from '~/components/entryPoint';
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo();

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '../../types/generated/graphql';
-import { CREATE_TRAINING } from '../../libs/graphql/mutations';
-import { Slider, Space, Select, Card, FormContainer } from '../../components/entryPoint';
-import { pageTemplate } from '../../styles/pageTemplate';
+import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
+import { CREATE_TRAINING } from '~/libs/graphql/mutations';
+import { Slider, Space, Select, Card, FormContainer } from '~/components/entryPoint';
+import { pageTemplate } from '~/styles/share/pageTemplate';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { css } from '@emotion/react';
-import { getNumArr, getTrainingTypes2 } from '../../utils';
+import { getNumArr, getTrainingTypes2 } from '~/utils';
 
 type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
 

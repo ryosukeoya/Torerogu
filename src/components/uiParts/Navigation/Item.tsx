@@ -1,7 +1,7 @@
 import type { VFC, Dispatch } from 'react';
 import { css } from '@emotion/react';
-import { COLOR } from '../../../styles/const';
-import { useIsActive } from '../../../hooks/useIsActive';
+import { COLOR } from '~/styles/const';
+import { useIsActive } from '~/hooks/useIsActive';
 import type { SetterOrUpdater } from 'recoil';
 
 type Props = {

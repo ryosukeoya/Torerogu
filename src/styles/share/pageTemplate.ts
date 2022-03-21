@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { BREAKPOINT, FONT, COLOR } from './const';
+import { BREAKPOINT, FONT, COLOR } from '../const';
 
 export const pageTemplate = {
   contentArea: css`

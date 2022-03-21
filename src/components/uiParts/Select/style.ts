@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { BORDER } from '../../../styles/const';
+import { BORDER } from '~/styles/const';
 
 const disableDefaultStyle = css`
   -webkit-appearance: none;

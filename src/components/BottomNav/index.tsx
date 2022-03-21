@@ -1,10 +1,10 @@
 import React, { VFC } from 'react';
 import Tab from './Tab';
-import { PAGE_PATH } from '../../constants/index';
-import type { PageTitles, PageTitle } from '../../types/index';
+import { PAGE_PATH } from '~/constants/index';
+import type { PageTitles, PageTitle } from '~/types/index';
 import { css } from '@emotion/react';
-import { BORDER } from '../../styles/const';
-import useActiveIndexFromPath from '../../hooks/useActiveIndexFromPath';
+import { BORDER } from '~/styles/const';
+import useActiveIndexFromPath from '~/hooks/useActiveIndexFromPath';
 
 const BottomNav: VFC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndexFromPath();

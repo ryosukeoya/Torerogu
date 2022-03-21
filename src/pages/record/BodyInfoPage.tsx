@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import { FormContainer, InputForm } from '../../components/entryPoint';
-import { getDateInfo } from '../../utils/app';
+import { FormContainer, InputForm } from '~/components/entryPoint';
+import { getDateInfo } from '~/utils/app';
 import { useMutation } from '@apollo/client';
-import { CREATE_BODY_INFO_HISTORIES } from '../../libs/graphql/mutations';
-import type { CreateBodyInfoHistoriesMutation } from '../../types/generated/graphql';
+import { CREATE_BODY_INFO_HISTORIES } from '~/libs/graphql/mutations';
+import type { CreateBodyInfoHistoriesMutation } from '~/types/generated/graphql';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 
 type BodyInfoFormValues = {

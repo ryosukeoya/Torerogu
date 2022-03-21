@@ -20,7 +20,7 @@ const FONT = {
   BASE: '16px',
   LARGE: '18px',
   X1_LARGE: '20px',
-  X2_LARGE: '35px',
+  X2_LARGE: '32px',
 };
 
 export { BREAKPOINT, COLOR, BORDER, FONT };
