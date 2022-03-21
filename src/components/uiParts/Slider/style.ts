@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { COLOR, FONT } from '../../../styles/const';
+import { COLOR, FONT } from '~/styles/const';
 
 export const sliderStyle = {
   sliders: (marginBottom?: number) => css`

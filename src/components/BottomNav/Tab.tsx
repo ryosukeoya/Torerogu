@@ -2,14 +2,14 @@ import Link from 'next/link';
 import React from 'react';
 import type { VFC } from 'react';
 import { css, keyframes, SerializedStyles } from '@emotion/react';
-import { getIcon } from '../../utils/app';
-import { PAGE_PATH } from '../../constants/index';
-import type { PageTitle } from '../../types/index';
+import { getIcon } from '~/utils/app';
+import { PAGE_PATH } from '~/constants/index';
+import type { PageTitle } from '~/types/index';
 import { useSetRecoilState } from 'recoil';
-import { headerTabIndexAtom } from '../../store';
-import { COLOR, FONT } from '../../styles/const';
-import { useIsActive } from '../../hooks/useIsActive';
-import useRipple from '../../hooks/useRipple';
+import { headerTabIndexAtom } from '~/store';
+import { COLOR, FONT } from '~/styles/const';
+import { useIsActive } from '~/hooks/useIsActive';
+import useRipple from '~/hooks/useRipple';
 
 type Props = {
   isToggle?: true;

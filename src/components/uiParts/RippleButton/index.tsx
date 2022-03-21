@@ -1,6 +1,7 @@
 import type { FC, ReactNode } from 'react';
-import { rippleButton } from './style';
-import useRipple from '../../../hooks/useRipple';
+import { rippleButton } from '~/styles/share/likeButtons';
+import { ripple } from '~/styles/share/ripple';
+import useRipple from '~/hooks/useRipple';
 
 type Props = {
   children: ReactNode;
@@ -12,16 +13,16 @@ const RippleButton: FC<Props> = ({ children, onClick }) => {
 
   return (
     <button
-      css={rippleButton.rippleButton()}
+      css={rippleButton()}
       onClick={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
         setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-        onClick && onClick(e);
+        onClick(e);
       }}
     >
       {isRippling ? (
         <span
-          css={rippleButton.ripple}
+          css={ripple.ripple}
           style={{
             left: coords.x,
             top: coords.y,
@@ -30,7 +31,7 @@ const RippleButton: FC<Props> = ({ children, onClick }) => {
       ) : (
         ''
       )}
-      <span css={rippleButton.content}>{children}</span>
+      <span css={ripple.content}>{children}</span>
     </button>
   );
 };

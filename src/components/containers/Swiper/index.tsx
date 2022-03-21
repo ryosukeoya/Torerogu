@@ -2,7 +2,7 @@ import React from 'react';
 import type { VFC, ReactNode } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSetRecoilState } from 'recoil';
-import { headerTabIndexAtom, swiperAtom } from '../../../store';
+import { headerTabIndexAtom, swiperAtom } from '~/store';
 import type { Swiper as SwiperType } from 'swiper';
 
 type Props = {

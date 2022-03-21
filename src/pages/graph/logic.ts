@@ -1,4 +1,4 @@
-import type { GetTrainingWithBodyInfoQuery } from '../../types/generated/graphql';
+import type { GetTrainingWithBodyInfoQuery } from '~/types/generated/graphql';
 
 type BodyInfo = Pick<GetTrainingWithBodyInfoQuery['body_info_data_histories'][number], '__typename' | 'id' | 'user_id'>;
 
