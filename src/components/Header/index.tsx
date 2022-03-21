@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import type { VFC } from 'react';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import Tabs from './Tabs';
 import { APP } from '../../constants';
 import { BORDER, COLOR, FONT } from '../../styles/const';
@@ -12,13 +12,15 @@ import useIsScrollDown from '../../hooks/useIsScrollDown';
 
 const Header: VFC = () => {
   const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
+  const [fade, setFade] = useState(false);
+
   const isScrollDown: boolean = useIsScrollDown();
   const headerStateCss = isScrollDown ? stateCss['hidden'] : stateCss['visible'];
 
   return (
     <header css={[styles.header, headerStateCss]}>
       <div css={styles.area}>
-        <h1 css={styles.title}>
+        <h1 css={[styles.title, fade ? fadeAnimation : null]} onClick={() => setFade(true)} onAnimationEnd={() => setFade(false)}>
           <Link href='/' passHref>
             <a
               onClick={() => {
@@ -77,3 +79,22 @@ const stateCss = {
     transition: top 0.1s ease-out;
   `,
 };
+
+const effect = keyframes`
+  0% {
+    color:#ff7369;
+    opacity: 0.8;
+  }
+  50% {
+    color:#ff7369;
+    opacity: 0.75;
+  }
+  100% {
+    color:#ff7369;
+    opacity: 0.8;
+  }
+`;
+
+const fadeAnimation = css`
+  animation: 0.17s ease 0s forwards ${effect};
+`;
