@@ -15,7 +15,7 @@ interface PropsBase<T extends 'isInput' | 'isTextArea' | 'isSubmit' | 'base'> {
 }
 
 interface InputProps extends PropsBase<'isInput'> {
-  typeAttr: string;
+  typeAttr: 'text' | 'date' | 'email' | 'tel';
   setState?: Dispatch<SetStateAction<unknown>>;
   customCss?: SerializedStyles;
 }
@@ -75,12 +75,7 @@ const Input: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ options, t
             }}
           >
             <span css={inputStyle.inputTitle}>記録する</span>
-            <input
-              {...options}
-              value={''}
-              type='submit'
-              css={[submitStyle, props.customCss]}
-            />
+            <input {...options} value={''} type='submit' css={[submitStyle, props.customCss]} />
             {isRippling ? (
               <span
                 css={ripple.ripple}
