@@ -1,7 +1,7 @@
 import { SerializedStyles } from '@emotion/react';
 import React, { VFC, Dispatch, SetStateAction, ReactNode } from 'react';
 import { pageTemplate } from '~/styles/share/pageTemplate';
-import { inputStyle, textareaStyle } from './style';
+import { inputStyle, textareaStyle, submitStyle } from './style';
 import useRipple from '~/hooks/useRipple';
 import { rippleButton } from '~/styles/share/likeButtons';
 import { ripple } from '~/styles/share/ripple';
@@ -27,8 +27,6 @@ interface TextAreaProps extends PropsBase<'isTextArea'> {
 }
 
 interface SubmitRippleProps extends PropsBase<'isSubmit'> {
-  // isRipple?: true;
-  // typeAttr: string;
   customCss?: SerializedStyles;
 }
 
@@ -56,7 +54,7 @@ const Input: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ options, t
       const { typeAttr, setState, customCss } = props;
       return (
         <Container title={title}>
-          <input type={typeAttr} {...options} onChange={(e) => setState && setState(e.target.value)} css={customCss ? customCss : inputStyle.input()} placeholder={placeholder} />
+          <input {...options} type={typeAttr} onChange={(e) => setState && setState(e.target.value)} css={customCss ? customCss : inputStyle.input()} placeholder={placeholder} />
         </Container>
       );
     case 'isTextArea':
@@ -80,9 +78,8 @@ const Input: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ options, t
             <input
               {...options}
               value={''}
-              type={'submit'}
-              css={props.customCss ? props.customCss : inputStyle.input()}
-              style={{ display: 'block', width: '100%', height: '100%', padding: '13px 0' }}
+              type='submit'
+              css={[submitStyle, props.customCss]}
             />
             {isRippling ? (
               <span

@@ -3,8 +3,6 @@ import type { FC, ReactNode } from 'react';
 import { Input, Snackbar } from '~/components/entryPoint';
 import { pageTemplate } from '~/styles/share/pageTemplate';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
-import { COLOR } from '~/styles/const';
-import { css } from '@emotion/react';
 
 type ContainerInterface = {
   pageIndex: number;
@@ -23,14 +21,7 @@ const FormContainer: FC<ContainerInterface> = ({ pageIndex, handleSubmit, submit
       <div css={pageTemplate.contentArea}>
         <h2 css={pageTemplate.title}>{title}</h2>
         {children}
-        <Input
-          type={'isSubmit'}
-          customCss={css`
-            background: ${COLOR.ORANGE};
-            border: none;
-            color: white;
-          `}
-        />
+        <Input type={'isSubmit'} />
         <Snackbar pageIndex={pageIndex} text={'記録しました！'} open={open} handleClose={handleClose} />
         {OtherElm}
       </div>
