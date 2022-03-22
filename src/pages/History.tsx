@@ -1,6 +1,6 @@
 import React from 'react';
-import { RippleButton, PrimaryButton, Input, Card } from '../components/entryPoint';
-import { textareaStyle } from '../components/uiParts/Input/style';
+import { RippleButton, PrimaryButton, InputPart, Card } from '../components/entryPoint';
+import { textareaStyle } from '../components/uiParts/InputPart/style';
 
 const History = () => {
   return (
@@ -14,7 +14,7 @@ const History = () => {
         Click me
       </RippleButton>
       <PrimaryButton type={'isButton'} text={'buttonSample'} theme={'simple'} />
-      <Input type={'isTextArea'} title={'sample'} css={textareaStyle()} placeholder='テキストを入力してください' cols={30} rows={10} />
+      <InputPart type={'isTextArea'} title={'sample'} css={textareaStyle()} placeholder='テキストを入力してください' cols={30} rows={10} />
       <Card>hoge</Card>
       <select name='pets' id='pet-select'>
         <option value=''>--Please choose an option--</option>

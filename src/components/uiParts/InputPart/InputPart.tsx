@@ -46,7 +46,7 @@ const Container: VFC<ContainerProps> = ({ children, title }) => {
   );
 };
 
-const Input: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ options, title, placeholder, ...props }) => {
+const InputPart: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ options, title, placeholder, ...props }) => {
   const [coords, setCoords, isRippling] = useRipple(300);
 
   switch (props.type) {
@@ -95,4 +95,4 @@ const Input: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ options, t
   }
 };
 
-export default Input;
+export default InputPart;

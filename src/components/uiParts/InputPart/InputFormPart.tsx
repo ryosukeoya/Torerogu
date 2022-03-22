@@ -1,7 +1,7 @@
 import type { VFC, PropsWithChildren } from 'react';
 import { pageTemplate } from '~/styles/share/pageTemplate';
 import { useFormContext, FieldErrors, FieldValues } from 'react-hook-form';
-import type { InputProps, TextAreaProps } from './Input';
+import type { InputProps, TextAreaProps } from './InputPart';
 import { inputStyle, textareaStyle } from './style';
 
 interface InputFormProps extends InputProps {
