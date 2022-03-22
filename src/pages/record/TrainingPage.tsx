@@ -66,7 +66,7 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
             </p>
           }
         >
-          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} isRequired />
+          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'}texts={getNumArr(10, 200, 5)} marginBottom={10} isRequired />
           <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} isRequired />
           <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} isRequired />
         </FormContainer>
