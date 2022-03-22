@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { BREAKPOINT, COLOR } from '../const';
+import { BREAKPOINT, COLOR, BORDER } from '../const';
 
 // export禁止
 const buttonBase = (marginTop?: number) => css`
@@ -44,12 +44,13 @@ export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyl
 `;
 
 // クリック時に波打つエフェクトを持つボタン用
-export const rippleButton = (marginTop?: number, customStyle?: SerializedStyles) => css`
+export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyle?: SerializedStyles) => css`
   ${buttonBase(marginTop)};
-  background: ${COLOR.ORANGE};
-  color: #fff;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: ${COLOR.ORANGE};
+  ${isShadow && `box-shadow: 0 1.2px 1px 1px ${BORDER.GRAY}`}; //x軸 y軸 ぼかし 広がり カラー;
   ${customStyle}
   @media (min-width: ${BREAKPOINT.MD}) {
   &:hover {
