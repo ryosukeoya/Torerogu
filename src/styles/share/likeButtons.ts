@@ -6,6 +6,7 @@ const buttonBase = (marginTop?: number) => css`
   display: block;
   box-sizing: border-box;
   width: 80vw;
+  max-width: 350px;
   padding: 13px 0;
   margin: 0 auto;
   text-align: center;
