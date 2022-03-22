@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import { FormContainer, InputForm } from '~/components/entryPoint';
+import { FormContainer, InputFormPart } from '~/components/entryPoint';
 import { getDateInfo } from '~/utils/app';
 import { useMutation } from '@apollo/client';
 import { CREATE_BODY_INFO_HISTORIES } from '~/libs/graphql/mutations';
@@ -42,8 +42,8 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
   return (
     <FormProvider {...method}>
       <FormContainer pageIndex={pageIndex} handleSubmit={handleSubmit} submitFunc={registerBodyInfo} title={` ✏️ ${date.month} / ${date.day} (${date.weekday}) の記録`} open={open} handleClose={handleClose}>
-        <InputForm title={'体重'} typeAttr={'text'} unit={'kg'} type={'isInput'} placeholder={'60'} form={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
-        <InputForm title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
+        <InputFormPart title={'体重'} typeAttr={'text'} unit={'kg'} type={'isInput'} placeholder={'60'} form={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
+        <InputFormPart title={'体脂肪率'} typeAttr={'text'} unit={'%'} type={'isInput'} placeholder={'10'} form={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
       </FormContainer>
     </FormProvider>
   );

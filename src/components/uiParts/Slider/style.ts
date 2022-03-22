@@ -10,6 +10,7 @@ export const sliderStyle = {
     text-align: center;
     background-color: ${COLOR.ORANGE};
     padding: 40px 0;
+    margin-top: 10px;
     ${isActive ? `color:${COLOR.RED}` : 'color:white'};
     border-radius: 20px;
     cursor: pointer;

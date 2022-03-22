@@ -9,11 +9,11 @@ export const pageTemplate = {
     padding-top: 30px;
   `,
   title: css`
-    padding-bottom: 20px;
+    padding-bottom: 35px;
     font-size: ${FONT.X1_LARGE};
   `,
   content: css`
-    padding-bottom: 15px;
+    padding-bottom: 20px;
   `,
   contentTitle: css`
     font-size: ${FONT.LARGE};

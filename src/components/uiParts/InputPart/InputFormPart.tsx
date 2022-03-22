@@ -1,7 +1,7 @@
 import type { VFC, PropsWithChildren } from 'react';
 import { pageTemplate } from '~/styles/share/pageTemplate';
 import { useFormContext, FieldErrors, FieldValues } from 'react-hook-form';
-import type { InputProps, TextAreaProps } from './Input';
+import type { InputProps, TextAreaProps } from './InputPart';
 import { inputStyle, textareaStyle } from './style';
 
 interface InputFormProps extends InputProps {
@@ -35,7 +35,7 @@ const Container: VFC<PropsWithChildren<Pick<InputFormProps, 'form' | 'unit' | 't
       )}
       {children}
       <span css={pageTemplate.unit}>{unit}</span>
-      <ErrorMessage errors={errors} form={form} />
+      {errors[form.name] ? <ErrorMessage errors={errors} form={form} /> : null}
     </div>
   );
 };

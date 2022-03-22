@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import type { VFC } from 'react';
-import { InputForm, Select, FormContainer } from '~/components/entryPoint';
+import { InputFormPart, Select, FormContainer } from '~/components/entryPoint';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { GET_TRAINING_CATEGORY_WITH_TYPE } from '~/libs/graphql/queries';
 import { CREATE_TRAINING } from '~/libs/graphql/mutations';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
 import { getCurrentDate, getNumArr, getTrainingTypes } from '~/utils';
+import { css } from '@emotion/react';
 
 type PlanTrainingFormValue = {
   date: Date;
@@ -52,12 +53,21 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
   return (
     <FormProvider {...method}>
       <FormContainer pageIndex={pageIndex} handleSubmit={handleSubmit} submitFunc={registerTraining} title={'✏️ 日ごとの設定'} open={open} handleClose={handleClose}>
-        <InputForm options={{ value: getCurrentDate(new Date(), true), min: getCurrentDate(new Date(), true) }} title={'日付'} typeAttr={'date'} type={'isInput'} form={{ name: 'date', option: { required: true } }} />
-        <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={10} isRequired />
-        <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypes(selectedCategoryID, data?.training_types, data?.training_categories)} marginBottom={10} isRequired />
-        <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量'} texts={getNumArr(10, 200, 5)} marginBottom={10} isRequired />
-        <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={10} isRequired />
-        <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={10} isRequired />
+        <InputFormPart
+          customCss={css`
+            padding: 0 0 10px 0;
+          `}
+          options={{ value: getCurrentDate(new Date(), true), min: getCurrentDate(new Date(), true) }}
+          title={'日付'}
+          typeAttr={'date'}
+          type={'isInput'}
+          form={{ name: 'date', option: { required: true } }}
+        />
+        <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={20} isRequired />
+        <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypes(selectedCategoryID, data?.training_types, data?.training_categories)} marginBottom={20} isRequired />
+        <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'} texts={getNumArr(15, 200, 5)} marginBottom={20} isRequired />
+        <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={20} isRequired />
+        <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={20} isRequired />
       </FormContainer>
     </FormProvider>
   );
