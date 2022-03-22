@@ -27,8 +27,12 @@ const Slider: VFC<Props> = ({ items, setState }) => {
       onRealIndexChange={(swiper) => {
         setState && setState(swiper.realIndex);
       }}
-      spaceBetween={50}
-      slidesPerView={3}
+      speed={300}
+      threshold={0}
+      touchAngle={45}
+      spaceBetween={20}
+      touchRatio={0.7}
+      slidesPerView={3.6}
       navigation
       pagination={{ clickable: true }}
       css={sliderStyle.sliders(30)}

@@ -75,7 +75,7 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
   } else {
     return (
       <>
-        <Space height={30} />
+        <Space height={20} />
         <Slider items={data?.training_categories} setState={setSelectedCategoryIndex} />
         {getTrainingTypes2(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
           return (
