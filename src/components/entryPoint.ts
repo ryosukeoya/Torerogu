@@ -1,5 +1,5 @@
 // Normal
-export { default as BottomNav } from './BottomNav';
+export { default as BottomNav } from './Navigations';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 
@@ -13,7 +13,7 @@ export { default as RippleButton } from './uiParts/RippleButton';
 export { default as Card } from './uiParts/Card';
 export { default as InputPart } from './uiParts/InputPart/InputPart';
 export { default as InputFormPart } from './uiParts/InputPart/InputFormPart';
-export { default as Navigation } from './uiParts/Navigation';
+export { default as PrimaryNavigation } from './uiParts/PrimaryNavigation';
 export { default as Select } from './uiParts/Select';
 export { default as Slider } from './uiParts/Slider';
 export { default as Space } from './uiParts/Spacer';

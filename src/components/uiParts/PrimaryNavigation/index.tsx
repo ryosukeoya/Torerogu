@@ -7,7 +7,7 @@ type Props = {
   titles: string[];
 };
 
-const Navigation: VFC<Props> = ({ titles }) => {
+const PrimaryNavigation: VFC<Props> = ({ titles }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
@@ -19,7 +19,7 @@ const Navigation: VFC<Props> = ({ titles }) => {
   );
 };
 
-export default Navigation;
+export default PrimaryNavigation;
 
 const styles = {
   items: css`

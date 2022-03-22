@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { Header, BottomNav } from '../components/entryPoint';
 import { APP } from '../constants';
 import { css } from '@emotion/react';
+import { BREAKPOINT } from '../styles/const';
 
 const Layout: FC = (prop) => {
   return (
@@ -24,8 +25,10 @@ const Layout: FC = (prop) => {
         <link href='https://fonts.googleapis.com/css2?family=Yomogi&display=swap' rel='stylesheet' />
       </Head>
       <Header />
-      <main css={styles.main}>{prop.children}</main>
-      <BottomNav />
+      <div css={styles.wrap}>
+        <BottomNav />
+        <main css={styles.main}>{prop.children}</main>
+      </div>
     </>
   );
 };
@@ -33,9 +36,15 @@ const Layout: FC = (prop) => {
 export default Layout;
 
 const styles = {
+  wrap: css`
+    display: flex;
+  `,
   main: css`
     min-height: 100vh;
     margin-top: 104px;
     background-color: #fdfdfd;
+    @media (min-width: ${BREAKPOINT.MD}) {
+      width: 70%;
+    }
   `,
 };

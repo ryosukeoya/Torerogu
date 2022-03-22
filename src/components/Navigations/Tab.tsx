@@ -7,7 +7,7 @@ import { PAGE_PATH } from '~/constants/index';
 import type { PageTitle } from '~/types/index';
 import { useSetRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '~/store';
-import { COLOR, FONT } from '~/styles/const';
+import { BREAKPOINT, COLOR, FONT } from '~/styles/const';
 import { useIsActive } from '~/hooks/useIsActive';
 import useRipple from '~/hooks/useRipple';
 
@@ -38,7 +38,7 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
         css={styles.box}
       >
         {isRippling ? <span css={styles.ripple} /> : ''}
-        {getIcon(title, isActive)}
+        <p>{getIcon(title, isActive)}</p>
         <p css={styles.title(isActive)}>{title}</p>
       </a>
     </Link>
@@ -70,11 +70,22 @@ const styles = {
     text-align: center;
     padding-top: 3px;
     position: relative;
+    @media (min-width: ${BREAKPOINT.MD}) {
+      width: 100%;
+      display: flex;
+      align-items:center;
+      padding-bottom: 20px;
+      /* background-color: pink; */
+      /* border:1px solid blue; */
+    }
   `,
   title: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.RED : 'black'};
     padding-top: 2px;
     font-size: ${FONT.X_SMALL};
+    @media (min-width: ${BREAKPOINT.MD}) {
+      padding-left: 10px;
+    }
   `,
   ripple: css`
     display: block;
