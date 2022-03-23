@@ -73,6 +73,7 @@ const styles = {
     @media (min-width: ${BREAKPOINT.MD}) {
       width: 100%;
       display: flex;
+      justify-content: flex-start;
       align-items:center;
       padding-bottom: 20px;
       /* background-color: pink; */

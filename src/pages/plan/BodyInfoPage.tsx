@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import { FormContainer, InputFormPart } from '~/components/entryPoint';
+import { FormContainer, InputFormPart } from '~/components';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { getCurrentDate } from '~/utils/app';
 

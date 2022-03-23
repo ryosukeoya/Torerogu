@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
-import { Header, Navigation } from '../components/entryPoint';
+import { Header, Navigation } from '../components';
 import { APP } from '../constants';
 import { css } from '@emotion/react';
 import { BREAKPOINT } from '../styles/const';

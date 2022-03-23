@@ -1,6 +1,6 @@
 import React from 'react';
 import type { FC, ReactNode } from 'react';
-import { InputPart, Snackbar } from '~/components/entryPoint';
+import { InputPart, Snackbar } from '~/components';
 import { pageTemplate } from '~/styles/share/pageTemplate';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
 
