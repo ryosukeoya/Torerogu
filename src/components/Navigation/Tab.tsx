@@ -8,7 +8,7 @@ import type { PageTitle } from '~/types/index';
 import { useSetRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '~/store';
 import { BREAKPOINT, COLOR, FONT } from '~/styles/const';
-import { useIsActive, useRipple } from '~/hooks/';
+import { useIsActive, useRipple, useGetWindowSize } from '~/hooks';
 
 type Props = {
   isToggle?: true;
@@ -24,6 +24,7 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
   const isActive = useIsActive(!!isToggle, parentActiveIndex, index);
 
   const [coords, setCoords, isRippling] = useRipple(170);
+  const { width } = useGetWindowSize();
 
   return (
     <Link href={PAGE_PATH[title]} passHref>
@@ -36,7 +37,7 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
         }}
         css={styles.box}
       >
-        {isRippling ? <span css={styles.ripple} /> : ''}
+        {width <= parseInt(BREAKPOINT.MD) && isRippling ? <span css={styles.ripple} /> : ''}
         <p>{getIcon(title, isActive)}</p>
         <p css={styles.title(isActive)}>{title}</p>
       </a>
