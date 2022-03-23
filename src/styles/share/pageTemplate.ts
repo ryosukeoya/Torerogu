@@ -3,8 +3,10 @@ import { BREAKPOINT, FONT, COLOR } from '../const';
 
 export const pageTemplate = {
   contentArea: css`
+    display: flex;
+    flex-direction: column;
     min-height: calc(100vh - 170px);
-    width: 90vw;
+    width: 90%;
     margin: 0 auto;
     padding-top: 30px;
     @media (min-width: ${BREAKPOINT.MD}) {
@@ -19,10 +21,13 @@ export const pageTemplate = {
     padding-bottom: 20px;
   `,
   contentTitle: css`
+    display: flex;
     font-size: ${FONT.LARGE};
     padding-bottom: 10px;
   `,
   require: css`
+    display: inline;
+    /* width: 100px; */
     color: red;
     padding-left: 10px;
     font-size: ${FONT.BASE};
