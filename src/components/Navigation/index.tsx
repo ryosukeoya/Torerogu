@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import { BORDER, BREAKPOINT } from '~/styles/const';
 import useActiveIndexFromPath from '~/hooks/useActiveIndexFromPath';
 
-const BottomNav: VFC = () => {
+const Navigation: VFC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndexFromPath();
   const titles = Object.keys(PAGE_PATH) as PageTitles;
 
@@ -19,7 +19,7 @@ const BottomNav: VFC = () => {
   );
 };
 
-export default BottomNav;
+export default Navigation;
 
 const styles = {
   bottomNav: css`
@@ -45,7 +45,7 @@ const styles = {
       padding: 20px 0 0 10px;
       /* background-color: #fdffdf; */
       border-top: 0;
-      border-right: 1px  solid ${BORDER.GRAY};
+      border-right: 1px solid ${BORDER.GRAY};
     }
   `,
 };

@@ -4,8 +4,14 @@ const BREAKPOINT = {
   LG: '1024px',
 };
 
+/**
+ * https://material.io/design/color/the-color-system.html#color-theme-creation
+ * The color system
+*/
 const COLOR = {
+  // Primary color(A primary color is the color displayed most frequently across your app's screens and components.)
   RED: '#FF291B',
+  // Secondary color
   ORANGE: '#FF9900',
   HOVER: '#f1f1f1',
 };

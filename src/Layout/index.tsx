@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
-import { Header, BottomNav } from '../components/entryPoint';
+import { Header, Navigation } from '../components/entryPoint';
 import { APP } from '../constants';
 import { css } from '@emotion/react';
 import { BREAKPOINT } from '../styles/const';
@@ -25,8 +25,8 @@ const Layout: FC = (prop) => {
         <link href='https://fonts.googleapis.com/css2?family=Yomogi&display=swap' rel='stylesheet' />
       </Head>
       <Header />
-      <div css={styles.wrap}>
-        <BottomNav />
+      <div css={styles.contentArea}>
+        <Navigation />
         <main css={styles.main}>{prop.children}</main>
       </div>
     </>
@@ -36,8 +36,15 @@ const Layout: FC = (prop) => {
 export default Layout;
 
 const styles = {
-  wrap: css`
-    display: flex;
+  contentArea: css`
+    @media (min-width: ${BREAKPOINT.MD}) {
+      display: flex;
+      width: 80vw;
+      max-width: 900px;
+      margin: 0 auto;
+
+      border: 1px solid pink;
+    }
   `,
   main: css`
     min-height: 100vh;
