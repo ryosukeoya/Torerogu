@@ -1,7 +1,7 @@
 import type { VFC, Dispatch } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { BREAKPOINT, FONT, COLOR } from '~/styles/const';
-import { useIsActive } from '~/hooks/useIsActive';
+import { useIsActive } from '~/hooks';
 import type { SetterOrUpdater } from 'recoil';
 import { useRecoilValue } from 'recoil';
 import { swiperAtom } from '~/store';

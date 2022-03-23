@@ -8,8 +8,7 @@ import type { PageTitle } from '~/types/index';
 import { useSetRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '~/store';
 import { BREAKPOINT, COLOR, FONT } from '~/styles/const';
-import { useIsActive } from '~/hooks/useIsActive';
-import useRipple from '~/hooks/useRipple';
+import { useIsActive, useRipple } from '~/hooks/';
 
 type Props = {
   isToggle?: true;
@@ -74,7 +73,7 @@ const styles = {
       width: 100%;
       display: flex;
       justify-content: flex-start;
-      align-items:center;
+      align-items: center;
       padding-bottom: 20px;
       /* background-color: pink; */
       /* border:1px solid blue; */

@@ -2,7 +2,7 @@ import type { VFC } from 'react';
 import type { SetterOrUpdater } from 'recoil';
 import { css } from '@emotion/react';
 import Tab from './Tab';
-import { useGetTitle } from '~/hooks/useGetTitle';
+import { useGetTitle } from '~/hooks';
 
 type Props = {
   activeIndex: number;

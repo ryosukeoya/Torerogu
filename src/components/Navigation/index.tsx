@@ -4,7 +4,7 @@ import { PAGE_PATH } from '~/constants/index';
 import type { PageTitles, PageTitle } from '~/types/index';
 import { css } from '@emotion/react';
 import { BORDER, BREAKPOINT } from '~/styles/const';
-import useActiveIndexFromPath from '~/hooks/useActiveIndexFromPath';
+import { useActiveIndexFromPath } from '~/hooks';
 
 const Navigation: VFC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndexFromPath();

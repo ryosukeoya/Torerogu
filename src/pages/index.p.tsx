@@ -7,7 +7,7 @@ import { getCurrentDate } from '../utils/app';
 import Top from './Top';
 import History from './History';
 import { SwiperContainer } from '../components';
-import { useGetWindowSize } from '~/hooks/useGetWindowSize';
+import { useGetWindowSize } from '~/hooks';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GET_TRAINING_ONE_TYPE, {
