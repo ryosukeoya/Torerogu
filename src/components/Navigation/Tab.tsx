@@ -23,7 +23,7 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
   const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
   const isActive = useIsActive(!!isToggle, parentActiveIndex, index);
 
-  const [coords, setCoords, isRippling] = useRipple(170);
+  const [, setCoords, isRippling] = useRipple(170);
   const { width } = useGetWindowSize();
 
   return (
@@ -37,7 +37,7 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
         }}
         css={styles.box}
       >
-        {width <= parseInt(BREAKPOINT.MD) && isRippling ? <span css={styles.ripple} /> : ''}
+        {width < parseInt(BREAKPOINT.MD) && isRippling ? <span css={styles.ripple} /> : ''}
         <p>{getIcon(title, isActive)}</p>
         <p css={styles.title(isActive)}>{title}</p>
       </a>
