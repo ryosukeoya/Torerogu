@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { PAGE_PATH } from '../constants';
 
-export const useGetTitle = (): string[] | null => {
+const useGetTitle = (): string[] | null => {
   const router = useRouter();
   const { pathname } = router;
   switch (pathname) {
@@ -17,3 +17,5 @@ export const useGetTitle = (): string[] | null => {
       return null;
   }
 };
+
+export default useGetTitle;
