@@ -70,14 +70,17 @@ const styles = {
     text-align: center;
     padding-top: 3px;
     position: relative;
+    &:hover {
+      background-color: ${COLOR.HOVER_ORANGE};
+    }
     @media (min-width: ${BREAKPOINT.MD}) {
-      width: 100%;
+      width: auto;
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      padding-bottom: 20px;
-      /* background-color: pink; */
-      /* border:1px solid blue; */
+      padding: 28px 40px;
+      border-radius: 30px;
+      margin-bottom: 10px;
     }
   `,
   title: (isActive?: boolean): SerializedStyles => css`
@@ -85,6 +88,7 @@ const styles = {
     padding-top: 2px;
     font-size: ${FONT.X_SMALL};
     @media (min-width: ${BREAKPOINT.MD}) {
+      display: inline-block;
       padding-left: 10px;
     }
   `,

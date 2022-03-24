@@ -44,9 +44,7 @@ const styles = {
     cursor: pointer;
     @media (min-width: ${BREAKPOINT.MD}) {
       &:hover {
-        /* border-bottom: 1px solid #dad2c8; */
-        background-color: #fff8f1;
-        /* background-color: #f8f8f8; */
+        background-color: ${COLOR.HOVER_ORANGE};
       }
     }
   `,

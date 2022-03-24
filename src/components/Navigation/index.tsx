@@ -11,18 +11,18 @@ const Navigation: VFC = () => {
   const titles = Object.keys(PAGE_PATH) as PageTitles;
 
   return (
-    <nav css={styles.bottomNav}>
-      {titles.map((title: PageTitle, i: number) => {
-        return <Tab isResetIndex={true} key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isToggle />;
-      })}
-    </nav>
+      <nav css={styles.navigation}>
+        {titles.map((title: PageTitle, i: number) => {
+          return <Tab isResetIndex={true} key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isToggle />;
+        })}
+      </nav>
   );
 };
 
 export default Navigation;
 
 const styles = {
-  bottomNav: css`
+  navigation: css`
     box-size: border-box;
     position: fixed;
     bottom: 0;
@@ -39,11 +39,11 @@ const styles = {
       z-index: auto;
       flex-direction: column;
       justify-content: flex-start;
+      align-items: flex-start;
       margin-top: calc(104px + 20px);
       height: 100vh;
       width: 30%;
       padding: 20px 0 0 10px;
-      /* background-color: #fdffdf; */
       border-top: 0;
       border-right: 1px solid ${BORDER.GRAY};
     }

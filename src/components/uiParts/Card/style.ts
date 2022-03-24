@@ -6,7 +6,7 @@ export const cardStyle = (customCss?: SerializedStyles, hoverTheme: 'scale' | 'd
   box-shadow: 0 1px 1px 1px ${BORDER.GRAY}; //x軸 y軸 ぼかし 広がり カラー;
   text-align: center;
   border-radius: 10px;
-  width: 90vw;
+  width: 90%;
   max-width: 500px;
   margin: 0 auto;
   padding: 25px 15px;
@@ -14,7 +14,7 @@ export const cardStyle = (customCss?: SerializedStyles, hoverTheme: 'scale' | 'd
   ${hoverTheme === 'scale' && 'transition: all 0.3s'};
   @media (min-width: ${BREAKPOINT.MD}) {
     &:hover {
-      ${hoverTheme === 'darken' && `background-color: ${COLOR.HOVER}`};
+      ${hoverTheme === 'darken' && `background-color: ${COLOR.HOVER_GRAY}`};
       ${hoverTheme === 'scale' && `transform: scale(1.02);`};
       ${hoverTheme === 'scale' && 'box-shadow: 0 1.5px 6px 3.5px #c4c4c4'};
     }
