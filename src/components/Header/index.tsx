@@ -5,7 +5,7 @@ import type { VFC } from 'react';
 import { css, keyframes } from '@emotion/react';
 import Tabs from './Tabs';
 import { APP } from '~/constants';
-import { BORDER, COLOR, FONT } from '~/styles/const';
+import { COLOR, FONT } from '~/styles/const';
 import { useRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '~/store';
 import { useIsScrollDown } from '~/hooks';
@@ -49,7 +49,7 @@ const styles = {
     z-index: 1000;
     background: #fff;
     width: 100vw;
-    border-bottom: 1px solid ${BORDER.GRAY};
+    border-bottom: 1px solid ${COLOR.BORDER_GRAY};
     padding: 10px 25px 0 25px;
   `,
   area: css`

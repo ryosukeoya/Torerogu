@@ -1,21 +1,20 @@
 import React, { VFC } from 'react';
 import Tab from './Tab';
-import { PAGE_PATH } from '~/constants/index';
-import type { PageTitles, PageTitle } from '~/types/index';
+import { PAGE_TITLE } from '~/constants/index';
+import type { PageTitle } from '~/types/index';
 import { css } from '@emotion/react';
-import { BORDER, BREAKPOINT } from '~/styles/const';
+import { COLOR, BREAKPOINT } from '~/styles/const';
 import { useActiveIndexFromPath } from '~/hooks';
 
 const Navigation: VFC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndexFromPath();
-  const titles = Object.keys(PAGE_PATH) as PageTitles;
 
   return (
-      <nav css={styles.navigation}>
-        {titles.map((title: PageTitle, i: number) => {
-          return <Tab isResetIndex={true} key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isToggle />;
-        })}
-      </nav>
+    <nav css={styles.navigation}>
+      {PAGE_TITLE.map((title: PageTitle, i: number) => {
+        return <Tab isResetIndex={true} key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isToggle />;
+      })}
+    </nav>
   );
 };
 
@@ -33,7 +32,7 @@ const styles = {
     align-items: center;
     width: 100vw;
     height: 65px;
-    border-top: 1px solid ${BORDER.GRAY};
+    border-top: 1px solid ${COLOR.BORDER_GRAY};
     @media (min-width: ${BREAKPOINT.MD}) {
       position: static;
       z-index: auto;
@@ -45,7 +44,7 @@ const styles = {
       width: 30%;
       padding: 20px 0 0 10px;
       border-top: 0;
-      border-right: 1px solid ${BORDER.GRAY};
+      border-right: 1px solid ${COLOR.BORDER_GRAY};
     }
   `,
 };

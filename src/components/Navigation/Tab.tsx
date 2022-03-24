@@ -71,7 +71,7 @@ const styles = {
     padding-top: 3px;
     position: relative;
     &:hover {
-      background-color: ${COLOR.HOVER_ORANGE};
+      background-color: ${COLOR.HOVER_RED};
     }
     @media (min-width: ${BREAKPOINT.MD}) {
       width: auto;
