@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { BREAKPOINT, FONT, COLOR } from '../const';
+import { BREAKPOINT, FONT } from '../const';
 
 export const pageTemplate = {
   contentArea: css`
@@ -16,29 +16,6 @@ export const pageTemplate = {
   title: css`
     padding-bottom: 35px;
     font-size: ${FONT.X1_LARGE};
-  `,
-  content: css`
-    padding-bottom: 20px;
-  `,
-  contentTitle: css`
-    display: flex;
-    font-size: ${FONT.LARGE};
-    padding-bottom: 10px;
-  `,
-  require: css`
-    display: inline;
-    /* width: 100px; */
-    color: red;
-    padding-left: 10px;
-    font-size: ${FONT.BASE};
-  `,
-  unit: css`
-    padding-left: 4px;
-  `,
-  errorMessage: css`
-    padding-top: 8px;
-    font-size: ${FONT.SMALL};
-    color: ${COLOR.RED};
   `,
   back: css`
     display: inline-block;

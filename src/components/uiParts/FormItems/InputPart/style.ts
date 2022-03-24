@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { COLOR } from '~/styles/const';
+import { COLOR, FONT } from '~/styles/const';
 
-export const inputStyle = {
+export const inputPartStyle = {
   input: (customCss?: SerializedStyles) => css`
     width: 200px;
     border: 1px solid ${COLOR.BORDER_GRAY};
@@ -27,6 +27,29 @@ export const inputStyle = {
     z-index: 1000;
 
     pointer-events: none;
+  `,
+  errorMessage: css`
+    padding-top: 8px;
+    font-size: ${FONT.SMALL};
+    color: ${COLOR.RED};
+  `,
+  content: css`
+    padding-bottom: 20px;
+  `,
+  contentTitle: css`
+    display: flex;
+    font-size: ${FONT.LARGE};
+    padding-bottom: 10px;
+  `,
+  require: css`
+    display: inline;
+    /* width: 100px; */
+    color: red;
+    padding-left: 10px;
+    font-size: ${FONT.BASE};
+  `,
+  unit: css`
+    padding-left: 4px;
   `,
 };
 
