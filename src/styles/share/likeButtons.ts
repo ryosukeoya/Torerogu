@@ -55,6 +55,9 @@ export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyle
   ${customStyle}
   @media (min-width: ${BREAKPOINT.MD}) {
   &:hover {
-    background:  #f59300;
+    background:  ${COLOR.ORANGE}E6;
+
+    transform: scale(1.008);
+    box-shadow: 0 1.2px 5px 3.5px ${COLOR.BORDER_GRAY};
   }
 `;
