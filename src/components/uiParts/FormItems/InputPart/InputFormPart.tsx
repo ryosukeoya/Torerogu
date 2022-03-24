@@ -34,7 +34,8 @@ const Container: VFC<PropsWithChildren<Pick<InputFormProps, 'form' | 'unit' | 't
       )}
       {children}
       <span css={inputPartStyle.unit}>{unit}</span>
-      {errors[form.name] ? <ErrorMessage errors={errors} form={form} /> : null}
+      {/* {errors[form.name] ? <ErrorMessage errors={errors} form={form} /> : null} */}
+      <ErrorMessage errors={errors} form={form} />
     </div>
   );
 };

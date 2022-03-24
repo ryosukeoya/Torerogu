@@ -70,9 +70,6 @@ const styles = {
     text-align: center;
     padding-top: 3px;
     position: relative;
-    &:hover {
-      background-color: ${COLOR.HOVER_RED};
-    }
     @media (min-width: ${BREAKPOINT.MD}) {
       width: auto;
       display: flex;
@@ -81,6 +78,9 @@ const styles = {
       padding: 28px 40px;
       border-radius: 30px;
       margin-bottom: 10px;
+      &:hover {
+        background-color: ${COLOR.HOVER_RED};
+      }
     }
   `,
   title: (isActive?: boolean): SerializedStyles => css`

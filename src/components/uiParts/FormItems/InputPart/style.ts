@@ -30,6 +30,7 @@ export const inputPartStyle = {
   `,
   errorMessage: css`
     padding-top: 8px;
+    min-height: 22px;
     font-size: ${FONT.SMALL};
     color: ${COLOR.RED};
   `,
