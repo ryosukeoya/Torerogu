@@ -9,13 +9,13 @@ const BREAKPOINT = {
  * The color system
  */
 
+// Primary color(A primary color is the color displayed most frequently across your app's screens and components.)
 const RED_HEX = '#FF291B';
+// Secondary color
 const ORANGE_HEX = '#FF9900';
 
 const COLOR = {
-  // Primary color(A primary color is the color displayed most frequently across your app's screens and components.)
   RED: RED_HEX,
-  // Secondary color
   ORANGE: ORANGE_HEX,
   HOVER_GRAY: '#f1f1f1',
   HOVER_ORANGE: `${ORANGE_HEX}1A`,

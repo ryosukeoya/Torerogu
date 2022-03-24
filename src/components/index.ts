@@ -1,7 +1,7 @@
-// Normal
-export { default as Navigation } from './Navigation';
-export { default as Footer } from './Footer';
-export { default as Header } from './Header';
+// Basics
+export { default as Navigation } from './basics/Navigation';
+export { default as Footer } from './basics/Footer';
+export { default as Header } from './basics/Header';
 
 // Container
 export { default as FormContainer } from './containers/Form';
