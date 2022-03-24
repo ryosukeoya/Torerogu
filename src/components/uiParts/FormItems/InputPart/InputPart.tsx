@@ -2,7 +2,7 @@ import { SerializedStyles } from '@emotion/react';
 import React, { VFC, Dispatch, SetStateAction, ReactNode } from 'react';
 import { pageTemplate } from '~/styles/share/pageTemplate';
 import { inputStyle, textareaStyle, submitStyle } from './style';
-import useRipple from '~/hooks/useRipple';
+import { useRipple } from '~/hooks';
 import { rippleButton } from '~/styles/share/likeButtons';
 import { ripple } from '~/styles/share/ripple';
 import { css } from '@emotion/react';

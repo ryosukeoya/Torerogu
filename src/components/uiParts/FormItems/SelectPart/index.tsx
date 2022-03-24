@@ -14,14 +14,14 @@ type Props = {
   customCss?: SerializedStyles;
 };
 
-const Select: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: mb = 0, customCss }) => {
+const SelectPart: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: mb = 0, customCss }) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
   return (
-    <>
+    <div style={{display:'flex',alignItems:'baseline'}}>
       <select {...register(form.name, form.option)} css={selectStyle(mb, customCss)} required={!!isRequired}>
         <option value='' hidden>
           {title}
@@ -36,8 +36,8 @@ const Select: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: mb =
       </select>
       {isRequired && <span css={pageTemplate.require}>*必須</span>}
       {errors[form.name] ? <p css={pageTemplate.errorMessage}>{errors.name?.type === 'required' && '必須項目です'}</p> : null}
-    </>
+    </div>
   );
 };
 
-export default Select;
+export default SelectPart;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useIsActive = (isToggle: boolean, activeIndex: number, index: number) => {
+const useIsActive = (isToggle: boolean, activeIndex: number, index: number) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import type { GetTrainingCategoryWithTypeQuery } from '~/types/generated/graphql
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
-import { SwiperContainer } from '~/components/entryPoint';
+import { SwiperContainer } from '~/components';
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo();

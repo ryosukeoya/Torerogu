@@ -1,10 +1,10 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { BORDER } from '~/styles/const';
+import { COLOR } from '~/styles/const';
 
 export const inputStyle = {
   input: (customCss?: SerializedStyles) => css`
     width: 200px;
-    border: 1px solid ${BORDER.GRAY};
+    border: 1px solid ${COLOR.BORDER_GRAY};
     background-color: #fff;
     border-radius: 5px;
     text-align: right;
@@ -31,7 +31,7 @@ export const inputStyle = {
 };
 
 export const textareaStyle = (customCss?: SerializedStyles) => css`
-  border: 1px solid ${BORDER.GRAY};
+  border: 1px solid ${COLOR.BORDER_GRAY};
   background-color: #fff;
   border-radius: 15px;
   text-align: left;
@@ -49,5 +49,5 @@ export const submitStyle = () => css`
   padding: 13px 0;
   border: 0;
   border-radius: 22px;
-  cursor:pointer
+  cursor: pointer;
 `;

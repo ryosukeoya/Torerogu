@@ -40,7 +40,7 @@ const Container: VFC<PropsWithChildren<Pick<InputFormProps, 'form' | 'unit' | 't
   );
 };
 
-const InputForm: VFC<InputFormProps | TextAreaFormProps> = ({ options, title, placeholder, form, unit, ...props }) => {
+const InputFormPart: VFC<InputFormProps | TextAreaFormProps> = ({ options, title, placeholder, form, unit, ...props }) => {
   // react-hook-form用
   const {
     register,
@@ -67,4 +67,4 @@ const InputForm: VFC<InputFormProps | TextAreaFormProps> = ({ options, title, pl
   }
 };
 
-export default InputForm;
+export default InputFormPart;

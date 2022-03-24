@@ -1,7 +1,7 @@
 import type { VFC, Dispatch } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { BREAKPOINT, FONT, COLOR } from '~/styles/const';
-import { useIsActive } from '~/hooks/useIsActive';
+import { useIsActive } from '~/hooks';
 import type { SetterOrUpdater } from 'recoil';
 import { useRecoilValue } from 'recoil';
 import { swiperAtom } from '~/store';
@@ -44,9 +44,7 @@ const styles = {
     cursor: pointer;
     @media (min-width: ${BREAKPOINT.MD}) {
       &:hover {
-        /* border-bottom: 1px solid #dad2c8; */
-        background-color: #fff8f1;
-        /* background-color: #f8f8f8; */
+        background-color: ${COLOR.HOVER_ORANGE};
       }
     }
   `,

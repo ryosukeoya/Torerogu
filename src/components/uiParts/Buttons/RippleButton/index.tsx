@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import { rippleButton } from '~/styles/share/likeButtons';
 import { ripple } from '~/styles/share/ripple';
-import useRipple from '~/hooks/useRipple';
+import { useRipple } from '~/hooks';
 
 type Props = {
   children: ReactNode;

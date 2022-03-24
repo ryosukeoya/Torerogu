@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import React, { VFC } from 'react';
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
-import { SwiperContainer } from '~/components/entryPoint';
+import { SwiperContainer } from '~/components';
 
 const Plan: NextPage<VFC> = () => {
   return (

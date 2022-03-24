@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { BREAKPOINT, COLOR, BORDER } from '../const';
+import { BREAKPOINT, COLOR } from '../const';
 
 // export禁止
 const buttonBase = (marginTop?: number) => css`
@@ -51,7 +51,7 @@ export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyle
   overflow: hidden;
   color: #fff;
   background: ${COLOR.ORANGE};
-  ${isShadow && `box-shadow: 0 1.2px 1px 1px ${BORDER.GRAY}`}; //x軸 y軸 ぼかし 広がり カラー;
+  ${isShadow && `box-shadow: 0 1.2px 1px 1px ${COLOR.BORDER_GRAY}`}; //x軸 y軸 ぼかし 広がり カラー;
   ${customStyle}
   @media (min-width: ${BREAKPOINT.MD}) {
   &:hover {

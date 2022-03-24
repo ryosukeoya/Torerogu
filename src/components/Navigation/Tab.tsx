@@ -7,9 +7,8 @@ import { PAGE_PATH } from '~/constants/index';
 import type { PageTitle } from '~/types/index';
 import { useSetRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '~/store';
-import { COLOR, FONT } from '~/styles/const';
-import { useIsActive } from '~/hooks/useIsActive';
-import useRipple from '~/hooks/useRipple';
+import { BREAKPOINT, COLOR, FONT } from '~/styles/const';
+import { useIsActive, useRipple, useGetWindowSize } from '~/hooks';
 
 type Props = {
   isToggle?: true;
@@ -24,7 +23,8 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
   const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
   const isActive = useIsActive(!!isToggle, parentActiveIndex, index);
 
-  const [coords, setCoords, isRippling] = useRipple(170);
+  const [, setCoords, isRippling] = useRipple(170);
+  const { width } = useGetWindowSize();
 
   return (
     <Link href={PAGE_PATH[title]} passHref>
@@ -37,8 +37,8 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
         }}
         css={styles.box}
       >
-        {isRippling ? <span css={styles.ripple} /> : ''}
-        {getIcon(title, isActive)}
+        {width < parseInt(BREAKPOINT.MD) && isRippling ? <span css={styles.ripple} /> : ''}
+        <p>{getIcon(title, isActive)}</p>
         <p css={styles.title(isActive)}>{title}</p>
       </a>
     </Link>
@@ -70,11 +70,27 @@ const styles = {
     text-align: center;
     padding-top: 3px;
     position: relative;
+    &:hover {
+      background-color: ${COLOR.HOVER_RED};
+    }
+    @media (min-width: ${BREAKPOINT.MD}) {
+      width: auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 28px 40px;
+      border-radius: 30px;
+      margin-bottom: 10px;
+    }
   `,
   title: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.RED : 'black'};
     padding-top: 2px;
     font-size: ${FONT.X_SMALL};
+    @media (min-width: ${BREAKPOINT.MD}) {
+      display: inline-block;
+      padding-left: 10px;
+    }
   `,
   ripple: css`
     display: block;

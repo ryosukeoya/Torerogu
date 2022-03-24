@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import React from 'react';
 import '../styles/globals.css';
 import '../styles/reset.css';
-import { useNprogress as progressBar } from '../hooks/useNprogress';
+import { useNprogress as progressBar } from '../hooks';
 import Layout from '../Layout';
 import { ApolloProvider } from '@apollo/client';
 import { initializeApollo } from '../libs/graphql/apolloClient';
