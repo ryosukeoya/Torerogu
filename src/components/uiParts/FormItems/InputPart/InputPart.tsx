@@ -75,7 +75,8 @@ const InputPart: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ option
             }}
           >
             <span css={inputStyle.inputTitle}>記録する</span>
-            <input {...options} value={''} type='submit' css={[submitStyle, props.customCss]} />
+            {/* <input {...options} value={''} type='submit' css={[submitStyle, props.customCss]} /> */}
+            <input {...options} value='' type='submit' css={[submitStyle, props.customCss]} />
             {isRippling ? (
               <span
                 css={ripple.ripple}
