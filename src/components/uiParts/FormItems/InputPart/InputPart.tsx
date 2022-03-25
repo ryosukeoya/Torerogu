@@ -39,7 +39,7 @@ type ContainerProps = {
 
 const Container: VFC<ContainerProps> = ({ children, title }) => {
   return (
-    <div css={formStyle.content} style={{ display: 'inline-block', margin: '0 auto' }}>
+    <div css={formStyle.content}>
       {title && <p css={formStyle.contentTitle}>{title}</p>}
       {children}
     </div>
@@ -68,7 +68,7 @@ const InputPart: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ option
       return (
         <Container title={title}>
           <div
-            css={rippleButton(5,true,css`padding: 0;`)} // prettier-ignore
+            css={rippleButton(5,true,css`padding: 0;`,css`margin-left:0;margin-right:0;`)} // prettier-ignore
             onClick={(e: React.MouseEvent<HTMLDivElement>) => {
               const rect = e.currentTarget.getBoundingClientRect();
               setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });

@@ -45,14 +45,14 @@ export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyl
 `;
 
 // クリック時に波打つエフェクトを持つボタン用
-export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyle?: SerializedStyles) => css`
+export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyleSP?: SerializedStyles, customStylePC?: SerializedStyles) => css`
   ${buttonBase(marginTop)};
   position: relative;
   overflow: hidden;
   color: #fff;
   background: ${COLOR.ORANGE};
   ${isShadow && `box-shadow: 0 1.2px 1px 1px ${COLOR.BORDER_GRAY}`}; //x軸 y軸 ぼかし 広がり カラー;
-  ${customStyle}
+  ${customStyleSP}
   @media (min-width: ${BREAKPOINT.MD}) {
   &:hover {
     background:  ${COLOR.ORANGE}E6;
@@ -60,4 +60,5 @@ export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyle
     transform: scale(1.008);
     box-shadow: 0 1.2px 5px 3.5px ${COLOR.BORDER_GRAY};
   }
+  ${customStylePC};
 `;

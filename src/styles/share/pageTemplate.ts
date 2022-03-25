@@ -10,6 +10,7 @@ export const pageTemplate = {
     margin: 0 auto;
     padding-top: 30px;
     @media (min-width: ${BREAKPOINT.MD}) {
+      min-height: auto;
       padding: 30px 0 0 50px;
     }
   `,
