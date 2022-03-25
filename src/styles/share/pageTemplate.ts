@@ -16,6 +16,9 @@ export const pageTemplate = {
   title: css`
     padding-bottom: 50px;
     font-size: ${FONT.X1_LARGE};
+    @media (min-width: ${BREAKPOINT.MD}) {
+      padding-bottom: 55px;
+    }
   `,
   back: css`
     display: inline-block;

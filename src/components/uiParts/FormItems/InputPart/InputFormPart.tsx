@@ -6,6 +6,7 @@ import { formStyle } from '../formStyle';
 
 interface InputFormProps extends InputProps {
   form: { name: string; option: Record<string, unknown> };
+  customCursor?: 'pointer' | 'text' | 'move';
   unit?: string;
 }
 
@@ -49,10 +50,10 @@ const InputFormPart: VFC<InputFormProps | TextAreaFormProps> = ({ options, title
 
   switch (props.type) {
     case 'isInput':
-      const { typeAttr, setState } = props;
+      const { customCursor, typeAttr, setState } = props;
       return (
         <Container form={form} unit={unit} title={title} errors={errors}>
-          <input {...options} type={typeAttr} {...(form && { ...register(form.name, form.option) })} onChange={(e) => setState && setState(e.target.value)} css={inputPartStyle.input()} placeholder={placeholder} />
+          <input {...options} type={typeAttr} {...(form && { ...register(form.name, form.option) })} onChange={(e) => setState && setState(e.target.value)} css={inputPartStyle.input(customCursor)} placeholder={placeholder} />
         </Container>
       );
     case 'isTextArea':

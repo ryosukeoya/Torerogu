@@ -68,7 +68,7 @@ const InputPart: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ option
       return (
         <Container title={title}>
           <div
-            css={rippleButton(0,true,css`padding: 0;`)} // prettier-ignore
+            css={rippleButton(5,true,css`padding: 0;`)} // prettier-ignore
             onClick={(e: React.MouseEvent<HTMLDivElement>) => {
               const rect = e.currentTarget.getBoundingClientRect();
               setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });

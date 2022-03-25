@@ -2,7 +2,7 @@ import { css, SerializedStyles } from '@emotion/react';
 import { COLOR } from '~/styles/const';
 
 export const inputPartStyle = {
-  input: (customCss?: SerializedStyles) => css`
+  input: (cursor: 'pointer' | 'text' | 'move' | 'auto' = 'auto', customCss?: SerializedStyles) => css`
     width: 200px;
     border: 1px solid ${COLOR.BORDER_GRAY};
     background-color: #fff;
@@ -10,6 +10,7 @@ export const inputPartStyle = {
     text-align: right;
     padding: 4px 10px;
     color:black;
+    cursor: ${cursor};
     &::placeholder {
     }
     &:focus {

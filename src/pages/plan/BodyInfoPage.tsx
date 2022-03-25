@@ -25,7 +25,7 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
   return (
     <FormProvider {...method}>
       <FormContainer pageIndex={pageIndex} handleSubmit={handleSubmit} submitFunc={registerBodyInfo} title={'✏️ 目標体重を設定する'} open={open} handleClose={() => console.debug('hoge')}>
-        <InputFormPart options={{ value: getCurrentDate(new Date(), true), min: getCurrentDate(new Date(), true) }} title={'日付'} type={'isInput'} typeAttr='date' placeholder='60' form={{ name: 'date', option: { required: true } }} />
+        <InputFormPart options={{ value: getCurrentDate(new Date(), true), min: getCurrentDate(new Date(), true) }} title={'日付'} type={'isInput'} typeAttr='date' placeholder='60' form={{ name: 'date', option: { required: true } }}  customCursor={'pointer'} />
         <InputFormPart title={'体重'} unit={'kg'} type={'isInput'} typeAttr='text' placeholder='60' form={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
       </FormContainer>
     </FormProvider>
