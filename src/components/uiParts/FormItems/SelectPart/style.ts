@@ -14,6 +14,8 @@ export const selectStyle = (marginBottom?: number, customCss?: SerializedStyles)
   border: 1px solid ${COLOR.BORDER_GRAY};
   padding: 4px 10px;
   margin-bottom: ${marginBottom}px;
+  border-radius: 5px;
   background: url(/imgs/down-arrow.png) no-repeat right 10px center / 16px auto;
+  cursor: pointer;
   ${customCss};
 `;

@@ -14,7 +14,7 @@ export const pageTemplate = {
     }
   `,
   title: css`
-    padding-bottom: 35px;
+    padding-bottom: 50px;
     font-size: ${FONT.X1_LARGE};
   `,
   back: css`
