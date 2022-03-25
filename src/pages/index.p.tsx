@@ -15,8 +15,6 @@ const Home: NextPage = () => {
     fetchPolicy: 'network-only',
   });
 
-  const { height, width } = useGetWindowSize();
-
   if (loading) {
     return (
       <div css={pageTemplate.contentArea}>
@@ -28,9 +26,6 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <p>
-        {height},{width}
-      </p>
       <SwiperContainer>
         <Top data={data} />
         <History />

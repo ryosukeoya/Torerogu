@@ -44,7 +44,6 @@ const styles = {
       width: 30%;
       padding: 20px 0 0 10px;
       border-top: 0;
-      border-right: 1px solid ${COLOR.BORDER_GRAY};
     }
   `,
 };
