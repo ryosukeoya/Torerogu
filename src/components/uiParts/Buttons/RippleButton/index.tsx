@@ -22,7 +22,7 @@ const RippleButton: FC<Props> = ({ children, onClick }) => {
     >
       {isRippling ? (
         <span
-          css={ripple.ripple}
+          css={ripple.ripple('#ffbb54')}
           style={{
             left: coords.x,
             top: coords.y,

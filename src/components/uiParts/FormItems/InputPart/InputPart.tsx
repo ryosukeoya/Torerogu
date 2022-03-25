@@ -77,7 +77,7 @@ const InputPart: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ option
             <input {...options} value='' type='submit' css={[submitStyle, props.customCss]} />
             {isRippling ? (
               <span
-                css={ripple.ripple}
+                css={ripple.ripple('#ffbb54')}
                 style={{
                   left: coords.x,
                   top: coords.y,
