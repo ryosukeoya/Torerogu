@@ -2,6 +2,7 @@ import type { VFC, PropsWithChildren } from 'react';
 import { useFormContext, FieldErrors, FieldValues } from 'react-hook-form';
 import type { InputProps, TextAreaProps } from './InputPart';
 import { inputPartStyle, textareaStyle } from './style';
+import { formStyle } from '../formStyle';
 
 interface InputFormProps extends InputProps {
   form: { name: string; option: Record<string, unknown> };
@@ -15,7 +16,7 @@ interface TextAreaFormProps extends TextAreaProps {
 
 const ErrorMessage: VFC<{ errors: FieldErrors<FieldValues>; form: InputFormProps['form'] }> = ({ errors, form }) => {
   return (
-    <p css={inputPartStyle.errorMessage}>
+    <p css={formStyle.errorMessage}>
       {errors[form.name]?.type === 'required' && '必須項目です'}
       {errors[form.name]?.type === 'pattern' && '数値を入力してください'}
       {errors[form.name]?.type === 'maxLength' && '桁数を小さくしてください'}
@@ -25,16 +26,15 @@ const ErrorMessage: VFC<{ errors: FieldErrors<FieldValues>; form: InputFormProps
 
 const Container: VFC<PropsWithChildren<Pick<InputFormProps, 'form' | 'unit' | 'title'>> & { errors: FieldErrors<FieldValues> }> = ({ children, form, unit, title, errors }) => {
   return (
-    <div css={inputPartStyle.content}>
+    <div css={formStyle.content}>
       {title && (
-        <p css={inputPartStyle.contentTitle}>
+        <p css={formStyle.contentTitle}>
           {title}
-          {'required' in form.option && <span css={inputPartStyle.require}>*必須</span>}
+          {'required' in form.option && <span css={formStyle.require}>*必須</span>}
         </p>
       )}
       {children}
-      <span css={inputPartStyle.unit}>{unit}</span>
-      {/* {errors[form.name] ? <ErrorMessage errors={errors} form={form} /> : null} */}
+      <span css={formStyle.unit}>{unit}</span>
       <ErrorMessage errors={errors} form={form} />
     </div>
   );

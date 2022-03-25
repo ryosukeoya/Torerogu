@@ -1,8 +1,8 @@
 import React from 'react';
 import type { VFC } from 'react';
 import { SerializedStyles } from '@emotion/react';
-import { pageTemplate } from '~/styles/share/pageTemplate';
 import { useFormContext } from 'react-hook-form';
+import { formStyle } from '../formStyle';
 import { selectStyle } from './style';
 
 type Props = {
@@ -21,7 +21,7 @@ const SelectPart: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: 
   } = useFormContext();
 
   return (
-    <div style={{display:'flex',alignItems:'baseline'}}>
+    <div style={{ display: 'flex', alignItems: 'baseline' }}>
       <select {...register(form.name, form.option)} css={selectStyle(mb, customCss)} required={!!isRequired}>
         <option value='' hidden>
           {title}
@@ -34,8 +34,8 @@ const SelectPart: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: 
           );
         })}
       </select>
-      {isRequired && <span css={pageTemplate.require}>*必須</span>}
-      {errors[form.name] ? <p css={pageTemplate.errorMessage}>{errors.name?.type === 'required' && '必須項目です'}</p> : null}
+      {isRequired && <span css={formStyle.require}>*必須</span>}
+      {errors[form.name] ? <p css={formStyle.errorMessage}>{errors.name?.type === 'required' && '必須項目です'}</p> : null}
     </div>
   );
 };

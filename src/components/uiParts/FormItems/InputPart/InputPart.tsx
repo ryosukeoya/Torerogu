@@ -1,6 +1,7 @@
 import { SerializedStyles } from '@emotion/react';
 import React, { VFC, Dispatch, SetStateAction, ReactNode } from 'react';
 import { inputPartStyle, textareaStyle, submitStyle } from './style';
+import { formStyle } from '../formStyle';
 import { useRipple } from '~/hooks';
 import { rippleButton } from '~/styles/share/likeButtons';
 import { ripple } from '~/styles/share/ripple';
@@ -38,8 +39,8 @@ type ContainerProps = {
 
 const Container: VFC<ContainerProps> = ({ children, title }) => {
   return (
-    <div css={inputPartStyle.content} style={{ display: 'inline-block', margin: '0 auto' }}>
-      {title && <p css={inputPartStyle.contentTitle}>{title}</p>}
+    <div css={formStyle.content} style={{ display: 'inline-block', margin: '0 auto' }}>
+      {title && <p css={formStyle.contentTitle}>{title}</p>}
       {children}
     </div>
   );
