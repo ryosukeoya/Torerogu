@@ -9,7 +9,7 @@ export const pageTemplate = {
     width: 90%;
     margin: 0 auto;
     padding-top: 30px;
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       min-height: auto;
       padding: 30px 0 0 50px;
     }
@@ -17,7 +17,7 @@ export const pageTemplate = {
   title: css`
     padding-bottom: 50px;
     font-size: ${FONT.X1_LARGE};
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       padding-bottom: 55px;
     }
   `,
@@ -28,7 +28,7 @@ export const pageTemplate = {
     margin-top: 10px;
     font-size: ${FONT.BASE};
     cursor: pointer;
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       &:hover {
         opacity: 0.8;
       }

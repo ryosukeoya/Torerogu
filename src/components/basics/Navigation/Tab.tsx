@@ -70,7 +70,7 @@ const styles = {
     text-align: center;
     padding-top: 3px;
     position: relative;
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       width: auto;
       display: flex;
       justify-content: flex-start;
@@ -87,7 +87,7 @@ const styles = {
     color: ${isActive ? COLOR.RED : 'black'};
     padding-top: 2px;
     font-size: ${FONT.X_SMALL};
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       display: inline-block;
       padding-left: 10px;
     }

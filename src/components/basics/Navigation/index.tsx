@@ -33,7 +33,7 @@ const styles = {
     width: 100vw;
     height: 65px;
     border-top: 1px solid ${COLOR.BORDER_GRAY};
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       position: static;
       z-index: auto;
       flex-direction: column;

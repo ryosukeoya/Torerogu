@@ -12,7 +12,7 @@ export const cardStyle = (customCss?: SerializedStyles, hoverTheme: 'scale' | 'd
   padding: 25px 15px;
   cursor: pointer;
   ${hoverTheme === 'scale' && 'transition: all 0.3s'};
-  @media (min-width: ${BREAKPOINT.MD}) {
+  @media (min-width: ${BREAKPOINT.MD}px) {
     &:hover {
       ${hoverTheme === 'darken' && `background-color: ${COLOR.HOVER_GRAY}`};
       ${hoverTheme === 'scale' && `transform: scale(1.02);`};

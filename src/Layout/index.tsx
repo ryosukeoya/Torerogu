@@ -36,7 +36,7 @@ export default Layout;
 
 const styles = {
   pcContentArea: css`
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       display: flex;
       width: 80vw;
       max-width: 900px;
@@ -47,7 +47,7 @@ const styles = {
     min-height: 100vh;
     margin-top: 104px;
     background-color: #fdfdfd;
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       width: 70%;
       border-left: 1px solid ${COLOR.BORDER_GRAY};
       border-right: 1px solid ${COLOR.BORDER_GRAY};

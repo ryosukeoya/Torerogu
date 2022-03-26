@@ -21,7 +21,7 @@ export const simpleButton = (marginTop?: number, customCss?: SerializedStyles) =
   ${buttonBase(marginTop)};
   color: white;
   background-color: ${COLOR.ORANGE};
-  @media (min-width: ${BREAKPOINT.MD}) {
+  @media (min-width: ${BREAKPOINT.MD}px) {
     &:hover {
       opacity: 0.8;
     }
@@ -35,7 +35,7 @@ export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyl
   color: ${COLOR.ORANGE};
   background-color: white;
   border: 1px solid ${COLOR.ORANGE};
-  @media (min-width: ${BREAKPOINT.MD}) {
+  @media (min-width: ${BREAKPOINT.MD}px) {
     &:hover {
       color: white;
       background-color: ${COLOR.ORANGE};
@@ -53,7 +53,7 @@ export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyle
   background: ${COLOR.ORANGE};
   ${isShadow && `box-shadow: 0 1.2px 1px 1px ${COLOR.BORDER_GRAY}`}; //x軸 y軸 ぼかし 広がり カラー;
   ${customStyleSP}
-  @media (min-width: ${BREAKPOINT.MD}) {
+  @media (min-width: ${BREAKPOINT.MD}px) {
   &:hover {
     background:  ${COLOR.ORANGE}E6;
 

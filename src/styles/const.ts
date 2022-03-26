@@ -1,7 +1,7 @@
 const BREAKPOINT = {
-  SM: '640px',
-  MD: '768px',
-  LG: '1024px',
+  SM: '640',
+  MD: '768',
+  LG: '1024',
 } as const;
 
 /**

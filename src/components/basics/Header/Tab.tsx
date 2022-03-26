@@ -42,7 +42,7 @@ const styles = {
     font-size: ${FONT.BASE};
     background-color: #fff;
     cursor: pointer;
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       &:hover {
         background-color: ${COLOR.HOVER_ORANGE};
       }
