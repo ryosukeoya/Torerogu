@@ -1,32 +1,28 @@
-import React from 'react';
 import type { VFC, ReactNode } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { useSetRecoilState } from 'recoil';
-import { headerTabIndexAtom, swiperAtom } from '~/store';
-import type { Swiper as SwiperType } from 'swiper';
+import { useChangeSettingOnInWindowSize } from './useChangeSettingOnInWindowSize';
+
+// all Swiper styles including all modules styles (like Navigation, Pagination, etc.)
+import 'swiper/css';
 
 type Props = {
   children: ReactNode[];
 };
 
 const SwiperContainer: VFC<Props> = ({ children }) => {
-  const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom);
-  const setSwiper = useSetRecoilState<SwiperType | undefined>(swiperAtom);
+  useChangeSettingOnInWindowSize();
 
   return (
-    <Swiper
-      onRealIndexChange={(swiper) => {
-        setActiveIndex(swiper.realIndex);
-      }}
-      onSwiper={(swiper: SwiperType) => {
-        const swiperInstance = swiper;
-        setSwiper(swiperInstance);
-      }}
-    >
-      {children?.map((child: ReactNode, i: number) => {
-        return <SwiperSlide key={i}>{child}</SwiperSlide>;
-      })}
-    </Swiper>
+    <div className='swiper-container' id='swiper'>
+      <div className='swiper-wrapper'>
+        {children?.map((child: ReactNode, i: number) => {
+          return (
+            <div key={i} className='swiper-slide'>
+              {child}
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 
