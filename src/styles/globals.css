@@ -1,6 +1,7 @@
 html,
 body {
   font-family: 'Yomogi', cursive;
+  position: relative;
 }
 
 * {
@@ -54,4 +55,8 @@ hr {
 
 .swiper {
   width: 100%;
+}
+
+.swiper-container {
+  overflow-x: hidden;
 }
