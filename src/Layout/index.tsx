@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Header, Navigation } from '../components';
 import { APP } from '../constants';
 import { css } from '@emotion/react';
-import { BREAKPOINT } from '../styles/const';
+import { BREAKPOINT, COLOR } from '../styles/const';
 
 const Layout: FC = (prop) => {
   return (
@@ -19,13 +19,12 @@ const Layout: FC = (prop) => {
         <meta property='og:image' content={`${process.env.APP_URL}/ogp.png`} />
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='format-detection' content='telephone=no' />
-
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' />
-        <link href='https://fonts.googleapis.com/css2?family=Yomogi&display=swap' rel='stylesheet' />
+        <link href='https://fonts.googleapis.com/css2?family=Yomogi&display=swap' rel='stylesheet' /> {/* eslint-disable-line @next/next/no-page-custom-font */}
       </Head>
       <Header />
-      <div css={styles.contentArea}>
+      <div css={styles.pcContentArea}>
         <Navigation />
         <main css={styles.main}>{prop.children}</main>
       </div>
@@ -36,22 +35,22 @@ const Layout: FC = (prop) => {
 export default Layout;
 
 const styles = {
-  contentArea: css`
-    @media (min-width: ${BREAKPOINT.MD}) {
+  pcContentArea: css`
+    @media (min-width: ${BREAKPOINT.MD}px) {
       display: flex;
       width: 80vw;
       max-width: 900px;
       margin: 0 auto;
-
-      border: 1px solid pink;
     }
   `,
   main: css`
     min-height: 100vh;
     margin-top: 104px;
     background-color: #fdfdfd;
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       width: 70%;
+      border-left: 1px solid ${COLOR.BORDER_GRAY};
+      border-right: 1px solid ${COLOR.BORDER_GRAY};
     }
   `,
 };

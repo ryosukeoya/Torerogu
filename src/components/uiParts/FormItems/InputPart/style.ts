@@ -1,8 +1,8 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { COLOR } from '~/styles/const';
 
-export const inputStyle = {
-  input: (customCss?: SerializedStyles) => css`
+export const inputPartStyle = {
+  input: (cursor: 'pointer' | 'text' | 'move' | 'auto' = 'auto', customCss?: SerializedStyles) => css`
     width: 200px;
     border: 1px solid ${COLOR.BORDER_GRAY};
     background-color: #fff;
@@ -10,6 +10,7 @@ export const inputStyle = {
     text-align: right;
     padding: 4px 10px;
     color:black;
+    cursor: ${cursor};
     &::placeholder {
     }
     &:focus {
@@ -44,6 +45,7 @@ export const textareaStyle = (customCss?: SerializedStyles) => css`
 
 export const submitStyle = () => css`
   display: block;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   padding: 13px 0;

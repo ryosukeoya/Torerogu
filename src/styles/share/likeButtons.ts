@@ -21,7 +21,7 @@ export const simpleButton = (marginTop?: number, customCss?: SerializedStyles) =
   ${buttonBase(marginTop)};
   color: white;
   background-color: ${COLOR.ORANGE};
-  @media (min-width: ${BREAKPOINT.MD}) {
+  @media (min-width: ${BREAKPOINT.MD}px) {
     &:hover {
       opacity: 0.8;
     }
@@ -35,7 +35,7 @@ export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyl
   color: ${COLOR.ORANGE};
   background-color: white;
   border: 1px solid ${COLOR.ORANGE};
-  @media (min-width: ${BREAKPOINT.MD}) {
+  @media (min-width: ${BREAKPOINT.MD}px) {
     &:hover {
       color: white;
       background-color: ${COLOR.ORANGE};
@@ -45,16 +45,20 @@ export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyl
 `;
 
 // クリック時に波打つエフェクトを持つボタン用
-export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyle?: SerializedStyles) => css`
+export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyleSP?: SerializedStyles, customStylePC?: SerializedStyles) => css`
   ${buttonBase(marginTop)};
   position: relative;
   overflow: hidden;
   color: #fff;
   background: ${COLOR.ORANGE};
   ${isShadow && `box-shadow: 0 1.2px 1px 1px ${COLOR.BORDER_GRAY}`}; //x軸 y軸 ぼかし 広がり カラー;
-  ${customStyle}
-  @media (min-width: ${BREAKPOINT.MD}) {
+  ${customStyleSP}
+  @media (min-width: ${BREAKPOINT.MD}px) {
   &:hover {
-    background:  #f59300;
+    background:  ${COLOR.ORANGE}E6;
+
+    transform: scale(1.008);
+    box-shadow: 0 1.2px 5px 3.5px ${COLOR.BORDER_GRAY};
   }
+  ${customStylePC};
 `;

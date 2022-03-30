@@ -1,7 +1,7 @@
 import { SerializedStyles } from '@emotion/react';
 import React, { VFC, Dispatch, SetStateAction, ReactNode } from 'react';
-import { pageTemplate } from '~/styles/share/pageTemplate';
-import { inputStyle, textareaStyle, submitStyle } from './style';
+import { inputPartStyle, textareaStyle, submitStyle } from './style';
+import { formStyle } from '../formStyle';
 import { useRipple } from '~/hooks';
 import { rippleButton } from '~/styles/share/likeButtons';
 import { ripple } from '~/styles/share/ripple';
@@ -39,8 +39,8 @@ type ContainerProps = {
 
 const Container: VFC<ContainerProps> = ({ children, title }) => {
   return (
-    <div css={pageTemplate.content} style={{ display: 'inline-block', margin: '0 auto' }}>
-      {title && <p css={pageTemplate.contentTitle}>{title}</p>}
+    <div css={formStyle.content}>
+      {title && <p css={formStyle.contentTitle}>{title}</p>}
       {children}
     </div>
   );
@@ -54,7 +54,7 @@ const InputPart: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ option
       const { typeAttr, setState, customCss } = props;
       return (
         <Container title={title}>
-          <input {...options} type={typeAttr} onChange={(e) => setState && setState(e.target.value)} css={customCss ? customCss : inputStyle.input()} placeholder={placeholder} />
+          <input {...options} type={typeAttr} onChange={(e) => setState && setState(e.target.value)} css={customCss ? customCss : inputPartStyle.input()} placeholder={placeholder} />
         </Container>
       );
     case 'isTextArea':
@@ -68,17 +68,17 @@ const InputPart: VFC<InputProps | TextAreaProps | SubmitRippleProps> = ({ option
       return (
         <Container title={title}>
           <div
-            css={rippleButton(15,true,css`padding: 0;`)} // prettier-ignore
+            css={rippleButton(5,true,css`padding: 0;`,css`margin-left:0;margin-right:0;`)} // prettier-ignore
             onClick={(e: React.MouseEvent<HTMLDivElement>) => {
               const rect = e.currentTarget.getBoundingClientRect();
               setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
             }}
           >
-            <span css={inputStyle.inputTitle}>記録する</span>
-            <input {...options} value={''} type='submit' css={[submitStyle, props.customCss]} />
+            <span css={inputPartStyle.inputTitle}>記録する</span>
+            <input {...options} value='' type='submit' css={[submitStyle, props.customCss]} />
             {isRippling ? (
               <span
-                css={ripple.ripple}
+                css={ripple.ripple('#ffbb54')}
                 style={{
                   left: coords.x,
                   top: coords.y,

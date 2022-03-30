@@ -1,4 +1,4 @@
 export { cardStyle } from './uiParts/Card/style';
 export { sliderStyle } from './uiParts/Slider/style';
-export { inputStyle } from './uiParts/FormItems/InputPart/style';
-export { selectStyle } from './uiParts/FormItems/SelectPart/style';
+export { inputPartStyle } from './uiParts/FormItems/InputPart/style';
+export { selectPartStyle } from './uiParts/FormItems/SelectPart/style';

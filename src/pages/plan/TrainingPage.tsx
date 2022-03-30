@@ -6,7 +6,7 @@ import { GET_TRAINING_CATEGORY_WITH_TYPE } from '~/libs/graphql/queries';
 import { CREATE_TRAINING } from '~/libs/graphql/mutations';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
-import { getCurrentDate, getNumArr, getTrainingTypes } from '~/utils';
+import { getCurrentDate, getNumArr, getTrainingTypesFromCategoryID } from '~/utils';
 import { css } from '@emotion/react';
 
 type PlanTrainingFormValue = {
@@ -64,7 +64,7 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
           form={{ name: 'date', option: { required: true } }}
         />
         <Select form={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={20} isRequired />
-        <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypes(selectedCategoryID, data?.training_types, data?.training_categories)} marginBottom={20} isRequired />
+        <Select form={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypesFromCategoryID(selectedCategoryID, data?.training_types)} marginBottom={20} isRequired />
         <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'} texts={getNumArr(15, 200, 5)} marginBottom={20} isRequired />
         <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={20} isRequired />
         <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={20} isRequired />

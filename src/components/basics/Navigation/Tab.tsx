@@ -70,10 +70,7 @@ const styles = {
     text-align: center;
     padding-top: 3px;
     position: relative;
-    &:hover {
-      background-color: ${COLOR.HOVER_RED};
-    }
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       width: auto;
       display: flex;
       justify-content: flex-start;
@@ -81,13 +78,16 @@ const styles = {
       padding: 28px 40px;
       border-radius: 30px;
       margin-bottom: 10px;
+      &:hover {
+        background-color: ${COLOR.HOVER_RED};
+      }
     }
   `,
   title: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.RED : 'black'};
     padding-top: 2px;
     font-size: ${FONT.X_SMALL};
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       display: inline-block;
       padding-left: 10px;
     }

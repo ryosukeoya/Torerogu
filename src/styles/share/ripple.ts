@@ -16,11 +16,12 @@ const rippleEffect = keyframes`
 `;
 
 export const ripple = {
-  ripple: css`
+  ripple: (colorCode:string) => css`
     width: 100px;
     height: 100px;
     position: absolute;
     background: #ffbb54;
+    background: ${colorCode};
     content: '';
     border-radius: 50%;
     opacity: 1;

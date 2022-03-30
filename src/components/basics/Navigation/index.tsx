@@ -33,7 +33,7 @@ const styles = {
     width: 100vw;
     height: 65px;
     border-top: 1px solid ${COLOR.BORDER_GRAY};
-    @media (min-width: ${BREAKPOINT.MD}) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       position: static;
       z-index: auto;
       flex-direction: column;
@@ -44,7 +44,6 @@ const styles = {
       width: 30%;
       padding: 20px 0 0 10px;
       border-top: 0;
-      border-right: 1px solid ${COLOR.BORDER_GRAY};
     }
   `,
 };

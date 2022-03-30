@@ -7,7 +7,7 @@ import { pageTemplate } from '~/styles/share/pageTemplate';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { css } from '@emotion/react';
-import { getNumArr, getTrainingTypes2 } from '~/utils';
+import { getNumArr, getTrainingTypesFromCategoryIndex } from '~/utils';
 
 type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
 
@@ -66,9 +66,9 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
             </p>
           }
         >
-          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'} texts={getNumArr(10, 200, 5)} marginBottom={20} isRequired />
-          <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={20} isRequired />
-          <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={20} isRequired />
+          <Select form={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'} texts={getNumArr(10, 200, 5)} marginBottom={42} isRequired />
+          <Select form={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={42} isRequired />
+          <Select form={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={42} isRequired />
         </FormContainer>
       </FormProvider>
     );
@@ -77,7 +77,7 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
       <>
         <Space height={20} />
         <Slider items={data?.training_categories} setState={setSelectedCategoryIndex} />
-        {getTrainingTypes2(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
+        {getTrainingTypesFromCategoryIndex(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
           return (
             <Card handleClick={() => handleClick(training_type)} key={training_type.id} customCss={styles.card}>
               {training_type.name}
