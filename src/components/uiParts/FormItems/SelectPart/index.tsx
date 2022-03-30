@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import { SerializedStyles } from '@emotion/react';
 import { useFormContext } from 'react-hook-form';
 import { formStyle } from '../formStyle';
-import { selectStyle } from './style';
+import { selectPartStyle } from './style';
 
 type Props = {
   isRequired?: true;
@@ -22,7 +22,7 @@ const SelectPart: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: 
 
   return (
     <div style={{ display: 'flex', alignItems: 'baseline' }}>
-      <select {...register(form.name, form.option)} css={selectStyle(mb, customCss)} required={!!isRequired}>
+      <select {...register(form.name, form.option)} css={selectPartStyle(mb, customCss)} required={!!isRequired}>
         <option value='' hidden>
           {title}
         </option>
