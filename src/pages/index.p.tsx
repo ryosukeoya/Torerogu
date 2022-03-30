@@ -24,12 +24,10 @@ const Home: NextPage = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <>
-      <SwiperContainer>
-        <Top data={data} />
-        <History />
-      </SwiperContainer>
-    </>
+    <SwiperContainer>
+      <Top data={data} />
+      <History />
+    </SwiperContainer>
   );
 };
 
