@@ -51,3 +51,7 @@ hr {
 :root {
   --swiper-theme-color: #7e9b00 !important;
 }
+
+.swiper {
+  width: 100%;
+}
