@@ -13,7 +13,6 @@ export const useChangeSettingOnInWindowSize = (): void => {
 
   useEffect(() => {
     const options: SwiperOptions = {
-      touchRatio: 0.7,
       simulateTouch: false,
       fadeEffect: { crossFade: true },
       on: {
