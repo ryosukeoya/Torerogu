@@ -7,7 +7,7 @@ const disableDefaultStyle = css`
   appearance: none;
 `;
 
-export const selectStyle = (marginBottom?: number, customCss?: SerializedStyles) => css`
+export const selectPartStyle = (marginBottom?: number, customCss?: SerializedStyles) => css`
   ${disableDefaultStyle}
   color:black;
   width: 200px;
