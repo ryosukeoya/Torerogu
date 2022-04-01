@@ -1,11 +1,15 @@
 import Head from 'next/head';
-import React, { VFC } from 'react';
+import React, { VFC, ReactNode } from 'react';
 import { Header, Navigation } from '../components';
 import { APP } from '../constants';
 import { css } from '@emotion/react';
 import { BREAKPOINT, COLOR } from '../styles/const';
 
-const Layout: VFC = (prop) => {
+type Props = {
+  children: ReactNode;
+};
+
+const Layout: VFC<Props> = ({ children }) => {
   return (
     <>
       <Head>
@@ -26,7 +30,7 @@ const Layout: VFC = (prop) => {
       <Header />
       <div css={styles.pcContentArea}>
         <Navigation />
-        <main css={styles.main}>{prop.children}</main>
+        <main css={styles.main}>{children}</main>
       </div>
     </>
   );

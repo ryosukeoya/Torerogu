@@ -55,12 +55,9 @@ const InputPart: VFC<InputPartProps> = ({ title, customCss, setState, unit, form
       );
     default:
       return (
-        <>
-          <FormItemContainer title={title} unit={unit} formConf={formConf} errors={errors}>
-            {/* <input {...(formConf && { ...register(formConf.name, formConf.option) })} {...props} onChange={(e) => setState && setState(e.target.value)} css={customCss ? customCss : inputPartStyle.input()} /> */}
-            <input {...(formConf && { ...register(formConf.name, formConf.option) })} {...props} onChange={(e) => setState && setState(e.target.value)} css={inputPartStyle.input(customCss)} />
-          </FormItemContainer>
-        </>
+        <FormItemContainer title={title} unit={unit} formConf={formConf} errors={errors}>
+          <input {...(formConf && { ...register(formConf.name, formConf.option) })} {...props} onChange={(e) => setState && setState(e.target.value)} css={inputPartStyle.input(customCss)} />
+        </FormItemContainer>
       );
   }
 };
