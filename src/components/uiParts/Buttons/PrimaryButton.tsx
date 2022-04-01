@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import type { VFC } from 'react';
 import { useGetTheme } from './useGetTheme';
+import { ButtonTheme } from './types';
 
 interface PropsBase<T extends 'isButton' | 'isLinkButton'> {
   type: T;
   text: string;
-  theme: 'simple' | 'toggle';
+  theme: ButtonTheme;
 }
+
 interface ButtonProps extends PropsBase<'isButton'> {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }

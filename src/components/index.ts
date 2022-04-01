@@ -8,8 +8,7 @@ export { default as FormContainer } from './containers/Form';
 export { default as SwiperContainer } from './containers/Swiper';
 
 // UIParts
-export { default as PrimaryButton } from './uiParts/Buttons/PrimaryButton';
-export { default as RippleButton } from './uiParts/Buttons/RippleButton';
+export { PrimaryButton, RippleButton } from './uiParts/Buttons';
 export { default as Card } from './uiParts/Card';
 export { default as InputPart } from './uiParts/FormItems/InputPart';
 export { default as PrimaryNavigation } from './uiParts/PrimaryNavigation';
