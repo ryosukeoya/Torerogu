@@ -28,7 +28,7 @@ const Graph: VFC = () => {
             <YAxis />
           </LineChart>
         </ResponsiveContainer>
-        <PrimaryNavigation titles={['1週間', '1ヶ月', '1年', '全て']} />
+        <PrimaryNavigation titles={['1週間', '1ヶ月', '1年', '全て']} theme='roundish' options={{ isToggle: true, isSwiper: false }} />
       </>
     );
   } else if (activeIndex === 1) {

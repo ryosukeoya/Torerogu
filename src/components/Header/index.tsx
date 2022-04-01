@@ -3,15 +3,16 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { css, keyframes } from '@emotion/react';
-import Tabs from './Tabs';
 import { APP } from '~/constants';
-import { COLOR, FONT } from '~/styles/const';
-import { useRecoilState } from 'recoil';
+import { COLOR, FONT, BREAKPOINT } from '~/styles/const';
+import { useSetRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '~/store';
 import { useIsScrollDown } from '~/hooks';
+import { PrimaryNavigation2 } from '~/components';
+import { useGetTitle } from '~/hooks';
 
 const Header: VFC = () => {
-  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
+  const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom);
   const [fade, setFade] = useState(false);
 
   const isScrollDown: boolean = useIsScrollDown();
@@ -35,7 +36,21 @@ const Header: VFC = () => {
           <Image src='/imgs/profile.png' width={28} height={28} alt={'プロフィール'} />
         </p>
       </div>
-      <Tabs activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+      <PrimaryNavigation2
+        titles={useGetTitle() as string[]}
+        theme={'basicTab'}
+        options={{ isSwiper: true, isToggle: true }}
+        customCss={{
+          nav: css`
+            border-bottom: none;
+          `,
+          item: css`
+            @media (min-width: ${BREAKPOINT.MD}px) {
+              visibility: hidden;
+            }
+          `,
+        }}
+      />
     </header>
   );
 };
