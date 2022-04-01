@@ -37,7 +37,7 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
         }}
         css={styles.box}
       >
-        {width < parseInt(BREAKPOINT.MD) && isRippling ? <span css={styles.ripple} /> : ''}
+        {width < BREAKPOINT.MD && isRippling ? <span css={styles.ripple} /> : ''}
         <p>{getIcon(title, isActive)}</p>
         <p css={styles.title(isActive)}>{title}</p>
       </a>
