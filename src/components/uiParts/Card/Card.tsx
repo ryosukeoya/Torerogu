@@ -1,11 +1,12 @@
 import type { VFC, ReactNode, PropsWithChildren } from 'react';
 import { SerializedStyles } from '@emotion/react';
 import { cardStyle } from './style';
+import { HoverTheme } from './types';
 
 type Props = {
   handleClick?: VoidFunction;
   customCss?: SerializedStyles;
-  hoverTheme?: 'scale' | 'darken';
+  hoverTheme?: HoverTheme;
   children: ReactNode;
 };
 

@@ -9,7 +9,7 @@ export { default as SwiperContainer } from './containers/Swiper';
 
 // UIParts
 export { PrimaryButton, RippleButton } from './uiParts/Buttons';
-export { default as Card } from './uiParts/Card';
+export { default as Card } from './uiParts/Card/Card';
 export { default as InputPart } from './uiParts/FormItems/InputPart';
 export { default as PrimaryNavigation } from './uiParts/PrimaryNavigation';
 export { default as SelectPart } from './uiParts/FormItems/SelectPart';
