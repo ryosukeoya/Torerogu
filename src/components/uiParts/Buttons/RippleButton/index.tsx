@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { VFC, ReactNode } from 'react';
 import { rippleButton } from '~/styles/share/likeButtons';
 import { ripple } from '~/styles/share/ripple';
 import { useRipple } from '~/hooks';
@@ -8,7 +8,7 @@ type Props = {
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
-const RippleButton: FC<Props> = ({ children, onClick }) => {
+const RippleButton: VFC<Props> = ({ children, onClick }) => {
   const [coords, setCoords, isRippling] = useRipple(300);
 
   return (

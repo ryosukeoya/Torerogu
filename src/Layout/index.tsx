@@ -1,11 +1,11 @@
 import Head from 'next/head';
-import React, { FC } from 'react';
+import React, { VFC } from 'react';
 import { Header, Navigation } from '../components';
 import { APP } from '../constants';
 import { css } from '@emotion/react';
 import { BREAKPOINT, COLOR } from '../styles/const';
 
-const Layout: FC = (prop) => {
+const Layout: VFC = (prop) => {
   return (
     <>
       <Head>

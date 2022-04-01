@@ -23,7 +23,7 @@ const FormContainer: VFC<ContainerInterface> = ({ pageIndex, handleSubmit, submi
         {firstElm}
         <h2 css={pageTemplate.title}>{title}</h2>
         {children}
-        <InputPart type='submit' value=''/>
+        <InputPart type='submit' value='' />
         <Snackbar pageIndex={pageIndex} text={'記録しました！'} open={open} handleClose={handleClose} />
         {lastElm}
       </div>
