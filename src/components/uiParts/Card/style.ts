@@ -1,7 +1,8 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { BREAKPOINT, COLOR } from '~/styles/const';
+import { HoverTheme } from './types';
 
-export const cardStyle = (customCss?: SerializedStyles, hoverTheme: 'scale' | 'darken' = 'scale') => css`
+export const cardStyle = (customCss?: SerializedStyles, hoverTheme: HoverTheme = 'scale') => css`
   background-color: #fff;
   box-shadow: 0 1px 1px 1px ${COLOR.BORDER_GRAY}; //x軸 y軸 ぼかし 広がり カラー;
   text-align: center;

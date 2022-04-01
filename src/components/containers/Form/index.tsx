@@ -1,5 +1,5 @@
 import React from 'react';
-import type { FC, ReactNode } from 'react';
+import type { VFC, ReactNode } from 'react';
 import { InputPart, Snackbar } from '~/components';
 import { pageTemplate } from '~/styles/share/pageTemplate';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
@@ -16,14 +16,14 @@ type ContainerInterface = {
   children: ReactNode;
 };
 
-const FormContainer: FC<ContainerInterface> = ({ pageIndex, handleSubmit, submitFunc, title, open, handleClose, firstElm, lastElm, children }) => {
+const FormContainer: VFC<ContainerInterface> = ({ pageIndex, handleSubmit, submitFunc, title, open, handleClose, firstElm, lastElm, children }) => {
   return (
     <form onSubmit={handleSubmit(submitFunc)}>
       <div css={pageTemplate.contentArea}>
         {firstElm}
         <h2 css={pageTemplate.title}>{title}</h2>
         {children}
-        <InputPart type={'isSubmit'} />
+        <InputPart type='submit' value='' />
         <Snackbar pageIndex={pageIndex} text={'記録しました！'} open={open} handleClose={handleClose} />
         {lastElm}
       </div>

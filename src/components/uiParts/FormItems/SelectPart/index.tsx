@@ -1,20 +1,22 @@
 import React from 'react';
-import type { VFC } from 'react';
+import type { VFC, ComponentProps } from 'react';
 import { SerializedStyles } from '@emotion/react';
 import { useFormContext } from 'react-hook-form';
 import { formStyle } from '../formStyle';
 import { selectPartStyle } from './style';
 
-type Props = {
+type Select = ComponentProps<'select'>;
+
+interface Props extends Select {
   isRequired?: true;
   title: string;
   texts: any[] | undefined; // eslint-disable-line @typescript-eslint/no-explicit-any
-  form: { name: string; option: { required: boolean } };
+  formConf: { name: string; option: { required: boolean } };
   marginBottom?: number;
   customCss?: SerializedStyles;
-};
+}
 
-const SelectPart: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: mb = 0, customCss }) => {
+const SelectPart: VFC<Props> = ({ isRequired, title, texts, formConf, marginBottom: mb = 0, customCss, ...selectOptions }) => {
   const {
     register,
     formState: { errors },
@@ -22,7 +24,7 @@ const SelectPart: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: 
 
   return (
     <div style={{ display: 'flex', alignItems: 'baseline' }}>
-      <select {...register(form.name, form.option)} css={selectPartStyle(mb, customCss)} required={!!isRequired}>
+      <select {...selectOptions} {...register(formConf.name, formConf.option)} css={selectPartStyle(mb, customCss)} required={!!isRequired}>
         <option value='' hidden>
           {title}
         </option>
@@ -35,7 +37,7 @@ const SelectPart: VFC<Props> = ({ isRequired, title, texts, form, marginBottom: 
         })}
       </select>
       {isRequired && <span css={formStyle.require}>*必須</span>}
-      {errors[form.name] ? <p css={formStyle.errorMessage}>{errors.name?.type === 'required' && '必須項目です'}</p> : null}
+      {errors[formConf.name] ? <p css={formStyle.errorMessage}>{errors.name?.type === 'required' && '必須項目です'}</p> : null}
     </div>
   );
 };
