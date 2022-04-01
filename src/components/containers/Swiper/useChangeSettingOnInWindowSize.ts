@@ -24,7 +24,7 @@ export const useChangeSettingOnInWindowSize = (): void => {
 
     const realIndex = swiper?.realIndex;
     swiper?.destroy(true, true);
-    if (windowSize.width >= Number(BREAKPOINT.MD)) {
+    if (windowSize.width >= BREAKPOINT.MD) {
       options.effect = 'fade';
       options.speed = 230;
       Swiper.use([EffectFade]);

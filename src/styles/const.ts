@@ -1,7 +1,7 @@
-const BREAKPOINT = {
-  SM: '640',
-  MD: '768',
-  LG: '1024',
+const BREAKPOINT: { [breakpoint: string]: number } = {
+  SM: 640,
+  MD: 768,
+  LG: 1024,
 } as const;
 
 /**
