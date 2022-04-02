@@ -18,7 +18,7 @@ export const headerTabStyles = {
     background-color: #fff;
     text-align: center;
     cursor: pointer;
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    @media (hover: hover) {
       &:hover {
         background-color: ${COLOR.HOVER_ORANGE};
       }
