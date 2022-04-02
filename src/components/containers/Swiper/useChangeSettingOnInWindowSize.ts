@@ -15,6 +15,7 @@ export const useChangeSettingOnInWindowSize = (): void => {
     const options: SwiperOptions = {
       simulateTouch: false,
       fadeEffect: { crossFade: true },
+      nested: true,
       on: {
         realIndexChange: function (swiper) {
           setActiveIndex(swiper.realIndex);
@@ -23,7 +24,6 @@ export const useChangeSettingOnInWindowSize = (): void => {
     };
 
     const realIndex = swiper?.realIndex;
-    swiper?.destroy(true, true);
     if (windowSize.width >= BREAKPOINT.MD) {
       options.effect = 'fade';
       options.speed = 230;
@@ -32,8 +32,9 @@ export const useChangeSettingOnInWindowSize = (): void => {
       options.effect = 'slide';
       options.speed = 350;
     }
+    options.initialSlide = realIndex;
+    swiper?.destroy(false, true);
     const newSwiper = new Swiper('.swiper-container', options);
-    realIndex ? (newSwiper.realIndex = realIndex) : null;
     setSwiper(newSwiper);
   }, [windowSize]); // eslint-disable-next-line react-hooks/exhaustive-deps
 };
