@@ -70,16 +70,15 @@ const styles = {
     text-align: center;
     padding-top: 3px;
     position: relative;
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       width: auto;
       display: flex;
       justify-content: flex-start;
+      flex-shrink: 0;
       align-items: center;
       padding: 28px 40px;
       border-radius: 30px;
       margin-bottom: 10px;
-    }
-    @media (hover: hover) {
       &:hover {
         background-color: ${COLOR.HOVER_RED};
       }
@@ -89,7 +88,7 @@ const styles = {
     color: ${isActive ? COLOR.RED : 'black'};
     padding-top: 2px;
     font-size: ${FONT.X_SMALL};
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       display: inline-block;
       padding-left: 10px;
     }

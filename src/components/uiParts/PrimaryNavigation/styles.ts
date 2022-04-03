@@ -1,4 +1,4 @@
-import { BREAKPOINT, FONT, COLOR } from '~/styles/const';
+import { FONT, COLOR } from '~/styles/const';
 import { css, SerializedStyles } from '@emotion/react';
 
 export const headerTabStyles = {
@@ -12,7 +12,7 @@ export const headerTabStyles = {
   `,
   item: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.ORANGE : 'black'};
-    ${isActive && `border-bottom:1px solid ${COLOR.ORANGE}`};
+    border-bottom: 1px solid ${isActive ? COLOR.ORANGE : '#fff'};
     padding: 15px;
     font-size: ${FONT.BASE};
     background-color: #fff;

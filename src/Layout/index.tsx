@@ -3,7 +3,7 @@ import React, { VFC, ReactNode } from 'react';
 import { Header, Navigation } from '../components';
 import { APP } from '../constants';
 import { css } from '@emotion/react';
-import { BREAKPOINT, COLOR } from '../styles/const';
+import { BREAKPOINT, COLOR, HEADER, CONTENT_AREA } from '../styles/const';
 
 type Props = {
   children: ReactNode;
@@ -30,7 +30,7 @@ const Layout: VFC<Props> = ({ children }) => {
       <Header />
       <div css={styles.pcContentArea}>
         <Navigation />
-        <main css={styles.main}>{children}</main>
+        <main css={styles.mainContent}>{children}</main>
       </div>
     </>
   );
@@ -40,19 +40,20 @@ export default Layout;
 
 const styles = {
   pcContentArea: css`
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       display: flex;
       width: 80vw;
+      min-width: ${BREAKPOINT.MD}px;
       max-width: 900px;
       margin: 0 auto;
     }
   `,
-  main: css`
+  mainContent: css`
     min-height: 100vh;
-    margin-top: 104px;
+    margin-top: ${HEADER.HEIGUT};
     background-color: #fdfdfd;
-    @media (min-width: ${BREAKPOINT.MD}px) {
-      width: 70%;
+    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
+      width: ${CONTENT_AREA.MAIN_CONTENT_PERCENT}%;
       border-left: 1px solid ${COLOR.BORDER_GRAY};
       border-right: 1px solid ${COLOR.BORDER_GRAY};
     }

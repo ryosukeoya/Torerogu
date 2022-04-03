@@ -10,6 +10,7 @@ import { headerTabIndexAtom } from '~/store';
 import { useIsScrollDown } from '~/hooks';
 import { PrimaryNavigation2 } from '~/components';
 import { useGetTitle } from '~/hooks';
+import { HEADER } from '~/styles/const';
 
 const Header: VFC = () => {
   const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom);
@@ -59,6 +60,7 @@ export default Header;
 
 const styles = {
   header: css`
+    height: ${HEADER.HEIGUT};
     position: fixed;
     top: 0;
     z-index: 1000;
