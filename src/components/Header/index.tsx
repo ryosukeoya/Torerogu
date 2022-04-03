@@ -8,7 +8,7 @@ import { COLOR, FONT, BREAKPOINT } from '~/styles/const';
 import { useSetRecoilState } from 'recoil';
 import { headerTabIndexAtom } from '~/store';
 import { useIsScrollDown } from '~/hooks';
-import { PrimaryNavigation2 } from '~/components';
+import { PrimaryNavigationGlobalState } from '~/components';
 import { useGetTitle } from '~/hooks';
 import { HEADER } from '~/styles/const';
 
@@ -37,7 +37,7 @@ const Header: VFC = () => {
           <Image src='/imgs/profile.png' width={28} height={28} alt={'プロフィール'} />
         </p>
       </div>
-      <PrimaryNavigation2
+      <PrimaryNavigationGlobalState
         titles={useGetTitle() as string[]}
         theme={'basicTab'}
         options={{ isSwiper: true, isToggle: true }}

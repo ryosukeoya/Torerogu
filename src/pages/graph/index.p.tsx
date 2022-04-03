@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { Space, PrimaryNavigation } from '~/components';
+import { Space, PrimaryNavigationLocalState } from '~/components';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '~/store';
 import { COLOR } from '~/styles/const';
@@ -28,7 +28,7 @@ const Graph: VFC = () => {
             <YAxis />
           </LineChart>
         </ResponsiveContainer>
-        <PrimaryNavigation titles={['1週間', '1ヶ月', '1年', '全て']} theme='roundish' options={{ isToggle: true, isSwiper: false }} />
+        <PrimaryNavigationLocalState titles={['1週間', '1ヶ月', '1年', '全て']} theme='roundish' options={{ isToggle: true, isSwiper: false }} />
       </>
     );
   } else if (activeIndex === 1) {

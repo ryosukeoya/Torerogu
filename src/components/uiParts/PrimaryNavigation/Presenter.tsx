@@ -13,7 +13,7 @@ type Props = {
   setActiveIndex: SetterOrUpdater<number>;
 };
 
-const PrimaryNavigation: VFC<Props> = ({ titles, theme, customCss, options, activeIndex, setActiveIndex }) => {
+const PrimaryNavigationPresenter: VFC<Props> = ({ titles, theme, customCss, options, activeIndex, setActiveIndex }) => {
   const themeStyle = useGetCss(theme);
 
   return (
@@ -25,4 +25,4 @@ const PrimaryNavigation: VFC<Props> = ({ titles, theme, customCss, options, acti
   );
 };
 
-export default PrimaryNavigation;
+export default PrimaryNavigationPresenter;

@@ -6,7 +6,7 @@ import { pageTemplate } from '../styles/share/pageTemplate';
 import { getCurrentDate } from '../utils/app';
 import Top from './Top';
 import History from './History';
-import { SwiperContainer, PrimaryNavigation } from '~/components';
+import { SwiperContainer, PrimaryNavigationLocalState } from '~/components';
 import { BREAKPOINT } from '~/styles/const';
 import { useGetTitle } from '~/hooks';
 import { css } from '@emotion/react';
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <PrimaryNavigation
+      <PrimaryNavigationLocalState
         titles={useGetTitle() as string[]}
         theme='basicTab'
         options={{ isSwiper: true, isToggle: true }}

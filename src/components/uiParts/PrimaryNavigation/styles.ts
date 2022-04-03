@@ -1,7 +1,7 @@
 import { FONT, COLOR } from '~/styles/const';
 import { css, SerializedStyles } from '@emotion/react';
 
-export const headerTabStyles = {
+export const tabStyles = {
   nav: (customCss?: SerializedStyles) => css`
     clear: both;
     display: flex;
@@ -26,8 +26,7 @@ export const headerTabStyles = {
   `,
 };
 
-// TODO:リファ
-export const roundStyle = {
+export const roundStyles = {
   nav: css`
     display: flex;
     cursor: pointer;

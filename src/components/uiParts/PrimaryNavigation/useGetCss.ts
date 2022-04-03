@@ -1,13 +1,13 @@
 import { Theme } from './types';
 import { SerializedStyles } from '@emotion/react';
-import { headerTabStyles, roundStyle } from './styles';
+import { tabStyles, roundStyles } from './styles';
 
 export const useGetCss = (theme: Theme, customCss?: SerializedStyles): SerializedStyles => {
   switch (theme) {
     case 'basicTab':
-      return headerTabStyles.nav(customCss);
+      return tabStyles.nav(customCss);
     case 'roundish':
-      return roundStyle.nav;
+      return roundStyles.nav;
     default:
       throw new Error('wrong theme given');
   }
@@ -16,11 +16,11 @@ export const useGetCss = (theme: Theme, customCss?: SerializedStyles): Serialize
 export const useGetItemCss = (theme: Theme, isActive?: boolean): SerializedStyles => {
   switch (theme) {
     case 'basicTab':
-      return headerTabStyles.item(isActive);
+      return tabStyles.item(isActive);
     case 'roundish':
-      return roundStyle.item(isActive);
+      return roundStyles.item(isActive);
     default:
       throw new Error('wrong theme given');
   }
 };
-5
+5;

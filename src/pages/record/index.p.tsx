@@ -4,7 +4,7 @@ import type { GetTrainingCategoryWithTypeQuery } from '~/types/generated/graphql
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
-import { SwiperContainer, PrimaryNavigation2 } from '~/components';
+import { SwiperContainer, PrimaryNavigationGlobalState } from '~/components';
 import { BREAKPOINT } from '~/styles/const';
 import { useGetTitle } from '~/hooks';
 import { css } from '@emotion/react';
@@ -28,7 +28,7 @@ type Props = {
 const Record: NextPage<Props> = ({ data }) => {
   return (
     <>
-      <PrimaryNavigation2
+      <PrimaryNavigationGlobalState
         titles={useGetTitle() as string[]}
         theme='basicTab'
         options={{ isSwiper: true, isToggle: true }}
