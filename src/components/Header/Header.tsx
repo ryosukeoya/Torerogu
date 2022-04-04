@@ -3,19 +3,22 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { css, keyframes } from '@emotion/react';
-import Tabs from './Tabs';
 import { APP } from '~/constants';
-import { COLOR, FONT } from '~/styles/const';
-import { useRecoilState } from 'recoil';
-import { headerTabIndexAtom } from '~/store';
+import { COLOR, FONT, BREAKPOINT } from '~/styles/const';
+import { useSetRecoilState } from 'recoil';
+import { mainTabIndexAtom } from '~/store';
 import { useIsScrollDown } from '~/hooks';
+import { PrimaryNavigationGlobalState } from '~/components';
+import { useGetTabTitle } from '~/hooks';
+import { HEADER } from '~/styles/const';
 
 const Header: VFC = () => {
-  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
+  const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom);
   const [fade, setFade] = useState(false);
 
   const isScrollDown: boolean = useIsScrollDown();
   const headerStateCss = isScrollDown ? stateCss['hidden'] : stateCss['visible'];
+  const tabNames = useGetTabTitle();
 
   return (
     <header css={[styles.header, headerStateCss]}>
@@ -35,7 +38,21 @@ const Header: VFC = () => {
           <Image src='/imgs/profile.png' width={28} height={28} alt={'プロフィール'} />
         </p>
       </div>
-      <Tabs activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+      <PrimaryNavigationGlobalState
+        titles={tabNames}
+        theme={'basicTab'}
+        options={{ isSwiper: true, isToggle: true }}
+        customCss={{
+          nav: css`
+            border-bottom: none;
+          `,
+          item: css`
+            @media (min-width: ${BREAKPOINT.MD}px) {
+              visibility: hidden;
+            }
+          `,
+        }}
+      />
     </header>
   );
 };
@@ -44,6 +61,7 @@ export default Header;
 
 const styles = {
   header: css`
+    height: ${HEADER.HEIGUT};
     position: fixed;
     top: 0;
     z-index: 1000;

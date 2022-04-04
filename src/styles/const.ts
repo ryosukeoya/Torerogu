@@ -1,7 +1,9 @@
-const BREAKPOINT = {
-  SM: '640',
-  MD: '768',
-  LG: '1024',
+export { BREAKPOINT, COLOR, FONT, HEADER, CONTENT_AREA };
+
+const BREAKPOINT: { [breakpoint: string]: number } = {
+  SM: 640,
+  MD: 768,
+  LG: 1024,
 } as const;
 
 /**
@@ -32,4 +34,10 @@ const FONT = {
   X2_LARGE: '32px',
 } as const;
 
-export { BREAKPOINT, COLOR, FONT };
+const HEADER = {
+  HEIGUT: '104px',
+} as const;
+
+const CONTENT_AREA = {
+  MAIN_CONTENT_PERCENT: 75,
+} as const;

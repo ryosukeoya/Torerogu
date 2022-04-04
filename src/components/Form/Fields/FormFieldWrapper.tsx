@@ -1,11 +1,11 @@
 import React from 'react';
 import type { VFC, ReactNode } from 'react';
-import { formStyle } from './formStyle';
 import { FieldErrors, FieldValues } from 'react-hook-form';
+import { formFieldStyle } from './formFieldStyle';
 
 const ErrorMessage: VFC<{ errors: FieldErrors<FieldValues>; formConf: Required<Props>['formConf'] }> = ({ errors, formConf }) => {
   return (
-    <p css={formStyle.errorMessage}>
+    <p css={formFieldStyle.errorMessage}>
       {errors[formConf.name]?.type === 'required' && '必須項目です'}
       {errors[formConf.name]?.type === 'pattern' && '数値を入力してください'}
       {errors[formConf.name]?.type === 'maxLength' && '桁数を小さくしてください'}
@@ -21,22 +21,20 @@ type Props = {
   children: ReactNode;
 };
 
-const FormItemContainer: VFC<Props> = ({ title, unit, formConf, errors, children }) => {
+const FormFieldWrapper: VFC<Props> = ({ title, unit, formConf, errors, children }) => {
   return (
-    <>
-      <div css={formStyle.content}>
-        {title && (
-          <p css={formStyle.contentTitle}>
-            {title}
-            {formConf && formConf.option && 'required' in formConf.option && <span css={formStyle.require}>*必須</span>}
-          </p>
-        )}
-        {children}
-        <span css={formStyle.unit}>{unit}</span>
-        {formConf && errors &&  <ErrorMessage errors={errors} formConf={formConf} />}
-      </div>
-    </>
+    <div css={formFieldStyle.content}>
+      {title && (
+        <p css={formFieldStyle.contentTitle}>
+          {title}
+          {formConf && formConf.option && 'required' in formConf.option && <span css={formFieldStyle.require}>*必須</span>}
+        </p>
+      )}
+      {children}
+      <span css={formFieldStyle.unit}>{unit}</span>
+      {formConf && errors && <ErrorMessage errors={errors} formConf={formConf} />}
+    </div>
   );
 };
 
-export default FormItemContainer;
+export default FormFieldWrapper;

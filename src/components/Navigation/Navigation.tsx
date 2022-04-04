@@ -3,7 +3,7 @@ import Tab from './Tab';
 import { PAGE_TITLE } from '~/constants/index';
 import type { PageTitle } from '~/types/index';
 import { css } from '@emotion/react';
-import { COLOR, BREAKPOINT } from '~/styles/const';
+import { COLOR, BREAKPOINT, HEADER, CONTENT_AREA } from '~/styles/const';
 import { useActiveIndexFromPath } from '~/hooks';
 
 const Navigation: VFC = () => {
@@ -33,16 +33,16 @@ const styles = {
     width: 100vw;
     height: 65px;
     border-top: 1px solid ${COLOR.BORDER_GRAY};
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       position: static;
       z-index: auto;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      margin-top: calc(104px + 20px);
+      margin-top: ${HEADER.HEIGUT};
       height: 100vh;
-      width: 30%;
-      padding: 20px 0 0 10px;
+      width: calc(${100 - CONTENT_AREA.MAIN_CONTENT_PERCENT}%);
+      padding: calc(47px + 30px) 0 0 10px;
       border-top: 0;
     }
   `,

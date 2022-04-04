@@ -27,7 +27,7 @@ const Slider: VFC<Props> = ({ items, setState }) => {
       onRealIndexChange={(swiper) => {
         setState && setState(swiper.realIndex);
       }}
-      speed={300}
+      speed={200}
       threshold={0}
       touchAngle={45}
       spaceBetween={20}

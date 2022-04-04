@@ -1,8 +1,8 @@
 import React, { VFC } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { Space, PrimaryNavigation } from '~/components';
+import { Spacer, PrimaryNavigationLocalState } from '~/components';
 import { useRecoilValue } from 'recoil';
-import { headerTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store';
 import { COLOR } from '~/styles/const';
 import { useQuery } from '@apollo/client';
 import { GET_TRAINING_WITH_BODY_INFO } from '~/libs/graphql/queries';
@@ -11,14 +11,14 @@ import { getSortDate } from './logic';
 
 const Graph: VFC = () => {
   const { data, error } = useQuery<GetTrainingWithBodyInfoQuery>(GET_TRAINING_WITH_BODY_INFO);
-  const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
+  const activeIndex = useRecoilValue<number>(mainTabIndexAtom);
 
   if (error) return <p>Error: {error.message}</p>;
 
   if (activeIndex === 0) {
     return (
       <>
-        <Space height={50} />
+        <Spacer height={50} />
         <ResponsiveContainer width='100%' height={400}>
           <LineChart data={getSortDate(data?.body_info_data_histories)} margin={{ top: 5, right: 30, bottom: 5, left: 0 }}>
             <Line type='monotone' dataKey='weight' stroke={COLOR.ORANGE} strokeWidth={2.5} dot={{ stroke: COLOR.ORANGE, strokeWidth: 2 }} />
@@ -28,7 +28,7 @@ const Graph: VFC = () => {
             <YAxis />
           </LineChart>
         </ResponsiveContainer>
-        <PrimaryNavigation titles={['1週間', '1ヶ月', '1年', '全て']} />
+        <PrimaryNavigationLocalState titles={['1週間', '1ヶ月', '1年', '全て']} theme='roundish' options={{ isToggle: true, isSwiper: false }} />
       </>
     );
   } else if (activeIndex === 1) {

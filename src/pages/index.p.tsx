@@ -6,13 +6,17 @@ import { pageTemplate } from '../styles/share/pageTemplate';
 import { getCurrentDate } from '../utils/app';
 import Top from './Top';
 import History from './History';
-import { SwiperContainer } from '../components';
+import { SwiperWrapper, PrimaryNavigationLocalState } from '~/components';
+import { BREAKPOINT } from '~/styles/const';
+import { useGetTabTitle } from '~/hooks';
+import { css } from '@emotion/react';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GET_TRAINING_ONE_TYPE, {
     variables: { date: getCurrentDate(new Date(), false) },
     fetchPolicy: 'network-only',
   });
+  const tabNames = useGetTabTitle();
 
   if (loading) {
     return (
@@ -24,10 +28,25 @@ const Home: NextPage = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <SwiperContainer>
-      <Top data={data} />
-      <History />
-    </SwiperContainer>
+    <>
+      <PrimaryNavigationLocalState
+        titles={tabNames}
+        theme='basicTab'
+        options={{ isSwiper: true, isToggle: true }}
+        customCss={{
+          item: css`
+            width: 100%;
+            @media (max-width: ${BREAKPOINT.MD - 1}px) {
+              display: none;
+            }
+          `,
+        }}
+      />
+      <SwiperWrapper>
+        <Top data={data} />
+        <History />
+      </SwiperWrapper>
+    </>
   );
 };
 

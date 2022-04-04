@@ -28,7 +28,7 @@ export const pageTemplate = {
     margin-top: 10px;
     font-size: ${FONT.BASE};
     cursor: pointer;
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    @media (hover: hover) {
       &:hover {
         opacity: 0.8;
       }

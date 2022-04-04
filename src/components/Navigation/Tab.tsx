@@ -6,7 +6,7 @@ import { getIcon } from '~/utils/app';
 import { PAGE_PATH } from '~/constants/index';
 import type { PageTitle } from '~/types/index';
 import { useSetRecoilState } from 'recoil';
-import { headerTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store';
 import { BREAKPOINT, COLOR, FONT } from '~/styles/const';
 import { useIsActive, useRipple, useGetWindowSize } from '~/hooks';
 
@@ -20,7 +20,7 @@ type Props = {
 };
 
 const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: parentActiveIndex, setActiveIndex: parentSetActiveIndex }) => {
-  const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
+  const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
   const isActive = useIsActive(!!isToggle, parentActiveIndex, index);
 
   const [, setCoords, isRippling] = useRipple(170);
@@ -37,7 +37,7 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
         }}
         css={styles.box}
       >
-        {width < parseInt(BREAKPOINT.MD) && isRippling ? <span css={styles.ripple} /> : ''}
+        {width < BREAKPOINT.MD && isRippling ? <span css={styles.ripple} /> : ''}
         <p>{getIcon(title, isActive)}</p>
         <p css={styles.title(isActive)}>{title}</p>
       </a>
@@ -70,10 +70,11 @@ const styles = {
     text-align: center;
     padding-top: 3px;
     position: relative;
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       width: auto;
       display: flex;
       justify-content: flex-start;
+      flex-shrink: 0;
       align-items: center;
       padding: 28px 40px;
       border-radius: 30px;
@@ -87,7 +88,7 @@ const styles = {
     color: ${isActive ? COLOR.RED : 'black'};
     padding-top: 2px;
     font-size: ${FONT.X_SMALL};
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       display: inline-block;
       padding-left: 10px;
     }

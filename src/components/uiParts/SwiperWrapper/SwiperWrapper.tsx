@@ -1,14 +1,11 @@
 import type { VFC, ReactNode } from 'react';
 import { useChangeSettingOnInWindowSize } from './useChangeSettingOnInWindowSize';
 
-// all Swiper styles including all modules styles (like Navigation, Pagination, etc.)
-// import 'swiper/css';
-
 type Props = {
   children: ReactNode[];
 };
 
-const SwiperContainer: VFC<Props> = ({ children }) => {
+const SwiperWrapper: VFC<Props> = ({ children }) => {
   useChangeSettingOnInWindowSize();
 
   return (
@@ -26,4 +23,4 @@ const SwiperContainer: VFC<Props> = ({ children }) => {
   );
 };
 
-export default SwiperContainer;
+export default SwiperWrapper;

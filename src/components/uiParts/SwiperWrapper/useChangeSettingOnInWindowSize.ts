@@ -2,19 +2,20 @@
 import { useEffect } from 'react';
 import Swiper, { Swiper as SwiperType, EffectFade, SwiperOptions } from 'swiper';
 import { useSetRecoilState, useRecoilState } from 'recoil';
-import { headerTabIndexAtom, swiperAtom } from '~/store';
+import { mainTabIndexAtom, swiperAtom } from '~/store';
 import { useGetWindowSize } from '~/hooks';
 import { BREAKPOINT } from '~/styles/const';
 
 export const useChangeSettingOnInWindowSize = (): void => {
   const [swiper, setSwiper] = useRecoilState<SwiperType | undefined>(swiperAtom);
-  const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom);
+  const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom);
   const windowSize = useGetWindowSize();
 
   useEffect(() => {
     const options: SwiperOptions = {
       simulateTouch: false,
       fadeEffect: { crossFade: true },
+      nested: true,
       on: {
         realIndexChange: function (swiper) {
           setActiveIndex(swiper.realIndex);
@@ -23,8 +24,7 @@ export const useChangeSettingOnInWindowSize = (): void => {
     };
 
     const realIndex = swiper?.realIndex;
-    swiper?.destroy(true, true);
-    if (windowSize.width >= Number(BREAKPOINT.MD)) {
+    if (windowSize.width >= BREAKPOINT.MD) {
       options.effect = 'fade';
       options.speed = 230;
       Swiper.use([EffectFade]);
@@ -32,8 +32,9 @@ export const useChangeSettingOnInWindowSize = (): void => {
       options.effect = 'slide';
       options.speed = 350;
     }
+    options.initialSlide = realIndex;
+    swiper?.destroy(false, true);
     const newSwiper = new Swiper('.swiper-container', options);
-    realIndex ? (newSwiper.realIndex = realIndex) : null;
     setSwiper(newSwiper);
   }, [windowSize]); // eslint-disable-next-line react-hooks/exhaustive-deps
 };
