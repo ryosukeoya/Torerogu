@@ -1,17 +1,13 @@
 import type { VFC } from 'react';
 import NavItem from './Item';
 import { useGetCss } from './useGetCss';
-import { Theme, CustomCss } from './types';
+import { ContainerProps } from './types';
 import { SetterOrUpdater } from 'recoil';
 
-type Props = {
-  titles: string[] | null;
-  theme: Theme;
-  customCss?: CustomCss;
-  options: { isToggle: boolean; isSwiper: boolean };
+interface Props extends ContainerProps {
   activeIndex: number;
   setActiveIndex: SetterOrUpdater<number>;
-};
+}
 
 const PrimaryNavigationPresenter: VFC<Props> = ({ titles, theme, customCss, options, activeIndex, setActiveIndex }) => {
   const themeStyle = useGetCss(theme);
