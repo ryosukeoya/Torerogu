@@ -9,10 +9,9 @@ export { default as SwiperContainer } from './containers/Swiper';
 
 // UIParts
 export { PrimaryButton, RippleButton } from './uiParts/Buttons';
-export { default as Card } from './uiParts/Card/Card';
-export { default as InputPart } from './uiParts/FormItems/InputPart';
+export { Card } from './uiParts/Card';
+export { InputPart, SelectPart, TextareaPart } from './uiParts/FormItems';
 export { PrimaryNavigationLocalState, PrimaryNavigationGlobalState } from './uiParts/PrimaryNavigation';
-export { default as SelectPart } from './uiParts/FormItems/SelectPart';
 export { default as Slider } from './uiParts/Slider';
-export { default as Space } from './uiParts/Spacer';
 export { default as Snackbar } from './uiParts/Snackbar';
+export { default as Space } from './uiParts/Spacer';
