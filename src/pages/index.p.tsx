@@ -8,7 +8,7 @@ import Top from './Top';
 import History from './History';
 import { SwiperWrapper, PrimaryNavigationLocalState } from '~/components';
 import { BREAKPOINT } from '~/styles/const';
-import { useGetTitle } from '~/hooks';
+import { useGetTabTitle } from '~/hooks';
 import { css } from '@emotion/react';
 
 const Home: NextPage = () => {
@@ -16,6 +16,7 @@ const Home: NextPage = () => {
     variables: { date: getCurrentDate(new Date(), false) },
     fetchPolicy: 'network-only',
   });
+  const tabNames = useGetTabTitle();
 
   if (loading) {
     return (
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
   return (
     <>
       <PrimaryNavigationLocalState
-        titles={useGetTitle() as string[]}
+        titles={tabNames}
         theme='basicTab'
         options={{ isSwiper: true, isToggle: true }}
         customCss={{

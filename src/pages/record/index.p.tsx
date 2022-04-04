@@ -6,7 +6,7 @@ import TrainingPage from './TrainingPage';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
 import { SwiperWrapper, PrimaryNavigationGlobalState } from '~/components';
 import { BREAKPOINT } from '~/styles/const';
-import { useGetTitle } from '~/hooks';
+import { useGetTabTitle } from '~/hooks';
 import { css } from '@emotion/react';
 
 export async function getStaticProps() {
@@ -26,10 +26,12 @@ type Props = {
 };
 
 const Record: NextPage<Props> = ({ data }) => {
+  const tabNames = useGetTabTitle();
+
   return (
     <>
       <PrimaryNavigationGlobalState
-        titles={useGetTitle() as string[]}
+        titles={tabNames}
         theme='basicTab'
         options={{ isSwiper: true, isToggle: true }}
         customCss={{

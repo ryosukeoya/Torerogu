@@ -6,7 +6,7 @@ import { useRecoilState } from 'recoil';
 import { mainTabIndexAtom } from '~/store';
 
 type Props = {
-  titles: string[];
+  titles: string[] | null;
   theme: Theme;
   customCss?: CustomCss;
   options: { isToggle: boolean; isSwiper: boolean };

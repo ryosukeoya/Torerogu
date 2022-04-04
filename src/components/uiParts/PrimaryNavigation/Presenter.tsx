@@ -5,7 +5,7 @@ import { Theme, CustomCss } from './types';
 import { SetterOrUpdater } from 'recoil';
 
 type Props = {
-  titles: string[];
+  titles: string[] | null;
   theme: Theme;
   customCss?: CustomCss;
   options: { isToggle: boolean; isSwiper: boolean };
