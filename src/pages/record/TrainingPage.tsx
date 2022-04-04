@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { VFC } from 'react';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
 import { CREATE_TRAINING } from '~/libs/graphql/mutations';
-import { Slider, Space, SelectPart, Card, FormContainer } from '~/components';
+import { Slider, Spacer, SelectField, Card, FormWrapper } from '~/components';
 import { pageTemplate } from '~/styles/share/pageTemplate';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
@@ -53,7 +53,7 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
     //TODO:回数ではない場合、ex.ランニング
     return (
       <FormProvider {...method}>
-        <FormContainer
+        <FormWrapper
           pageIndex={pageIndex}
           handleSubmit={handleSubmit}
           submitFunc={registerTraining}
@@ -66,16 +66,16 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
             </p>
           }
         >
-          <SelectPart formConf={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'} texts={getNumArr(10, 200, 5)} marginBottom={42} isRequired />
-          <SelectPart formConf={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={42} isRequired />
-          <SelectPart formConf={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={42} isRequired />
-        </FormContainer>
+          <SelectField formConf={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'} texts={getNumArr(10, 200, 5)} marginBottom={42} isRequired />
+          <SelectField formConf={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={42} isRequired />
+          <SelectField formConf={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={42} isRequired />
+        </FormWrapper>
       </FormProvider>
     );
   } else {
     return (
       <>
-        <Space height={20} />
+        <Spacer height={20} />
         <Slider items={data?.training_categories} setState={setSelectedCategoryIndex} />
         {getTrainingTypesFromCategoryIndex(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
           return (

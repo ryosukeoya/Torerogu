@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { Space, PrimaryNavigationLocalState } from '~/components';
+import { Spacer, PrimaryNavigationLocalState } from '~/components';
 import { useRecoilValue } from 'recoil';
 import { headerTabIndexAtom } from '~/store';
 import { COLOR } from '~/styles/const';
@@ -18,7 +18,7 @@ const Graph: VFC = () => {
   if (activeIndex === 0) {
     return (
       <>
-        <Space height={50} />
+        <Spacer height={50} />
         <ResponsiveContainer width='100%' height={400}>
           <LineChart data={getSortDate(data?.body_info_data_histories)} margin={{ top: 5, right: 30, bottom: 5, left: 0 }}>
             <Line type='monotone' dataKey='weight' stroke={COLOR.ORANGE} strokeWidth={2.5} dot={{ stroke: COLOR.ORANGE, strokeWidth: 2 }} />

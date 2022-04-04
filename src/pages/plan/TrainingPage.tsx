@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { VFC } from 'react';
-import { InputPart, SelectPart, FormContainer } from '~/components';
+import { InputField, SelectField, FormWrapper } from '~/components';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { GET_TRAINING_CATEGORY_WITH_TYPE } from '~/libs/graphql/queries';
 import { CREATE_TRAINING } from '~/libs/graphql/mutations';
@@ -52,8 +52,8 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
 
   return (
     <FormProvider {...method}>
-      <FormContainer pageIndex={pageIndex} handleSubmit={handleSubmit} submitFunc={registerTraining} title={'✏️ 日ごとの設定'} open={open} handleClose={handleClose}>
-        <InputPart
+      <FormWrapper pageIndex={pageIndex} handleSubmit={handleSubmit} submitFunc={registerTraining} title={'✏️ 日ごとの設定'} open={open} handleClose={handleClose}>
+        <InputField
           type='date'
           title='日付'
           value={getCurrentDate(new Date(), true)}
@@ -63,12 +63,12 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
             padding: 0 0 10px 0;
           `}
         />
-        <SelectPart formConf={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={20} isRequired />
-        <SelectPart formConf={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypesFromCategoryID(selectedCategoryID, data?.training_types)} marginBottom={20} isRequired />
-        <SelectPart formConf={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'} texts={getNumArr(15, 200, 5)} marginBottom={20} isRequired />
-        <SelectPart formConf={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={20} isRequired />
-        <SelectPart formConf={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={20} isRequired />
-      </FormContainer>
+        <SelectField formConf={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={20} isRequired />
+        <SelectField formConf={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypesFromCategoryID(selectedCategoryID, data?.training_types)} marginBottom={20} isRequired />
+        <SelectField formConf={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'} texts={getNumArr(15, 200, 5)} marginBottom={20} isRequired />
+        <SelectField formConf={{ name: 'count', option: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={20} isRequired />
+        <SelectField formConf={{ name: 'set', option: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={20} isRequired />
+      </FormWrapper>
     </FormProvider>
   );
 };

@@ -5,7 +5,7 @@ type Props = {
   children: ReactNode[];
 };
 
-const SwiperContainer: VFC<Props> = ({ children }) => {
+const SwiperWrapper: VFC<Props> = ({ children }) => {
   useChangeSettingOnInWindowSize();
 
   return (
@@ -23,4 +23,4 @@ const SwiperContainer: VFC<Props> = ({ children }) => {
   );
 };
 
-export default SwiperContainer;
+export default SwiperWrapper;

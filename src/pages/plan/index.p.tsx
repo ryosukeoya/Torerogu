@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import React, { VFC } from 'react';
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
-import { SwiperContainer, PrimaryNavigationGlobalState } from '~/components';
+import { SwiperWrapper, PrimaryNavigationGlobalState } from '~/components';
 import { BREAKPOINT } from '~/styles/const';
 import { useGetTitle } from '~/hooks';
 import { css } from '@emotion/react';
@@ -23,10 +23,10 @@ const Plan: NextPage<VFC> = () => {
           `,
         }}
       />
-      <SwiperContainer>
+      <SwiperWrapper>
         <BodyInfoPage pageIndex={0} />
         <TrainingPage pageIndex={1} />
-      </SwiperContainer>
+      </SwiperWrapper>
     </>
   );
 };

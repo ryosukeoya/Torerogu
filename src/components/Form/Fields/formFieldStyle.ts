@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
 
-export const formStyle = {
+export const formFieldStyle = {
   errorMessage: css`
     padding-top: 8px;
     min-height: 22px;
