@@ -6,14 +6,14 @@ import { css, keyframes } from '@emotion/react';
 import { APP } from '~/constants';
 import { COLOR, FONT, BREAKPOINT } from '~/styles/const';
 import { useSetRecoilState } from 'recoil';
-import { headerTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store';
 import { useIsScrollDown } from '~/hooks';
 import { PrimaryNavigationGlobalState } from '~/components';
 import { useGetTitle } from '~/hooks';
 import { HEADER } from '~/styles/const';
 
 const Header: VFC = () => {
-  const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom);
+  const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom);
   const [fade, setFade] = useState(false);
 
   const isScrollDown: boolean = useIsScrollDown();

@@ -2,7 +2,7 @@ import React, { VFC } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { Spacer, PrimaryNavigationLocalState } from '~/components';
 import { useRecoilValue } from 'recoil';
-import { headerTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store';
 import { COLOR } from '~/styles/const';
 import { useQuery } from '@apollo/client';
 import { GET_TRAINING_WITH_BODY_INFO } from '~/libs/graphql/queries';
@@ -11,7 +11,7 @@ import { getSortDate } from './logic';
 
 const Graph: VFC = () => {
   const { data, error } = useQuery<GetTrainingWithBodyInfoQuery>(GET_TRAINING_WITH_BODY_INFO);
-  const activeIndex = useRecoilValue<number>(headerTabIndexAtom);
+  const activeIndex = useRecoilValue<number>(mainTabIndexAtom);
 
   if (error) return <p>Error: {error.message}</p>;
 

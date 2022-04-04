@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import PrimaryNavigationPresenter from './Presenter';
 import { Theme, CustomCss } from './types';
 import { useRecoilState } from 'recoil';
-import { headerTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store';
 
 type Props = {
   titles: string[];
@@ -18,6 +18,6 @@ export const LocalStateContainer: VFC<Props> = ({ ...props }) => {
 };
 
 export const GlobalStateContainer: VFC<Props> = ({ ...props }) => {
-  const [activeIndex, setActiveIndex] = useRecoilState<number>(headerTabIndexAtom);
+  const [activeIndex, setActiveIndex] = useRecoilState<number>(mainTabIndexAtom);
   return <PrimaryNavigationPresenter {...props} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />;
 };

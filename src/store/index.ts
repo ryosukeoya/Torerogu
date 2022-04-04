@@ -5,7 +5,7 @@ import type { Swiper } from 'swiper';
 
 // const { persistAtom } = recoilPersist();
 
-export const headerTabIndexAtom = atom({
+export const mainTabIndexAtom = atom({
   key: 'activeIndexKey',
   default: 0,
   // effects_UNSTABLE: [persistAtom],

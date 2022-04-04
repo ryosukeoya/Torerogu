@@ -6,7 +6,7 @@ import { getIcon } from '~/utils/app';
 import { PAGE_PATH } from '~/constants/index';
 import type { PageTitle } from '~/types/index';
 import { useSetRecoilState } from 'recoil';
-import { headerTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store';
 import { BREAKPOINT, COLOR, FONT } from '~/styles/const';
 import { useIsActive, useRipple, useGetWindowSize } from '~/hooks';
 
@@ -20,7 +20,7 @@ type Props = {
 };
 
 const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: parentActiveIndex, setActiveIndex: parentSetActiveIndex }) => {
-  const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
+  const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
   const isActive = useIsActive(!!isToggle, parentActiveIndex, index);
 
   const [, setCoords, isRippling] = useRipple(170);

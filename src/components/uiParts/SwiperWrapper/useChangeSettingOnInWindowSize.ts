@@ -2,13 +2,13 @@
 import { useEffect } from 'react';
 import Swiper, { Swiper as SwiperType, EffectFade, SwiperOptions } from 'swiper';
 import { useSetRecoilState, useRecoilState } from 'recoil';
-import { headerTabIndexAtom, swiperAtom } from '~/store';
+import { mainTabIndexAtom, swiperAtom } from '~/store';
 import { useGetWindowSize } from '~/hooks';
 import { BREAKPOINT } from '~/styles/const';
 
 export const useChangeSettingOnInWindowSize = (): void => {
   const [swiper, setSwiper] = useRecoilState<SwiperType | undefined>(swiperAtom);
-  const setActiveIndex = useSetRecoilState<number>(headerTabIndexAtom);
+  const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom);
   const windowSize = useGetWindowSize();
 
   useEffect(() => {
