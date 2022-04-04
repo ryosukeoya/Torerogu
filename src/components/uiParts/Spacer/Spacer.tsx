@@ -5,7 +5,7 @@ type Props = {
   height: number;
 };
 
-const Space: VFC<Props> = ({height}) => {
+const Spacer: VFC<Props> = ({height}) => {
   return (
     <div
       css={css`
@@ -15,4 +15,4 @@ const Space: VFC<Props> = ({height}) => {
   );
 };
 
-export default Space;
+export default Spacer;
