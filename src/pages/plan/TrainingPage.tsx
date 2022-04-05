@@ -7,7 +7,6 @@ import { CREATE_TRAINING } from '~/libs/graphql/mutations';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
 import { getCurrentDate, getNumArr, getTrainingTypesFromCategoryID } from '~/utils';
-import { css } from '@emotion/react';
 
 type PlanTrainingFormValue = {
   date: Date;
