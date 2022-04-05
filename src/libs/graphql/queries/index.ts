@@ -33,7 +33,7 @@ export const GET_TRAINING_CATEGORY_WITH_TYPE = gql`
   }
 `;
 
-export const GET_TRAINING_WITH_BODY_INFO= gql`
+export const GET_TRAINING_WITH_BODY_INFO = gql`
   query GetTrainingWithBodyInfo {
     trainings(order_by: { id: asc }) {
       id
@@ -50,6 +50,7 @@ export const GET_TRAINING_WITH_BODY_INFO= gql`
       user_id
       weight
       date
+      is_record
     }
   }
 `;
@@ -78,6 +79,7 @@ export const GET_BODY_INFO_DATA_HISTORY = gql`
       weight
       body_fat_percentage
       date
+      is_record
     }
   }
 `;

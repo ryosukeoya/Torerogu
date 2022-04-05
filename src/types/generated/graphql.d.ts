@@ -85,6 +85,7 @@ export type Body_Info_Data_Histories = {
   date: Scalars['timestamptz'];
   height?: Maybe<Scalars['numeric']>;
   id: Scalars['Int'];
+  is_record: Scalars['Boolean'];
   updated_at: Scalars['timestamptz'];
   user_id: Scalars['Int'];
   weight: Scalars['numeric'];
@@ -140,6 +141,7 @@ export type Body_Info_Data_Histories_Bool_Exp = {
   date?: InputMaybe<Timestamptz_Comparison_Exp>;
   height?: InputMaybe<Numeric_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
+  is_record?: InputMaybe<Boolean_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   user_id?: InputMaybe<Int_Comparison_Exp>;
   weight?: InputMaybe<Numeric_Comparison_Exp>;
@@ -167,6 +169,7 @@ export type Body_Info_Data_Histories_Insert_Input = {
   date?: InputMaybe<Scalars['timestamptz']>;
   height?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['Int']>;
+  is_record?: InputMaybe<Scalars['Boolean']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['Int']>;
   weight?: InputMaybe<Scalars['numeric']>;
@@ -221,6 +224,7 @@ export type Body_Info_Data_Histories_Order_By = {
   date?: InputMaybe<Order_By>;
   height?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  is_record?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
   weight?: InputMaybe<Order_By>;
@@ -244,6 +248,8 @@ export enum Body_Info_Data_Histories_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  IsRecord = 'is_record',
+  /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
   UserId = 'user_id',
@@ -258,6 +264,7 @@ export type Body_Info_Data_Histories_Set_Input = {
   date?: InputMaybe<Scalars['timestamptz']>;
   height?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['Int']>;
+  is_record?: InputMaybe<Scalars['Boolean']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['Int']>;
   weight?: InputMaybe<Scalars['numeric']>;
@@ -315,6 +322,8 @@ export enum Body_Info_Data_Histories_Update_Column {
   Height = 'height',
   /** column name */
   Id = 'id',
+  /** column name */
+  IsRecord = 'is_record',
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
@@ -2086,10 +2095,11 @@ export type CreateBodyInfoHistoriesMutationVariables = Exact<{
   body_fat_percentage: Scalars['Int'];
   date?: InputMaybe<Scalars['timestamptz']>;
   user_id?: InputMaybe<Scalars['Int']>;
+  is_record?: InputMaybe<Scalars['Boolean']>;
 }>;
 
 
-export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any } | null };
+export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any, is_record: boolean } | null };
 
 export type CreateTrainingMutationVariables = Exact<{
   user_id?: InputMaybe<Scalars['Int']>;
@@ -2119,7 +2129,7 @@ export type GetTrainingCategoryWithTypeQuery = { __typename?: 'query_root', trai
 export type GetTrainingWithBodyInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTrainingWithBodyInfoQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any }>, body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, weight: any, date: any }> };
+export type GetTrainingWithBodyInfoQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any }>, body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, weight: any, date: any, is_record: boolean }> };
 
 export type GetTrainingQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2129,13 +2139,13 @@ export type GetTrainingQuery = { __typename?: 'query_root', trainings: Array<{ _
 export type GetBodyInfoDataHistoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetBodyInfoDataHistoryQuery = { __typename?: 'query_root', body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any }> };
+export type GetBodyInfoDataHistoryQuery = { __typename?: 'query_root', body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any, is_record: boolean }> };
 
 
 export const CreateBodyInfoHistoriesDocument = gql`
-    mutation CreateBodyInfoHistories($height: numeric!, $weight: numeric, $body_fat_percentage: Int!, $date: timestamptz, $user_id: Int) {
+    mutation CreateBodyInfoHistories($height: numeric!, $weight: numeric, $body_fat_percentage: Int!, $date: timestamptz, $user_id: Int, $is_record: Boolean) {
   insert_body_info_data_histories_one(
-    object: {height: $height, body_fat_percentage: $body_fat_percentage, date: $date, weight: $weight, user_id: $user_id}
+    object: {height: $height, body_fat_percentage: $body_fat_percentage, date: $date, weight: $weight, user_id: $user_id, is_record: $is_record}
   ) {
     id
     user_id
@@ -2143,6 +2153,7 @@ export const CreateBodyInfoHistoriesDocument = gql`
     weight
     body_fat_percentage
     date
+    is_record
   }
 }
     `;
@@ -2166,6 +2177,7 @@ export type CreateBodyInfoHistoriesMutationFn = Apollo.MutationFunction<CreateBo
  *      body_fat_percentage: // value for 'body_fat_percentage'
  *      date: // value for 'date'
  *      user_id: // value for 'user_id'
+ *      is_record: // value for 'is_record'
  *   },
  * });
  */
@@ -2327,6 +2339,7 @@ export const GetTrainingWithBodyInfoDocument = gql`
     user_id
     weight
     date
+    is_record
   }
 }
     `;
@@ -2407,6 +2420,7 @@ export const GetBodyInfoDataHistoryDocument = gql`
     weight
     body_fat_percentage
     date
+    is_record
   }
 }
     `;

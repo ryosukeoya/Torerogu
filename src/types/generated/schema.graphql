@@ -105,6 +105,7 @@ type body_info_data_histories {
   date: timestamptz!
   height: numeric
   id: Int!
+  is_record: Boolean!
   updated_at: timestamptz!
   user_id: Int!
   weight: numeric!
@@ -156,6 +157,7 @@ input body_info_data_histories_bool_exp {
   date: timestamptz_comparison_exp
   height: numeric_comparison_exp
   id: Int_comparison_exp
+  is_record: Boolean_comparison_exp
   updated_at: timestamptz_comparison_exp
   user_id: Int_comparison_exp
   weight: numeric_comparison_exp
@@ -189,6 +191,7 @@ input body_info_data_histories_insert_input {
   date: timestamptz
   height: numeric
   id: Int
+  is_record: Boolean
   updated_at: timestamptz
   user_id: Int
   weight: numeric
@@ -245,6 +248,7 @@ input body_info_data_histories_order_by {
   date: order_by
   height: order_by
   id: order_by
+  is_record: order_by
   updated_at: order_by
   user_id: order_by
   weight: order_by
@@ -275,6 +279,9 @@ enum body_info_data_histories_select_column {
   id
 
   """column name"""
+  is_record
+
+  """column name"""
   updated_at
 
   """column name"""
@@ -293,6 +300,7 @@ input body_info_data_histories_set_input {
   date: timestamptz
   height: numeric
   id: Int
+  is_record: Boolean
   updated_at: timestamptz
   user_id: Int
   weight: numeric
@@ -352,6 +360,9 @@ enum body_info_data_histories_update_column {
 
   """column name"""
   id
+
+  """column name"""
+  is_record
 
   """column name"""
   updated_at

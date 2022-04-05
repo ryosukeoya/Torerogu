@@ -36,7 +36,7 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
     if (data.bodyFatPercentage === '') {
       data.bodyFatPercentage = null;
     }
-    insertBodyInfo({ variables: { height: null, weight: data.weight, body_fat_percentage: data.bodyFatPercentage, date: new Date(), user_id: user_id } });
+    insertBodyInfo({ variables: { height: null, weight: data.weight, body_fat_percentage: data.bodyFatPercentage, date: new Date(), user_id: user_id, is_record: true } });
   };
 
   return (
