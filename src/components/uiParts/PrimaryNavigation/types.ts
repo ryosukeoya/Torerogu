@@ -7,4 +7,5 @@ export type ContainerProps = {
   theme: Theme;
   customCss?: CustomCss;
   options: { isToggle: boolean; isSwiper: boolean };
+  width?: number | undefined;
 };

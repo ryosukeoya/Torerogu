@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { VFC } from 'react';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
 import { CREATE_TRAINING } from '~/libs/graphql/mutations';
-import { Slider, Spacer, SelectField, Card, FormWrapper } from '~/components';
+import { Slider, SelectField, Card, FormWrapper } from '~/components';
 import { pageTemplate } from '~/styles/share/pageTemplate';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
@@ -74,8 +74,7 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
     );
   } else {
     return (
-      <>
-        <Spacer height={20} />
+      <div css={pageTemplate.contentArea}>
         <Slider items={data?.training_categories} setState={setSelectedCategoryIndex} />
         {getTrainingTypesFromCategoryIndex(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
           return (
@@ -84,7 +83,7 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
             </Card>
           );
         })}
-      </>
+      </div>
     );
   }
 };

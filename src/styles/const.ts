@@ -1,4 +1,4 @@
-export { BREAKPOINT, COLOR, FONT, HEADER, CONTENT_AREA };
+export { BREAKPOINT, COLOR, FONT, HEADER, NAVIGATION };
 
 const BREAKPOINT: { [breakpoint: string]: number } = {
   SM: 640,
@@ -38,6 +38,6 @@ const HEADER = {
   HEIGUT: '104px',
 } as const;
 
-const CONTENT_AREA = {
-  MAIN_CONTENT_PERCENT: 75,
+const NAVIGATION = {
+  WIDTH: '200px',
 } as const;

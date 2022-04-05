@@ -3,7 +3,7 @@ import React, { VFC, ReactNode } from 'react';
 import { Header, Navigation } from '../components';
 import { APP } from '../constants';
 import { css } from '@emotion/react';
-import { BREAKPOINT, COLOR, HEADER, CONTENT_AREA } from '../styles/const';
+import { BREAKPOINT, COLOR, HEADER, NAVIGATION } from '../styles/const';
 
 type Props = {
   children: ReactNode;
@@ -53,7 +53,8 @@ const styles = {
     margin-top: ${HEADER.HEIGUT};
     background-color: #fdfdfd;
     @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
-      width: ${CONTENT_AREA.MAIN_CONTENT_PERCENT}%;
+      width: calc(100% - ${NAVIGATION.WIDTH});
+      margin-left: ${NAVIGATION.WIDTH};
       border-left: 1px solid ${COLOR.BORDER_GRAY};
       border-right: 1px solid ${COLOR.BORDER_GRAY};
     }

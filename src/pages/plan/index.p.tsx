@@ -4,11 +4,12 @@ import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
 import { SwiperWrapper, PrimaryNavigationGlobalState } from '~/components';
 import { BREAKPOINT } from '~/styles/const';
-import { useGetTabTitle } from '~/hooks';
+import { useGetElementWidth, useGetTabTitle } from '~/hooks';
 import { css } from '@emotion/react';
 
 const Plan: NextPage<VFC> = () => {
   const tabNames = useGetTabTitle();
+  const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
 
   return (
     <>
@@ -16,6 +17,7 @@ const Plan: NextPage<VFC> = () => {
         titles={tabNames}
         theme='basicTab'
         options={{ isSwiper: true, isToggle: true }}
+        width={mainContentWidth}
         customCss={{
           item: css`
             width: 100%;
@@ -25,7 +27,7 @@ const Plan: NextPage<VFC> = () => {
           `,
         }}
       />
-      <SwiperWrapper>
+      <SwiperWrapper elm={elm}>
         <BodyInfoPage pageIndex={0} />
         <TrainingPage pageIndex={1} />
       </SwiperWrapper>

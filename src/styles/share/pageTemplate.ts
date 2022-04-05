@@ -12,6 +12,7 @@ export const pageTemplate = {
     @media (min-width: ${BREAKPOINT.MD}px) {
       min-height: auto;
       padding: 30px 0 0 50px;
+      margin-top: 47px;
     }
   `,
   title: css`
