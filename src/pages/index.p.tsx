@@ -8,7 +8,7 @@ import Top from './Top';
 import History from './History';
 import { SwiperWrapper, PrimaryNavigationGlobalState } from '~/components';
 import { BREAKPOINT } from '~/styles/const';
-import { useGetElementWidth, useGetTabTitle } from '~/hooks';
+import { useGetElementWidth, useGetTabTitleFromRoute } from '~/hooks';
 import { css } from '@emotion/react';
 
 const Home: NextPage = () => {
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     variables: { date: getCurrentDate(new Date(), false) },
     fetchPolicy: 'network-only',
   });
-  const tabNames = useGetTabTitle();
+  const tabNames = useGetTabTitleFromRoute();
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
 
   if (loading) {

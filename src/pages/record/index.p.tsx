@@ -6,7 +6,7 @@ import TrainingPage from './TrainingPage';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
 import { SwiperWrapper, PrimaryNavigationGlobalState } from '~/components';
 import { BREAKPOINT } from '~/styles/const';
-import { useGetElementWidth, useGetTabTitle } from '~/hooks';
+import { useGetElementWidth, useGetTabTitleFromRoute } from '~/hooks';
 import { css } from '@emotion/react';
 
 export async function getStaticProps() {
@@ -27,7 +27,7 @@ type Props = {
 
 const Record: NextPage<Props> = ({ data }) => {
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
-  const tabNames = useGetTabTitle();
+  const tabNames = useGetTabTitleFromRoute();
 
   return (
     <>
