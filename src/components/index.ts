@@ -3,7 +3,7 @@ export { Header } from './Header';
 export { Footer } from './Footer';
 export { Navigation } from './Navigation';
 export { SwiperWrapper } from './uiParts/SwiperWrapper';
-export { FormWrapper, InputField, SelectField, TextareaField } from './Form';
+export { FormContainer, FormWrapper, InputField, SelectField, TextareaField } from './Form';
 
 // UIParts
 export { PrimaryButton, RippleButton } from './uiParts/Buttons';
