@@ -59,9 +59,6 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
           value={getCurrentDate(new Date(), true)}
           min={getCurrentDate(new Date(), true)}
           formConf={{ name: 'date', option: { required: true } }}
-          customCss={css`
-            padding: 0 0 10px 0;
-          `}
         />
         <SelectField formConf={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={20} isRequired />
         <SelectField formConf={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypesFromCategoryID(selectedCategoryID, data?.training_types)} marginBottom={20} isRequired />
