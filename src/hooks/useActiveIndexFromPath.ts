@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { getPathIndex } from '../enum';
+import { getPathIndex } from '../utils/enums';
 
 const useActiveIndexFromPath = () => {
   const router = useRouter();
