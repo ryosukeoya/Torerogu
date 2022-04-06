@@ -28,3 +28,12 @@ export const CREATE_TRAINING = gql`
     }
   }
 `;
+
+export const UPDATE_TRAINING_IS_FINISH = gql`
+  mutation UpdateTrainingIsFinish($id: Int!, $is_finish: Boolean) {
+    update_trainings_by_pk(pk_columns: { id: $id }, _set: { is_finish: $is_finish }) {
+      id
+      is_finish
+    }
+  }
+`;

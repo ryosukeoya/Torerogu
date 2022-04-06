@@ -60,3 +60,48 @@ hr {
 .swiper-container {
   overflow-x: hidden;
 }
+
+/* Checkbox */
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox']:checked + .custom-style::after {
+  opacity: 1;
+}
+
+.custom-style {
+  position: relative;
+  padding: 5px 30px;
+  cursor: pointer;
+}
+.custom-style:before {
+  width: 16px; /* チェックボックスの幅 */
+  height: 16px; /* チェックボックスの高さ */
+  left: 5px;
+  border: 1px solid #ccc; /* チェックボックスの枠 */
+  border-radius: 3px;
+  margin-top: -8px;
+}
+.custom-style:after,
+.custom-style:before {
+  position: absolute;
+  content: '';
+  top: 50%;
+}
+.custom-style::after {
+  position: absolute;
+  width: 5px;
+  height: 9.4px;
+  top: 54%;
+  left: 10.4px;
+  border-right: 2px solid #FF291B;
+  border-bottom: 3px solid #FF291B;
+  content: '';
+  margin-top: -7px;
+  opacity: 0;
+  transform: rotate(45deg);
+}
+input[type='checkbox']:checked + .custom-style::after {
+  opacity: 1;
+}
