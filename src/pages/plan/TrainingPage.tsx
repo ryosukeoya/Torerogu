@@ -7,7 +7,6 @@ import { CREATE_TRAINING } from '~/libs/graphql/mutations';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
 import { getCurrentDate, getNumArr, getTrainingTypesFromCategoryID } from '~/utils';
-import { css } from '@emotion/react';
 
 type PlanTrainingFormValue = {
   date: Date;
@@ -59,9 +58,6 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
           value={getCurrentDate(new Date(), true)}
           min={getCurrentDate(new Date(), true)}
           formConf={{ name: 'date', option: { required: true } }}
-          customCss={css`
-            padding: 0 0 10px 0;
-          `}
         />
         <SelectField formConf={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={20} isRequired />
         <SelectField formConf={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypesFromCategoryID(selectedCategoryID, data?.training_types)} marginBottom={20} isRequired />

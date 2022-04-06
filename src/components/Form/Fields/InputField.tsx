@@ -71,13 +71,11 @@ const inputFieldStyle = {
     border-radius: 5px;
     text-align: right;
     padding: 4px 10px;
-    color:black
-    &::placeholder {
-    }
+    color:black;
+    ${customCss}
     &:focus {
       border: 1.5px solid rgba(255,153,0,0.7)};
     }
-    ${customCss}
   `,
   inputTitle: css`
     position: absolute;

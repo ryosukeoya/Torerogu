@@ -1,14 +1,22 @@
-import { FONT, COLOR } from '~/styles/const';
+import { FONT, COLOR, BREAKPOINT } from '~/styles/const';
 import { css, SerializedStyles } from '@emotion/react';
 
 export const tabStyles = {
-  nav: (customCss?: SerializedStyles) => css`
+  nav: (navWidth?: number, customCss?: SerializedStyles) => css`
     clear: both;
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
     border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
+    background: #fff;
     ${customCss};
+    @media (min-width: ${BREAKPOINT.MD}), (hover: hover) {
+      position: fixed;
+      top: auto;
+      left: auto;
+      z-index: 2000;
+      width: ${navWidth}px;
+    }
   `,
   item: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.ORANGE : 'black'};
@@ -18,6 +26,9 @@ export const tabStyles = {
     background-color: #fff;
     text-align: center;
     cursor: pointer;
+    @media (min-width: ${BREAKPOINT.MD}), (hover: hover) {
+      font-size: ${FONT.SMALL};
+    }
     @media (hover: hover) {
       &:hover {
         background-color: ${COLOR.HOVER_ORANGE};

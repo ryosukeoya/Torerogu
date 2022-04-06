@@ -6,9 +6,9 @@ import { pageTemplate } from '../styles/share/pageTemplate';
 import { getCurrentDate } from '../utils/app';
 import Top from './Top';
 import History from './History';
-import { SwiperWrapper, PrimaryNavigationLocalState } from '~/components';
+import { SwiperWrapper, PrimaryNavigationGlobalState } from '~/components';
 import { BREAKPOINT } from '~/styles/const';
-import { useGetTabTitle } from '~/hooks';
+import { useGetElementWidth, useGetTabTitleFromRoute } from '~/hooks';
 import { css } from '@emotion/react';
 
 const Home: NextPage = () => {
@@ -16,7 +16,8 @@ const Home: NextPage = () => {
     variables: { date: getCurrentDate(new Date(), false) },
     fetchPolicy: 'network-only',
   });
-  const tabNames = useGetTabTitle();
+  const tabNames = useGetTabTitleFromRoute();
+  const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
 
   if (loading) {
     return (
@@ -29,10 +30,11 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <PrimaryNavigationLocalState
+      <PrimaryNavigationGlobalState
         titles={tabNames}
         theme='basicTab'
         options={{ isSwiper: true, isToggle: true }}
+        width={mainContentWidth}
         customCss={{
           item: css`
             width: 100%;
@@ -42,7 +44,7 @@ const Home: NextPage = () => {
           `,
         }}
       />
-      <SwiperWrapper>
+      <SwiperWrapper elm={elm}>
         <Top data={data} />
         <History />
       </SwiperWrapper>

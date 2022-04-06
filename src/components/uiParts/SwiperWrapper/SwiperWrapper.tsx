@@ -1,15 +1,16 @@
-import type { VFC, ReactNode } from 'react';
+import type { VFC, ReactNode, RefObject } from 'react';
 import { useChangeSettingOnInWindowSize } from './useChangeSettingOnInWindowSize';
 
 type Props = {
+  elm?: RefObject<HTMLDivElement>;
   children: ReactNode[];
 };
 
-const SwiperWrapper: VFC<Props> = ({ children }) => {
+const SwiperWrapper: VFC<Props> = ({ elm, children }) => {
   useChangeSettingOnInWindowSize();
 
   return (
-    <div className='swiper-container' id='swiper'>
+    <div ref={elm} className='swiper-container' id='swiper'>
       <div className='swiper-wrapper'>
         {children?.map((child: ReactNode, i: number) => {
           return (

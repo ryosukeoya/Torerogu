@@ -9,7 +9,7 @@ import { useSetRecoilState } from 'recoil';
 import { mainTabIndexAtom } from '~/store';
 import { useIsScrollDown } from '~/hooks';
 import { PrimaryNavigationGlobalState } from '~/components';
-import { useGetTabTitle } from '~/hooks';
+import { useGetTabTitleFromRoute } from '~/hooks';
 import { HEADER } from '~/styles/const';
 
 const Header: VFC = () => {
@@ -18,7 +18,7 @@ const Header: VFC = () => {
 
   const isScrollDown: boolean = useIsScrollDown();
   const headerStateCss = isScrollDown ? stateCss['hidden'] : stateCss['visible'];
-  const tabNames = useGetTabTitle();
+  const tabNames = useGetTabTitleFromRoute();
 
   return (
     <header css={[styles.header, headerStateCss]}>

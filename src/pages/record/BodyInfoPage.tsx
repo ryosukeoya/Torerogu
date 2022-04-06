@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import { FormWrapper, InputField } from '~/components';
+import { FormContainer, InputField } from '~/components';
 import { getDateInfo } from '~/utils/app';
 import { useMutation } from '@apollo/client';
 import { CREATE_BODY_INFO_HISTORIES } from '~/libs/graphql/mutations';
 import type { CreateBodyInfoHistoriesMutation } from '~/types/generated/graphql';
-import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
+import { SubmitHandler } from 'react-hook-form';
 
 type BodyInfoFormValues = {
   weight: number | '';
@@ -21,12 +21,6 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
   const [insertBodyInfo, {}] = useMutation<CreateBodyInfoHistoriesMutation>(CREATE_BODY_INFO_HISTORIES, {
     onCompleted: () => setOpen(true),
   });
-  const method = useForm<BodyInfoFormValues>();
-  const { handleSubmit } = method;
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const date = getDateInfo(new Date());
 
@@ -36,16 +30,22 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
     if (data.bodyFatPercentage === '') {
       data.bodyFatPercentage = null;
     }
-    insertBodyInfo({ variables: { height: null, weight: data.weight, body_fat_percentage: data.bodyFatPercentage, date: new Date(), user_id: user_id } });
+    insertBodyInfo({ variables: { height: null, weight: data.weight, body_fat_percentage: data.bodyFatPercentage, date: new Date(), user_id: user_id, is_record: true } });
   };
 
   return (
-    <FormProvider {...method}>
-      <FormWrapper pageIndex={pageIndex} handleSubmit={handleSubmit} submitFunc={registerBodyInfo} title={` ✏️ ${date.month} / ${date.day} (${date.weekday}) の記録`} open={open} handleClose={handleClose}>
-        <InputField title='体重' type='text' unit='kg' placeholder='60' formConf={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
-        <InputField title='体脂肪率' type='text' unit='%' placeholder='10' formConf={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
-      </FormWrapper>
-    </FormProvider>
+    <FormContainer<BodyInfoFormValues>
+      pageIndex={pageIndex}
+      submitFunc={registerBodyInfo}
+      title={` ✏️ ${date.month} / ${date.day} (${date.weekday}) の記録`}
+      open={open}
+      handleClose={() => {
+        setOpen(false);
+      }}
+    >
+      <InputField title='体重' type='text' unit='kg' placeholder='60' formConf={{ name: 'weight', option: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
+      <InputField title='体脂肪率' type='text' unit='%' placeholder='10' formConf={{ name: 'bodyFatPercentage', option: { maxLength: 2, pattern: /[0-9]/ } }} />
+    </FormContainer>
   );
 };
 

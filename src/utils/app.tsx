@@ -51,6 +51,7 @@ const getCurrentDate = (date: Date, isMMDD: boolean): string => {
   }
 };
 
+// 初期値と最大値と差分からnumber型の配列を作成し返す
 const getNumArr = (init: number, max: number, diff: number): number[] => {
   const numArr: number[] = [];
   for (let i = init; i <= max; i = i + diff) {
