@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import { InputField, Snackbar } from '~/components';
-import { pageTemplate } from '~/styles/share/pageTemplate';
+import { pageTemplate } from '~/styles/emotion/pageTemplate';
 import type { FieldValues, SubmitHandler } from 'react-hook-form';
 import { useForm, FormProvider } from 'react-hook-form';
 

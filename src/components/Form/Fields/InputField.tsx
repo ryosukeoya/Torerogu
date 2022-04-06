@@ -1,7 +1,7 @@
 import type { VFC, Dispatch, SetStateAction, ComponentProps } from 'react';
 import { useRipple } from '~/hooks';
-import { rippleButton } from '~/styles/share/likeButtons';
-import { ripple } from '~/styles/share/ripple';
+import { rippleButton } from '~/styles/emotion/likeButtons';
+import { ripple } from '~/styles/emotion/ripple';
 import { css, SerializedStyles } from '@emotion/react';
 import FormFieldWrapper from './FormFieldWrapper';
 import { useFormContext } from 'react-hook-form';

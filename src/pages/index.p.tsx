@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { GET_TRAINING_ONE_TYPE } from '../libs/graphql/queries';
 import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
 import { useQuery } from '@apollo/client';
-import { pageTemplate } from '../styles/share/pageTemplate';
+import { pageTemplate } from '../styles/emotion/pageTemplate';
 import { getCurrentDate } from '../utils/app';
 import Top from './Top';
 import History from './History';

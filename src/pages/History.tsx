@@ -1,5 +1,5 @@
 import React from 'react';
-import { pageTemplate } from '~/styles/share/pageTemplate';
+import { pageTemplate } from '~/styles/emotion/pageTemplate';
 
 const History = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { VFC, ReactNode } from 'react';
 import { InputField, Snackbar } from '~/components';
-import { pageTemplate } from '~/styles/share/pageTemplate';
+import { pageTemplate } from '~/styles/emotion/pageTemplate';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';
 
 type Props = {
