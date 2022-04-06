@@ -91,6 +91,7 @@ const styles = {
     @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       display: inline-block;
       padding-left: 10px;
+      font-size: ${FONT.BASE};
     }
   `,
   ripple: css`

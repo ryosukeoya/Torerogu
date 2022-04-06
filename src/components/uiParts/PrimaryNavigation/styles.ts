@@ -26,6 +26,9 @@ export const tabStyles = {
     background-color: #fff;
     text-align: center;
     cursor: pointer;
+    @media (min-width: ${BREAKPOINT.MD}), (hover: hover) {
+      font-size: ${FONT.SMALL};
+    }
     @media (hover: hover) {
       &:hover {
         background-color: ${COLOR.HOVER_ORANGE};
