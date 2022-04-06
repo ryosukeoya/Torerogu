@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { VFC } from 'react';
 import PrimaryNavigationPresenter from './Presenter';
-import { ContainerProps } from './types';
+import type { ContainerProps } from './types';
 import { useRecoilState } from 'recoil';
 import { mainTabIndexAtom } from '~/store';
 

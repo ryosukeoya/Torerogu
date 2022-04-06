@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/globals.css';
 import '../styles/reset.css';
 import { useNprogress as progressBar } from '../hooks';
-import Layout from '../Layout';
+import Layout from '../layout/Layout';
 import { ApolloProvider } from '@apollo/client';
 import { initializeApollo } from '../libs/graphql/apolloClient';
 import { RecoilRoot } from 'recoil';
