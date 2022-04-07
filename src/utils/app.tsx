@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { PAGE_TITLE, PAGE_PATH, WEEK_DAYS } from '../constants/index';
+import { PAGE_TITLE, PAGE_PATH, WEEK_DAYS } from '../constants';
 
 const CONST = {
   ICON: {

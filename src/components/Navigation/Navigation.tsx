@@ -1,7 +1,7 @@
 import React, { VFC } from 'react';
 import Tab from './Tab';
 import { PAGE_TITLE } from '~/constants/index';
-import type { PageTitle } from '~/types/index';
+import type { PageTitle } from '~/types';
 import { css } from '@emotion/react';
 import { COLOR, BREAKPOINT, HEADER, NAVIGATION } from '~/styles/const';
 import { useActiveIndexFromPath } from '~/hooks';
