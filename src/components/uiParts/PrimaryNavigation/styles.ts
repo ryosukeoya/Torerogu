@@ -30,6 +30,11 @@ export const tabStyles = {
     @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       font-size: ${FONT.SMALL};
     }
+    @media (min-width: ${BREAKPOINT.MD}px) {
+      &:first-child {
+        border-right: 0.3px solid ${COLOR.BORDER_GRAY};
+      }
+    }
     @media (hover: hover) {
       &:hover {
         background-color: ${COLOR.HOVER_ORANGE};
