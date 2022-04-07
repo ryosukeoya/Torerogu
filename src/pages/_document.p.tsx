@@ -4,11 +4,11 @@ const MyDocument = () => {
     <Html lang='ja-JP'>
       <Head>
         {/* favicon,icon */}
-        {/* <link rel='shortcut icon' type='image/x-icon' href='/icons/favicon.ico' sizes='192x192' /> */}
-        <link rel='shortcut icon' type='image/x-icon' href='/icons/favicon.ico' />
+        <link rel='shortcut icon' type='image/x-icon' href='/icons/favicon.ico' sizes='192x192' />
         {/* <link rel='apple-touch-icon' sizes='180x180' href='/icons/apple-touch-icon.png' /> */}
-        <link rel='apple-touch-icon' href='/icons/apple-touch-icon.png' />
         <link rel='icon' type='image/png' href='/icons/android-touch-icon.png' />
+
+        <link rel='apple-touch-icon' sizes='192x192' href='/images/cat192-apple.png' />
         <link rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css' />
       </Head>
       <body>
