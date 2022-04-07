@@ -1,4 +1,4 @@
-import Link from 'next/Link';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { css, keyframes } from '@emotion/react';
