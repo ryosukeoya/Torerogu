@@ -1,21 +1,15 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import type { VFC } from 'react';
-import { css, keyframes } from '@emotion/react';
-import { APP } from '~/constants';
-import { COLOR, FONT, BREAKPOINT } from '~/styles/const';
-import { useSetRecoilState } from 'recoil';
-import { mainTabIndexAtom } from '~/store';
+import { css } from '@emotion/react';
+import { COLOR, BREAKPOINT } from '~/styles/const';
 import { useIsScrollDown } from '~/hooks';
 import { PrimaryNavigationGlobalState } from '~/components';
 import { useGetTabTitleFromRoute } from '~/hooks';
 import { HEADER } from '~/styles/const';
+import { default as Title } from './HeaderTitle';
 
 const Header: VFC = () => {
-  const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom);
-  const [fade, setFade] = useState(false);
-
   const isScrollDown: boolean = useIsScrollDown();
   const headerStateCss = isScrollDown ? stateCss['hidden'] : stateCss['visible'];
   const tabNames = useGetTabTitleFromRoute();
@@ -23,17 +17,7 @@ const Header: VFC = () => {
   return (
     <header css={[styles.header, headerStateCss]}>
       <div css={styles.area}>
-        <h1 css={[styles.title, fade ? fadeAnimation : null]} onClick={() => setFade(true)} onAnimationEnd={() => setFade(false)}>
-          <Link href='/' passHref>
-            <a
-              onClick={() => {
-                setActiveIndex(0);
-              }}
-            >
-              {APP.NAME}
-            </a>
-          </Link>
-        </h1>
+        <Title />
         <p css={styles.profile}>
           <Image src='/imgs/profile.png' width={28} height={28} alt={'プロフィール'} />
         </p>
@@ -73,13 +57,6 @@ const styles = {
   area: css`
     text-align: center;
   `,
-  title: css`
-    padding: 5px 9px;
-    font-size: ${FONT.X2_LARGE};
-    color: ${COLOR.RED};
-    display: inline-block;
-    cursor: pointer;
-  `,
   profile: css`
     float: right;
     border-radius: 50%;
@@ -97,22 +74,3 @@ const stateCss = {
     transition: top 0.1s ease-out;
   `,
 };
-
-const effect = keyframes`
-  0% {
-    color:#ff7369;
-    opacity: 0.8;
-  }
-  50% {
-    color:#ff7369;
-    opacity: 0.75;
-  }
-  100% {
-    color:#ff7369;
-    opacity: 0.8;
-  }
-`;
-
-const fadeAnimation = css`
-  animation: 0.17s ease 0s forwards ${effect};
-`;
