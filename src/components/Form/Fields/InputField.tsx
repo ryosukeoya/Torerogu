@@ -92,7 +92,7 @@ const inputFieldStyle = {
 
 const submitStyle = () => css`
   display: block;
-  overflow: hidden;
+  overflow: hidden !important;
   width: 100%;
   height: 100%;
   padding: 13px 0;
