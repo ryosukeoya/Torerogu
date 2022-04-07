@@ -51,7 +51,6 @@ const styles = {
   mainContent: css`
     min-height: 100vh;
     margin-top: ${HEADER.HEIGUT};
-    background-color: #fdfdfd;
     @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       width: calc(100% - ${NAVIGATION.WIDTH});
       margin-left: ${NAVIGATION.WIDTH};

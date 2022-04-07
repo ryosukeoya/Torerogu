@@ -32,7 +32,7 @@ const Header: VFC = () => {
           `,
           item: css`
             @media (min-width: ${BREAKPOINT.MD}px) {
-              visibility: hidden;
+              display: none;
             }
           `,
         }}
@@ -45,6 +45,7 @@ export default Header;
 
 const styles = {
   header: css`
+    overflow: visible;
     height: ${HEADER.HEIGUT};
     position: fixed;
     top: 0;

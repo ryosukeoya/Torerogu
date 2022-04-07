@@ -15,6 +15,7 @@ body {
 
 body {
   line-height: 1;
+  background-color: #fdfdfd;
 }
 
 a {
@@ -95,8 +96,8 @@ input[type='checkbox']:checked + .custom-style::after {
   height: 9.4px;
   top: 54%;
   left: 10.4px;
-  border-right: 2px solid #FF291B;
-  border-bottom: 3px solid #FF291B;
+  border-right: 2px solid #ff291b;
+  border-bottom: 3px solid #ff291b;
   content: '';
   margin-top: -7px;
   opacity: 0;
