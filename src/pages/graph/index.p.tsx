@@ -2,7 +2,7 @@ import React, { VFC } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { Spacer, PrimaryNavigationLocalState } from '~/components';
 import { useRecoilValue } from 'recoil';
-import { mainTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store/atoms';
 import { COLOR } from '~/styles/const';
 import { useQuery } from '@apollo/client';
 import { GET_TRAINING_WITH_BODY_INFO } from '~/libs/graphql/queries';

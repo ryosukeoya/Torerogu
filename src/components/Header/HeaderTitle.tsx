@@ -4,7 +4,7 @@ import type { VFC } from 'react';
 import { css, keyframes } from '@emotion/react';
 import { APP } from '~/constants';
 import { COLOR, FONT } from '~/styles/const';
-import { mainTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store/atoms';
 import { useSetRecoilState } from 'recoil';
 
 const HeaderTitle: VFC = () => {

@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import PrimaryNavigationPresenter from './Presenter';
 import type { ContainerProps } from './types';
 import { useRecoilState } from 'recoil';
-import { mainTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store/atoms';
 
 export const LocalStateContainer: VFC<ContainerProps> = ({ ...props }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
