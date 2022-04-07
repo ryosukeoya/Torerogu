@@ -48,6 +48,7 @@ export const toggleColorButton = (marginTop?: number, customCss?: SerializedStyl
 export const rippleButton = (marginTop?: number, isShadow?: boolean, customStyleSP?: SerializedStyles, customStylePC?: SerializedStyles) => css`
   ${buttonBase(marginTop)};
   position: relative;
+  z-index:500;
   overflow: hidden;
   color: #fff;
   background: ${COLOR.ORANGE};
