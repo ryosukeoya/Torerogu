@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import type { VFC } from 'react';
 import { css, keyframes, SerializedStyles } from '@emotion/react';
 import { getIcon } from '~/utils/app';
 import { PAGE_PATH } from '~/constants/index';
 import type { PageTitle } from '~/types/index';
 import { useSetRecoilState } from 'recoil';
-import { mainTabIndexAtom } from '~/store';
+import { mainTabIndexAtom } from '~/store/atoms';
 import { BREAKPOINT, COLOR, FONT } from '~/styles/const';
 import { useIsActive, useRipple, useGetWindowSize } from '~/hooks';
 
@@ -20,11 +20,17 @@ type Props = {
 };
 
 const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: parentActiveIndex, setActiveIndex: parentSetActiveIndex }) => {
+  const [isTouchDevice, setIsTouchDevice] = useState<boolean | undefined>();
   const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
   const isActive = useIsActive(!!isToggle, parentActiveIndex, index);
 
   const [, setCoords, isRippling] = useRipple(170);
-  const { width } = useGetWindowSize();
+
+  const windowSize = useGetWindowSize();
+
+  useEffect(() => {
+    setIsTouchDevice(false);
+  }, [windowSize.width]);
 
   return (
     <Link href={PAGE_PATH[title]} passHref>
@@ -35,9 +41,12 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
           const rect = e.currentTarget.getBoundingClientRect();
           setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
         }}
+        onTouchStart={() => {
+          setIsTouchDevice(true);
+        }}
         css={styles.box}
       >
-        {width < BREAKPOINT.MD && isRippling ? <span css={styles.ripple} /> : ''}
+        {isTouchDevice && isRippling ? <span css={styles.ripple} /> : ''}
         <p>{getIcon(title, isActive)}</p>
         <p css={styles.title(isActive)}>{title}</p>
       </a>
