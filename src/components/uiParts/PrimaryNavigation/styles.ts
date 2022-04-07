@@ -9,8 +9,9 @@ export const tabStyles = {
     align-items: flex-end;
     border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
     background: #fff;
+    position: static;
     ${customCss};
-    @media (min-width: ${BREAKPOINT.MD}), (hover: hover) {
+    @media (min-width: ${BREAKPOINT.MD}px) {
       position: fixed;
       top: auto;
       left: auto;
@@ -26,7 +27,7 @@ export const tabStyles = {
     background-color: #fff;
     text-align: center;
     cursor: pointer;
-    @media (min-width: ${BREAKPOINT.MD}), (hover: hover) {
+    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       font-size: ${FONT.SMALL};
     }
     @media (hover: hover) {

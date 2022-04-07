@@ -35,7 +35,7 @@ const FONT = {
 } as const;
 
 const HEADER = {
-  HEIGUT: '104px',
+  HEIGUT: '101px',
 } as const;
 
 const NAVIGATION = {
