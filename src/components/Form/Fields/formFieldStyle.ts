@@ -8,8 +8,8 @@ export const formFieldStyle = {
     font-size: ${FONT.SMALL};
     color: ${COLOR.RED};
   `,
-  content: css`
-    padding-bottom: 20px;
+  content: (custom?: { paddingBottom: number }) => css`
+    padding-bottom: ${!custom?.paddingBottom ? '20px' : `${custom.paddingBottom}px`};
   `,
   contentTitle: css`
     display: flex;

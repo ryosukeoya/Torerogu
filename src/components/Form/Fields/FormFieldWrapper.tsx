@@ -23,7 +23,7 @@ type Props = {
 
 const FormFieldWrapper: VFC<Props> = ({ title, unit, formConf, errors, children }) => {
   return (
-    <div css={formFieldStyle.content}>
+    <div css={formFieldStyle.content({ paddingBottom: 10 })}>
       {title && (
         <p css={formFieldStyle.contentTitle}>
           {title}
