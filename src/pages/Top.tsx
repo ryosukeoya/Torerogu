@@ -10,7 +10,7 @@ import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
 import { UPDATE_TRAINING_IS_FINISH } from '~/libs/graphql/mutations';
 import { useMutation } from '@apollo/client';
 import type { UpdateTrainingIsFinishMutation } from '~/types/generated/graphql';
-import { default as Checkbox } from '~/components/Checkbox';
+import { Checkbox } from '~/components';
 
 type Props = {
   data?: GetTrainingOneTypeQuery;

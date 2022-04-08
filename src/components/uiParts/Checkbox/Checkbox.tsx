@@ -14,7 +14,7 @@ const Checkbox: VFC<Props> = ({ initIsChecked, title, id, handleClick }) => {
     <>
       <input
         type='checkbox'
-        id='custom'
+        id='custom-checkbox'
         value=''
         defaultChecked={isChecked}
         onClick={() => {
@@ -22,7 +22,7 @@ const Checkbox: VFC<Props> = ({ initIsChecked, title, id, handleClick }) => {
           setIsChecked((prev) => !prev);
         }}
       />
-      <label htmlFor='custom' className='custom-style'>
+      <label htmlFor='custom-checkbox' className='custom-style'>
         {title}
       </label>
     </>
