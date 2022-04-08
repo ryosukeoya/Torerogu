@@ -8,7 +8,7 @@ export const tabStyles = {
     justify-content: flex-start;
     align-items: flex-end;
     border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
-    background: #fff;
+    /* background: #fff; */
     position: static;
     ${customCss};
     @media (min-width: ${BREAKPOINT.MD}px) {
@@ -21,12 +21,17 @@ export const tabStyles = {
   `,
   item: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.ORANGE : 'black'};
-    border-bottom: 1px solid ${isActive ? COLOR.ORANGE : '#fff'};
+    ${isActive && `border-bottom: 1px solid ${COLOR.ORANGE}`};
     padding: 15px;
     font-size: ${FONT.BASE};
     background-color: #fff;
     text-align: center;
     cursor: pointer;
+    // TODO:リファ
+    @media not all and (hover: hover) {
+      ${isActive && `border-bottom: 1px solid ${COLOR.ORANGE}`};
+      ${!isActive && `border-bottom: 0.3px solid ${COLOR.BORDER_GRAY}`};
+    }
     @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
       font-size: ${FONT.SMALL};
     }

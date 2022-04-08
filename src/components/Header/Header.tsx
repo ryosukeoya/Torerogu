@@ -45,15 +45,17 @@ export default Header;
 
 const styles = {
   header: css`
-    overflow: visible;
     height: ${HEADER.HEIGUT};
     position: fixed;
     top: 0;
     z-index: 1000;
     background: #fff;
     width: 100vw;
-    border-bottom: 1px solid ${COLOR.BORDER_GRAY};
     padding: 10px 25px 0 25px;
+    border: none;
+    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
+      border-bottom: 1px solid ${COLOR.BORDER_GRAY};
+    }
   `,
   area: css`
     text-align: center;
