@@ -15,6 +15,7 @@
     "incremental": true,
     "strict": true,
     "noImplicitAny": true,
+    "baseUrl": ".",
     "paths": { "~/*": ["./src/*"] },
     "types": ["@emotion/react/types/css-prop", "jest"]
   },
