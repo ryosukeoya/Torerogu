@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import type { VFC } from 'react';
-import { useGetTheme } from './useGetTheme';
 import { ButtonTheme } from './types';
-
+import { useCallback } from 'react';
+import { simpleButton, toggleColorButton } from '~/styles/emotion/likeButtons';
 interface PropsBase<T extends 'isButton' | 'isLinkButton'> {
   type: T;
   text: string;
@@ -36,3 +36,16 @@ const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ text, theme, ...pro
 };
 
 export default PrimaryButton;
+
+const useGetTheme = (theme: ButtonTheme) => {
+  const themeCss = useCallback(() => {
+    if (theme === 'simple') {
+      return simpleButton();
+    } else if (theme === 'toggle') {
+      return toggleColorButton();
+    } else {
+      return;
+    }
+  }, [theme]);
+  return [themeCss];
+};

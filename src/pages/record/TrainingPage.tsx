@@ -69,7 +69,7 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
         <Slider items={data?.training_categories} setState={setSelectedCategoryIndex} />
         {getTrainingTypesFromCategoryIndex(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
           return (
-            <CardWrapper handleClick={() => handleClick(training_type)} key={training_type.id} customCss={styles.card}>
+            <CardWrapper handleClick={() => handleClick(training_type)} key={training_type.id} customCardCss={styles.card}>
               {training_type.name}
             </CardWrapper>
           );
