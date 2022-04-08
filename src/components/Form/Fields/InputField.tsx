@@ -7,9 +7,9 @@ import FormFieldWrapper from './FormFieldWrapper';
 import { useFormContext } from 'react-hook-form';
 import { COLOR } from '~/styles/const';
 
-type Input = ComponentProps<'input'>;
+type InputProps = ComponentProps<'input'>;
 
-interface Props extends Input {
+interface Props extends InputProps {
   title?: string;
   customCss?: SerializedStyles;
   setState?: Dispatch<SetStateAction<unknown>>;
@@ -17,7 +17,7 @@ interface Props extends Input {
   formConf?: { name: string; option: Record<string, unknown> };
 }
 
-const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ...props }) => {
+const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ...inputProps }) => {
   const [coords, setCoords, isRippling] = useRipple(300);
 
   const {
@@ -25,7 +25,7 @@ const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ..
     formState: { errors },
   } = useFormContext();
 
-  switch (props.type) {
+  switch (inputProps.type) {
     case 'submit':
       return (
         <FormFieldWrapper>
@@ -37,7 +37,7 @@ const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ..
             }}
           >
             <span css={inputFieldStyle.inputTitle}>記録する</span>
-            <input {...props} css={[submitStyle, customCss]} />
+            <input {...inputProps} css={[submitStyle, customCss]} />
             {isRippling ? (
               <span
                 css={ripple.ripple('#ffbb54')}
@@ -55,7 +55,7 @@ const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ..
     default:
       return (
         <FormFieldWrapper title={title} unit={unit} formConf={formConf} errors={errors}>
-          <input {...props} {...(formConf && { ...register(formConf.name, formConf.option) })} onChange={(e) => setState && setState(e.target.value)} css={inputFieldStyle.input(customCss)} />
+          <input {...inputProps} {...(formConf && { ...register(formConf.name, formConf.option) })} onChange={(e) => setState && setState(e.target.value)} css={inputFieldStyle.input(customCss)} />
         </FormFieldWrapper>
       );
   }
