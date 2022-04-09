@@ -1,5 +1,5 @@
 import type { VFC } from 'react';
-import NavItem from './Item';
+import Item from './Item';
 import { useGetCss } from './useGetCss';
 import { ContainerProps } from './types';
 import { SetterOrUpdater } from 'recoil';
@@ -15,7 +15,7 @@ const PrimaryNavigationPresenter: VFC<Props> = ({ titles, theme, customCss, opti
   return (
     <ul css={[themeStyle, customCss?.nav]}>
       {titles?.map((title: string, i: number) => {
-        return <NavItem key={i} options={options} setActiveIndex={setActiveIndex} index={i} activeIndex={activeIndex} title={title} theme={theme} customCss={customCss} />;
+        return <Item key={i} options={options} setActiveIndex={setActiveIndex} index={i} activeIndex={activeIndex} title={title} theme={theme} customCss={customCss} />;
       })}
     </ul>
   );

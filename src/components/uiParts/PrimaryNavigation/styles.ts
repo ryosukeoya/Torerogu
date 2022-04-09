@@ -8,7 +8,7 @@ export const tabStyles = {
     justify-content: flex-start;
     align-items: flex-end;
     border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
-    /* background: #fff; */
+    background-color: #fff;
     position: static;
     ${customCss};
     @media (min-width: ${BREAKPOINT.MD}px) {
@@ -24,7 +24,7 @@ export const tabStyles = {
     ${isActive && `border-bottom: 1px solid ${COLOR.ORANGE}`};
     padding: 15px;
     font-size: ${FONT.BASE};
-    background-color: #fff;
+    background-color: inherit;
     text-align: center;
     cursor: pointer;
     // TODO:リファ
