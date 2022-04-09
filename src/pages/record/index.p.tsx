@@ -4,10 +4,9 @@ import type { GetTrainingCategoryWithTypeQuery } from '~/types/generated/graphql
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
-import { SwiperWrapper, PrimaryNavigationGlobalState } from '~/components';
-import { BREAKPOINT } from '~/styles/const';
-import { useGetElementWidth, useGetTabTitleFromRoute } from '~/hooks';
-import { css } from '@emotion/react';
+import { SwiperWrapper } from '~/components';
+import { useGetElementWidth } from '~/hooks';
+import { PageLayout } from '~/layout';
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo();
@@ -27,30 +26,14 @@ type Props = {
 
 const Record: NextPage<Props> = ({ data }) => {
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
-  const tabNames = useGetTabTitleFromRoute();
 
   return (
-    <>
-      <PrimaryNavigationGlobalState
-        titles={tabNames}
-        theme='basicTab'
-        options={{ isSwiper: true, isToggle: true }}
-        width={mainContentWidth}
-        customCss={{
-          item: css`
-            width: 100%;
-
-            @media (max-width: ${BREAKPOINT.MD - 1}px) {
-              display: none;
-            }
-          `,
-        }}
-      />
+    <PageLayout mainContentWidth={mainContentWidth}>
       <SwiperWrapper elm={elm}>
         <BodyInfoPage pageIndex={0} />
         <TrainingPage data={data} pageIndex={1} />
       </SwiperWrapper>
-    </>
+    </PageLayout>
   );
 };
 
