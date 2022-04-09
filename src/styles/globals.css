@@ -76,11 +76,12 @@ input[type='checkbox']:checked + .custom-style::after {
   padding: 5px 30px;
   cursor: pointer;
 }
+/* checkbox */
 .custom-style:before {
-  width: 16px; /* チェックボックスの幅 */
-  height: 16px; /* チェックボックスの高さ */
+  width: 16px;
+  height: 16px;
   left: 5px;
-  border: 1px solid #ccc; /* チェックボックスの枠 */
+  border: 1px solid #ccc;
   border-radius: 3px;
   margin-top: -8px;
 }
@@ -90,6 +91,7 @@ input[type='checkbox']:checked + .custom-style::after {
   content: '';
   top: 50%;
 }
+/* checkmark */
 .custom-style::after {
   position: absolute;
   width: 5px;

@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { pageTemplate } from '../styles/emotion/pageTemplate';
 import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
+import { CheckboxMU } from '~/components';
 import { UPDATE_TRAINING_IS_FINISH } from '~/libs/graphql/mutations';
 import { useMutation } from '@apollo/client';
 import type { UpdateTrainingIsFinishMutation } from '~/types/generated/graphql';
-import { Checkbox } from '~/components';
 
 type Props = {
   data?: GetTrainingOneTypeQuery;
@@ -32,7 +32,8 @@ const Top: VFC<Props> = ({ data }) => {
             <Accordion sx={{ marginBottom: '5px' }}>
               <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
                 <Typography>
-                  <Checkbox initIsChecked={training.is_finish} title={training.training_type.name} handleClick={handleClick} id={training.id} />
+                  <CheckboxMU initIsChecked={training.is_finish} id={training.id} handleClick={handleClick} />
+                  <span>{training.training_type.name}</span>
                 </Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ backgroundColor: '#fcfcfc', borderTop: '1px solid #e3e3e3' }}>
