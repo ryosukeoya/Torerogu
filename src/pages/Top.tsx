@@ -4,7 +4,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 import { pageTemplate } from '../styles/emotion/pageTemplate';
 import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
 import { CheckboxMU } from '~/components';
@@ -30,7 +30,7 @@ const Top: VFC<Props> = ({ data }) => {
         return (
           <div key={training.id}>
             <Accordion sx={{ marginBottom: '5px' }}>
-              <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls='panel1a-content' id='panel1a-header'>
+              <AccordionSummary expandIcon={<ExpandMore />} aria-controls='panel1a-content' id='panel1a-header'>
                 <Typography>
                   <CheckboxMU initIsChecked={training.is_finish} id={training.id} handleClick={handleClick} />
                   <span>{training.training_type.name}</span>

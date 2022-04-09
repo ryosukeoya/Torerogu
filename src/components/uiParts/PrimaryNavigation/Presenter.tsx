@@ -1,3 +1,4 @@
+// eslint-disable-next-line consistent-default-export-name/default-export-match-filename
 import type { VFC } from 'react';
 import Item from './Item';
 import { useGetCss } from './useGetCss';
