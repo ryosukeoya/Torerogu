@@ -36,7 +36,7 @@ export const tabStyles = {
       font-size: ${FONT.SMALL};
     }
     @media (min-width: ${BREAKPOINT.MD}px) {
-      &:first-child {
+      &:first-of-type {
         border-right: 0.3px solid ${COLOR.BORDER_GRAY};
       }
     }
