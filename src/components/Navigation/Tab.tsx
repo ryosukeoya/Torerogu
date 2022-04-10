@@ -7,7 +7,8 @@ import { PAGE_PATH } from '~/constants/index';
 import type { PageTitle } from '~/types';
 import { useSetRecoilState } from 'recoil';
 import { mainTabIndexAtom } from '~/store/atoms';
-import { BREAKPOINT, COLOR, FONT } from '~/styles/const';
+import { COLOR, FONT } from '~/styles/const';
+import { media } from '~/styles/shares';
 import { useIsActive, useRipple, useGetWindowSize } from '~/hooks';
 
 type Props = {
@@ -79,29 +80,33 @@ const styles = {
     text-align: center;
     padding-top: 3px;
     position: relative;
-    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
-      width: auto;
-      display: flex;
-      justify-content: flex-start;
-      flex-shrink: 0;
-      align-items: center;
-      padding: 28px 40px;
-      border-radius: 30px;
-      margin-bottom: 10px;
-      &:hover {
-        background-color: ${COLOR.HOVER_RED};
-      }
-    }
+    ${media.pc(
+      css`
+        width: auto;
+        display: flex;
+        justify-content: flex-start;
+        flex-shrink: 0;
+        align-items: center;
+        padding: 28px 40px;
+        border-radius: 30px;
+        margin-bottom: 10px;
+        &:hover {
+          background-color: ${COLOR.HOVER_RED};
+        }
+      `,
+    )}
   `,
   title: (isActive?: boolean): SerializedStyles => css`
     color: ${isActive ? COLOR.RED : 'black'};
     padding-top: 2px;
     font-size: ${FONT.X_SMALL};
-    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
-      display: inline-block;
-      padding-left: 10px;
-      font-size: ${FONT.BASE};
-    }
+    ${media.pc(
+      css`
+        display: inline-block;
+        padding-left: 10px;
+        font-size: ${FONT.BASE};
+      `,
+    )}
   `,
   ripple: css`
     display: block;

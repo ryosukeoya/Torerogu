@@ -2,11 +2,10 @@ import Image from 'next/image';
 import React from 'react';
 import type { VFC } from 'react';
 import { css } from '@emotion/react';
-import { COLOR } from '~/styles/const';
-import { useIsScrollDown } from '~/hooks';
+import { COLOR, HEADER } from '~/styles/const';
+import { media } from '~/styles/shares';
+import { useIsScrollDown, useGetTabTitleFromRoute } from '~/hooks';
 import { PrimaryNavigationGlobalState } from '~/components';
-import { useGetTabTitleFromRoute } from '~/hooks';
-import { HEADER } from '~/styles/const';
 import { default as Title } from './HeaderTitle';
 
 const Header: VFC = () => {
@@ -30,11 +29,11 @@ const Header: VFC = () => {
           nav: css`
             border-bottom: none;
           `,
-          item: css`
-            @media (hover: hover) {
+          item: media.pc(
+            css`
               display: none;
-            }
-          `,
+            `,
+          ),
         }}
       />
     </header>
@@ -52,10 +51,7 @@ const styles = {
     background: #fff;
     width: 100vw;
     padding: 10px 25px 0 25px;
-    border: none;
-    @media (hover: hover) {
-      border-bottom: 1px solid ${COLOR.BORDER_GRAY};
-    }
+    border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
   `,
   area: css`
     text-align: center;

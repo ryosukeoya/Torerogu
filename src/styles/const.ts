@@ -1,6 +1,7 @@
 export { BREAKPOINT, COLOR, FONT, HEADER, NAVIGATION };
 
 const BREAKPOINT: { [breakpoint: string]: number } = {
+  XSM: 500,
   SM: 640,
   MD: 768,
   LG: 1024,
@@ -35,7 +36,7 @@ const FONT = {
 } as const;
 
 const HEADER = {
-  HEIGUT: '101px',
+  HEIGUT: '103px',
 } as const;
 
 const NAVIGATION = {

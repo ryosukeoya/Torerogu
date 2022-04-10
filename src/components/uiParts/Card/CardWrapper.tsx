@@ -1,7 +1,7 @@
 import type { VFC, ReactNode, PropsWithChildren } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { HoverTheme } from './types';
-import { BREAKPOINT, COLOR } from '~/styles/const';
+import { COLOR } from '~/styles/const';
 
 type Props = {
   handleClick?: VoidFunction;
@@ -21,16 +21,16 @@ const CardWrapper: VFC<PropsWithChildren<Props>> = ({ children, handleClick, cus
 export default CardWrapper;
 
 const darkenHover = css`
-  &:hover {
-    @media (min-width: ${BREAKPOINT.MD}px) {
+  @media (hover: hover) {
+    &:hover {
       background-color: ${COLOR.HOVER_GRAY};
     }
   }
 `;
 
 const scaleHover = css`
-  &:hover {
-    @media (min-width: ${BREAKPOINT.MD}px) {
+  @media (hover: hover) {
+    &:hover {
       transition: all 0.3s;
       transform: scale(1.013);
       box-shadow: 0 1.2px 3.8px 1.5px #c4c4c4;

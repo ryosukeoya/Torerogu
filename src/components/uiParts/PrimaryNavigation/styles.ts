@@ -1,5 +1,6 @@
-import { FONT, COLOR, BREAKPOINT } from '~/styles/const';
+import { FONT, COLOR } from '~/styles/const';
 import { css, SerializedStyles } from '@emotion/react';
+import { media } from '~/styles/shares';
 
 export const tabStyles = {
   nav: (navWidth?: number, customCss?: SerializedStyles) => css`
@@ -7,19 +8,21 @@ export const tabStyles = {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-    border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
     background-color: #fff;
     position: static;
+    border-bottom: none;
     ${customCss};
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    ${media.pc(css`
       position: fixed;
       top: auto;
       left: auto;
       z-index: 2000;
       width: ${navWidth}px;
-    }
+      border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
+    `)}
   `,
   item: (isActive?: boolean): SerializedStyles => css`
+    display: inline-block;
     color: ${isActive ? COLOR.ORANGE : 'black'};
     ${isActive && `border-bottom: 1px solid ${COLOR.ORANGE}`};
     padding: 15px;
@@ -27,19 +30,12 @@ export const tabStyles = {
     background-color: inherit;
     text-align: center;
     cursor: pointer;
-    // TODO:リファ
-    @media not all and (hover: hover) {
-      ${isActive && `border-bottom: 1px solid ${COLOR.ORANGE}`};
-      ${!isActive && `border-bottom: 0.3px solid ${COLOR.BORDER_GRAY}`};
-    }
-    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
+    ${media.pc(css`
       font-size: ${FONT.SMALL};
-    }
-    @media (min-width: ${BREAKPOINT.MD}px) {
       &:first-of-type {
         border-right: 0.3px solid ${COLOR.BORDER_GRAY};
       }
-    }
+    `)}
     @media (hover: hover) {
       &:hover {
         background-color: ${COLOR.HOVER_ORANGE};

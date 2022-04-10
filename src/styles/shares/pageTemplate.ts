@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
-import { BREAKPOINT, FONT } from '../const';
+import { FONT } from '../const';
+import { media } from '~/styles/shares';
 
 export const pageTemplate = {
   contentArea: css`
@@ -9,18 +10,20 @@ export const pageTemplate = {
     width: 90%;
     margin: 0 auto;
     padding-top: 30px;
-    @media (min-width: ${BREAKPOINT.MD}px) {
-      min-height: auto;
-      padding: 30px 0 0 50px;
-      margin-top: 47px;
-    }
+    ${media.pc(
+      css`
+        min-height: auto;
+        padding: 30px 0 0 50px;
+        margin-top: 47px;
+      `,
+    )}
   `,
   title: css`
     padding-bottom: 50px;
     font-size: ${FONT.X1_LARGE};
-    @media (min-width: ${BREAKPOINT.MD}px) {
+    ${media.pc(css`
       padding-bottom: 55px;
-    }
+    `)}
   `,
   back: css`
     display: inline-block;
