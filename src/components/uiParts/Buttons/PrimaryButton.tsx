@@ -17,14 +17,14 @@ interface LinkButtonProps extends PropsBase<'isLinkButton'> {
   href: string;
 }
 
-const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ text, theme, ...props }) => {
+const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ text, theme, ...rest }) => {
   const themeCss = useGetTheme(theme);
 
-  switch (props.type) {
+  switch (rest.type) {
     case 'isButton':
       return <button css={themeCss}>{text}</button>;
     case 'isLinkButton':
-      const { href } = props;
+      const { href } = rest;
       return (
         <Link href={href} passHref>
           <a css={themeCss}>{text}</a>
