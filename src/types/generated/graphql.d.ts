@@ -2114,6 +2114,14 @@ export type CreateTrainingMutationVariables = Exact<{
 
 export type CreateTrainingMutation = { __typename?: 'mutation_root', insert_trainings_one?: { __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any } | null };
 
+export type UpdateTrainingIsFinishMutationVariables = Exact<{
+  id: Scalars['Int'];
+  is_finish?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type UpdateTrainingIsFinishMutation = { __typename?: 'mutation_root', update_trainings_by_pk?: { __typename?: 'trainings', id: number, is_finish: boolean } | null };
+
 export type GetTrainingOneTypeQueryVariables = Exact<{
   date?: InputMaybe<Scalars['date']>;
 }>;
@@ -2236,6 +2244,41 @@ export function useCreateTrainingMutation(baseOptions?: Apollo.MutationHookOptio
 export type CreateTrainingMutationHookResult = ReturnType<typeof useCreateTrainingMutation>;
 export type CreateTrainingMutationResult = Apollo.MutationResult<CreateTrainingMutation>;
 export type CreateTrainingMutationOptions = Apollo.BaseMutationOptions<CreateTrainingMutation, CreateTrainingMutationVariables>;
+export const UpdateTrainingIsFinishDocument = gql`
+    mutation UpdateTrainingIsFinish($id: Int!, $is_finish: Boolean) {
+  update_trainings_by_pk(pk_columns: {id: $id}, _set: {is_finish: $is_finish}) {
+    id
+    is_finish
+  }
+}
+    `;
+export type UpdateTrainingIsFinishMutationFn = Apollo.MutationFunction<UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables>;
+
+/**
+ * __useUpdateTrainingIsFinishMutation__
+ *
+ * To run a mutation, you first call `useUpdateTrainingIsFinishMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTrainingIsFinishMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTrainingIsFinishMutation, { data, loading, error }] = useUpdateTrainingIsFinishMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      is_finish: // value for 'is_finish'
+ *   },
+ * });
+ */
+export function useUpdateTrainingIsFinishMutation(baseOptions?: Apollo.MutationHookOptions<UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables>(UpdateTrainingIsFinishDocument, options);
+      }
+export type UpdateTrainingIsFinishMutationHookResult = ReturnType<typeof useUpdateTrainingIsFinishMutation>;
+export type UpdateTrainingIsFinishMutationResult = Apollo.MutationResult<UpdateTrainingIsFinishMutation>;
+export type UpdateTrainingIsFinishMutationOptions = Apollo.BaseMutationOptions<UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables>;
 export const GetTrainingOneTypeDocument = gql`
     query GetTrainingOneType($date: date) {
   trainings(where: {date: {_eq: $date}}) {

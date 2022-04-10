@@ -1,10 +1,11 @@
 import React, { VFC } from 'react';
 import Tab from './Tab';
 import { PAGE_TITLE } from '~/constants/index';
-import type { PageTitle } from '~/types/index';
+import type { PageTitle } from '~/types';
 import { css } from '@emotion/react';
-import { COLOR, BREAKPOINT, HEADER, NAVIGATION } from '~/styles/const';
+import { COLOR, HEADER, NAVIGATION } from '~/styles/const';
 import { useActiveIndexFromPath } from '~/hooks';
+import { media } from '~/styles/shares';
 
 const Navigation: VFC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndexFromPath();
@@ -22,6 +23,7 @@ export default Navigation;
 
 const styles = {
   navigation: css`
+    // BottomNav
     box-size: border-box;
     position: fixed;
     bottom: 0;
@@ -33,7 +35,8 @@ const styles = {
     width: 100vw;
     height: 65px;
     border-top: 1px solid ${COLOR.BORDER_GRAY};
-    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
+    ${media.pc(css`
+      // Side bar
       top: 0;
       left: auto;
       flex-direction: column;
@@ -44,6 +47,8 @@ const styles = {
       width: ${NAVIGATION.WIDTH};
       padding: calc(47px + 30px) 0 0 10px;
       border-top: 0;
+    `)}
+
     }
   `,
 };

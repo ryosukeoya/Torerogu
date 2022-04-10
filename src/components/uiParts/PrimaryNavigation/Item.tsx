@@ -4,7 +4,7 @@ import type { SetterOrUpdater } from 'recoil';
 import { useGetItemCss } from './useGetCss';
 import { Theme, CustomCss } from './types';
 import { useRecoilValue } from 'recoil';
-import { swiperAtom } from '~/store';
+import { swiperAtom } from '~/store/atoms';
 
 type Props = {
   title: string;
@@ -16,7 +16,7 @@ type Props = {
   options: { isToggle: boolean; isSwiper: boolean };
 };
 
-const Item: VFC<Props> = ({ title, index, activeIndex, setActiveIndex, theme, customCss, options }) => {
+const Item: VFC<Props> = ({ title, activeIndex, setActiveIndex, index, theme, customCss, options }) => {
   const swiper = useRecoilValue(swiperAtom);
   const isActive = useIsActive(!!options.isToggle, activeIndex, index);
 

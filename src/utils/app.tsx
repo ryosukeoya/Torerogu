@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { PAGE_TITLE, PAGE_PATH, WEEK_DAYS } from '../constants/index';
+import { PAGE_TITLE, PAGE_PATH, WEEK_DAYS } from '../constants';
+import type { PageTitle } from '~/types';
 
 const CONST = {
   ICON: {
@@ -9,7 +10,7 @@ const CONST = {
   },
 };
 
-const getIcon = (title: string, isActive?: boolean): JSX.Element | undefined => {
+const getIcon = (title: PageTitle, isActive?: boolean): JSX.Element | undefined => {
   const TITLE: string[] = Object.keys(PAGE_PATH);
 
   switch (title) {

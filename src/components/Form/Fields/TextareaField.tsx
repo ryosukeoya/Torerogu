@@ -9,10 +9,10 @@ interface Props extends TextareaProps {
   title: string;
 }
 
-const TextareaField: VFC<Props> = ({ title, ...props }) => {
+const TextareaField: VFC<Props> = ({ title, ...textareaProps }) => {
   return (
     <FormFieldWrapper title={title}>
-      <textarea {...props} css={textareaFieldStyle()} />
+      <textarea {...textareaProps} css={textareaFieldStyle()} />
     </FormFieldWrapper>
   );
 };

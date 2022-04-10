@@ -8,6 +8,7 @@ export { FormContainer, FormWrapper, InputField, SelectField, TextareaField } fr
 // UIParts
 export { PrimaryButton, RippleButton } from './uiParts/Buttons';
 export { CardWrapper } from './uiParts/Card';
+export { Checkbox, CheckboxMU } from './uiParts/Checkbox';
 export { PrimaryNavigationLocalState, PrimaryNavigationGlobalState } from './uiParts/PrimaryNavigation';
 export { Slider } from './uiParts/Slider';
 export { Snackbar } from './uiParts/Snackbar';

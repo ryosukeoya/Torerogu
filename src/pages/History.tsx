@@ -1,12 +1,10 @@
 import React from 'react';
-import { pageTemplate } from '~/styles/share/pageTemplate';
+import { pageTemplate } from '~/styles/shares/pageTemplate';
 
 const History = () => {
   return (
     <>
-      <p css={pageTemplate.contentArea}>
-        history page
-      </p>
+      <p css={pageTemplate.contentArea}>history page</p>
     </>
   );
 };

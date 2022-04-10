@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import Swiper, { Swiper as SwiperType, EffectFade, SwiperOptions } from 'swiper';
 import { useSetRecoilState, useRecoilState } from 'recoil';
-import { mainTabIndexAtom, swiperAtom } from '~/store';
+import { mainTabIndexAtom, swiperAtom } from '~/store/atoms';
 import { useGetWindowSize } from '~/hooks';
 import { BREAKPOINT } from '~/styles/const';
 

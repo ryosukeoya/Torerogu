@@ -1,6 +1,6 @@
 import type { VFC, ReactNode } from 'react';
-import { rippleButton } from '~/styles/share/likeButtons';
-import { ripple } from '~/styles/share/ripple';
+import { rippleButton } from '~/styles/shares/likeButtons';
+import { ripple } from '~/styles/shares/ripple';
 import { useRipple } from '~/hooks';
 
 type Props = {
