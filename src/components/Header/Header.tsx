@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import type { VFC } from 'react';
 import { css } from '@emotion/react';
-import { COLOR, BREAKPOINT } from '~/styles/const';
+import { COLOR } from '~/styles/const';
 import { useIsScrollDown } from '~/hooks';
 import { PrimaryNavigationGlobalState } from '~/components';
 import { useGetTabTitleFromRoute } from '~/hooks';
@@ -31,7 +31,7 @@ const Header: VFC = () => {
             border-bottom: none;
           `,
           item: css`
-            @media (min-width: ${BREAKPOINT.MD}px) {
+            @media (hover: hover) {
               display: none;
             }
           `,
@@ -53,7 +53,7 @@ const styles = {
     width: 100vw;
     padding: 10px 25px 0 25px;
     border: none;
-    @media (min-width: ${BREAKPOINT.MD}px), (hover: hover) {
+    @media (hover: hover) {
       border-bottom: 1px solid ${COLOR.BORDER_GRAY};
     }
   `,

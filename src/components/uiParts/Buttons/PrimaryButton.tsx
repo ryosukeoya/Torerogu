@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { VFC } from 'react';
 import { ButtonTheme } from './types';
 import { useCallback } from 'react';
-import { simpleButton, toggleColorButton } from '~/styles/emotion/likeButtons';
+import { simpleButton, toggleColorButton } from '~/styles/shares/likeButtons';
 interface PropsBase<T extends 'isButton' | 'isLinkButton'> {
   type: T;
   text: string;

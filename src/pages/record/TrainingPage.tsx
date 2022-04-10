@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
 import { CREATE_TRAINING } from '~/libs/graphql/mutations';
 import { FormContainer, Slider, SelectField, CardWrapper } from '~/components';
-import { pageTemplate } from '~/styles/emotion/pageTemplate';
+import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { SubmitHandler } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 import { css } from '@emotion/react';

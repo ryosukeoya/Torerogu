@@ -5,7 +5,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import { pageTemplate } from '../styles/emotion/pageTemplate';
+import { pageTemplate } from '../styles/shares/pageTemplate';
 import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
 import { CheckboxMU } from '~/components';
 import { UPDATE_TRAINING_IS_FINISH } from '~/libs/graphql/mutations';
