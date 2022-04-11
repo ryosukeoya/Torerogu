@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import { simpleButton, toggleColorButton } from '~/styles/shares/likeButtons';
 interface PropsBase<T extends 'isButton' | 'isLinkButton'> {
   type: T;
-  text: string;
+  title: string;
   theme: ButtonTheme;
 }
 
@@ -17,17 +17,22 @@ interface LinkButtonProps extends PropsBase<'isLinkButton'> {
   href: string;
 }
 
-const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ text, theme, ...rest }) => {
+const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ title, theme, ...rest }) => {
   const themeCss = useGetTheme(theme);
 
   switch (rest.type) {
     case 'isButton':
-      return <button css={themeCss}>{text}</button>;
+      const { onClick } = rest;
+      return (
+        <button css={themeCss} onClick={onClick}>
+          {title}
+        </button>
+      );
     case 'isLinkButton':
       const { href } = rest;
       return (
         <Link href={href} passHref>
-          <a css={themeCss}>{text}</a>
+          <a css={themeCss}>{title}</a>
         </Link>
       );
     default:

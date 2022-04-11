@@ -1,14 +1,14 @@
-import type { VFC, ReactNode } from 'react';
+import type { VFC } from 'react';
 import { rippleButton } from '~/styles/shares/likeButtons';
 import { ripple } from '~/styles/shares/ripple';
 import { useRipple } from '~/hooks';
 
 type Props = {
-  children: ReactNode;
+  title: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
-const RippleButton: VFC<Props> = ({ children, onClick }) => {
+const RippleButton: VFC<Props> = ({ title, onClick }) => {
   const [coords, setCoords, isRippling] = useRipple(300);
 
   return (
@@ -31,7 +31,7 @@ const RippleButton: VFC<Props> = ({ children, onClick }) => {
       ) : (
         ''
       )}
-      <span css={ripple.content}>{children}</span>
+      <span css={ripple.content}>{title}</span>
     </button>
   );
 };
