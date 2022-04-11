@@ -1,5 +1,5 @@
 import { css, keyframes } from '@emotion/react';
-import { baseLookLikeButton } from './baselooklikeButton';
+import { baseLookLikeButton } from './baseLookLikeButton';
 import { COLOR } from '~/styles/const';
 
 // クリック時に波打つエフェクトを持つWrapper

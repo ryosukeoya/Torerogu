@@ -9,7 +9,7 @@ import { css } from '@emotion/react';
 interface PropsBase<T extends 'isButton' | 'isLinkButton'> {
   type: T;
   title: string;
-  theme: ButtonTheme;
+  theme?: ButtonTheme;
 }
 
 interface ButtonProps extends PropsBase<'isButton'> {
@@ -20,7 +20,7 @@ interface LinkButtonProps extends PropsBase<'isLinkButton'> {
   href: string;
 }
 
-const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ title, theme, ...rest }) => {
+const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ title, theme = 'simple', ...rest }) => {
   const themeCss = useGetTheme(theme);
 
   switch (rest.type) {
