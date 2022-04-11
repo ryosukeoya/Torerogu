@@ -7,6 +7,8 @@ import { Layout } from '../layout';
 import { ApolloProvider } from '@apollo/client';
 import { initializeApollo } from '../libs/graphql/apolloClient';
 import { RecoilRoot } from 'recoil';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorFallback } from '~/components/Error/index';
 
 function MyApp({ Component, pageProps }: AppProps) {
   progressBar();
@@ -14,9 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
       <Layout>
-        <ApolloProvider client={client}>
-          <Component {...pageProps} />
-        </ApolloProvider>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ApolloProvider client={client}>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </ErrorBoundary>
       </Layout>
     </RecoilRoot>
   );

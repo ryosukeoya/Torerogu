@@ -1,3 +1,4 @@
+export { link } from './app';
 export { media } from './media';
 export * from './likeButtons';
 export { pageTemplate } from './pageTemplate';
