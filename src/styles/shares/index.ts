@@ -1,5 +1,5 @@
 export { link } from './app';
 export { media } from './media';
-export * from './likeButtons';
+export { baseLookLikeButton } from './baselooklikeButton';
 export { pageTemplate } from './pageTemplate';
-export { ripple } from './ripple';
+export { rippleWrapper, ripple } from './ripple';

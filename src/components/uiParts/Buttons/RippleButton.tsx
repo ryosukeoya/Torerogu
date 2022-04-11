@@ -1,6 +1,5 @@
 import type { VFC } from 'react';
-import { rippleButton } from '~/styles/shares/likeButtons';
-import { ripple } from '~/styles/shares/ripple';
+import { rippleWrapper, ripple } from '~/styles/shares/ripple';
 import { useRipple } from '~/hooks';
 
 type Props = {
@@ -13,7 +12,7 @@ const RippleButton: VFC<Props> = ({ title, onClick }) => {
 
   return (
     <button
-      css={rippleButton()}
+      css={rippleWrapper()}
       onClick={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
         setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
