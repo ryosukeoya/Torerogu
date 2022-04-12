@@ -10,11 +10,11 @@ import { default as Title } from './HeaderTitle';
 
 const Header: VFC = () => {
   const isScrollDown: boolean = useIsScrollDown();
-  const headerStateCss = isScrollDown ? stateCss['hidden'] : stateCss['visible'];
+  const visibleState = isScrollDown ? visibility['hiddenPartial'] : visibility['visible'];
   const tabNames = useGetTabTitleFromRoute();
 
   return (
-    <header css={[styles.header, headerStateCss]}>
+    <header css={[styles.header, visibleState]}>
       <div css={styles.area}>
         <Title />
         <p css={styles.profile}>
@@ -64,11 +64,11 @@ const styles = {
   `,
 };
 
-const stateCss = {
+const visibility = {
   visible: css`
     transition: top 0.1s ease-out;
   `,
-  hidden: css`
+  hiddenPartial: css`
     top: -55px;
     transition: top 0.1s ease-out;
   `,

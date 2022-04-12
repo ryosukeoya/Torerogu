@@ -1,11 +1,11 @@
 import type { VFC, Dispatch, SetStateAction, ComponentProps } from 'react';
 import { useRipple } from '~/hooks';
-import { rippleButton } from '~/styles/shares/likeButtons';
+import { rippleWrapper } from '~/styles/shares';
 import { ripple } from '~/styles/shares/ripple';
 import { css, SerializedStyles } from '@emotion/react';
 import FormFieldWrapper from './FormFieldWrapper';
 import { useFormContext } from 'react-hook-form';
-import { COLOR } from '~/styles/const';
+import { COLOR, BREAKPOINT } from '~/styles/const';
 
 type InputProps = ComponentProps<'input'>;
 
@@ -30,7 +30,16 @@ const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ..
       return (
         <FormFieldWrapper>
           <div
-            css={rippleButton(5,true,css`padding: 0;`,css`margin-left:0;margin-right:0;`)} // prettier-ignore
+            css={[
+              rippleWrapper(5, true),
+              css`
+                padding: 0;
+                @media (min-width: ${BREAKPOINT.MD}px) {
+                  margin-left: 0;
+                  margin-right: 0;
+                }
+              `,
+            ]}
             onClick={(e: React.MouseEvent<HTMLDivElement>) => {
               const rect = e.currentTarget.getBoundingClientRect();
               setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
