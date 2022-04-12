@@ -26,7 +26,7 @@ const Graph: VFC = () => {
   return (
     <PageLayout mainContentWidth={mainContentWidth}>
       <SwiperWrapper elm={elm}>
-        <WeightPage data={data} />
+        <WeightPage bodyInfo={data?.body_info_data_histories} />
         <BodyFatPercentagePage />
         <TrainingPage />
       </SwiperWrapper>
