@@ -1,13 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import Swiper, { Swiper as SwiperType, EffectFade, SwiperOptions } from 'swiper';
+import Swiper, { EffectFade, SwiperOptions } from 'swiper';
 import { useSetRecoilState, useRecoilState } from 'recoil';
 import { mainTabIndexAtom, swiperAtom } from '~/store/atoms';
 import { useGetWindowSize } from '~/hooks';
 import { BREAKPOINT } from '~/styles/const';
 
 export const useChangeSettingOnInWindowSize = (): void => {
-  const [swiper, setSwiper] = useRecoilState<SwiperType | undefined>(swiperAtom);
+  const [swiper, setSwiper] = useRecoilState<Swiper | undefined>(swiperAtom);
   const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom);
   const windowSize = useGetWindowSize();
 
@@ -36,5 +35,6 @@ export const useChangeSettingOnInWindowSize = (): void => {
     swiper?.destroy(false, true);
     const newSwiper = new Swiper('.swiper-container', options);
     setSwiper(newSwiper);
-  }, [windowSize]); // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [windowSize]);
 };
