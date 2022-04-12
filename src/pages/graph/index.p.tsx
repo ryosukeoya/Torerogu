@@ -1,43 +1,37 @@
 import React, { VFC } from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { Spacer, PrimaryNavigationLocalState } from '~/components';
-import { useRecoilValue } from 'recoil';
-import { mainTabIndexAtom } from '~/store/atoms';
-import { COLOR } from '~/styles/const';
+import { SwiperWrapper } from '~/components';
 import { useQuery } from '@apollo/client';
 import { GET_TRAINING_WITH_BODY_INFO } from '~/libs/graphql/queries';
 import type { GetTrainingWithBodyInfoQuery } from '~/types/generated/graphql';
-import { getSortDate } from './logic';
+import { PageLayout } from '~/layout';
+import { pageTemplate } from '~/styles/shares/pageTemplate';
+import { useGetElementWidth } from '~/hooks';
+import { default as BodyFatPercentagePage } from './BodyFatPercentagePage';
+import { default as TrainingPage } from './TrainingPage';
+import { default as WeightPage } from './WeightPage';
 
 const Graph: VFC = () => {
-  const { data, error } = useQuery<GetTrainingWithBodyInfoQuery>(GET_TRAINING_WITH_BODY_INFO);
-  const activeIndex = useRecoilValue<number>(mainTabIndexAtom);
+  const { data, loading, error } = useQuery<GetTrainingWithBodyInfoQuery>(GET_TRAINING_WITH_BODY_INFO);
+  const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(loading);
 
+  if (loading) {
+    return (
+      <div css={pageTemplate.contentArea}>
+        <p>Loading...</p>
+      </div>
+    );
+  }
   if (error) return <p>Error: {error.message}</p>;
 
-  if (activeIndex === 0) {
-    return (
-      <>
-        <Spacer height={50} />
-        <ResponsiveContainer width='100%' height={400}>
-          <LineChart data={getSortDate(data?.body_info_data_histories)} margin={{ top: 5, right: 30, bottom: 5, left: 0 }}>
-            <Line type='monotone' dataKey='weight' stroke={COLOR.ORANGE} strokeWidth={2.5} dot={{ stroke: COLOR.ORANGE, strokeWidth: 2 }} />
-            <CartesianGrid strokeDasharray='3 5' />
-            {/* domain:横軸の表示幅を指定、tickFormatter:横軸の表示形式を指定、label:横軸のラベルを指定 */}
-            <XAxis dataKey='date' domain={['dataMin', 'dataMax']} tickFormatter={(unixTime) => new Date(unixTime).toLocaleDateString()} type='number' />
-            <YAxis />
-          </LineChart>
-        </ResponsiveContainer>
-        <PrimaryNavigationLocalState titles={['1週間', '1ヶ月', '1年', '全て']} theme='roundish' options={{ isToggle: true, isSwiper: false }} />
-      </>
-    );
-  } else if (activeIndex === 1) {
-    return <p>作成中</p>;
-  } else if (activeIndex === 2) {
-    return <p>作成中</p>;
-  } else {
-    return null;
-  }
+  return (
+    <PageLayout mainContentWidth={mainContentWidth}>
+      <SwiperWrapper elm={elm}>
+        <WeightPage data={data} />
+        <BodyFatPercentagePage />
+        <TrainingPage />
+      </SwiperWrapper>
+    </PageLayout>
+  );
 };
 
 export default Graph;
