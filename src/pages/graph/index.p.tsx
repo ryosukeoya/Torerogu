@@ -11,7 +11,9 @@ import { default as TrainingPage } from './TrainingPage';
 import { default as WeightPage } from './WeightPage';
 
 const Graph: VFC = () => {
-  const { data, loading, error } = useQuery<GetTrainingWithBodyInfoQuery>(GET_TRAINING_WITH_BODY_INFO);
+  const { data, loading, error } = useQuery<GetTrainingWithBodyInfoQuery>(GET_TRAINING_WITH_BODY_INFO, {
+    fetchPolicy: 'cache-and-network',
+  });
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(loading);
 
   if (loading) {
