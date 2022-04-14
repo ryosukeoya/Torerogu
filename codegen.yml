@@ -15,7 +15,11 @@ generates:
       useIndexSignature: true
       withComponent: false
       withHooks: true
-      withHOC: false
+      withHOC: false  
+      scalars: 
+        date: string
+        numeric: nuｍber
+        timestamptz: string
   src/types/generated/schema.graphql:
     plugins:
       - "schema-ast"

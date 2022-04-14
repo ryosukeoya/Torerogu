@@ -20,6 +20,7 @@ const WeightPage: VFC<Props> = ({ bodyInfo }) => {
 
   // TODO
   // 表示するデータがない時データがないことをわかるようにしないと
+  // doneのflagを考慮していない
 
   return (
     <div
