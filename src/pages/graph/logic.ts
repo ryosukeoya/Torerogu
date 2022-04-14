@@ -40,14 +40,17 @@ export const getSortedDataFromDate = (data: PreChartData[]): ChartData[] => {
 };
 
 // 指定した期間でデータを抽出する
-export const getDataExtractionInSpecifiedPeriod = <T extends { date: string }[] & { [key: string]: unknown }[]>(data: T, specifyDatePeriod: GraphPeriod): T => {
-  if (specifyDatePeriod === 'all') return data;
+export const getDataExtractionInSpecifiedPeriod = <T extends { date: string; is_record: boolean }[] & { [key: string]: unknown }[]>(data: T, specifyDatePeriod: GraphPeriod): T => {
   const currentDate = new Date();
   const date = new Date();
-  date.setDate(date.getDate() - specifyDatePeriod);
+  specifyDatePeriod !== 'all' && date.setDate(date.getDate() - specifyDatePeriod);
   const extractedData = data?.filter((d) => {
-    const di = new Date(d.date);
-    return date <= di && di <= currentDate;
+    if (specifyDatePeriod === 'all') {
+      return d.is_record === true;
+    } else {
+      const di = new Date(d.date);
+      return date <= di && di <= currentDate && d.is_record === true;
+    }
   });
   return extractedData as T;
 };
@@ -60,7 +63,7 @@ export const getGraphPeriodFromActiveIndex = (activeIndex: number): GraphPeriod 
     case 1:
       return GRAPH_PERIOD['MONTH'];
     case 2:
-      return GRAPH_PERIOD['MONTH'];
+      return GRAPH_PERIOD['YEAR'];
     case 3:
       return GRAPH_PERIOD['ALL'];
     default:
