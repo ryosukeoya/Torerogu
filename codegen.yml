@@ -18,7 +18,7 @@ generates:
       withHOC: false  
       scalars: 
         date: string
-        numeric: nuｍber
+        numeric: number
         timestamptz: string
   src/types/generated/schema.graphql:
     plugins:
