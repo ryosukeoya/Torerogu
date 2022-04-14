@@ -13,7 +13,7 @@ const Navigation: VFC = () => {
   return (
     <nav css={styles.navigation}>
       {PAGE_TITLE.map((title: PageTitle, i: number) => {
-        return <Tab isResetIndex={true} key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isToggle />;
+        return <Tab isResetIndex key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isToggle />;
       })}
     </nav>
   );
