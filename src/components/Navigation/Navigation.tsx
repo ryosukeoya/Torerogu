@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import Tab from './Tab';
-import { PAGE_TITLE } from '~/constants/index';
+import { PAGE_TITLE } from '~/constants';
 import type { PageTitle } from '~/types';
 import { css } from '@emotion/react';
 import { COLOR, HEADER, NAVIGATION } from '~/styles/const';
