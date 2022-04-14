@@ -898,9 +898,7 @@ type query_root {
   """fetch data from the table: "training_types" using primary key columns"""
   training_types_by_pk(id: Int!): training_types
 
-  """
-  fetch data from the table: "trainings"
-  """
+  """An array relationship"""
   trainings(
     """distinct select on columns"""
     distinct_on: [trainings_select_column!]
@@ -1117,9 +1115,7 @@ type subscription_root {
   """fetch data from the table: "training_types" using primary key columns"""
   training_types_by_pk(id: Int!): training_types
 
-  """
-  fetch data from the table: "trainings"
-  """
+  """An array relationship"""
   trainings(
     """distinct select on columns"""
     distinct_on: [trainings_select_column!]
@@ -1449,9 +1445,7 @@ type training_types {
   training_category: training_categories!
   training_category_id: Int!
 
-  """
-  fetch data from the table: "trainings"
-  """
+  """An array relationship"""
   trainings(
     """distinct select on columns"""
     distinct_on: [trainings_select_column!]
