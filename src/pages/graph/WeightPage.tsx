@@ -18,9 +18,8 @@ type BodyInfo = GetTrainingWithBodyInfoQuery['body_info_data_histories'];
 const WeightPage: VFC<Props> = ({ bodyInfo }) => {
   const [activeIndex, setActiveIndex] = useState<number>(titles.length - 1);
 
-  // TODO
-  // 表示するデータがない時データがないことをわかるようにしないと
-  // doneのflagを考慮していない
+  // TODO:FIX
+  // 表示するデータがない時データがないことをわかるように
 
   return (
     <div
@@ -45,7 +44,6 @@ const WeightPage: VFC<Props> = ({ bodyInfo }) => {
           <YAxis />
         </LineChart>
       </ResponsiveContainer>
-      {/* <PrimaryNavigationLocalState titles={titles} theme='roundish' options={{ isToggle: true, isSwiper: false }} initialActiveIndex={titles.length - 1} /> */}
       <PrimaryNavigationPresenter titles={titles} theme='roundish' options={{ isToggle: true, isSwiper: false }} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
     </div>
   );
