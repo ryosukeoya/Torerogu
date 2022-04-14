@@ -24,7 +24,7 @@ const SelectField: VFC<Props> = ({ isRequired, title, texts, formConf, marginBot
 
   return (
     <div style={{ display: 'flex', alignItems: 'baseline' }}>
-      <select {...selectProps} {...register(formConf.name, formConf.option)} css={selectFieldStyle(mb, customCss)} required={!!isRequired}>
+      <select {...selectProps} {...register(formConf.name, formConf.option)} css={[selectFieldStyle(mb), customCss]} required={!!isRequired}>
         <option value='' hidden>
           {title}
         </option>
@@ -50,7 +50,7 @@ const disableDefaultStyle = css`
   appearance: none;
 `;
 
-const selectFieldStyle = (marginBottom?: number, customCss?: SerializedStyles) => css`
+const selectFieldStyle = (marginBottom?: number) => css`
   ${disableDefaultStyle}
   color:black;
   width: 200px;
@@ -60,5 +60,4 @@ const selectFieldStyle = (marginBottom?: number, customCss?: SerializedStyles) =
   border-radius: 5px;
   background: url(/imgs/down-arrow.png) no-repeat right 10px center / 16px auto;
   cursor: pointer;
-  ${customCss};
 `;

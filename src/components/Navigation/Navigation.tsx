@@ -1,6 +1,6 @@
 import React, { VFC } from 'react';
 import Tab from './Tab';
-import { PAGE_TITLE } from '~/constants/index';
+import { PAGE_TITLE } from '~/constants';
 import type { PageTitle } from '~/types';
 import { css } from '@emotion/react';
 import { COLOR, HEADER, NAVIGATION } from '~/styles/const';
@@ -13,7 +13,7 @@ const Navigation: VFC = () => {
   return (
     <nav css={styles.navigation}>
       {PAGE_TITLE.map((title: PageTitle, i: number) => {
-        return <Tab isResetIndex={true} key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isToggle />;
+        return <Tab isResetIndex key={i} index={i} title={title} activeIndex={activeIndex} setActiveIndex={setActiveIndex} isToggle />;
       })}
     </nav>
   );

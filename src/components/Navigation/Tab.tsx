@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import type { VFC } from 'react';
 import { css, keyframes, SerializedStyles } from '@emotion/react';
 import { getIcon } from '~/utils/app';
-import { PAGE_PATH } from '~/constants/index';
+import { PAGE_PATH } from '~/constants';
 import type { PageTitle } from '~/types';
 import { useSetRecoilState } from 'recoil';
 import { mainTabIndexAtom } from '~/store/atoms';

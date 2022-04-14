@@ -64,7 +64,7 @@ const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ..
     default:
       return (
         <FormFieldWrapper title={title} unit={unit} formConf={formConf} errors={errors}>
-          <input {...inputProps} {...(formConf && { ...register(formConf.name, formConf.option) })} onChange={(e) => setState && setState(e.target.value)} css={inputFieldStyle.input(customCss)} />
+          <input {...inputProps} {...(formConf && { ...register(formConf.name, formConf.option) })} onChange={(e) => setState && setState(e.target.value)} css={[inputFieldStyle.input, customCss]} />
         </FormFieldWrapper>
       );
   }
@@ -73,7 +73,7 @@ const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ..
 export default InputField;
 
 const inputFieldStyle = {
-  input: (customCss?: SerializedStyles) => css`
+  input: css`
     width: 200px;
     border: 1px solid ${COLOR.BORDER_GRAY};
     background-color: #fff;
@@ -81,7 +81,6 @@ const inputFieldStyle = {
     text-align: right;
     padding: 4px 10px;
     color:black;
-    ${customCss}
     &:focus {
       border: 1.5px solid rgba(255,153,0,0.7)};
     }

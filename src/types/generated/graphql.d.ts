@@ -13,9 +13,9 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  date: any;
-  numeric: any;
-  timestamptz: any;
+  date: string;
+  numeric: nuｍber;
+  timestamptz: string;
 };
 
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
@@ -2099,7 +2099,7 @@ export type CreateBodyInfoHistoriesMutationVariables = Exact<{
 }>;
 
 
-export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any, is_record: boolean } | null };
+export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number, user_id: number, height?: nuｍber | null, weight: nuｍber, body_fat_percentage?: number | null, date: string, is_record: boolean } | null };
 
 export type CreateTrainingMutationVariables = Exact<{
   user_id?: InputMaybe<Scalars['Int']>;
@@ -2112,7 +2112,7 @@ export type CreateTrainingMutationVariables = Exact<{
 }>;
 
 
-export type CreateTrainingMutation = { __typename?: 'mutation_root', insert_trainings_one?: { __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any } | null };
+export type CreateTrainingMutation = { __typename?: 'mutation_root', insert_trainings_one?: { __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: nuｍber | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string } | null };
 
 export type UpdateTrainingIsFinishMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -2127,7 +2127,7 @@ export type GetTrainingOneTypeQueryVariables = Exact<{
 }>;
 
 
-export type GetTrainingOneTypeQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any, training_type: { __typename?: 'training_types', id: number, name: string } }> };
+export type GetTrainingOneTypeQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: nuｍber | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string, training_type: { __typename?: 'training_types', id: number, name: string } }> };
 
 export type GetTrainingCategoryWithTypeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2137,17 +2137,17 @@ export type GetTrainingCategoryWithTypeQuery = { __typename?: 'query_root', trai
 export type GetTrainingWithBodyInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTrainingWithBodyInfoQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any }>, body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, weight: any, date: any, is_record: boolean }> };
+export type GetTrainingWithBodyInfoQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: nuｍber | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string }>, body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, weight: nuｍber, date: string, is_record: boolean }> };
 
 export type GetTrainingQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTrainingQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: any | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: any }> };
+export type GetTrainingQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: nuｍber | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string }> };
 
 export type GetBodyInfoDataHistoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetBodyInfoDataHistoryQuery = { __typename?: 'query_root', body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, height?: any | null, weight: any, body_fat_percentage?: number | null, date: any, is_record: boolean }> };
+export type GetBodyInfoDataHistoryQuery = { __typename?: 'query_root', body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, height?: nuｍber | null, weight: nuｍber, body_fat_percentage?: number | null, date: string, is_record: boolean }> };
 
 
 export const CreateBodyInfoHistoriesDocument = gql`
