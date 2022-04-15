@@ -15,13 +15,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   const client = initializeApollo();
   return (
     <RecoilRoot>
-      <Layout>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <Layout>
           <ApolloProvider client={client}>
             <Component {...pageProps} />
           </ApolloProvider>
-        </ErrorBoundary>
-      </Layout>
+        </Layout>
+      </ErrorBoundary>
     </RecoilRoot>
   );
 }
