@@ -1,5 +1,5 @@
 {
-  "name": "workout-front",
+  "name": "torerogu",
   "private": true,
   "scripts": {
     "dev": "next dev",
