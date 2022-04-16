@@ -6,7 +6,7 @@ const useGetTabTitleFromRoute = (): string[] | null => {
   const { pathname } = router;
   switch (pathname) {
     case PAGE_PATH.ホーム:
-      return ['ホーム', '履歴'];
+      return ['ホーム', 'スケジュール'];
     case PAGE_PATH.計画:
       return ['体重', 'トレーニング'];
     case PAGE_PATH.記録:

@@ -39,9 +39,9 @@ const getDateInfo = (date: Date) => {
   return dateInfo;
 };
 
-const getCurrentDate = (date: Date, isMMDD: boolean): string => {
+const getStringTypeDate = (date: Date, outputFormat?: 'YYYY-MM-DD' | 'normal'): string => {
   const year = date.getFullYear();
-  if (isMMDD) {
+  if (outputFormat === 'YYYY-MM-DD') {
     const mm = ('00' + (date.getMonth() + 1)).slice(-2);
     const dd = ('00' + date.getDate()).slice(-2);
     return `${year}-${mm}-${dd}`;
@@ -61,4 +61,4 @@ const getNumArr = (init: number, max: number, diff: number): number[] => {
   return numArr;
 };
 
-export { getIcon, getDateInfo, getCurrentDate, getNumArr };
+export { getIcon, getDateInfo, getStringTypeDate, getNumArr };

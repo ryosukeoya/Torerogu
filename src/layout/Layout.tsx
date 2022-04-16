@@ -1,7 +1,7 @@
 import React, { VFC, ReactNode } from 'react';
 import { Header, Navigation, CommonHead } from '../components';
 import { css } from '@emotion/react';
-import { BREAKPOINT, COLOR, HEADER, NAVIGATION } from '../styles/const';
+import { COLOR, HEADER, NAVIGATION } from '../styles/const';
 import { media } from '../styles/shares';
 
 type Props = {
@@ -27,8 +27,8 @@ const styles = {
   pcContentArea: media.pc(css`
     display: flex;
     width: 80vw;
-    min-width: ${BREAKPOINT.MD}px;
-    max-width: 900px;
+    min-width: 800px;
+    max-width: 1300px;
     margin: 0 auto;
   `),
   mainContent: css`

@@ -40,5 +40,5 @@ const HEADER = {
 } as const;
 
 const NAVIGATION = {
-  WIDTH: '200px',
+  WIDTH: '170px',
 } as const;

@@ -1,2 +1,2 @@
-export { getIcon, getDateInfo, getCurrentDate, getNumArr } from './app';
+export { getIcon, getDateInfo, getStringTypeDate, getNumArr } from './app';
 export { getTrainingTypesFromCategoryID, getTrainingTypesFromCategoryIndex } from './api';

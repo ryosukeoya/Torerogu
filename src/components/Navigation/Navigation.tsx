@@ -45,7 +45,7 @@ const styles = {
       margin-top: ${HEADER.HEIGUT};
       height: 100vh;
       width: ${NAVIGATION.WIDTH};
-      padding: calc(47px + 30px) 0 0 10px;
+      padding: calc(47px + 30px) 0 0 0;
       border-top: 0;
     `)}
 

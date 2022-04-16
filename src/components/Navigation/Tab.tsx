@@ -87,7 +87,7 @@ const styles = {
         justify-content: flex-start;
         flex-shrink: 0;
         align-items: center;
-        padding: 28px 40px;
+        padding: 28px 20px;
         border-radius: 30px;
         margin-bottom: 10px;
         &:hover {
