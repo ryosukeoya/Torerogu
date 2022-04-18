@@ -1,7 +1,7 @@
-import React, { VFC, ReactChild } from 'react';
+import type { VFC, ReactNode } from 'react';
 import { css, keyframes, SerializedStyles } from '@emotion/react';
+import type { ModalSizeTheme } from './types';
 import Portal from './Portal';
-import { ModalSizeTheme } from './types';
 import getModalSize from './getModalSize';
 import { SetterOrUpdater } from 'recoil';
 
@@ -9,9 +9,7 @@ type Props = {
   isOpen: boolean;
   setIsOpen: SetterOrUpdater<boolean>;
   size?: ModalSizeTheme;
-  // TODO:FIX
-  data?: any[];
-  children: ReactChild;
+  children: ReactNode;
 };
 
 const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, size = 'normal', children }) => {
