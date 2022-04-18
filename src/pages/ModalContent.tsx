@@ -12,7 +12,6 @@ type Props = {
 };
 
 // TODO: トレーニング数が多い時
-// 空の場合　何か表示する
 const ModalContent: VFC<Props> = ({ selectedDate, data }) => {
   const date = selectedDate && getDateInfo(selectedDate);
   return (
@@ -20,7 +19,10 @@ const ModalContent: VFC<Props> = ({ selectedDate, data }) => {
       {/* <h1 css={styles.title}>✏️ {selectedDate && getStringTypeDate(selectedDate)}</h1> */}
       <h1 css={styles.title}>✏️ {`${date?.year}年${date?.month}月${date?.day}日`}</h1>
       <ul>
-        {selectedDate &&
+        {selectedDate && data?.trainings && getDataSpecifiedDate<Trainings>(data?.trainings, selectedDate).length === 0 ? (
+          <p>※ 本日のトレーニングはありません</p>
+        ) : (
+          selectedDate &&
           data?.trainings &&
           getDataSpecifiedDate<Trainings>(data?.trainings, selectedDate)?.map((d) => {
             return (
@@ -35,7 +37,8 @@ const ModalContent: VFC<Props> = ({ selectedDate, data }) => {
                 {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam nam, esse vel consequatur quos facilis perferendis et, assumenda atque harum laboriosam dolorem laudantium? Quos, deserunt cum. Culpa ipsum nam nulla?</p> */}
               </>
             );
-          })}
+          })
+        )}
       </ul>
     </>
   );
