@@ -54,6 +54,7 @@ const styles = {
     height: 100%;
     width: 100%;
     background-color: #717171b3;
+    cursor: pointer;
   `,
   modal: (size: SerializedStyles) => css`
     ${size};
@@ -68,5 +69,6 @@ const styles = {
     border: 1px solid #dedede;
     box-shadow: 0 5px 15px 3px rgba(0, 0, 0, 0.2); //x軸 y軸 ぼかし 広がり カラー;
     animation: 0.3s ease 0s forwards ${modalEffect};
+    cursor: default;
   `,
 };
