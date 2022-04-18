@@ -111,6 +111,7 @@ export const getIcon = (title: PageTitle, isActive?: boolean): JSX.Element | und
 export const getDateInfo = (date: Date) => {
   const weekdayIndex: number = date.getDay();
   const dateInfo = {
+    year: date.getFullYear(),
     weekday: WEEK_DAYS[weekdayIndex],
     month: date.getMonth() + 1,
     day: date.getDate(),

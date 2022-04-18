@@ -1,37 +1,15 @@
 import { useState } from 'react';
 import type { VFC } from 'react';
 import { ModalWrapper } from '~/components';
+import ModalContent from './ModalContent';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import Calendar from 'react-calendar';
 import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
-import { getDataSpecifiedDate, getStringTypeDate } from '~/utils';
+import { getStringTypeDate } from '~/utils';
 import type { GetTrainingTrainingTypeQuery } from '../types/generated/graphql';
 import { GET_TRAINING_TRAINING_TYPE } from '~/libs/graphql/queries';
 import { useQuery } from '@apollo/client';
-
-type Trainings = Omit<GetTrainingTrainingTypeQuery, '__typename'>['trainings'];
-
-type ContentProps = {
-  selectedDate: Date | undefined;
-  data: GetTrainingTrainingTypeQuery | undefined;
-};
-
-const Content: VFC<ContentProps> = ({ selectedDate, data }) => {
-  return (
-    <>
-      <p>{selectedDate && getStringTypeDate(selectedDate)}</p>
-      {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ullam enim incidunt at atque. Molestiae sit illo beatae id odit voluptate officiis corporis, praesentium tempora, nobis, asperiores provident aliquid ab!</p> */}
-      <ul>
-        {selectedDate &&
-          data?.trainings &&
-          getDataSpecifiedDate<Trainings>(data?.trainings, selectedDate)?.map((d) => {
-            return <li key={d.id}>{d.training_type.name}</li>;
-          })}
-      </ul>
-    </>
-  );
-};
 
 const SchedulePage: VFC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -57,7 +35,7 @@ const SchedulePage: VFC = () => {
   return (
     <>
       <ModalWrapper isOpen={isOpen} setIsOpen={setIsOpen}>
-        <Content selectedDate={selectedDate} data={data} />
+        <ModalContent selectedDate={selectedDate} data={data} />
       </ModalWrapper>
       <div css={[pageTemplate.contentArea, styles.schedule]}>
         <Calendar
