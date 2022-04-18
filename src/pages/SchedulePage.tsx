@@ -81,7 +81,7 @@ const styles = {
       color: ${COLOR.ORANGE};
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1); //x軸 y軸 ぼかし 広がり カラー;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.125em;
       padding-bottom: 20px;
