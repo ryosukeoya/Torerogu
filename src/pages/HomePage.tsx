@@ -16,7 +16,7 @@ type Props = {
   data?: GetTrainingOneTypeQuery;
 };
 
-const Top: VFC<Props> = ({ data }) => {
+const HomePage: VFC<Props> = ({ data }) => {
   const [updateTraining, {}] = useMutation<UpdateTrainingIsFinishMutation>(UPDATE_TRAINING_IS_FINISH);
 
   const handleClick = (id: number, is_finish: boolean) => {
@@ -50,4 +50,4 @@ const Top: VFC<Props> = ({ data }) => {
   );
 };
 
-export default Top;
+export default HomePage;

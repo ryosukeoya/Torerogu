@@ -10,7 +10,7 @@ import type { GetTrainingTrainingTypeQuery } from '../types/generated/graphql';
 import { GET_TRAINING_TRAINING_TYPE } from '~/libs/graphql/queries';
 import { useQuery } from '@apollo/client';
 
-const History: VFC = () => {
+const SchedulePage: VFC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GET_TRAINING_TRAINING_TYPE);
 
@@ -30,6 +30,13 @@ const History: VFC = () => {
   // modalトレーニング一覧表示
   // 編集、削除
   // portalのディレクトリはModalWrapperの配下でいいのか
+  // Modalに選択してトレーニング一覧を表示する
+  // plan1
+  // 選択した日付のlocal stateを作る、その日付からトレーニング一覧抽出する
+  // 計算2回やるからパフォは良くないか？
+  // plan2
+  // 選択したトレーニング一覧の状態を作る、配列の中のオブジェクトがある状態
+  // stateが肥大化するのはあまり良くないが？
 
   return (
     <>
@@ -42,6 +49,7 @@ const History: VFC = () => {
           css`
             padding: 30px 0 0 0 !important;
             width: 93%;
+            max-width: 900px;
             /* ~~~ container styles ~~~ */
             .react-calendar {
               background-color: #fff;
@@ -140,7 +148,7 @@ const History: VFC = () => {
   );
 };
 
-export default History;
+export default SchedulePage;
 
 const styles = {
   tags: css``,

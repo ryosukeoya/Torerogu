@@ -4,13 +4,13 @@ import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
 import { useQuery } from '@apollo/client';
 import { pageTemplate } from '../styles/shares/pageTemplate';
 import { getStringTypeDate } from '../utils/app';
-import Top from './Top';
-import History from './History';
+import HomePage from './HomePage';
+import SchedulePage from './SchedulePage';
 import { SwiperWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 
-const Home: NextPage = () => {
+const Top: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GET_TRAINING_ONE_TYPE, {
     variables: { date: getStringTypeDate(new Date()) },
     fetchPolicy: 'network-only',
@@ -29,11 +29,11 @@ const Home: NextPage = () => {
   return (
     <PageLayout mainContentWidth={mainContentWidth}>
       <SwiperWrapper elm={elm}>
-        <Top data={data} />
-        <History />
+        <HomePage data={data} />
+        <SchedulePage />
       </SwiperWrapper>
     </PageLayout>
   );
 };
 
-export default Home;
+export default Top;
