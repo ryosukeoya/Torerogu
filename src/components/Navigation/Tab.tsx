@@ -7,7 +7,7 @@ import { PAGE_PATH } from '~/constants';
 import type { PageTitle } from '~/types';
 import { useSetRecoilState } from 'recoil';
 import { mainTabIndexAtom } from '~/store/atoms';
-import { COLOR, FONT } from '~/styles/const';
+import { COLOR, FONT, CONTENT_AREA } from '~/styles/const';
 import { media } from '~/styles/shares';
 import { useIsActive, useRipple, useGetWindowSize } from '~/hooks';
 
@@ -105,6 +105,9 @@ const styles = {
         display: inline-block;
         padding-left: 10px;
         font-size: ${FONT.BASE};
+        @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
+          display: none;
+        }
       `,
     )}
   `,
