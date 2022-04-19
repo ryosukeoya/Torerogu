@@ -51,12 +51,12 @@ export const roundStyles = {
     justify-content: center;
     margin-top: 20px;
   `,
-  item: (isActive?: boolean) => css`
+  item: (isActive?: boolean, backgroundColor: string = COLOR.ORANGE) => css`
     text-align: center;
     padding: 10px;
     margin: 0 10px;
     ${isActive && `color: #fff`};
-    ${isActive && `background-color: ${COLOR.ORANGE}`};
+    ${isActive && `background-color: ${backgroundColor}`};
     ${isActive && `border-radius: 20px`};
   `,
 };

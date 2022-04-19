@@ -8,4 +8,5 @@ export type ContainerProps = {
   customCss?: CustomCss;
   options: { isToggle: boolean; isSwiper: boolean };
   width?: number | undefined;
+  backgroundColors?: string[];
 };

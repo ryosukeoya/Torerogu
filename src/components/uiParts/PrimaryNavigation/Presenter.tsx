@@ -10,13 +10,13 @@ interface Props extends ContainerProps {
   setActiveIndex: SetterOrUpdater<number>;
 }
 
-const PrimaryNavigationPresenter: VFC<Props> = ({ titles, theme, customCss, options, activeIndex, setActiveIndex, width }) => {
+const PrimaryNavigationPresenter: VFC<Props> = ({ titles, theme, customCss, width, ...rest }) => {
   const themeStyle = useGetCss(theme, width);
 
   return (
     <ul css={[themeStyle, customCss?.nav]}>
       {titles?.map((title: string, i: number) => {
-        return <Item key={i} options={options} setActiveIndex={setActiveIndex} index={i} activeIndex={activeIndex} title={title} theme={theme} customCss={customCss} />;
+        return <Item key={i} {...rest} index={i} title={title} theme={theme} customCss={customCss} />;
       })}
     </ul>
   );

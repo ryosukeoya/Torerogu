@@ -55,6 +55,21 @@ const SchedulePage: VFC = () => {
         <ModalContent selectedDate={selectedDate} training={Object.values(trainingScheduleData)[activeIndex]} />
       </ModalWrapper>
       <div css={[pageTemplate.contentArea, styles.schedule]}>
+        <PrimaryNavigationPresenter
+          titles={['ALL', '実施', '予定']}
+          theme='roundish'
+          options={{ isToggle: true, isSwiper: false }}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          backgroundColors={[`${COLOR.ORANGE}B3`, `${COLOR.RED}73`, '#12d4ff73']}
+          customCss={{
+            nav: css`
+              justify-content: flex-start;
+              padding-left: 10%;
+              margin-bottom: 20px;
+            `,
+          }}
+        />
         <Calendar
           onClickDay={(value, event) => {
             setIsOpen(true);
@@ -78,7 +93,6 @@ const SchedulePage: VFC = () => {
             ) : null
           }
         />
-        <PrimaryNavigationPresenter titles={['ALL', '実施', '予定']} theme='roundish' options={{ isToggle: true, isSwiper: false }} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
       </div>
     </>
   );
