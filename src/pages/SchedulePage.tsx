@@ -56,7 +56,7 @@ const SchedulePage: VFC = () => {
       </ModalWrapper>
       <div css={[pageTemplate.contentArea, styles.schedule]}>
         <PrimaryNavigationPresenter
-          titles={['ALL', '実施', '予定']}
+          titles={Object.keys(trainingScheduleData)}
           theme='roundish'
           options={{ isToggle: true, isSwiper: false }}
           activeIndex={activeIndex}
