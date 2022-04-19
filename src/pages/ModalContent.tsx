@@ -1,5 +1,6 @@
 import type { VFC } from 'react';
-import { getDataSpecifiedDate, getStringTypeDate, getDateInfo } from '~/utils';
+import { getDataSpecifiedDate, getDateInfo } from '~/utils';
+import type { TrainingTrainingType } from './types';
 import type { GetTrainingTrainingTypeQuery } from '../types/generated/graphql';
 import { css } from '@emotion/react';
 import { FONT, COLOR } from '~/styles/const';
@@ -8,23 +9,23 @@ type Trainings = Omit<GetTrainingTrainingTypeQuery, '__typename'>['trainings'];
 
 type Props = {
   selectedDate: Date | undefined;
-  data: GetTrainingTrainingTypeQuery | undefined;
+  training: TrainingTrainingType | undefined;
 };
 
 // TODO: トレーニング数が多い時
-const ModalContent: VFC<Props> = ({ selectedDate, data }) => {
+const ModalContent: VFC<Props> = ({ selectedDate, training }) => {
   const date = selectedDate && getDateInfo(selectedDate);
   return (
     <>
       {/* <h1 css={styles.title}>✏️ {selectedDate && getStringTypeDate(selectedDate)}</h1> */}
       <h1 css={styles.title}>✏️ {`${date?.year}年${date?.month}月${date?.day}日`}</h1>
       <ul>
-        {selectedDate && data?.trainings && getDataSpecifiedDate<Trainings>(data?.trainings, selectedDate).length === 0 ? (
+        {selectedDate && training && getDataSpecifiedDate<Trainings>(training, selectedDate).length === 0 ? (
           <p>※ 本日のトレーニングはありません</p>
         ) : (
           selectedDate &&
-          data?.trainings &&
-          getDataSpecifiedDate<Trainings>(data?.trainings, selectedDate)?.map((d) => {
+          training &&
+          getDataSpecifiedDate<Trainings>(training, selectedDate)?.map((d) => {
             return (
               <>
                 <li key={d.id} css={styles.item}>

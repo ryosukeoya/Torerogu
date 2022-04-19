@@ -107,7 +107,7 @@ export const getIcon = (title: PageTitle, isActive?: boolean): JSX.Element | und
   }
 };
 
-// Dateを項目毎にプロパティとして分けたオブジェクトに変換して返す
+// Date型を項目毎にプロパティとして分けたオブジェクトに変換して返す
 export const getDateInfo = (date: Date) => {
   const weekdayIndex: number = date.getDay();
   const dateInfo = {

@@ -1,20 +1,36 @@
 import { useState } from 'react';
 import type { VFC } from 'react';
-import { ModalWrapper } from '~/components';
+import { ModalWrapper, PrimaryNavigationPresenter } from '~/components';
 import ModalContent from './ModalContent';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import Calendar from 'react-calendar';
 import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
 import { getStringTypeDate } from '~/utils';
+import type { TrainingTrainingType } from './types';
 import type { GetTrainingTrainingTypeQuery } from '../types/generated/graphql';
 import { GET_TRAINING_TRAINING_TYPE } from '~/libs/graphql/queries';
 import { useQuery } from '@apollo/client';
 
+type ScheduleCategories = 'ALL' | '実施' | '予定';
+
+type TrainingScheduleData = { [key in ScheduleCategories]: TrainingTrainingType | undefined };
+
 const SchedulePage: VFC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GET_TRAINING_TRAINING_TYPE);
+
+  const getExtractedDataInIsFinishFlag = (trainings: TrainingTrainingType, isFinishFlag: boolean) => {
+    return trainings.filter((training) => training.is_finish === isFinishFlag);
+  };
+
+  const trainingScheduleData: TrainingScheduleData = {
+    ALL: data && data.trainings,
+    実施: data && getExtractedDataInIsFinishFlag(data.trainings, true),
+    予定: data && getExtractedDataInIsFinishFlag(data.trainings, false),
+  };
 
   if (loading) {
     return (
@@ -27,15 +43,16 @@ const SchedulePage: VFC = () => {
 
   // TODO
   // 休日色を変えた方がいい
-  // 予定と実施違い、出し分けてもいいかもしれない（切り替え）
   // 1日にトレーニングが2個以上ある場合はそれが伝わる形にしないといけない
   // 編集、削除
   // portalのディレクトリはModalWrapperの配下でいいのか
+  // as T 間違ってる
+  // 予定は本日より前の日付のものは表示しなくていい
 
   return (
     <>
       <ModalWrapper isOpen={isOpen} setIsOpen={setIsOpen}>
-        <ModalContent selectedDate={selectedDate} data={data} />
+        <ModalContent selectedDate={selectedDate} training={Object.values(trainingScheduleData)[activeIndex]} />
       </ModalWrapper>
       <div css={[pageTemplate.contentArea, styles.schedule]}>
         <Calendar
@@ -45,12 +62,11 @@ const SchedulePage: VFC = () => {
           }}
           locale='ja-JP'
           value={new Date()}
-          tileContent={
-            // ({ activeStartDate, date, view }) => (view === 'month' && getStringTypeDate(date, 'YYYY-MM-DD') === '2022-04-13' ? <p style={{ color: '#fff', fontSize: FONT.X_SMALL, backgroundColor: `${COLOR.RED}73`, borderRadius: '10px', padding: '6px 0' }}>ベンチプレス</p> : null)
-            ({ activeStartDate, date, view }) =>
-              view === 'month' ? (
-                <ul>
-                  {data?.trainings.map(
+          tileContent={({ activeStartDate, date, view }) =>
+            view === 'month' ? (
+              <ul>
+                {data &&
+                  Object.values(trainingScheduleData)[activeIndex]?.map(
                     (training) =>
                       getStringTypeDate(date, 'YYYY-MM-DD') === training.date && (
                         <li key={training.id} css={styles.tag(training.is_finish)}>
@@ -58,10 +74,11 @@ const SchedulePage: VFC = () => {
                         </li>
                       ),
                   )}
-                </ul>
-              ) : null
+              </ul>
+            ) : null
           }
         />
+        <PrimaryNavigationPresenter titles={['ALL', '実施', '予定']} theme='roundish' options={{ isToggle: true, isSwiper: false }} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
       </div>
     </>
   );
@@ -85,7 +102,7 @@ const styles = {
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.125em;
       padding-bottom: 20px;
-      margin-bottom: 50px;
+      margin-bottom: 20px;
     }
 
     // トップの奴
