@@ -12,7 +12,6 @@ export const pageTemplate = {
     padding-top: 30px;
     ${media.pc(
       css`
-        min-height: auto;
         padding: 30px 0 0 50px;
         margin-top: 47px;
       `,
