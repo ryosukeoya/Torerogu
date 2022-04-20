@@ -4,21 +4,22 @@ import type { TrainingTrainingType } from './types';
 import type { GetTrainingTrainingTypeQuery } from '~/types/generated/graphql';
 import { css } from '@emotion/react';
 import { FONT, COLOR } from '~/styles/const';
+import type { ScheduleCategories } from './types';
 
 type Trainings = Omit<GetTrainingTrainingTypeQuery, '__typename'>['trainings'];
 
 type Props = {
   selectedDate: Date | undefined;
   training: TrainingTrainingType | undefined;
+  category: ScheduleCategories;
 };
 
 // TODO: トレーニング数が多い時
-const ModalContent: VFC<Props> = ({ selectedDate, training }) => {
+const ModalContent: VFC<Props> = ({ selectedDate, training, category }) => {
   const date = selectedDate && getDateInfo(selectedDate);
   return (
     <>
-      {/* <h1 css={styles.title}>✏️ {selectedDate && getStringTypeDate(selectedDate)}</h1> */}
-      <h1 css={styles.title}>✏️ {`${date?.year}年${date?.month}月${date?.day}日`}</h1>
+      <h1 css={styles.title}>✏️ {`${date?.year}年${date?.month}月${date?.day}日${category !== 'ALL' ? category : ''}`}のトレーニング</h1>
       <ul>
         {selectedDate && training && getDataSpecifiedDate<Trainings>(training, selectedDate).length === 0 ? (
           <p>※ 本日のトレーニングはありません</p>
@@ -35,7 +36,6 @@ const ModalContent: VFC<Props> = ({ selectedDate, training }) => {
                   </p>
                   <button css={styles.deleteButton}>削除</button>
                 </li>
-                {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam nam, esse vel consequatur quos facilis perferendis et, assumenda atque harum laboriosam dolorem laudantium? Quos, deserunt cum. Culpa ipsum nam nulla?</p> */}
               </>
             );
           })

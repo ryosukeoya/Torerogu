@@ -7,21 +7,20 @@ import Calendar from 'react-calendar';
 import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
 import { getStringTypeDate } from '~/utils';
-import type { TrainingTrainingType } from './types';
+import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } from './types';
 import type { GetTrainingTrainingTypeQuery } from '~/types/generated/graphql';
 import { GET_TRAINING_TRAINING_TYPE } from '~/libs/graphql/queries';
 import { useQuery } from '@apollo/client';
-
-type ScheduleCategories = 'ALL' | '実施' | '予定';
-
-type TrainingScheduleData = { [key in ScheduleCategories]: TrainingTrainingType | undefined };
 
 const SchedulePage: VFC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GET_TRAINING_TRAINING_TYPE);
+  const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GET_TRAINING_TRAINING_TYPE, {
+    fetchPolicy: 'network-only',
+  });
 
+  // isFinishフラグでデータを抽出したものを取得する
   const getExtractedDataInIsFinishFlag = (trainings: TrainingTrainingType, isFinishFlag: boolean) => {
     return trainings.filter((training) => training.is_finish === isFinishFlag);
   };
@@ -49,11 +48,12 @@ const SchedulePage: VFC = () => {
   // as T 間違ってる
   // 予定は本日より前の日付のものは表示しなくていい
   // delete機能作成
-
+  // 日曜スタートのほうがいいと思う
+  // 予定は削除するのか？
   return (
     <>
       <ModalWrapper isOpen={isOpen} setIsOpen={setIsOpen}>
-        <ModalContent selectedDate={selectedDate} training={Object.values(trainingScheduleData)[activeIndex]} />
+        <ModalContent selectedDate={selectedDate} training={Object.values(trainingScheduleData)[activeIndex]} category={Object.keys(trainingScheduleData)[activeIndex] as ScheduleCategories} />
       </ModalWrapper>
       <div css={[pageTemplate.contentArea, styles.schedule]}>
         <PrimaryNavigationPresenter
@@ -62,7 +62,7 @@ const SchedulePage: VFC = () => {
           options={{ isToggle: true, isSwiper: false }}
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
-          colors={[`${COLOR.ORANGE}E6`,`${COLOR.RED}B3`,'#12d4ffB3']}
+          colors={[`${COLOR.ORANGE}E6`, `${COLOR.RED}B3`, '#12d4ffB3']}
           backgroundColors={[`${COLOR.ORANGE}B3`, `${COLOR.RED}73`, '#12d4ff73']}
           customCss={{
             nav: css`

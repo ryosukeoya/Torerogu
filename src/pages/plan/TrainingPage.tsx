@@ -52,7 +52,7 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
   return (
     <FormProvider {...method}>
       <FormWrapper pageIndex={pageIndex} handleSubmit={handleSubmit} submitFunc={registerTraining} title={'✏️ 日ごとの設定'} open={open} handleClose={handleClose}>
-        <InputField type='date' title='日付' value={getStringTypeDate(new Date(), 'YYYY-MM-DD')} min={getStringTypeDate(new Date(), 'YYYY-MM-DD')} formConf={{ name: 'date', option: { required: true } }} />
+        <InputField type='date' title='日付' min={getStringTypeDate(new Date(), 'YYYY-MM-DD')} />
         <SelectField formConf={{ name: 'category', option: { required: true } }} title={'カテゴリ'} texts={data?.training_categories} marginBottom={32} isRequired />
         <SelectField formConf={{ name: 'type', option: { required: true } }} title={'種目'} texts={getTrainingTypesFromCategoryID(selectedCategoryID, data?.training_types)} marginBottom={32} isRequired />
         <SelectField formConf={{ name: 'trainingWeight', option: { required: true } }} title={'重量 (kg)'} texts={getNumArr(15, 200, 5)} marginBottom={32} isRequired />
