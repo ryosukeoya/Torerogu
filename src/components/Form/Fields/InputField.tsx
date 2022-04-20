@@ -14,7 +14,7 @@ interface Props extends InputProps {
   customCss?: SerializedStyles;
   setState?: Dispatch<SetStateAction<unknown>>;
   unit?: string;
-  formConf?: { name: string; option: Record<string, unknown> };
+  formConf?: { name: string; option?: Record<string, unknown> };
 }
 
 const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ...inputProps }) => {

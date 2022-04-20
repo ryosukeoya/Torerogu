@@ -18,7 +18,7 @@ const ErrorMessage: VFC<{ errors: FieldErrors<FieldValues>; formConf: Required<P
 type Props = {
   title?: string;
   unit?: string;
-  formConf?: { name: string; option: Record<string, unknown> };
+  formConf?: { name: string; option?: Record<string, unknown> };
   errors?: { [x: string]: unknown };
   children: ReactNode;
 };
