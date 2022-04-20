@@ -30,7 +30,7 @@ const SelectField: VFC<Props> = ({ isRequired, title, texts, formConf, marginBot
         </option>
         {texts?.map((text, i) => {
           return (
-            <option key={i} value={text?.id ? [text.id, text.name] : text}>
+            <option key={i} value={text.id}>
               {text?.id ? text.name : text}
             </option>
           );
