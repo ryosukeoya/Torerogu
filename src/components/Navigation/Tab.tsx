@@ -90,9 +90,11 @@ const styles = {
         padding: 28px 20px;
         border-radius: 30px;
         margin-bottom: 10px;
+        @media (hover: hover) {
         &:hover {
           background-color: ${COLOR.HOVER_RED};
         }
+      }
       `,
     )}
   `,

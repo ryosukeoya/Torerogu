@@ -48,6 +48,7 @@ const SchedulePage: VFC = () => {
   // portalのディレクトリはModalWrapperの配下でいいのか
   // as T 間違ってる
   // 予定は本日より前の日付のものは表示しなくていい
+  // delete機能作成
 
   return (
     <>
@@ -61,6 +62,7 @@ const SchedulePage: VFC = () => {
           options={{ isToggle: true, isSwiper: false }}
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
+          colors={[`${COLOR.ORANGE}E6`,`${COLOR.RED}B3`,'#12d4ffB3']}
           backgroundColors={[`${COLOR.ORANGE}B3`, `${COLOR.RED}73`, '#12d4ff73']}
           customCss={{
             nav: css`
@@ -102,7 +104,7 @@ export default SchedulePage;
 
 const styles = {
   schedule: css`
-    padding: 30px 0 0 0 !important;
+    padding: 0 0 0 0;
     width: 93%;
     max-width: 900px;
     /* ~~~ container styles ~~~ */

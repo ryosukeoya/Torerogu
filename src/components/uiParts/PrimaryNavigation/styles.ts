@@ -51,12 +51,19 @@ export const roundStyles = {
     justify-content: center;
     margin-top: 20px;
   `,
-  item: (isActive?: boolean, backgroundColor: string = COLOR.ORANGE) => css`
+  item: (isActive?: boolean,color = 'black', backgroundColor: string = COLOR.ORANGE) => css`
+    color: ${color};
     text-align: center;
     padding: 10px;
     margin: 0 10px;
+    border-radius: 20px;
     ${isActive && `color: #fff`};
     ${isActive && `background-color: ${backgroundColor}`};
-    ${isActive && `border-radius: 20px`};
+    @media (hover: hover) {
+      &:hover {
+        color: #fff;
+        background-color: ${backgroundColor};
+      }
+    }
   `,
 };

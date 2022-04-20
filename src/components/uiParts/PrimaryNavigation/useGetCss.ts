@@ -13,12 +13,12 @@ export const useGetCss = (theme: Theme, width?: number, customCss?: SerializedSt
   }
 };
 
-export const useGetItemCss = (theme: Theme, isActive?: boolean, backgroundColor?: string): SerializedStyles => {
+export const useGetItemCss = (theme: Theme, isActive?: boolean,color?: string, backgroundColor?: string): SerializedStyles => {
   switch (theme) {
     case 'basicTab':
       return tabStyles.item(isActive);
     case 'roundish':
-      return roundStyles.item(isActive, backgroundColor);
+      return roundStyles.item(isActive,color, backgroundColor);
     default:
       throw new Error('wrong theme given');
   }
