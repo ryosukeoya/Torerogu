@@ -1,7 +1,7 @@
 import type { VFC, ReactNode } from 'react';
 import { css, keyframes, SerializedStyles } from '@emotion/react';
 import type { ModalSizeTheme } from './types';
-import Portal from './Portal';
+import Portal from '../../Portal';
 import getModalSize from './getModalSize';
 import { SetterOrUpdater } from 'recoil';
 
