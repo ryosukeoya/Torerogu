@@ -8,7 +8,7 @@ import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
 import { getStringTypeDate } from '~/utils';
 import type { TrainingTrainingType } from './types';
-import type { GetTrainingTrainingTypeQuery } from '../types/generated/graphql';
+import type { GetTrainingTrainingTypeQuery } from '~/types/generated/graphql';
 import { GET_TRAINING_TRAINING_TYPE } from '~/libs/graphql/queries';
 import { useQuery } from '@apollo/client';
 

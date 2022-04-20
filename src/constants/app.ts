@@ -6,7 +6,7 @@ export const APP = {
 export const PAGE_TITLE = ['ホーム', '計画', '記録', 'グラフ'] as const;
 
 export const PAGE_PATH = {
-  [PAGE_TITLE[0]]: '/',
+  [PAGE_TITLE[0]]: '/', // subpath '/home' https://nextjs.org/docs/api-reference/next.config.js/rewrites
   [PAGE_TITLE[1]]: '/plan',
   [PAGE_TITLE[2]]: '/record',
   [PAGE_TITLE[3]]: '/graph',

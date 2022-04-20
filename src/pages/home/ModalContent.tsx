@@ -1,7 +1,7 @@
 import type { VFC } from 'react';
 import { getDataSpecifiedDate, getDateInfo } from '~/utils';
 import type { TrainingTrainingType } from './types';
-import type { GetTrainingTrainingTypeQuery } from '../types/generated/graphql';
+import type { GetTrainingTrainingTypeQuery } from '~/types/generated/graphql';
 import { css } from '@emotion/react';
 import { FONT, COLOR } from '~/styles/const';
 
