@@ -1,6 +1,7 @@
 import React from 'react';
 import type { VFC, ReactNode } from 'react';
 import { fieldStyle } from './fieldStyle';
+import type { FormItemConf } from '../formTypes';
 import { FieldErrors, FieldValues } from 'react-hook-form';
 import { css } from '@emotion/react';
 import { FONT } from '~/styles/const';
@@ -18,7 +19,7 @@ const ErrorMessage: VFC<{ errors: FieldErrors<FieldValues>; formConf: Required<P
 type Props = {
   title?: string;
   unit?: string;
-  formConf?: { name: string; option?: Record<string, unknown> };
+  formConf?: FormItemConf;
   errors?: { [x: string]: unknown };
   children: ReactNode;
 };
@@ -29,7 +30,7 @@ const FormFieldWrapper: VFC<Props> = ({ title, unit, formConf, errors, children 
       {title && (
         <p css={formFieldWrapperStyle.contentTitle}>
           {title}
-          {formConf && formConf.option && 'required' in formConf.option && <span css={fieldStyle.require}>*必須</span>}
+          {formConf && formConf.options && 'required' in formConf.options && <span css={fieldStyle.require}>*必須</span>}
         </p>
       )}
       {children}
