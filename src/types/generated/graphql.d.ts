@@ -2122,6 +2122,13 @@ export type UpdateTrainingIsFinishMutationVariables = Exact<{
 
 export type UpdateTrainingIsFinishMutation = { __typename?: 'mutation_root', update_trainings_by_pk?: { __typename?: 'trainings', id: number, is_finish: boolean } | null };
 
+export type DeleteTrainingMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type DeleteTrainingMutation = { __typename?: 'mutation_root', delete_trainings_by_pk?: { __typename?: 'trainings', id: number } | null };
+
 export type GetTrainingOneTypeQueryVariables = Exact<{
   date?: InputMaybe<Scalars['date']>;
 }>;
@@ -2284,6 +2291,39 @@ export function useUpdateTrainingIsFinishMutation(baseOptions?: Apollo.MutationH
 export type UpdateTrainingIsFinishMutationHookResult = ReturnType<typeof useUpdateTrainingIsFinishMutation>;
 export type UpdateTrainingIsFinishMutationResult = Apollo.MutationResult<UpdateTrainingIsFinishMutation>;
 export type UpdateTrainingIsFinishMutationOptions = Apollo.BaseMutationOptions<UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables>;
+export const DeleteTrainingDocument = gql`
+    mutation DeleteTraining($id: Int!) {
+  delete_trainings_by_pk(id: $id) {
+    id
+  }
+}
+    `;
+export type DeleteTrainingMutationFn = Apollo.MutationFunction<DeleteTrainingMutation, DeleteTrainingMutationVariables>;
+
+/**
+ * __useDeleteTrainingMutation__
+ *
+ * To run a mutation, you first call `useDeleteTrainingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteTrainingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteTrainingMutation, { data, loading, error }] = useDeleteTrainingMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteTrainingMutation(baseOptions?: Apollo.MutationHookOptions<DeleteTrainingMutation, DeleteTrainingMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteTrainingMutation, DeleteTrainingMutationVariables>(DeleteTrainingDocument, options);
+      }
+export type DeleteTrainingMutationHookResult = ReturnType<typeof useDeleteTrainingMutation>;
+export type DeleteTrainingMutationResult = Apollo.MutationResult<DeleteTrainingMutation>;
+export type DeleteTrainingMutationOptions = Apollo.BaseMutationOptions<DeleteTrainingMutation, DeleteTrainingMutationVariables>;
 export const GetTrainingOneTypeDocument = gql`
     query GetTrainingOneType($date: date) {
   trainings(where: {date: {_eq: $date}}) {

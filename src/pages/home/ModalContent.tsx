@@ -1,40 +1,58 @@
-import type { VFC } from 'react';
+import type { VFC, SetStateAction, Dispatch } from 'react';
 import { getDataSpecifiedDate, getDateInfo } from '~/utils';
 import type { TrainingTrainingType } from './types';
 import type { GetTrainingTrainingTypeQuery } from '~/types/generated/graphql';
 import { css } from '@emotion/react';
 import { FONT, COLOR } from '~/styles/const';
 import type { ScheduleCategories } from './types';
+import { DELETE_TRAINING } from '~/libs/graphql/mutations';
+import type { DeleteTrainingMutation } from '~/types/generated/graphql';
+import { useMutation } from '@apollo/client';
 
 type Trainings = Omit<GetTrainingTrainingTypeQuery, '__typename'>['trainings'];
 
 type Props = {
   selectedDate: Date | undefined;
-  training: TrainingTrainingType | undefined;
+  extractedTrainings: TrainingTrainingType;
+  trainings: TrainingTrainingType;
+  setTrainings: Dispatch<SetStateAction<TrainingTrainingType>>;
   category: ScheduleCategories;
 };
 
 // TODO: トレーニング数が多い時
-const ModalContent: VFC<Props> = ({ selectedDate, training, category }) => {
+const ModalContent: VFC<Props> = ({ selectedDate, extractedTrainings, trainings, setTrainings, category }) => {
   const date = selectedDate && getDateInfo(selectedDate);
+  const [deleteTraining, { error }] = useMutation<DeleteTrainingMutation>(DELETE_TRAINING, {
+    // onCompleted: () => console.log('deleted'),
+  });
+
+  const handleClick = (trainings: TrainingTrainingType, pk: number) => {
+    deleteTraining({ variables: { id: pk } });
+
+    const filteredTraining = trainings?.filter((training) => training.id !== pk);
+    setTrainings(filteredTraining);
+  };
+
   return (
     <>
       <h1 css={styles.title}>✏️ {`${date?.year}年${date?.month}月${date?.day}日${category !== 'ALL' ? category : ''}`}のトレーニング</h1>
       <ul>
-        {selectedDate && training && getDataSpecifiedDate<Trainings>(training, selectedDate).length === 0 ? (
+        {selectedDate && extractedTrainings && getDataSpecifiedDate<Trainings>(extractedTrainings, selectedDate).length === 0 ? (
           <p>※ 本日のトレーニングはありません</p>
         ) : (
           selectedDate &&
-          training &&
-          getDataSpecifiedDate<Trainings>(training, selectedDate)?.map((d) => {
+          extractedTrainings &&
+          getDataSpecifiedDate<Trainings>(extractedTrainings, selectedDate)?.map((extractedTraining) => {
             return (
               <>
-                <li key={d.id} css={styles.item}>
-                  <p css={styles.trainingName}>{d.training_type.name}</p>
+                <li key={extractedTraining.id} css={styles.item}>
+                  <p css={styles.trainingName}>{extractedTraining.training_type.name}</p>
                   <p>
-                    ・{d.training_weight}kg × {d.training_count}回、{d.training_set}セット
+                    ・{extractedTraining.training_weight}kg × {extractedTraining.training_count}回、{extractedTraining.training_set}セット
                   </p>
-                  <button css={styles.deleteButton}>削除</button>
+                  <button onClick={() => handleClick(trainings, extractedTraining.id)} css={styles.deleteButton}>
+                    削除
+                  </button>
                 </li>
               </>
             );

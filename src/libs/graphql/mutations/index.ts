@@ -37,3 +37,11 @@ export const UPDATE_TRAINING_IS_FINISH = gql`
     }
   }
 `;
+
+export const DELETE_TRAINING = gql`
+  mutation DeleteTraining($id: Int!) {
+    delete_trainings_by_pk(id: $id) {
+      id
+    }
+  }
+`;

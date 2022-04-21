@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { VFC } from 'react';
 import { ModalWrapper, PrimaryNavigationPresenter } from '~/components';
 import ModalContent from './ModalContent';
@@ -19,16 +19,21 @@ const SchedulePage: VFC = () => {
   const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GET_TRAINING_TRAINING_TYPE, {
     fetchPolicy: 'network-only',
   });
+  const [trainings, setTrainings] = useState<TrainingTrainingType>(data?.trainings);
+
+  useEffect(() => {
+    setTrainings(data?.trainings);
+  }, [data]);
 
   // isFinishフラグでデータを抽出したものを取得する
   const getExtractedDataInIsFinishFlag = (trainings: TrainingTrainingType, isFinishFlag: boolean) => {
-    return trainings.filter((training) => training.is_finish === isFinishFlag);
+    return trainings?.filter((training) => training.is_finish === isFinishFlag);
   };
 
   const trainingScheduleData: TrainingScheduleData = {
-    ALL: data && data.trainings,
-    実施: data && getExtractedDataInIsFinishFlag(data.trainings, true),
-    予定: data && getExtractedDataInIsFinishFlag(data.trainings, false),
+    ALL: trainings && trainings,
+    実施: trainings && getExtractedDataInIsFinishFlag(trainings, true),
+    予定: trainings && getExtractedDataInIsFinishFlag(trainings, false),
   };
 
   if (loading) {
@@ -43,17 +48,12 @@ const SchedulePage: VFC = () => {
   // TODO
   // 休日色を変えた方がいい
   // 1日にトレーニングが2個以上ある場合はそれが伝わる形にしないといけない
-  // 編集、削除
-  // portalのディレクトリはModalWrapperの配下でいいのか
   // as T 間違ってる
   // 予定は本日より前の日付のものは表示しなくていい
-  // delete機能作成
-  // 日曜スタートのほうがいいと思う
-  // 予定は削除するのか？
   return (
     <>
       <ModalWrapper isOpen={isOpen} setIsOpen={setIsOpen}>
-        <ModalContent selectedDate={selectedDate} training={Object.values(trainingScheduleData)[activeIndex]} category={Object.keys(trainingScheduleData)[activeIndex] as ScheduleCategories} />
+        <ModalContent selectedDate={selectedDate} extractedTrainings={Object.values(trainingScheduleData)[activeIndex]} trainings={trainings} setTrainings={setTrainings} category={Object.keys(trainingScheduleData)[activeIndex] as ScheduleCategories} />
       </ModalWrapper>
       <div css={[pageTemplate.contentArea, styles.schedule]}>
         <PrimaryNavigationPresenter
@@ -82,15 +82,14 @@ const SchedulePage: VFC = () => {
           tileContent={({ activeStartDate, date, view }) =>
             view === 'month' ? (
               <ul>
-                {data &&
-                  Object.values(trainingScheduleData)[activeIndex]?.map(
-                    (training) =>
-                      getStringTypeDate(date, 'YYYY-MM-DD') === training.date && (
-                        <li key={training.id} css={styles.tag(training.is_finish)}>
-                          {training.training_type.name}
-                        </li>
-                      ),
-                  )}
+                {Object.values(trainingScheduleData)[activeIndex]?.map(
+                  (training) =>
+                    getStringTypeDate(date, 'YYYY-MM-DD') === training.date && (
+                      <li key={training.id} css={styles.tag(training.is_finish)}>
+                        {training.training_type.name}
+                      </li>
+                    ),
+                )}
               </ul>
             ) : null
           }
@@ -121,7 +120,6 @@ const styles = {
       margin-bottom: 20px;
     }
 
-    // トップの奴
     /* ~~~ navigation styles ~~~ */
     .react-calendar__navigation {
       display: flex;
