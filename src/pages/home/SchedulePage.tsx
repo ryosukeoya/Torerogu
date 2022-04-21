@@ -46,10 +46,10 @@ const SchedulePage: VFC = () => {
   }
   if (error) throw new Error(error.message);
 
+  let tileContentCount = 0;
+
   // TODO
-  // 休日色を変えた方がいい
-  // 1日にトレーニングが2個以上ある場合はそれが伝わる形にしないといけない
-  // 2件よりも多い場合は件数を表示する
+  // 休日色を変えた方がいい?
   return (
     <>
       <ModalWrapper isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -80,20 +80,32 @@ const SchedulePage: VFC = () => {
           }}
           locale='ja-JP'
           value={new Date()}
-          tileContent={({ activeStartDate, date, view }) =>
-            view === 'month' ? (
+          tileContent={({ activeStartDate, date, view }) => {
+            tileContentCount = 0;
+            return view === 'month' ? (
               <ul>
                 {Object.values(trainingScheduleData)[activeIndex]?.map(
                   (training) =>
-                    getStringTypeDate(date, 'YYYY-MM-DD') === training.date && (
-                      <li key={training.id} css={styles.tag(training.is_finish)}>
-                        {training.training_type.name}
-                      </li>
-                    ),
+                    getStringTypeDate(date, 'YYYY-MM-DD') === training.date &&
+                    (() => {
+                      if (tileContentCount <= 2) {
+                        tileContentCount++;
+                        return (
+                          <li key={training.id} css={styles.tag(training.is_finish)}>
+                            {training.training_type.name}
+                          </li>
+                        );
+                      } else if (tileContentCount === 3) {
+                        tileContentCount++;
+                        return <li css={styles.more}>......</li>;
+                      } else {
+                        return null;
+                      }
+                    })(),
                 )}
               </ul>
-            ) : null
-          }
+            ) : null;
+          }}
         />
       </div>
     </>
@@ -192,5 +204,9 @@ const styles = {
     &:nth-of-type(-n + 2) {
       display: block;
     }
+  `,
+  more: css`
+    textalign: left;
+    paddingleft: 20%;
   `,
 };
