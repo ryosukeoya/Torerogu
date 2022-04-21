@@ -32,7 +32,7 @@ const SchedulePage: VFC = () => {
   };
 
   const trainingScheduleData: TrainingScheduleData = {
-    ALL: trainings && trainings,
+    ALL: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(trainings, new Date()),
     実施: trainings && getExtractedDataInIsFinishFlag(trainings, true),
     予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), new Date()),
   };
@@ -50,6 +50,7 @@ const SchedulePage: VFC = () => {
   // 休日色を変えた方がいい
   // 1日にトレーニングが2個以上ある場合はそれが伝わる形にしないといけない
   // 予定は本日より前の日付のものは表示しなくていい
+  // 2件よりも多い場合は件数を表示する
   return (
     <>
       <ModalWrapper isOpen={isOpen} setIsOpen={setIsOpen}>
