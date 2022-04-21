@@ -11,6 +11,7 @@ import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } f
 import type { GetTrainingTrainingTypeQuery } from '~/types/generated/graphql';
 import { GET_TRAINING_TRAINING_TYPE } from '~/libs/graphql/queries';
 import { useQuery } from '@apollo/client';
+import { media } from '~/styles/shares';
 
 const SchedulePage: VFC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -106,6 +107,11 @@ const styles = {
     padding: 0 0 0 0;
     width: 93%;
     max-width: 900px;
+    ${media.pc(
+      css`
+        padding: 0 0 0 0;
+      `,
+    )}
     /* ~~~ container styles ~~~ */
     .react-calendar {
       background-color: #fff;
