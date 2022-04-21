@@ -6,7 +6,7 @@ import { pageTemplate } from '~/styles/shares/pageTemplate';
 import Calendar from 'react-calendar';
 import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
-import { getStringTypeDate } from '~/utils';
+import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate } from '~/utils';
 import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } from './types';
 import type { GetTrainingTrainingTypeQuery } from '~/types/generated/graphql';
 import { GET_TRAINING_TRAINING_TYPE } from '~/libs/graphql/queries';
@@ -34,7 +34,7 @@ const SchedulePage: VFC = () => {
   const trainingScheduleData: TrainingScheduleData = {
     ALL: trainings && trainings,
     実施: trainings && getExtractedDataInIsFinishFlag(trainings, true),
-    予定: trainings && getExtractedDataInIsFinishFlag(trainings, false),
+    予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), new Date()),
   };
 
   if (loading) {
@@ -49,7 +49,6 @@ const SchedulePage: VFC = () => {
   // TODO
   // 休日色を変えた方がいい
   // 1日にトレーニングが2個以上ある場合はそれが伝わる形にしないといけない
-  // as T 間違ってる
   // 予定は本日より前の日付のものは表示しなくていい
   return (
     <>

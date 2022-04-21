@@ -5,6 +5,11 @@ import type { PageTitle } from '~/types';
 
 // TODO: FATすぎるファイル分けた方がいい
 
+// 指定した日付よりも後のデータを抽出して取得する
+export const getExtractedDataLaterThanTheSpecifiedDate = <T extends ({ date: string }[] & { [key: string]: unknown }[]) | undefined>(data: T, date: Date) => {
+  return data?.filter((d) => new Date(d.date) >= date) as T;
+};
+
 // 指定した日付のデータを取得する
 export const getDataSpecifiedDate = <T extends { date: string }[] & { [key: string]: unknown }[]>(data: T, date: Date) => {
   return data?.filter((d) => d.date === getStringTypeDate(date, 'YYYY-MM-DD')) as T;
