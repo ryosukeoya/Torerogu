@@ -51,7 +51,7 @@ export const roundStyles = {
     justify-content: center;
     margin-top: 20px;
   `,
-  item: (isActive?: boolean,color = 'black', backgroundColor: string = COLOR.ORANGE) => css`
+  item: (isActive?: boolean, color = 'black', backgroundColor: string = COLOR.ORANGE, backgroundColorAtHover: string = backgroundColor) => css`
     color: ${color};
     text-align: center;
     padding: 10px;
@@ -59,10 +59,12 @@ export const roundStyles = {
     border-radius: 20px;
     ${isActive && `color: #fff`};
     ${isActive && `background-color: ${backgroundColor}`};
+    ${isActive && `box-shadow: 0 1px 1px 0px ${COLOR.BORDER_GRAY}`}; //x軸 y軸 ぼかし 広がり カラー;
     @media (hover: hover) {
       &:hover {
         color: #fff;
-        background-color: ${backgroundColor};
+        background-color: ${backgroundColorAtHover};
+        box-shadow: 0 2px 6px 2px ${COLOR.BORDER_GRAY};
       }
     }
   `,

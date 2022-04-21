@@ -10,4 +10,5 @@ export type ContainerProps = {
   width?: number | undefined;
   colors?: string[];
   backgroundColors?: string[];
+  backgroundColorsAtHover?: string[];
 };

@@ -64,6 +64,7 @@ const SchedulePage: VFC = () => {
           setActiveIndex={setActiveIndex}
           colors={[`${COLOR.ORANGE}E6`, `${COLOR.RED}B3`, '#12d4ffB3']}
           backgroundColors={[`${COLOR.ORANGE}B3`, `${COLOR.RED}73`, '#12d4ff73']}
+          backgroundColorsAtHover={[`${COLOR.ORANGE}99`, `${COLOR.RED}59`, '#12d4ff59']}
           customCss={{
             nav: css`
               justify-content: flex-start;

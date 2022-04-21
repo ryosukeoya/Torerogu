@@ -13,12 +13,13 @@ export const useGetCss = (theme: Theme, width?: number, customCss?: SerializedSt
   }
 };
 
-export const useGetItemCss = (theme: Theme, isActive?: boolean,color?: string, backgroundColor?: string): SerializedStyles => {
+// eslint-disable-next-line max-params
+export const useGetItemCss = (theme: Theme, isActive?: boolean, color?: string, backgroundColor?: string, backgroundColorAtHover?: string): SerializedStyles => {
   switch (theme) {
     case 'basicTab':
       return tabStyles.item(isActive);
     case 'roundish':
-      return roundStyles.item(isActive,color, backgroundColor);
+      return roundStyles.item(isActive, color, backgroundColor, backgroundColorAtHover);
     default:
       throw new Error('wrong theme given');
   }
