@@ -16,7 +16,7 @@ import { media } from '~/styles/shares';
 const SchedulePage: VFC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(1);
   const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GET_TRAINING_TRAINING_TYPE, {
     fetchPolicy: 'network-only',
   });
@@ -49,7 +49,6 @@ const SchedulePage: VFC = () => {
   // TODO
   // 休日色を変えた方がいい
   // 1日にトレーニングが2個以上ある場合はそれが伝わる形にしないといけない
-  // 予定は本日より前の日付のものは表示しなくていい
   // 2件よりも多い場合は件数を表示する
   return (
     <>
