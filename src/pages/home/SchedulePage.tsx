@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { VFC } from 'react';
 import { ModalWrapper, PrimaryNavigationPresenter } from '~/components';
 import ModalContent from './ModalContent';
@@ -21,6 +21,7 @@ const SchedulePage: VFC = () => {
     fetchPolicy: 'network-only',
   });
   const [trainings, setTrainings] = useState<TrainingTrainingType>(data?.trainings);
+  const tileContentCount = useRef(0);
 
   useEffect(() => {
     setTrainings(data?.trainings);
@@ -45,8 +46,6 @@ const SchedulePage: VFC = () => {
     );
   }
   if (error) throw new Error(error.message);
-
-  let tileContentCount = 0;
 
   // TODO
   // 休日色を変えた方がいい?
@@ -81,22 +80,22 @@ const SchedulePage: VFC = () => {
           locale='ja-JP'
           value={new Date()}
           tileContent={({ activeStartDate, date, view }) => {
-            tileContentCount = 0;
+            tileContentCount.current = 0;
             return view === 'month' ? (
               <ul>
                 {Object.values(trainingScheduleData)[activeIndex]?.map(
                   (training) =>
                     getStringTypeDate(date, 'YYYY-MM-DD') === training.date &&
                     (() => {
-                      if (tileContentCount <= 2) {
-                        tileContentCount++;
+                      if (tileContentCount.current <= 2) {
+                        tileContentCount.current++;
                         return (
                           <li key={training.id} css={styles.tag(training.is_finish)}>
                             {training.training_type.name}
                           </li>
                         );
-                      } else if (tileContentCount === 3) {
-                        tileContentCount++;
+                      } else if (tileContentCount.current === 3) {
+                        tileContentCount.current++;
                         return <li css={styles.more}>......</li>;
                       } else {
                         return null;
