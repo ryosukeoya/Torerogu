@@ -20,7 +20,7 @@ const WeightPage: VFC<Props> = ({ bodyInfo }) => {
 
   // TODO:FIX
   // 表示するデータがない時データがないことをわかるように
-
+  // 1日で複数のデータがある場合はまとめる
   return (
     <div
       css={[

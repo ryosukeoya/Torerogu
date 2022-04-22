@@ -51,7 +51,7 @@ export const roundStyles = {
     justify-content: center;
     margin-top: 20px;
   `,
-  item: (isActive?: boolean, color = 'black', backgroundColor: string = COLOR.ORANGE, backgroundColorAtHover: string = backgroundColor) => css`
+  item: (isActive?: boolean, color = 'black', backgroundColor: string = COLOR.ORANGE, backgroundColorAtHover = `${COLOR.ORANGE}E6`) => css`
     color: ${color};
     text-align: center;
     padding: 10px;
