@@ -1,18 +1,18 @@
 import { useRouter } from 'next/router';
-import { PAGE_PATH } from '../constants';
+import { PAGE_PATH, PAGE_CATEGORY_NAMES } from '../constants';
 
 const useGetTabTitleFromRoute = (): string[] | null => {
   const router = useRouter();
   const { pathname } = router;
   switch (pathname) {
     case '/home':
-      return ['ホーム', 'スケジュール'];
+      return PAGE_CATEGORY_NAMES.ホーム;
     case PAGE_PATH.計画:
-      return ['体重', 'トレーニング'];
+      return PAGE_CATEGORY_NAMES.計画;
     case PAGE_PATH.記録:
-      return ['身体', 'トレーニング'];
+      return PAGE_CATEGORY_NAMES.記録;
     case PAGE_PATH.グラフ:
-      return ['体重', '体脂肪率', '種目'];
+      return PAGE_CATEGORY_NAMES.グラフ;
     default:
       return null;
   }

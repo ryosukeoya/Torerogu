@@ -12,4 +12,11 @@ export const PAGE_PATH = {
   [PAGE_TITLE[3]]: '/graph',
 } as const;
 
+export const PAGE_CATEGORY_NAMES = {
+  [PAGE_TITLE[0]]: ['ホーム', 'スケジュール'],
+  [PAGE_TITLE[1]]: ['体重', 'トレーニング'],
+  [PAGE_TITLE[2]]: ['身体', 'トレーニング'],
+  [PAGE_TITLE[3]]: ['体重', '体脂肪率', '種目'],
+};
+
 export const WEEK_DAYS = ['日', '月', '火', '水', '木', '金', '土'] as const;
