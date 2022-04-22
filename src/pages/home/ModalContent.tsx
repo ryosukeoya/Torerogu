@@ -44,7 +44,6 @@ const ModalContent: VFC<Props> = ({ selectedDate, extractedTrainings, trainings,
           extractedTrainings &&
           getDataSpecifiedDate<Trainings>(extractedTrainings, selectedDate)?.map((extractedTraining) => {
             return (
-              <>
                 <li key={extractedTraining.id} css={styles.item}>
                   <p css={styles.trainingName}>{extractedTraining.training_type.name}</p>
                   <p>
@@ -54,7 +53,6 @@ const ModalContent: VFC<Props> = ({ selectedDate, extractedTrainings, trainings,
                     削除
                   </button>
                 </li>
-              </>
             );
           })
         )}
