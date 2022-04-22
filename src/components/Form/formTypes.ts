@@ -1,0 +1,1 @@
+export type FormItemConf  = { name: string; options?: Record<string, unknown> }

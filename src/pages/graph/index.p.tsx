@@ -23,7 +23,7 @@ const Graph: VFC = () => {
       </div>
     );
   }
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) throw new Error(error.message);
 
   return (
     <PageLayout mainContentWidth={mainContentWidth}>

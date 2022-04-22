@@ -7,7 +7,7 @@ import { PAGE_PATH } from '~/constants';
 import type { PageTitle } from '~/types';
 import { useSetRecoilState } from 'recoil';
 import { mainTabIndexAtom } from '~/store/atoms';
-import { COLOR, FONT } from '~/styles/const';
+import { COLOR, FONT, CONTENT_AREA } from '~/styles/const';
 import { media } from '~/styles/shares';
 import { useIsActive, useRipple, useGetWindowSize } from '~/hooks';
 
@@ -87,12 +87,14 @@ const styles = {
         justify-content: flex-start;
         flex-shrink: 0;
         align-items: center;
-        padding: 28px 40px;
+        padding: 28px 20px;
         border-radius: 30px;
         margin-bottom: 10px;
+        @media (hover: hover) {
         &:hover {
           background-color: ${COLOR.HOVER_RED};
         }
+      }
       `,
     )}
   `,
@@ -105,6 +107,9 @@ const styles = {
         display: inline-block;
         padding-left: 10px;
         font-size: ${FONT.BASE};
+        @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
+          display: none;
+        }
       `,
     )}
   `,

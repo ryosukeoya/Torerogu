@@ -14,13 +14,16 @@ type Props = {
   theme: Theme;
   customCss?: CustomCss;
   options: { isToggle: boolean; isSwiper: boolean };
+  colors?: string[];
+  backgroundColors?: string[];
+  backgroundColorsAtHover?: string[];
 };
 
-const Item: VFC<Props> = ({ title, activeIndex, setActiveIndex, index, theme, customCss, options }) => {
+const Item: VFC<Props> = ({ title, activeIndex, setActiveIndex, index, theme, customCss, options, colors, backgroundColors, backgroundColorsAtHover }) => {
   const swiper = useRecoilValue(swiperAtom);
   const isActive = useIsActive(!!options.isToggle, activeIndex, index);
 
-  const themeStyle = useGetItemCss(theme, isActive);
+  const themeStyle = useGetItemCss(theme, isActive, colors?.[index], backgroundColors?.[index], backgroundColorsAtHover?.[index]);
 
   return (
     <li

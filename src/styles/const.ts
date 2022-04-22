@@ -1,6 +1,4 @@
-export { BREAKPOINT, COLOR, FONT, HEADER, NAVIGATION };
-
-const BREAKPOINT: { [breakpoint: string]: number } = {
+export const BREAKPOINT: { [breakpoint: string]: number } = {
   XSM: 500,
   SM: 640,
   MD: 768,
@@ -17,7 +15,7 @@ const RED_HEX = '#FF291B';
 // Secondary color
 const ORANGE_HEX = '#FF9900';
 
-const COLOR = {
+export const COLOR = {
   RED: RED_HEX,
   ORANGE: ORANGE_HEX,
   HOVER_GRAY: '#f1f1f1',
@@ -26,7 +24,7 @@ const COLOR = {
   BORDER_GRAY: '#dddddd',
 } as const;
 
-const FONT = {
+export const FONT = {
   X_SMALL: '11px',
   SMALL: '14px',
   BASE: '16px',
@@ -35,10 +33,15 @@ const FONT = {
   X2_LARGE: '32px',
 } as const;
 
-const HEADER = {
+export const HEADER = {
   HEIGUT: '103px',
 } as const;
 
-const NAVIGATION = {
-  WIDTH: '200px',
+export const NAVIGATION = {
+  WIDTH: '170px',
+  WIDTH2: '80px',
+} as const;
+
+export const CONTENT_AREA = {
+  PC_MIN_WIDTH: '800px',
 } as const;

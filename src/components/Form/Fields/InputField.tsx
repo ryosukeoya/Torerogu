@@ -6,6 +6,7 @@ import { css, SerializedStyles } from '@emotion/react';
 import FormFieldWrapper from './FormFieldWrapper';
 import { useFormContext } from 'react-hook-form';
 import { COLOR, BREAKPOINT } from '~/styles/const';
+import type { FormItemConf } from '../formTypes';
 
 type InputProps = ComponentProps<'input'>;
 
@@ -14,7 +15,7 @@ interface Props extends InputProps {
   customCss?: SerializedStyles;
   setState?: Dispatch<SetStateAction<unknown>>;
   unit?: string;
-  formConf?: { name: string; option: Record<string, unknown> };
+  formConf?: FormItemConf;
 }
 
 const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ...inputProps }) => {
@@ -64,7 +65,7 @@ const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ..
     default:
       return (
         <FormFieldWrapper title={title} unit={unit} formConf={formConf} errors={errors}>
-          <input {...inputProps} {...(formConf && { ...register(formConf.name, formConf.option) })} onChange={(e) => setState && setState(e.target.value)} css={[inputFieldStyle.input, customCss]} />
+          <input {...inputProps} {...(formConf && { ...register(formConf.name, formConf.options) })} onChange={(e) => setState && setState(e.target.value)} css={[inputFieldStyle.input, customCss]} />
         </FormFieldWrapper>
       );
   }

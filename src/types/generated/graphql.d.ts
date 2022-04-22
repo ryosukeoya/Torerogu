@@ -2122,12 +2122,24 @@ export type UpdateTrainingIsFinishMutationVariables = Exact<{
 
 export type UpdateTrainingIsFinishMutation = { __typename?: 'mutation_root', update_trainings_by_pk?: { __typename?: 'trainings', id: number, is_finish: boolean } | null };
 
+export type DeleteTrainingMutationVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type DeleteTrainingMutation = { __typename?: 'mutation_root', delete_trainings_by_pk?: { __typename?: 'trainings', id: number } | null };
+
 export type GetTrainingOneTypeQueryVariables = Exact<{
   date?: InputMaybe<Scalars['date']>;
 }>;
 
 
 export type GetTrainingOneTypeQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string, training_type: { __typename?: 'training_types', id: number, name: string } }> };
+
+export type GetTrainingTrainingTypeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTrainingTrainingTypeQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string, training_type: { __typename?: 'training_types', id: number, name: string } }> };
 
 export type GetTrainingCategoryWithTypeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2279,6 +2291,39 @@ export function useUpdateTrainingIsFinishMutation(baseOptions?: Apollo.MutationH
 export type UpdateTrainingIsFinishMutationHookResult = ReturnType<typeof useUpdateTrainingIsFinishMutation>;
 export type UpdateTrainingIsFinishMutationResult = Apollo.MutationResult<UpdateTrainingIsFinishMutation>;
 export type UpdateTrainingIsFinishMutationOptions = Apollo.BaseMutationOptions<UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables>;
+export const DeleteTrainingDocument = gql`
+    mutation DeleteTraining($id: Int!) {
+  delete_trainings_by_pk(id: $id) {
+    id
+  }
+}
+    `;
+export type DeleteTrainingMutationFn = Apollo.MutationFunction<DeleteTrainingMutation, DeleteTrainingMutationVariables>;
+
+/**
+ * __useDeleteTrainingMutation__
+ *
+ * To run a mutation, you first call `useDeleteTrainingMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteTrainingMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteTrainingMutation, { data, loading, error }] = useDeleteTrainingMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteTrainingMutation(baseOptions?: Apollo.MutationHookOptions<DeleteTrainingMutation, DeleteTrainingMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteTrainingMutation, DeleteTrainingMutationVariables>(DeleteTrainingDocument, options);
+      }
+export type DeleteTrainingMutationHookResult = ReturnType<typeof useDeleteTrainingMutation>;
+export type DeleteTrainingMutationResult = Apollo.MutationResult<DeleteTrainingMutation>;
+export type DeleteTrainingMutationOptions = Apollo.BaseMutationOptions<DeleteTrainingMutation, DeleteTrainingMutationVariables>;
 export const GetTrainingOneTypeDocument = gql`
     query GetTrainingOneType($date: date) {
   trainings(where: {date: {_eq: $date}}) {
@@ -2325,6 +2370,51 @@ export function useGetTrainingOneTypeLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type GetTrainingOneTypeQueryHookResult = ReturnType<typeof useGetTrainingOneTypeQuery>;
 export type GetTrainingOneTypeLazyQueryHookResult = ReturnType<typeof useGetTrainingOneTypeLazyQuery>;
 export type GetTrainingOneTypeQueryResult = Apollo.QueryResult<GetTrainingOneTypeQuery, GetTrainingOneTypeQueryVariables>;
+export const GetTrainingTrainingTypeDocument = gql`
+    query GetTrainingTrainingType {
+  trainings {
+    id
+    user_id
+    training_type_id
+    training_weight
+    training_count
+    training_set
+    is_finish
+    date
+    training_type {
+      id
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetTrainingTrainingTypeQuery__
+ *
+ * To run a query within a React component, call `useGetTrainingTrainingTypeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTrainingTrainingTypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTrainingTrainingTypeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetTrainingTrainingTypeQuery(baseOptions?: Apollo.QueryHookOptions<GetTrainingTrainingTypeQuery, GetTrainingTrainingTypeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetTrainingTrainingTypeQuery, GetTrainingTrainingTypeQueryVariables>(GetTrainingTrainingTypeDocument, options);
+      }
+export function useGetTrainingTrainingTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTrainingTrainingTypeQuery, GetTrainingTrainingTypeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetTrainingTrainingTypeQuery, GetTrainingTrainingTypeQueryVariables>(GetTrainingTrainingTypeDocument, options);
+        }
+export type GetTrainingTrainingTypeQueryHookResult = ReturnType<typeof useGetTrainingTrainingTypeQuery>;
+export type GetTrainingTrainingTypeLazyQueryHookResult = ReturnType<typeof useGetTrainingTrainingTypeLazyQuery>;
+export type GetTrainingTrainingTypeQueryResult = Apollo.QueryResult<GetTrainingTrainingTypeQuery, GetTrainingTrainingTypeQueryVariables>;
 export const GetTrainingCategoryWithTypeDocument = gql`
     query GetTrainingCategoryWithType {
   training_categories(order_by: {id: asc}) {

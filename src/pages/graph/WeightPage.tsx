@@ -2,7 +2,7 @@ import React, { useState, VFC } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { PrimaryNavigationPresenter } from '~/components';
 import { COLOR } from '~/styles/const';
-import { getSortedDataFromDate, getDataExtractionInSpecifiedPeriod, getGraphPeriodFromActiveIndex } from './logic';
+import { getSortedDataFromDate, getDataExtractionInSpecifiedPeriod, getGraphPeriodFromActiveIndex } from '~/utils/app';
 import type { GetTrainingWithBodyInfoQuery } from '~/types/generated/graphql';
 import { pageTemplate } from '~/styles/shares';
 import { css } from '@emotion/react';
@@ -20,7 +20,7 @@ const WeightPage: VFC<Props> = ({ bodyInfo }) => {
 
   // TODO:FIX
   // 表示するデータがない時データがないことをわかるように
-
+  // 1日で複数のデータがある場合はまとめる
   return (
     <div
       css={[
@@ -32,7 +32,7 @@ const WeightPage: VFC<Props> = ({ bodyInfo }) => {
     >
       <ResponsiveContainer width='100%' height={400}>
         <LineChart
-          data={bodyInfo && getSortedDataFromDate(getDataExtractionInSpecifiedPeriod<Required<BodyInfo>>(bodyInfo, getGraphPeriodFromActiveIndex(activeIndex)))}
+          data={bodyInfo && getSortedDataFromDate(getDataExtractionInSpecifiedPeriod<BodyInfo>(bodyInfo, getGraphPeriodFromActiveIndex(activeIndex)))}
           margin={{ top: 5, right: 30, bottom: 5, left: 0 }}
           //
         >

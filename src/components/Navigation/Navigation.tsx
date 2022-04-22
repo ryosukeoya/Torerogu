@@ -3,7 +3,7 @@ import Tab from './Tab';
 import { PAGE_TITLE } from '~/constants';
 import type { PageTitle } from '~/types';
 import { css } from '@emotion/react';
-import { COLOR, HEADER, NAVIGATION } from '~/styles/const';
+import { COLOR, HEADER, NAVIGATION, CONTENT_AREA } from '~/styles/const';
 import { useActiveIndexFromPath } from '~/hooks';
 import { media } from '~/styles/shares';
 
@@ -45,8 +45,12 @@ const styles = {
       margin-top: ${HEADER.HEIGUT};
       height: 100vh;
       width: ${NAVIGATION.WIDTH};
-      padding: calc(47px + 30px) 0 0 10px;
+      padding: calc(47px + 30px) 0 0 0;
       border-top: 0;
+      @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
+        width: ${NAVIGATION.WIDTH2};
+        align-items: center;
+      }
     `)}
 
     }

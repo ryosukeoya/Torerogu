@@ -5,8 +5,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import { pageTemplate } from '../styles/shares/pageTemplate';
-import type { GetTrainingOneTypeQuery } from '../types/generated/graphql';
+import { pageTemplate } from '../../styles/shares/pageTemplate';
+import type { GetTrainingOneTypeQuery } from '../../types/generated/graphql';
 import { CheckboxMU } from '~/components';
 import { UPDATE_TRAINING_IS_FINISH } from '~/libs/graphql/mutations';
 import { useMutation } from '@apollo/client';
@@ -16,7 +16,7 @@ type Props = {
   data?: GetTrainingOneTypeQuery;
 };
 
-const Top: VFC<Props> = ({ data }) => {
+const HomePage: VFC<Props> = ({ data }) => {
   const [updateTraining, {}] = useMutation<UpdateTrainingIsFinishMutation>(UPDATE_TRAINING_IS_FINISH);
 
   const handleClick = (id: number, is_finish: boolean) => {
@@ -50,4 +50,4 @@ const Top: VFC<Props> = ({ data }) => {
   );
 };
 
-export default Top;
+export default HomePage;

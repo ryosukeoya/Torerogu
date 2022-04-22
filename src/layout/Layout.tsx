@@ -1,7 +1,7 @@
 import React, { VFC, ReactNode } from 'react';
 import { Header, Navigation, CommonHead } from '../components';
 import { css } from '@emotion/react';
-import { BREAKPOINT, COLOR, HEADER, NAVIGATION } from '../styles/const';
+import { COLOR, HEADER, NAVIGATION, CONTENT_AREA } from '../styles/const';
 import { media } from '../styles/shares';
 
 type Props = {
@@ -27,8 +27,8 @@ const styles = {
   pcContentArea: media.pc(css`
     display: flex;
     width: 80vw;
-    min-width: ${BREAKPOINT.MD}px;
-    max-width: 900px;
+    min-width: 800px;
+    max-width: 1300px;
     margin: 0 auto;
   `),
   mainContent: css`
@@ -39,6 +39,10 @@ const styles = {
       margin-left: ${NAVIGATION.WIDTH};
       border-left: 1px solid ${COLOR.BORDER_GRAY};
       border-right: 1px solid ${COLOR.BORDER_GRAY};
+      @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
+        width: calc(100% - ${NAVIGATION.WIDTH2});
+        margin-left: ${NAVIGATION.WIDTH2};
+      }
     `)}
   `,
 };

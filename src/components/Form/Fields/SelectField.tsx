@@ -4,6 +4,7 @@ import { css, SerializedStyles } from '@emotion/react';
 import { useFormContext } from 'react-hook-form';
 import { fieldStyle } from './fieldStyle';
 import { COLOR } from '~/styles/const';
+import type { FormItemConf } from '../formTypes';
 
 type SelectProps = ComponentProps<'select'>;
 
@@ -11,7 +12,7 @@ interface Props extends SelectProps {
   isRequired?: true;
   title: string;
   texts: any[] | undefined; // eslint-disable-line @typescript-eslint/no-explicit-any
-  formConf: { name: string; option: { required: boolean } };
+  formConf: FormItemConf;
   marginBottom?: number;
   customCss?: SerializedStyles;
 }
@@ -24,13 +25,13 @@ const SelectField: VFC<Props> = ({ isRequired, title, texts, formConf, marginBot
 
   return (
     <div style={{ display: 'flex', alignItems: 'baseline' }}>
-      <select {...selectProps} {...register(formConf.name, formConf.option)} css={[selectFieldStyle(mb), customCss]} required={!!isRequired}>
+      <select {...selectProps} {...register(formConf.name, formConf.options)} css={[selectFieldStyle(mb), customCss]} required={!!isRequired}>
         <option value='' hidden>
           {title}
         </option>
         {texts?.map((text, i) => {
           return (
-            <option key={i} value={text?.id ? [text.id, text.name] : text}>
+            <option key={i} value={text.id}>
               {text?.id ? text.name : text}
             </option>
           );
