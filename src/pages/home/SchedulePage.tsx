@@ -177,16 +177,20 @@ const styles = {
       align-self: start;
       padding: 0 2px 40px 2px;
       cursor: pointer;
-      &:hover {
-        background-color: ${COLOR.ORANGE}1A;
-        border-radius: 10px;
+      @media (hover: hover) {
+        margin-bottom: 5px;
+        &:hover {
+          background-color: ${COLOR.ORANGE}1A;
+          border-radius: 10px;
+        }
       }
     }
     .react-calendar__tile--now {
-      background: ${COLOR.ORANGE}1A;
+      background-color: ${COLOR.RED}12;
       border-radius: 6px;
       font-weight: bold;
       color: ${COLOR.ORANGE};
+      color: ${COLOR.RED}85;
     }
   `,
   tags: css``,
