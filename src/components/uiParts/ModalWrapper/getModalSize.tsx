@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { ModalSizeTheme } from './types';
+import { media } from '~/styles/shares';
 
 const getModalSize = (size: ModalSizeTheme) => {
   switch (size) {
@@ -28,17 +29,22 @@ const small = css`
 const normal = css`
   max-height: 500px;
   max-width: 500px;
-  height: 80vw;
-  width: 80vw;
+  width: 93vw;
+  height: 93vw;
   border-radius: 25px;
   padding: 30px;
+  ${media.spHorizontal(
+    css`
+      max-height: 100vh;
+    `,
+  )}
 `;
 
 const large = css`
   max-height: 600px;
   max-width: 600px;
-  height: 85vw;
-  width: 85vw;
+  height: 95vw;
+  width: 95vw;
   border-radius: 30px;
   padding: 40px;
 `;
