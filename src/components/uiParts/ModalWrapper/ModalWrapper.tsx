@@ -46,8 +46,7 @@ const modalEffect = keyframes`
 
 const styles = {
   background: css`
-    position: absolute;
-    left: 0;
+    position: fixed;
     top: 0;
     z-index: 10000;
     min-height: 100vh;
