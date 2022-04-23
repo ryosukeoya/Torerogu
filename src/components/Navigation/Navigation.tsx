@@ -48,7 +48,7 @@ const styles = {
       padding: calc(47px + 30px) 0 0 0;
       border-top: 0;
       @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
-        width: ${NAVIGATION.WIDTH2};
+        width: ${NAVIGATION.SMALL_WIDTH};
         align-items: center;
       }
     `)}

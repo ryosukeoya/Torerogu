@@ -40,8 +40,8 @@ const styles = {
       border-left: 1px solid ${COLOR.BORDER_GRAY};
       border-right: 1px solid ${COLOR.BORDER_GRAY};
       @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
-        width: calc(100% - ${NAVIGATION.WIDTH2});
-        margin-left: ${NAVIGATION.WIDTH2};
+        width: calc(100% - ${NAVIGATION.SMALL_WIDTH});
+        margin-left: ${NAVIGATION.SMALL_WIDTH};
       }
     `)}
   `,
