@@ -2,7 +2,7 @@ import React, { useState, VFC } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { PrimaryNavigationPresenter } from '~/components';
 import { COLOR } from '~/styles/const';
-import { getSortedDataFromDate, getDataExtractionInSpecifiedPeriod, getGraphPeriodFromActiveIndex } from '~/utils/app';
+import { getSortedDataFromDate, getDataExtractionInSpecifiedPeriod, getGraphPeriodFromActiveIndex } from '~/utils/graph';
 import type { GetTrainingWithBodyInfoQuery } from '~/types/generated/graphql';
 import { pageTemplate } from '~/styles/shares';
 import { css } from '@emotion/react';

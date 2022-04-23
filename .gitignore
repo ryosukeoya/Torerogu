@@ -39,5 +39,3 @@ yarn-error.log*
 docs/
 
 *.snap
-
-src/constants/dummyData.ts

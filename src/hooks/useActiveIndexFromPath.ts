@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-import { getPathIndex } from '../utils/enums';
+import { getPagePathIndex } from '../utils/app';
 
 const useActiveIndexFromPath = () => {
   const router = useRouter();
-  const pathIndex = getPathIndex(router.pathname);
+  const pathIndex = getPagePathIndex(router.pathname);
   const [activeIndex, setActiveIndex] = useState<number>(pathIndex);
 
   useEffect(() => {

@@ -39,7 +39,7 @@ export const HEADER = {
 
 export const NAVIGATION = {
   WIDTH: '170px',
-  WIDTH2: '80px',
+  SMALL_WIDTH: '80px',
 } as const;
 
 export const CONTENT_AREA = {

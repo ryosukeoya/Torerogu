@@ -16,6 +16,9 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) 
   return <MuiAlert elevation={6} ref={ref} variant='filled' {...props} />;
 });
 
+/**
+ * material ui
+ */
 const SnackbarWrap: VFC<Props> = ({ text, open, handleClose }) => {
   return (
     <Snackbar open={open} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} autoHideDuration={2000} onClose={handleClose} sx={{ width: '100%', maxWidth: '400px' }}>

@@ -1,5 +1,13 @@
 import { css } from '@emotion/react';
 
+export const clearFix = css`
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+`;
+
 export const link = css`
   &:link {
     color: #0000ee;
