@@ -12,7 +12,6 @@ type Props = {
   children: ReactNode;
 };
 
-// TODO: overflow:hiddenの時の見切れる
 const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, size = 'normal', children }) => {
   if (!isOpen) return null;
 

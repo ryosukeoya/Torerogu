@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode[];
 };
 
-const SwiperWrapper: VFC<Props> = ({ elm, children }) => {
+const PageSliderWrapper: VFC<Props> = ({ elm, children }) => {
   useChangeSettingOnInWindowSize();
 
   return (
@@ -24,4 +24,4 @@ const SwiperWrapper: VFC<Props> = ({ elm, children }) => {
   );
 };
 
-export default SwiperWrapper;
+export default PageSliderWrapper;

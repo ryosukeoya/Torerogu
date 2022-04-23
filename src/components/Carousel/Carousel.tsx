@@ -19,7 +19,7 @@ type Props = {
   setState?: Dispatch<SetStateAction<number>>;
 };
 
-const Slider: VFC<Props> = ({ items, setState }) => {
+const Carousel: VFC<Props> = ({ items, setState }) => {
   return (
     <Swiper
       centeredSlides={true}
@@ -45,7 +45,7 @@ const Slider: VFC<Props> = ({ items, setState }) => {
   );
 };
 
-export default Slider;
+export default Carousel;
 
 const sliderStyle = {
   sliders: (marginBottom?: number) => css`
