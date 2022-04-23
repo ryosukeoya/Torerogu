@@ -18,6 +18,16 @@
             "from": "./src/pages/**/*",
             "target": "./src/components/**/*",
             "message": "componentsディレクトリ内でpagesディレクトリ内のファイルをインポートすることはできません"
+          },
+          {
+            "from": "./src/libs/graphql/**/*",
+            "target": "./src/components/uiParts/**/*",
+            "message": "uiPartsディレクトリ内ではgraphqlディレクトリ内のファイルをimportすることはできません。APIに関する処理を追加したい場合はディレクトリを変更してください"
+          },
+          {
+            "from": "./src/!(types)/**/*",
+            "target": "./src/constants/**/*",
+            "message": "constantsディレクトリ内ではtypesディレクトリ内以外のimportはできません"
           }
         ]
       }
