@@ -20,7 +20,6 @@ type Props = {
   category: ScheduleCategories;
 };
 
-// TODO: トレーニング数が多い時
 const ModalContent: VFC<Props> = ({ selectedDate, extractedTrainings, trainings, setTrainings, category }) => {
   const date = selectedDate && getDateInfo(selectedDate);
   const [deleteTraining, { error }] = useMutation<DeleteTrainingMutation>(DELETE_TRAINING, {

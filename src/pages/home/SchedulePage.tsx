@@ -47,8 +47,6 @@ const SchedulePage: VFC = () => {
   }
   if (error) throw new Error(error.message);
 
-  // TODO
-  // 休日色を変えた方がいい?
   return (
     <>
       <ModalWrapper isOpen={isOpen} setIsOpen={setIsOpen}>
