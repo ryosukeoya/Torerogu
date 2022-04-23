@@ -30,7 +30,7 @@ export const getStringTypeDate = (date: Date, outputFormat?: 'YYYY-MM-DD' | 'nor
   }
 };
 
-export const getPagePathIndex = (path: PagePaths): 0 | 1 | 2 | 3 => {
+export const getPagePathIndex = (path: PagePaths | string): 0 | 1 | 2 | 3 => {
   switch (path) {
     case PAGE_PATH.ホーム:
       return 0;
