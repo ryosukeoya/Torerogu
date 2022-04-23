@@ -11,7 +11,7 @@ export { CommonHead } from './Head';
 export { PrimaryButton, RippleButton } from './uiParts/Buttons';
 export { CardWrapper } from './uiParts/Card';
 export { Checkbox, CheckboxMU } from './uiParts/Checkbox';
-export { ModalWrapper } from './uiParts/ModalWrapper';
+export { ModalWrapper } from './uiParts/Modal';
 export { PrimaryNavigationLocalState, PrimaryNavigationGlobalState, PrimaryNavigationPresenter } from './uiParts/PrimaryNavigation';
 export { Slider } from './uiParts/Slider';
 export { Snackbar } from './uiParts/Snackbar';
