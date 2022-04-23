@@ -9,7 +9,19 @@
     "max-params": ["error", { "max": 4 }],
     "max-depth": ["error", { "max": 3 }],
     "consistent-default-export-name/default-export-match-filename": "error",
-    "consistent-default-export-name/default-import-match-filename": "error"
+    "consistent-default-export-name/default-import-match-filename": "error",
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          {
+            "from": "./src/pages/**/*",
+            "target": "./src/components/**/*",
+            "message": "componentsディレクトリ内でpagesディレクトリ内のファイルをインポートすることはできません"
+          }
+        ]
+      }
+    ]
   },
   "overrides": [
     {
