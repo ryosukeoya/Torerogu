@@ -1,7 +1,7 @@
 import { getDateInfo } from '~/utils/app';
 
 /**
- * Black Box
+ * Unit Test, Black Box
  */
 test('出力の形式が正しいか', () => {
   expect(getDateInfo(new Date('2022-04-24'))).toEqual({ year: 2022, weekday: '日', month: 4, day: 24, mm: '04', dd: '24' });
@@ -24,7 +24,7 @@ test('出力の形式が正しいか', () => {
 });
 
 /**
- * White Box
+ * Unit Test, White Box
  */
 import { getPagePathIndex } from '~/utils/app';
 
