@@ -1,0 +1,15 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "plugin:consistent-default-export-name/fixed"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-var-requires": "off",
+    "no-console": ["error", { "allow": ["warn", "error", "info", "debug"] }],
+    "no-var": "error",
+    "default-case": ["warn", { "commentPattern": "^skip\\sdefault" }],
+    "max-params": ["error", { "max": 4 }],
+    "max-depth": ["error", { "max": 3 }],
+    "consistent-default-export-name/default-export-match-filename": "error",
+    "consistent-default-export-name/default-import-match-filename": "error"
+  }
+}
