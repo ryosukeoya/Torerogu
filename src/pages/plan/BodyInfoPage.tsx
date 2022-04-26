@@ -3,9 +3,8 @@ import type { VFC } from 'react';
 import { FormContainer, InputField } from '~/components';
 import { SubmitHandler } from 'react-hook-form';
 import { getStringTypeDate } from '~/utils/app';
-import { CREATE_BODY_INFO_HISTORIES } from '~/libs/graphql/mutations';
 import { useMutation } from '@apollo/client';
-import type { CreateBodyInfoHistoriesMutation } from '~/types/generated/graphql';
+import { CreateBodyInfoHistoriesDocument, CreateBodyInfoHistoriesMutation } from '~/libs/graphql/generated/graphql';
 
 type PlanBodyInfoFormValues = {
   date: Date;
@@ -19,7 +18,7 @@ type Props = {
 
 const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
   const [open, setOpen] = useState(false);
-  const [insertBodyInfo, {}] = useMutation<CreateBodyInfoHistoriesMutation>(CREATE_BODY_INFO_HISTORIES, {
+  const [insertBodyInfo, {}] = useMutation<CreateBodyInfoHistoriesMutation>(CreateBodyInfoHistoriesDocument, {
     onCompleted: () => setOpen(true),
   });
 

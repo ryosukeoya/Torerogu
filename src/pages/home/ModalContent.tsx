@@ -1,13 +1,11 @@
 import type { VFC, SetStateAction, Dispatch } from 'react';
 import { getDataSpecifiedDate, getDateInfo } from '~/utils';
 import type { TrainingTrainingType } from './types';
-import type { GetTrainingTrainingTypeQuery } from '~/types/generated/graphql';
 import { css } from '@emotion/react';
 import { FONT, COLOR } from '~/styles/const';
 import { clearFix } from '~/styles/shares/app';
 import type { ScheduleCategories } from './types';
-import { DELETE_TRAINING } from '~/libs/graphql/mutations';
-import type { DeleteTrainingMutation } from '~/types/generated/graphql';
+import { DeleteTrainingDocument, DeleteTrainingMutation, GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useMutation } from '@apollo/client';
 
 type Trainings = Omit<GetTrainingTrainingTypeQuery, '__typename'>['trainings'];
@@ -22,7 +20,7 @@ type Props = {
 
 const ModalContent: VFC<Props> = ({ selectedDate, extractedTrainings, trainings, setTrainings, category }) => {
   const date = selectedDate && getDateInfo(selectedDate);
-  const [deleteTraining, { error }] = useMutation<DeleteTrainingMutation>(DELETE_TRAINING, {
+  const [deleteTraining, { error }] = useMutation<DeleteTrainingMutation>(DeleteTrainingDocument, {
     // onCompleted: () => console.log('deleted'),
   });
 

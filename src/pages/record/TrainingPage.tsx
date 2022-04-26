@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
-import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
-import { CREATE_TRAINING } from '~/libs/graphql/mutations';
+import { CreateTrainingDocument, GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/libs/graphql/generated/graphql';
 import { FormContainer, Slider, SelectField, CardWrapper } from '~/components';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { SubmitHandler } from 'react-hook-form';
@@ -27,7 +26,7 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState<number>(0);
   const [selectedTrainingType, setSelectedTrainingType] = useState<TrainingType | null>(null);
 
-  const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
+  const [insertTraining, { error }] = useMutation<CreateTrainingMutation>(CreateTrainingDocument, {
     onCompleted: () => setOpen(true),
   });
 

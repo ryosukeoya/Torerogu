@@ -6,7 +6,7 @@ documents:
   - "src/libs/graphql/queries/*.graphql"
   - "src/libs/graphql/mutations/*.graphql"
 generates:
-  src/types/generated/graphql.d.ts:
+  src/libs/graphql/generated/graphql.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
@@ -20,6 +20,6 @@ generates:
         date: string
         numeric: number
         timestamptz: string
-  src/types/generated/schema.graphql:
+  src/libs/graphql/generated/schema.graphql:
     plugins:
       - "schema-ast"

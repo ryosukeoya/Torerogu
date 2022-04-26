@@ -19,6 +19,6 @@
     "paths": { "~/*": ["./src/*"] },
     "types": ["@emotion/react/types/css-prop", "jest"]
   },
-  "include": ["next-env.d.ts", "src/**/*", "__tests__/**/*"],
+  "include": ["next-env.d.ts", "src/**/*", "src/tests/**/*"],
   "exclude": ["node_modules"]
 }

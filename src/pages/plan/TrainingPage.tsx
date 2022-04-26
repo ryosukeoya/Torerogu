@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import type { VFC } from 'react';
 import { InputField, SelectField, FormWrapper } from '~/components';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
-import { GET_TRAINING_CATEGORY_WITH_TYPE } from '~/libs/graphql/queries';
 import { CREATE_TRAINING } from '~/libs/graphql/mutations';
-import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
+import { GetTrainingCategoryWithTypeDocument, GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/libs/graphql/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
 import { getStringTypeDate, getNumArr, getTrainingTypesFromCategoryID } from '~/utils';
 
@@ -25,7 +24,7 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
 
-  const { data } = useQuery<GetTrainingCategoryWithTypeQuery>(GET_TRAINING_CATEGORY_WITH_TYPE);
+  const { data } = useQuery<GetTrainingCategoryWithTypeQuery>(GetTrainingCategoryWithTypeDocument);
   const [insertTraining] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
     onCompleted: () => setOpen(true),
   });

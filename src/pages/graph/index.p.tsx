@@ -1,8 +1,7 @@
 import React, { VFC } from 'react';
 import { SwiperWrapper } from '~/components';
 import { useQuery } from '@apollo/client';
-import { GET_TRAINING_WITH_BODY_INFO } from '~/libs/graphql/queries';
-import type { GetTrainingWithBodyInfoQuery } from '~/types/generated/graphql';
+import { GetTrainingWithBodyInfoDocument, GetTrainingWithBodyInfoQuery } from '~/libs/graphql/generated/graphql';
 import { PageLayout } from '~/layout';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { useGetElementWidth } from '~/hooks';
@@ -11,7 +10,7 @@ import { default as TrainingPage } from './TrainingPage';
 import { default as WeightPage } from './WeightPage';
 
 const Graph: VFC = () => {
-  const { data, loading, error } = useQuery<GetTrainingWithBodyInfoQuery>(GET_TRAINING_WITH_BODY_INFO, {
+  const { data, loading, error } = useQuery<GetTrainingWithBodyInfoQuery>(GetTrainingWithBodyInfoDocument, {
     fetchPolicy: 'cache-and-network',
   });
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(loading);

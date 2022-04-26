@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
-import { GET_TRAINING_ONE_TYPE } from '~/libs/graphql/queries';
-import type { GetTrainingOneTypeQuery } from '~/types/generated/graphql';
+import { GetTrainingOneTypeDocument, GetTrainingOneTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { getStringTypeDate } from '~/utils/app';
@@ -11,7 +10,7 @@ import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 
 const Home: NextPage = () => {
-  const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GET_TRAINING_ONE_TYPE, {
+  const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
     variables: { date: getStringTypeDate(new Date()) },
     fetchPolicy: 'network-only',
   });
@@ -19,20 +18,28 @@ const Home: NextPage = () => {
 
   if (loading) {
     return (
-      <div css={pageTemplate.contentArea}>
+      <div css={pageTemplate.contentArea} data-test-id='loading'>
         <p>Loading...</p>
       </div>
     );
+  } else if (error) {
+    return (
+      <div css={pageTemplate.contentArea} data-test-id='error'>
+        <p>{error}</p>
+      </div>
+    );
   }
-  if (error) throw new Error(error.message);
+  // if (error) throw new Error(error.message);
 
   return (
-    <PageLayout mainContentWidth={mainContentWidth}>
-      <SwiperWrapper elm={elm}>
-        <HomePage data={data} />
-        <SchedulePage />
-      </SwiperWrapper>
-    </PageLayout>
+    <div data-test-id='page'>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <SwiperWrapper elm={elm}>
+          <HomePage data={data} />
+          <SchedulePage />
+        </SwiperWrapper>
+      </PageLayout>
+    </div>
   );
 };
 
