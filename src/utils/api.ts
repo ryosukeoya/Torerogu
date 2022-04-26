@@ -1,19 +1,19 @@
 //API関連の共通したい関数とかを配置
-import type { GetTrainingCategoryWithTypeQuery } from '../types/generated/graphql';
+import type { GetTrainingCategoryWithTypeQuery } from '~/libs/graphql/generated/graphql';
 import { getStringTypeDate } from './app';
 
-type TrainingCategory = GetTrainingCategoryWithTypeQuery['training_categories'];
-type TrainingTypes = GetTrainingCategoryWithTypeQuery['training_types'];
+type TrainingCategory = GetTrainingCategoryWithTypeQuery['training_categories'] | undefined;
+type TrainingTypes = GetTrainingCategoryWithTypeQuery['training_types'] | undefined;
 type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
 
-export const getTrainingTypesFromCategoryID = (selectedCategoryID: number, training_types?: TrainingTypes): Readonly<TrainingType>[] | undefined => {
+export const getTrainingTypesFromCategoryID = (selectedCategoryID: number, training_types: TrainingTypes): Readonly<TrainingType>[] | undefined => {
   const slectedTrainingTypes = training_types?.filter(function (training_type) {
     return training_type.training_category_id === selectedCategoryID;
   });
   return slectedTrainingTypes;
 };
 
-export const getTrainingTypesFromCategoryIndex = (selectedCategoryIndex: number, training_types?: TrainingTypes, training_categories?: TrainingCategory): Readonly<TrainingType>[] | undefined => {
+export const getTrainingTypesFromCategoryIndex = (selectedCategoryIndex: number, training_types: TrainingTypes, training_categories: TrainingCategory): Readonly<TrainingType>[] | undefined => {
   const slectedTrainingTypes = training_types?.filter(function (training_type) {
     return training_type.training_category_id === training_categories?.[selectedCategoryIndex].id;
   });
