@@ -6,7 +6,7 @@ import { server } from '../server';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
 
 /**
- * レスポンスを
+ * 
  */
 export const testRenderer = (children: React.ReactNode) => (responseOverride?: GraphQLHandler<GraphQLRequest<never>>) => {
   const client = initializeApollo();
