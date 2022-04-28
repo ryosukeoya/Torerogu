@@ -1,10 +1,8 @@
 'use strict';
-/**
-babel.config.js with useful plugins. 
-*/
+
 module.exports = function (api) {
   api.cache(true);
-
+  api.assertVersion('^7.4.5');
   const presets = [
     [
       'next/babel',
@@ -15,7 +13,7 @@ module.exports = function (api) {
         },
       },
     ],
-    // ['@babel/preset-env', { targets: { node: 'current' } }],
+    ['@babel/preset-env', { targets: { node: 'current' } }],
   ];
   const plugins = [['@emotion/babel-plugin']];
 
