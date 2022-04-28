@@ -5,9 +5,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --dir src",
     "g-types": "graphql-codegen --config codegen.yml",
+    "type": "tsc --noEmit",
+    "type-lint": "tsc --noEmit && eslint .",
+    "lint": "next lint --dir src",
     "test": "jest",
+    "test:w": "jest --watch",
     "test:c": "jest --coverage"
   },
   "dependencies": {
