@@ -11,13 +11,13 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '^~(.*)$': '<rootDir>/src/$1',
-    'swiper/react': '<rootDir>/src/tests/__mock__/data/swiperMock.tsx',
-    'swiper': '<rootDir>/src/tests/__mock__/data/swiperMock.tsx'
+    'swiper/react': '<rootDir>/src/tests/mocks/data/swiperMock.tsx',
+    'swiper': '<rootDir>/src/tests/mocks/data/swiperMock.tsx'
   },
   // transformIgnorePatterns: ['<rootDir>/node_modules/(?!swiper)/', '<rootDir>/node_modules/(?!graphql)/'],
   transformIgnorePatterns: ['<rootDir>/node_modules/(?!swiper)/'],
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx,ts,tsx}', '<rootDir>/!src/**/*.d.ts'],
-  setupFilesAfterEnv: ['<rootDir>/src/tests/__mock__/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/tests/mocks/jest.setup.ts'],
 };
 
 module.exports = createJestConfig(customJestConfig);

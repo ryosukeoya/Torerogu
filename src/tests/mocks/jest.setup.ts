@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { server } from '~/tests/__mock__/server';
+import { server } from '~/tests/mocks/server';
 
 // リクエストのインターセプト
 beforeAll(() => {
