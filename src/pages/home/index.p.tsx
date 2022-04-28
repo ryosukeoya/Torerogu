@@ -18,13 +18,13 @@ const Home: NextPage = () => {
 
   if (loading) {
     return (
-      <div css={pageTemplate.contentArea} data-test-id='loading'>
+      <div css={pageTemplate.contentArea} data-testid='loading'>
         <p>Loading...</p>
       </div>
     );
   } else if (error) {
     return (
-      <div css={pageTemplate.contentArea} data-test-id='error'>
+      <div css={pageTemplate.contentArea} data-testid='error'>
         <p>{error}</p>
       </div>
     );
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   // if (error) throw new Error(error.message);
 
   return (
-    <div data-test-id='page'>
+    <div data-testid='page'>
       <PageLayout mainContentWidth={mainContentWidth}>
         <SwiperWrapper elm={elm}>
           <HomePage data={data} />
