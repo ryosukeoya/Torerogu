@@ -1,4 +1,3 @@
-// src/mocks.js
 import { setupWorker, rest } from 'msw';
 
 const worker = setupWorker(

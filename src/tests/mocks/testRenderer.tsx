@@ -5,6 +5,9 @@ import { render } from '@testing-library/react';
 import { server } from './server';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
 
+/**
+ * 
+ */
 export const testRenderer = (children: React.ReactNode) => (responseOverride?: GraphQLHandler<GraphQLRequest<never>>) => {
   const client = initializeApollo();
 
