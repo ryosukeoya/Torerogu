@@ -10,20 +10,19 @@ export const getTrainingOneTypeMock = {
   },
   result: {
     data: {
-      search: {
-        edges: [
-          {
-            cursor: 'Y3Vyc29yOjE=',
-            node: { name: 'apollo-storybook-decorator' },
-          },
-        ],
-        pageInfo: {
-          endCursor: 'Y3Vyc29yOjU=',
-          hasNextPage: true,
-          hasPreviousPage: false,
-          startCursor: 'Y3Vyc29yOjE=',
-        },
-        repositoryCount: 411,
+      __typename: 'trainings',
+      id: 1,
+      user_id: 1,
+      training_type_id: 1,
+      training_weight: 60,
+      training_count: 10,
+      training_set: 10,
+      is_finish: false,
+      date: '2022-04-26',
+      training_type: {
+        __typename: 'training_types',
+        id: 1,
+        name: 'ベンチプレス',
       },
     },
   },
