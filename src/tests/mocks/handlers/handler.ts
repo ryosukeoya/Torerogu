@@ -9,7 +9,7 @@ export const getTrainingOneTypeDefaultResponse = {
   training_weight: 60,
   training_count: 10,
   training_set: 10,
-  is_finish: true,
+  is_finish: false,
   date: '2022-04-26',
   training_type: {
     __typename: 'training_types',
@@ -18,12 +18,15 @@ export const getTrainingOneTypeDefaultResponse = {
   },
 };
 
+/**
+ * どのリクエストに対して、どのようなレスポンスを返すか
+ */
 export const handlers = [
   graphql.query(GetTrainingOneTypeDocument, (req, res, ctx) => {
     return res(
       ctx.data({
         __typename: 'query_root',
-        trainings: [{ ...getTrainingOneTypeDefaultResponse }, { ...getTrainingOneTypeDefaultResponse, is_finish: true }],
+        trainings: [getTrainingOneTypeDefaultResponse, { ...getTrainingOneTypeDefaultResponse, id: 2, training_type_id: 10, training_type: { id: 10, name: 'サイドレイズ' } }, { ...getTrainingOneTypeDefaultResponse, id: 3, is_finish: true, training_weight: 100 }],
       }),
     );
   }),
