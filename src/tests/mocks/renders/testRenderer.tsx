@@ -1,19 +1,20 @@
 import React from 'react';
 import { GraphQLHandler, GraphQLRequest } from 'msw';
-import { ApolloProvider } from '@apollo/client';
 import { render } from '@testing-library/react';
 import { server } from '../server';
-import { initializeApollo } from '~/libs/graphql/apolloClient';
+import { MockedProvider, MockedResponse } from '@apollo/client/testing';
+import { RecoilRoot } from 'recoil';
 
-/**
- * 
- */
-export const testRenderer = (children: React.ReactNode) => (responseOverride?: GraphQLHandler<GraphQLRequest<never>>) => {
-  const client = initializeApollo();
-
+export const testRenderer = (children: React.ReactNode, mocks: ReadonlyArray<MockedResponse>) => (responseOverride?: GraphQLHandler<GraphQLRequest<never>>) => {
   if (responseOverride) {
     server.use(responseOverride);
   }
-  render(<ApolloProvider client={client}>{children}</ApolloProvider>);
-};
 
+  render(
+    <RecoilRoot>
+      <MockedProvider mocks={mocks} addTypename={false}>
+        {children}
+      </MockedProvider>
+    </RecoilRoot>,
+  );
+};
