@@ -37,7 +37,7 @@ export const useChangeSettingOnInWindowSize = (): void => {
         options.speed = 350;
       }
       options.initialSlide = realIndex;
-      if(!isMounted) options.initialSlide = index;
+      if (!isMounted) options.initialSlide = index;
       swiper?.destroy(false, true);
       const newSwiper = new Swiper('.swiper-container', options);
       setSwiper(newSwiper);

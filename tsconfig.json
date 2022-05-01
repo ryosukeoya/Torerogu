@@ -17,7 +17,7 @@
     "noImplicitAny": true,
     "baseUrl": ".",
     "paths": { "~/*": ["./src/*"] },
-    "types": ["@emotion/react/types/css-prop", "jest"]
+    "types": ["@emotion/react/types/css-prop", "jest", "@testing-library/jest-dom"]
   },
   "include": ["next-env.d.ts", "src/**/*", "src/tests/**/*"],
   "exclude": ["node_modules"]
