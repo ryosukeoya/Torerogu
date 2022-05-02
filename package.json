@@ -11,6 +11,7 @@
     "lint": "next lint --dir src",
     "test": "jest",
     "test-snapshot": "jest src/tests/snapshots",
+    "test-snapshot:u": "jest src/tests/snapshots -- -u",
     "test:w": "jest --watch",
     "test:c": "jest --coverage"
   },

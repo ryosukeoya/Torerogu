@@ -43,7 +43,7 @@ const HomePage: VFC<Props> = ({ data }) => {
           </div>
         );
       })}
-      {data?.trainings.length === 0 && <p>※ 本日予定のトレーニングはありません</p>}
+      {data?.trainings.length === 0 && <p data-testid='no-data'>※ 本日予定のトレーニングはありません</p>}
     </div>
   );
 };
