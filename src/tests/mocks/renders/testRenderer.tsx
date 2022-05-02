@@ -11,7 +11,7 @@ export const testRenderer = (children: React.ReactNode, mocks: ReadonlyArray<Moc
     server.use(responseOverride);
   }
 
-  render(
+  return render(
     <RecoilRoot>
       <MockedProvider
         mocks={mocks}

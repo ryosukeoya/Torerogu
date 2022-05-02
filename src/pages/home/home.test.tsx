@@ -5,7 +5,6 @@ import { testRenderer } from '~/tests/mocks/renders/testRenderer';
 import { getTrainingOneTypeMock } from '~/tests/mocks/datum/getTrainingOneTypeMock';
 import { GetTrainingOneTypeDocument } from '~/libs/graphql/generated/graphql';
 import { getStringTypeDate } from '~/utils/app';
-import { ReadMoreTwoTone } from '@mui/icons-material';
 
 jest.mock('next/router', () => ({
   useRouter() {
