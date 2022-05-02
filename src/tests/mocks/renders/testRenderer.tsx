@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { GraphQLHandler, GraphQLRequest } from 'msw';
 import { render } from '@testing-library/react';
 import { server } from '../server';
@@ -6,7 +6,7 @@ import { InMemoryCache } from '@apollo/client';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { RecoilRoot } from 'recoil';
 
-export const testRenderer = (children: React.ReactNode, mocks: ReadonlyArray<MockedResponse>) => (responseOverride?: GraphQLHandler<GraphQLRequest<never>>) => {
+export const testRenderer = (children: ReactNode, mocks: ReadonlyArray<MockedResponse>) => (responseOverride?: GraphQLHandler<GraphQLRequest<never>>) => {
   if (responseOverride) {
     server.use(responseOverride);
   }

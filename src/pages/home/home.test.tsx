@@ -3,8 +3,7 @@ import Home from './index.p';
 import { act, screen } from '@testing-library/react';
 import { testRenderer } from '~/tests/mocks/renders/testRenderer';
 import { getTrainingOneTypeMock } from '~/tests/mocks/datum/getTrainingOneTypeMock';
-import { GetTrainingOneTypeDocument } from '~/libs/graphql/generated/graphql';
-import { getStringTypeDate } from '~/utils/app';
+import { trainingOneType } from '~/tests/mocks/datum/training';
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -18,7 +17,7 @@ jest.mock('./SchedulePage', () => () => 'SchedulePage');
 
 describe('<Home>', () => {
   it('loading画面表示され、データをフェッチし取得後pageがレンダリングされる', async () => {
-    const renderPage = testRenderer(<Home />, [getTrainingOneTypeMock]);
+    const renderPage = testRenderer(<Home />, [getTrainingOneTypeMock(trainingOneType)]);
     await act(async () => {
       renderPage();
       expect(screen.findByTestId('loading'));
@@ -36,22 +35,7 @@ describe('<Home>', () => {
   });
 
   it('データがない場合、Empty State用の要素が表示される(data-testid:no-data)', async () => {
-    const renderPage = testRenderer(<Home />, [
-      {
-        request: {
-          query: GetTrainingOneTypeDocument,
-          variables: {
-            date: getStringTypeDate(new Date()),
-          },
-        },
-        result: {
-          data: {
-            __typename: 'query_root',
-            trainings: [],
-          },
-        },
-      },
-    ]);
+    const renderPage = testRenderer(<Home />, [getTrainingOneTypeMock([])]);
     await act(async () => {
       renderPage();
       expect(screen.findByTestId('loading'));
