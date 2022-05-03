@@ -22,14 +22,8 @@ const Home: NextPage = () => {
         <p>Loading...</p>
       </div>
     );
-  } else if (error) {
-    return (
-      <div css={pageTemplate.contentArea} data-testid='error'>
-        <p>{error}</p>
-      </div>
-    );
   }
-  // if (error) throw new Error(error.message);
+  if (error) throw new Error(error.message);
 
   return (
     <div data-testid='page'>
