@@ -17,7 +17,7 @@ const Graph: VFC = () => {
 
   if (loading) {
     return (
-      <div css={pageTemplate.contentArea}>
+      <div css={pageTemplate.contentArea} data-testid='loading'>
         <p>Loading...</p>
       </div>
     );
@@ -25,13 +25,15 @@ const Graph: VFC = () => {
   if (error) throw new Error(error.message);
 
   return (
-    <PageLayout mainContentWidth={mainContentWidth}>
-      <SwiperWrapper elm={elm}>
-        <WeightPage bodyInfo={data?.body_info_data_histories} />
-        <BodyFatPercentagePage />
-        <TrainingPage />
-      </SwiperWrapper>
-    </PageLayout>
+    <div data-testid='page'>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <SwiperWrapper elm={elm}>
+          <WeightPage bodyInfo={data?.body_info_data_histories} />
+          <BodyFatPercentagePage />
+          <TrainingPage />
+        </SwiperWrapper>
+      </PageLayout>
+    </div>
   );
 };
 
