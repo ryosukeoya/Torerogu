@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useIsActive } from './index';
 
-describe('useIsActive', () => {
+describe('Unit Test', () => {
   test('出力形式が正しいか', () => {
     expect(renderHook(() => useIsActive(true, 1, 1)).result.current).toBe(true);
     expect(renderHook(() => useIsActive(true, 0, 1)).result.current).toBe(false);

@@ -15,7 +15,7 @@ jest.mock('next/router', () => ({
 jest.mock('../../components/PageSlider/useChangeSettingOnInWindowSize');
 jest.mock('./SchedulePage', () => () => 'SchedulePage');
 
-describe('<Home>', () => {
+describe('Integration Test', () => {
   it('loading画面表示され、データをフェッチし取得後pageがレンダリングされる', async () => {
     await act(async () => {
       const renderPage = testRenderer(<Home />, [getTrainingOneTypeMock(trainingOneType)]);

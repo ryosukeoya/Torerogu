@@ -15,7 +15,7 @@ jest.mock('next/router', () => ({
 jest.mock('../../components/PageSlider/useChangeSettingOnInWindowSize');
 jest.mock('./SchedulePage', () => () => 'SchedulePage');
 
-describe('<Home>', () => {
+describe('Snapshot Test', () => {
   it('ホームページのDOM要素の出力が変わっていない', async () => {
     const renderPage = testRenderer(<Home />, [getTrainingOneTypeMock(trainingOneType)]);
     const { asFragment } = renderPage();

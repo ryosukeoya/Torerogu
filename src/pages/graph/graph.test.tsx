@@ -12,7 +12,7 @@ jest.mock('next/router', () => ({
 }));
 jest.mock('../../components/PageSlider/useChangeSettingOnInWindowSize');
 
-describe('<Graph>', () => {
+describe('Integration Test', () => {
   const renderPage = testRenderer(<Graph />, [GetTrainingWithBodyMock]);
 
   it('loading画面表示され、データをフェッチし取得後pageがレンダリングされる', async () => {
