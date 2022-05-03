@@ -21,7 +21,7 @@ describe('<Graph>', () => {
       expect(screen.findByTestId('loading'));
       await new Promise((resolve) => setTimeout(resolve, 0));
       expect(await screen.findByTestId('page'));
-      screen.debug();
+      // screen.debug();
     });
   });
 });
