@@ -13,7 +13,9 @@
     "test-snapshot": "jest src/tests/snapshots",
     "test-snapshot:u": "jest src/tests/snapshots -- -u",
     "test:w": "jest --watch",
-    "test:c": "jest --coverage"
+    "test:c": "jest --coverage",
+    "test:cc": "jest --clearCache",
+    "test:cm": "jest --clearMocks"
   },
   "dependencies": {
     "@apollo/client": "^3.5.9",
