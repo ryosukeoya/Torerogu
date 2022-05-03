@@ -1,4 +1,5 @@
 import { graphql } from 'msw';
+import { getStringTypeDate } from '~/utils/app';
 import { GetTrainingOneTypeDocument } from '~/libs/graphql/generated/graphql';
 
 export const getTrainingOneTypeDefaultResponse = {
@@ -10,7 +11,7 @@ export const getTrainingOneTypeDefaultResponse = {
   training_count: 10,
   training_set: 10,
   is_finish: false,
-  date: '2022-04-26',
+  date: getStringTypeDate(new Date()),
   training_type: {
     __typename: 'training_types',
     id: 1,

@@ -8,6 +8,7 @@ import SchedulePage from './SchedulePage';
 import { SwiperWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
+// import '~/tests/mocks/starter';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
