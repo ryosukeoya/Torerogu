@@ -18,6 +18,7 @@ const customJestConfig = {
   transformIgnorePatterns: ['<rootDir>/node_modules/(?!swiper)/'],
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx,ts,tsx}', '<rootDir>/!src/**/*.d.ts'],
   setupFilesAfterEnv: ['<rootDir>/src/tests/mocks/setupTests.ts'],
+  snapshotResolver: './snapshotResolver.js',
 };
 
 module.exports = createJestConfig(customJestConfig);
