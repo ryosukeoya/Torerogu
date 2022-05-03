@@ -2,7 +2,7 @@
 import { GraphQLError } from 'graphql';
 import { GetTrainingWithBodyInfoDocument } from '~/libs/graphql/generated/graphql';
 
-export const GetTrainingWithBodyMock = {
+export const getTrainingWithBodyMock = {
   request: {
     query: GetTrainingWithBodyInfoDocument,
     variables: {},

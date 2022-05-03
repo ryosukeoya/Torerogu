@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { CreateTrainingDocument, GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/libs/graphql/generated/graphql';
-import { FormContainer, Slider, SelectField, CardWrapper } from '~/components';
+import { FormContainer, Carousel, SelectField, CardWrapper } from '~/components';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { SubmitHandler } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
@@ -65,7 +65,7 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
   } else {
     return (
       <div css={pageTemplate.contentArea}>
-        <Slider items={data?.training_categories} setState={setSelectedCategoryIndex} />
+        <Carousel items={data?.training_categories} setState={setSelectedCategoryIndex} />
         {getTrainingTypesFromCategoryIndex(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
           return (
             <CardWrapper handleClick={() => handleClick(training_type)} key={training_type.id} customCardCss={styles.card}>

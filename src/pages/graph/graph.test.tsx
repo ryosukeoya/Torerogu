@@ -1,7 +1,7 @@
 import Graph from './index.p';
 import { act, screen } from '@testing-library/react';
 import { testRenderer } from '~/tests/mocks/renders/testRenderer';
-import { GetTrainingWithBodyMock } from '~/tests/mocks/datum/getTrainingWithBodyInfo';
+import { getTrainingWithBodyMock } from '~/tests/mocks/datum/getTrainingWithBodyInfoMock';
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -13,7 +13,7 @@ jest.mock('next/router', () => ({
 jest.mock('../../components/PageSlider/useChangeSettingOnInWindowSize');
 
 describe('Integration Test', () => {
-  const renderPage = testRenderer(<Graph />, [GetTrainingWithBodyMock]);
+  const renderPage = testRenderer(<Graph />, [getTrainingWithBodyMock]);
 
   it('loading画面表示され、データをフェッチし取得後pageがレンダリングされる', async () => {
     await act(async () => {
