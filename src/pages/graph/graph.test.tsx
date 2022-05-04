@@ -16,12 +16,12 @@ describe('Integration Test', () => {
   const renderPage = testRenderer(<Graph />, [getTrainingWithBodyMock]);
 
   it('loading画面表示され、データをフェッチし取得後pageがレンダリングされる', async () => {
+    renderPage();
+    expect(screen.getByTestId('loading'));
     await act(async () => {
-      renderPage();
-      expect(screen.findByTestId('loading'));
       await new Promise((resolve) => setTimeout(resolve, 0));
-      expect(await screen.findByTestId('page'));
-      // screen.debug();
     });
+    expect(screen.getByTestId('page'));
+    // screen.debug();
   });
 });
