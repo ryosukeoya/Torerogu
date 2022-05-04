@@ -1,1 +1,1 @@
-export { testRendererUsingApolloClientMock } from '~/tests/mocks/renders/testRendererUsingApolloClientMockUsingApolloClientMock';
+export { testRendererUsingApolloClientMock } from '~/tests/mocks/renders/testRendererUsingApolloClientMock';
