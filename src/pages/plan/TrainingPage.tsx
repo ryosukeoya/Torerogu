@@ -33,10 +33,7 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
   const categoryField: string = watch('category');
 
   useEffect(() => {
-    const categoryFieldArr: string[] = categoryField?.split(',');
-    if (categoryFieldArr?.length >= 2) {
-      setSelectedCategoryID(parseInt(categoryFieldArr[0]));
-    }
+    setSelectedCategoryID(parseInt(categoryField));
   }, [categoryField]);
 
   const registerTraining: SubmitHandler<Readonly<PlanTrainingFormValue>> = (data) => {
