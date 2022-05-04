@@ -14,7 +14,7 @@ const PageLayout: VFC<Props> = ({ mainContentWidth, children: mainContentChildre
   const tabNames = useGetTabTitleFromRoute();
 
   return (
-    <>
+    <div data-testid="page">
       <PrimaryNavigationGlobalState
         titles={tabNames}
         theme='basicTab'
@@ -30,7 +30,7 @@ const PageLayout: VFC<Props> = ({ mainContentWidth, children: mainContentChildre
         }}
       />
       {mainContentChildren}
-    </>
+    </div>
   );
 };
 

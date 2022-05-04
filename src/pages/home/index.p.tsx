@@ -27,14 +27,12 @@ const Home: NextPage = () => {
   if (error) throw new Error(error.message);
 
   return (
-    <div data-testid='page'>
-      <PageLayout mainContentWidth={mainContentWidth}>
-        <SwiperWrapper elm={elm}>
-          <HomePage data={data} />
-          <SchedulePage />
-        </SwiperWrapper>
-      </PageLayout>
-    </div>
+    <PageLayout mainContentWidth={mainContentWidth}>
+      <SwiperWrapper elm={elm}>
+        <HomePage data={data} />
+        <SchedulePage />
+      </SwiperWrapper>
+    </PageLayout>
   );
 };
 

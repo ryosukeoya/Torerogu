@@ -25,15 +25,13 @@ const Graph: VFC = () => {
   if (error) throw new Error(error.message);
 
   return (
-    <div data-testid='page'>
-      <PageLayout mainContentWidth={mainContentWidth}>
-        <SwiperWrapper elm={elm}>
-          <WeightPage bodyInfo={data?.body_info_data_histories} />
-          <BodyFatPercentagePage />
-          <TrainingPage />
-        </SwiperWrapper>
-      </PageLayout>
-    </div>
+    <PageLayout mainContentWidth={mainContentWidth}>
+      <SwiperWrapper elm={elm}>
+        <WeightPage bodyInfo={data?.body_info_data_histories} />
+        <BodyFatPercentagePage />
+        <TrainingPage />
+      </SwiperWrapper>
+    </PageLayout>
   );
 };
 
