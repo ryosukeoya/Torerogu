@@ -2099,7 +2099,7 @@ export type CreateBodyInfoHistoriesMutationVariables = Exact<{
 }>;
 
 
-export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number, user_id: number, height?: number | null, weight: number, body_fat_percentage?: number | null, date: string, is_record: boolean } | null };
+export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number } | null };
 
 export type CreateTrainingMutationVariables = Exact<{
   user_id?: InputMaybe<Scalars['Int']>;
@@ -2112,7 +2112,7 @@ export type CreateTrainingMutationVariables = Exact<{
 }>;
 
 
-export type CreateTrainingMutation = { __typename?: 'mutation_root', insert_trainings_one?: { __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string } | null };
+export type CreateTrainingMutation = { __typename?: 'mutation_root', insert_trainings_one?: { __typename?: 'trainings', id: number } | null };
 
 export type UpdateTrainingIsFinishMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -2120,7 +2120,7 @@ export type UpdateTrainingIsFinishMutationVariables = Exact<{
 }>;
 
 
-export type UpdateTrainingIsFinishMutation = { __typename?: 'mutation_root', update_trainings_by_pk?: { __typename?: 'trainings', id: number, is_finish: boolean } | null };
+export type UpdateTrainingIsFinishMutation = { __typename?: 'mutation_root', update_trainings_by_pk?: { __typename?: 'trainings', id: number } | null };
 
 export type DeleteTrainingMutationVariables = Exact<{
   id: Scalars['Int'];
@@ -2168,12 +2168,6 @@ export const CreateBodyInfoHistoriesDocument = gql`
     object: {height: $height, body_fat_percentage: $body_fat_percentage, date: $date, weight: $weight, user_id: $user_id, is_record: $is_record}
   ) {
     id
-    user_id
-    height
-    weight
-    body_fat_percentage
-    date
-    is_record
   }
 }
     `;
@@ -2214,13 +2208,6 @@ export const CreateTrainingDocument = gql`
     object: {user_id: $user_id, training_type_id: $training_type_id, training_weight: $training_weight, training_count: $training_count, training_set: $training_set, is_finish: $is_finish, date: $date}
   ) {
     id
-    user_id
-    training_type_id
-    training_weight
-    training_count
-    training_set
-    is_finish
-    date
   }
 }
     `;
@@ -2260,7 +2247,6 @@ export const UpdateTrainingIsFinishDocument = gql`
     mutation UpdateTrainingIsFinish($id: Int!, $is_finish: Boolean) {
   update_trainings_by_pk(pk_columns: {id: $id}, _set: {is_finish: $is_finish}) {
     id
-    is_finish
   }
 }
     `;
