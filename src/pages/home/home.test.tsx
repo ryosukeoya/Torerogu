@@ -12,36 +12,29 @@ jest.mock('next/router', () => ({
     };
   },
 }));
-jest.mock('../../components/PageSlider/useChangeSettingOnInWindowSize');
+jest.mock('~/components/PageSlider/useChangeSettingOnInWindowSize');
 jest.mock('./SchedulePage', () => () => 'SchedulePage');
 
 describe('Integration Test', () => {
   it('loading画面表示され、データをフェッチし取得後pageがレンダリングされる', async () => {
+    const renderPage = testRenderer(<Home />, [getTrainingOneTypeMock(trainingOneType)]);
+    renderPage();
+    expect(screen.getByTestId('loading'));
     await act(async () => {
-      const renderPage = testRenderer(<Home />, [getTrainingOneTypeMock(trainingOneType)]);
-      renderPage();
-      expect(screen.findByTestId('loading'));
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
-    expect(screen.findByTestId('page'));
-    // screen.debug();
-
-    // pattern2
-    // renderPage();
-    // expect(screen.findByTestId('loading'));
-    // await waitForElementToBeRemoved(() => screen.getAllByTestId('loading'));
-    // expect(await screen.findByTestId('page'));
+    expect(screen.getByTestId('page'));
     // screen.debug();
   });
 
   it('データがない場合、Empty State用の要素が表示される(data-testid:no-data)', async () => {
     const renderPage = testRenderer(<Home />, [getTrainingOneTypeMock([])]);
+    renderPage();
+    expect(screen.getByTestId('loading'));
     await act(async () => {
-      renderPage();
-      expect(screen.findByTestId('loading'));
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
-    expect(screen.findByTestId('no-data'));
+    expect(screen.getByTestId('no-data'));
     // screen.debug();
   });
 });
