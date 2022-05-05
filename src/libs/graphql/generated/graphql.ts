@@ -2090,25 +2090,25 @@ export type Users_Variance_Fields = {
 };
 
 export type CreateBodyInfoHistoriesMutationVariables = Exact<{
-  height: Scalars['numeric'];
-  weight?: InputMaybe<Scalars['numeric']>;
-  body_fat_percentage: Scalars['Int'];
-  date?: InputMaybe<Scalars['timestamptz']>;
-  user_id?: InputMaybe<Scalars['Int']>;
-  is_record?: InputMaybe<Scalars['Boolean']>;
+  height?: InputMaybe<Scalars['numeric']>;
+  weight: Scalars['numeric'];
+  body_fat_percentage?: InputMaybe<Scalars['Int']>;
+  date: Scalars['timestamptz'];
+  user_id: Scalars['Int'];
+  is_record: Scalars['Boolean'];
 }>;
 
 
 export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number } | null };
 
 export type CreateTrainingMutationVariables = Exact<{
-  user_id?: InputMaybe<Scalars['Int']>;
-  training_type_id?: InputMaybe<Scalars['Int']>;
+  user_id: Scalars['Int'];
+  training_type_id: Scalars['Int'];
   training_weight: Scalars['numeric'];
   training_count: Scalars['Int'];
   training_set: Scalars['Int'];
-  is_finish?: InputMaybe<Scalars['Boolean']>;
-  date?: InputMaybe<Scalars['date']>;
+  is_finish: Scalars['Boolean'];
+  date: Scalars['date'];
 }>;
 
 
@@ -2116,7 +2116,7 @@ export type CreateTrainingMutation = { __typename?: 'mutation_root', insert_trai
 
 export type UpdateTrainingIsFinishMutationVariables = Exact<{
   id: Scalars['Int'];
-  is_finish?: InputMaybe<Scalars['Boolean']>;
+  is_finish: Scalars['Boolean'];
 }>;
 
 
@@ -2130,7 +2130,7 @@ export type DeleteTrainingMutationVariables = Exact<{
 export type DeleteTrainingMutation = { __typename?: 'mutation_root', delete_trainings_by_pk?: { __typename?: 'trainings', id: number } | null };
 
 export type GetTrainingOneTypeQueryVariables = Exact<{
-  date?: InputMaybe<Scalars['date']>;
+  date: Scalars['date'];
 }>;
 
 
@@ -2163,7 +2163,7 @@ export type GetBodyInfoDataHistoryQuery = { __typename?: 'query_root', body_info
 
 
 export const CreateBodyInfoHistoriesDocument = gql`
-    mutation CreateBodyInfoHistories($height: numeric!, $weight: numeric, $body_fat_percentage: Int!, $date: timestamptz, $user_id: Int, $is_record: Boolean) {
+    mutation CreateBodyInfoHistories($height: numeric, $weight: numeric!, $body_fat_percentage: Int, $date: timestamptz!, $user_id: Int!, $is_record: Boolean!) {
   insert_body_info_data_histories_one(
     object: {height: $height, body_fat_percentage: $body_fat_percentage, date: $date, weight: $weight, user_id: $user_id, is_record: $is_record}
   ) {
@@ -2203,7 +2203,7 @@ export type CreateBodyInfoHistoriesMutationHookResult = ReturnType<typeof useCre
 export type CreateBodyInfoHistoriesMutationResult = Apollo.MutationResult<CreateBodyInfoHistoriesMutation>;
 export type CreateBodyInfoHistoriesMutationOptions = Apollo.BaseMutationOptions<CreateBodyInfoHistoriesMutation, CreateBodyInfoHistoriesMutationVariables>;
 export const CreateTrainingDocument = gql`
-    mutation CreateTraining($user_id: Int, $training_type_id: Int, $training_weight: numeric!, $training_count: Int!, $training_set: Int!, $is_finish: Boolean, $date: date) {
+    mutation CreateTraining($user_id: Int!, $training_type_id: Int!, $training_weight: numeric!, $training_count: Int!, $training_set: Int!, $is_finish: Boolean!, $date: date!) {
   insert_trainings_one(
     object: {user_id: $user_id, training_type_id: $training_type_id, training_weight: $training_weight, training_count: $training_count, training_set: $training_set, is_finish: $is_finish, date: $date}
   ) {
@@ -2244,7 +2244,7 @@ export type CreateTrainingMutationHookResult = ReturnType<typeof useCreateTraini
 export type CreateTrainingMutationResult = Apollo.MutationResult<CreateTrainingMutation>;
 export type CreateTrainingMutationOptions = Apollo.BaseMutationOptions<CreateTrainingMutation, CreateTrainingMutationVariables>;
 export const UpdateTrainingIsFinishDocument = gql`
-    mutation UpdateTrainingIsFinish($id: Int!, $is_finish: Boolean) {
+    mutation UpdateTrainingIsFinish($id: Int!, $is_finish: Boolean!) {
   update_trainings_by_pk(pk_columns: {id: $id}, _set: {is_finish: $is_finish}) {
     id
   }
@@ -2311,7 +2311,7 @@ export type DeleteTrainingMutationHookResult = ReturnType<typeof useDeleteTraini
 export type DeleteTrainingMutationResult = Apollo.MutationResult<DeleteTrainingMutation>;
 export type DeleteTrainingMutationOptions = Apollo.BaseMutationOptions<DeleteTrainingMutation, DeleteTrainingMutationVariables>;
 export const GetTrainingOneTypeDocument = gql`
-    query GetTrainingOneType($date: date) {
+    query GetTrainingOneType($date: date!) {
   trainings(where: {date: {_eq: $date}}) {
     id
     user_id
@@ -2345,7 +2345,7 @@ export const GetTrainingOneTypeDocument = gql`
  *   },
  * });
  */
-export function useGetTrainingOneTypeQuery(baseOptions?: Apollo.QueryHookOptions<GetTrainingOneTypeQuery, GetTrainingOneTypeQueryVariables>) {
+export function useGetTrainingOneTypeQuery(baseOptions: Apollo.QueryHookOptions<GetTrainingOneTypeQuery, GetTrainingOneTypeQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetTrainingOneTypeQuery, GetTrainingOneTypeQueryVariables>(GetTrainingOneTypeDocument, options);
       }
