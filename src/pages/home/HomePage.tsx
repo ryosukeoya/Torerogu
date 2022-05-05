@@ -8,7 +8,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { pageTemplate } from '../../styles/shares/pageTemplate';
 import { CheckboxMU } from '~/components';
 import { useMutation } from '@apollo/client';
-import { UpdateTrainingIsFinishDocument, GetTrainingOneTypeQuery, UpdateTrainingIsFinishMutation } from '~/libs/graphql/generated/graphql';
+import { UpdateTrainingIsFinishDocument, GetTrainingOneTypeQuery, UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables } from '~/libs/graphql/generated/graphql';
 
 type Props = {
   data?: GetTrainingOneTypeQuery;
@@ -18,7 +18,12 @@ const HomePage: VFC<Props> = ({ data }) => {
   const [updateTraining, {}] = useMutation<UpdateTrainingIsFinishMutation>(UpdateTrainingIsFinishDocument);
 
   const handleClick = (id: number, is_finish: boolean) => {
-    updateTraining({ variables: { id: id, is_finish: !is_finish } });
+    updateTraining({
+      variables: {
+        id: id,
+        is_finish: !is_finish,
+      } as UpdateTrainingIsFinishMutationVariables,
+    });
   };
 
   return (

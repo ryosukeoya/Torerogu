@@ -4,7 +4,7 @@ import { FormContainer, InputField } from '~/components';
 import { SubmitHandler } from 'react-hook-form';
 import { getStringTypeDate } from '~/utils/app';
 import { useMutation } from '@apollo/client';
-import { CreateBodyInfoHistoriesDocument, CreateBodyInfoHistoriesMutation } from '~/libs/graphql/generated/graphql';
+import { CreateBodyInfoHistoriesDocument, CreateBodyInfoHistoriesMutation, CreateBodyInfoHistoriesMutationVariables } from '~/libs/graphql/generated/graphql';
 
 type PlanBodyInfoFormValues = {
   date: Date;
@@ -28,7 +28,16 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
     if (data.bodyFatPercentage === '') {
       data.bodyFatPercentage = null;
     }
-    insertBodyInfo({ variables: { height: null, weight: data.weight, body_fat_percentage: data.bodyFatPercentage, date: data.date, user_id: user_id, is_record: false } });
+    insertBodyInfo({
+      variables: {
+        height: null,
+        weight: data.weight,
+        body_fat_percentage: data.bodyFatPercentage,
+        date: getStringTypeDate(data.date),
+        user_id: user_id,
+        is_record: false,
+      } as CreateBodyInfoHistoriesMutationVariables,
+    });
   };
 
   return (

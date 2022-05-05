@@ -35,7 +35,17 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
   };
 
   const registerTraining: SubmitHandler<TrainingFormValues> = (data) => {
-    insertTraining({ variables: { user_id: 1, training_type_id: selectedTrainingType?.id, training_weight: data.trainingWeight, training_count: data.count, training_set: data.set, is_finish: true, date: new Date() } });
+    insertTraining({
+      variables: {
+        user_id: 1,
+        training_type_id: selectedTrainingType?.id,
+        training_weight: data.trainingWeight,
+        training_count: data.count,
+        training_set: data.set,
+        is_finish: true,
+        date: new Date(),
+      },
+    });
   };
 
   if (error) return <p>記録に失敗しました、もう一度実行してください</p>;

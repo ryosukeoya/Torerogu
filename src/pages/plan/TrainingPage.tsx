@@ -38,7 +38,17 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
 
   const registerTraining: SubmitHandler<Readonly<PlanTrainingFormValue>> = (data) => {
     //TODO:FIX user_id
-    insertTraining({ variables: { user_id: 1, training_type_id: data.type, training_weight: data.trainingWeight, training_count: data.count, training_set: data.set, is_finish: false, date: data.date } });
+    insertTraining({
+      variables: {
+        user_id: 1,
+        training_type_id: data.type,
+        training_weight: data.trainingWeight,
+        training_count: data.count,
+        training_set: data.set,
+        is_finish: false,
+        date: data.date,
+      },
+    });
   };
 
   const handleClose = () => {

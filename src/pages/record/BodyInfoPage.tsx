@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import type { VFC } from 'react';
 import { FormContainer, InputField } from '~/components';
-import { getDateInfo } from '~/utils/app';
+import { getDateInfo, getStringTypeDate } from '~/utils/app';
 import { useMutation } from '@apollo/client';
 import { CreateBodyInfoHistoriesDocument, CreateBodyInfoHistoriesMutation } from '~/libs/graphql/generated/graphql';
 import { SubmitHandler } from 'react-hook-form';
+import { CreateBodyInfoHistoriesMutationVariables } from '~/libs/graphql/generated/graphql';
 
 type BodyInfoFormValues = {
   weight: number | '';
@@ -29,7 +30,17 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
     if (data.bodyFatPercentage === '') {
       data.bodyFatPercentage = null;
     }
-    insertBodyInfo({ variables: { height: null, weight: data.weight, body_fat_percentage: data.bodyFatPercentage, date: new Date(), user_id: user_id, is_record: true } });
+    // console.log({ variables: { height: null, weight: data.weight, body_fat_percentage: data.bodyFatPercentage, date: new Date(), user_id: user_id, is_record: true } });
+    insertBodyInfo({
+      variables: {
+        height: null,
+        weight: data.weight,
+        body_fat_percentage: data.bodyFatPercentage,
+        date: getStringTypeDate(new Date()),
+        user_id: user_id,
+        is_record: true,
+      } as CreateBodyInfoHistoriesMutationVariables,
+    });
   };
 
   return (
