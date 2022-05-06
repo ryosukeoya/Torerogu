@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import type { VFC } from 'react';
+import React, { useState, VFC } from 'react';
 import { FormContainer, InputField } from '~/components';
 import { getDateInfo, getStringTypeDate } from '~/utils/app';
 import { useMutation } from '@apollo/client';
-import { CreateBodyInfoHistoriesDocument, CreateBodyInfoHistoriesMutation } from '~/libs/graphql/generated/graphql';
+import { CreateBodyInfoHistoriesMutationVariables, CreateBodyInfoHistoriesDocument, CreateBodyInfoHistoriesMutation } from '~/libs/graphql/generated/graphql';
 import { SubmitHandler } from 'react-hook-form';
-import { CreateBodyInfoHistoriesMutationVariables } from '~/libs/graphql/generated/graphql';
 
 type BodyInfoFormValues = {
   weight: string | '';

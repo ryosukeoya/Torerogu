@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { useCallback } from 'react';
-import type { VFC } from 'react';
+import { VFC, useCallback } from 'react';
 import { ButtonTheme } from './types';
 import { baseLookLikeButton } from '~/styles/shares';
 import { COLOR } from '~/styles/const';

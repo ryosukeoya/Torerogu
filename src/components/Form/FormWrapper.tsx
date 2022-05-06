@@ -1,5 +1,4 @@
-import React from 'react';
-import type { VFC, ReactNode } from 'react';
+import React, { VFC, ReactNode } from 'react';
 import { InputField, Snackbar } from '~/components';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import type { SubmitHandler, UseFormHandleSubmit } from 'react-hook-form';

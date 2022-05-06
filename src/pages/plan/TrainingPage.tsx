@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import type { VFC } from 'react';
+import React, { useState, useEffect, VFC } from 'react';
 import { InputField, SelectField, FormWrapper } from '~/components';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
 import { CREATE_TRAINING } from '~/libs/graphql/mutations';
-import { GetTrainingCategoryWithTypeDocument, GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/libs/graphql/generated/graphql';
+import { GetTrainingCategoryWithTypeDocument, GetTrainingCategoryWithTypeQuery, CreateBodyInfoHistoriesMutationVariables, CreateTrainingMutation } from '~/libs/graphql/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
 import { getStringTypeDate, getNumArr, getTrainingTypesFromCategoryID } from '~/utils';
 
 type PlanTrainingFormValue = {
-  date: Date;
+  date: string;
   category: string;
   type: string;
   trainingWeight: string;

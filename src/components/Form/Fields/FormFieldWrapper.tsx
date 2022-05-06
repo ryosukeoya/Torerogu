@@ -1,5 +1,4 @@
-import React from 'react';
-import type { VFC, ReactNode } from 'react';
+import React, { VFC, ReactNode } from 'react';
 import { fieldStyle } from './fieldStyle';
 import type { FormItemConf } from '../formTypes';
 import { FieldErrors, FieldValues } from 'react-hook-form';

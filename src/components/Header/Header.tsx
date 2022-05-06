@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
-import type { VFC } from 'react';
+import React, { VFC } from 'react';
 import { css } from '@emotion/react';
 import { COLOR, HEADER } from '~/styles/const';
 import { media } from '~/styles/shares';

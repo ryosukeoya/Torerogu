@@ -1,10 +1,9 @@
 import type { VFC, SetStateAction, Dispatch } from 'react';
 import { getDataSpecifiedDate, getDateInfo } from '~/utils';
-import type { TrainingTrainingType } from './types';
 import { css } from '@emotion/react';
 import { FONT, COLOR } from '~/styles/const';
 import { clearFix } from '~/styles/shares/app';
-import type { ScheduleCategories } from './types';
+import type { TrainingTrainingType, ScheduleCategories } from './types';
 import { DeleteTrainingDocument, DeleteTrainingMutation, GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useMutation } from '@apollo/client';
 

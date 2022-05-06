@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import type { VFC } from 'react';
+import { useState, useEffect, useRef, VFC } from 'react';
 import { ModalWrapper, PrimaryNavigationPresenter } from '~/components';
 import ModalContent from './ModalContent';
 import { pageTemplate } from '~/styles/shares/pageTemplate';

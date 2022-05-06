@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import type { VFC, Dispatch, SetStateAction } from 'react';
+import React, { useState, VFC, Dispatch, SetStateAction } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import { orange } from '@mui/material/colors';
 
@@ -10,7 +9,7 @@ type Props = {
 };
 
 /**
- * material ui 
+ * material ui
  */
 const CheckboxMU: VFC<Props> = ({ initIsChecked, id, handleClick }) => {
   const [isChecked, setIsChecked] = useState<boolean>(initIsChecked ? initIsChecked : false);

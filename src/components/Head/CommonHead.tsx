@@ -1,5 +1,4 @@
-import React from 'react';
-import type { VFC } from 'react';
+import React, { VFC } from 'react';
 import Head from 'next/head';
 import { APP } from '~/constants';
 

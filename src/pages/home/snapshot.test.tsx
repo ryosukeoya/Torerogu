@@ -1,9 +1,8 @@
 import React from 'react';
 import { act } from '@testing-library/react';
-import { getTrainingOneTypeMock } from '~/tests/mocks/datum/getTrainingOneTypeMock';
 import Home from '~/pages/home/index.p';
 import { testRendererUsingApolloClientMock } from '~/tests/mocks/renders';
-import { trainingOneType } from '~/tests/mocks/datum/training';
+import { trainingOneType, getTrainingOneTypeMock } from '~/tests/mocks/datum/getTrainingOneTypeMock';
 
 jest.mock('next/router', () => ({
   useRouter() {

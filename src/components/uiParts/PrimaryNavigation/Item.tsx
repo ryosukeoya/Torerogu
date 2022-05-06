@@ -1,9 +1,8 @@
 import type { VFC, Dispatch } from 'react';
 import { useIsActive } from '~/hooks';
-import { SetterOrUpdater, useSetRecoilState } from 'recoil';
+import { useRecoilValue, SetterOrUpdater, useSetRecoilState } from 'recoil';
 import { useGetItemCss } from './useGetCss';
 import { Theme, CustomCss } from './types';
-import { useRecoilValue } from 'recoil';
 import { swiperAtom, pageIndexAtom } from '~/store/atoms';
 
 type Props = {

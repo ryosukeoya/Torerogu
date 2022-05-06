@@ -1,5 +1,4 @@
-import React from 'react';
-import type { VFC, ComponentProps } from 'react';
+import React, { VFC, ComponentProps } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { useFormContext } from 'react-hook-form';
 import { fieldStyle } from './fieldStyle';
