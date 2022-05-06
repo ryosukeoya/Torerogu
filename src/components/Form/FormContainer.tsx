@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { InputField, Snackbar } from '~/components';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
-import type { useForm, FormProvider, FieldValues, SubmitHandler } from 'react-hook-form';
+import { useForm, FormProvider, FieldValues, SubmitHandler } from 'react-hook-form';
 
 type Props<T extends FieldValues> = {
   pageIndex: number;

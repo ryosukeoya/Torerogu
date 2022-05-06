@@ -1,20 +1,10 @@
-import React, { useState } from 'react';
-import type { VFC } from 'react';
+import React, { useState, VFC } from 'react';
 import { CreateTrainingDocument, GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/libs/graphql/generated/graphql';
-import { FormContainer, Carousel, SelectField, CardWrapper } from '~/components';
-import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { SubmitHandler } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
-import { css } from '@emotion/react';
-import { getNumArr, getTrainingTypesFromCategoryIndex } from '~/utils';
-
-type TrainingType = Omit<GetTrainingCategoryWithTypeQuery['training_types'][number], '__typename'>;
-
-type TrainingFormValues = {
-  trainingWeight: number;
-  set: number;
-  count: number;
-};
+import TrainingSelection from './TrainingSelection';
+import TrainingForm from './TrainingForm';
+import type { TrainingType, TrainingFormValues } from './types';
 
 type Props = {
   data?: GetTrainingCategoryWithTypeQuery;
@@ -52,46 +42,10 @@ const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
 
   if (selectedTrainingType) {
     //TODO:回数ではない場合、ex.ランニング
-    return (
-      <FormContainer<TrainingFormValues>
-        pageIndex={pageIndex}
-        submitFunc={registerTraining}
-        title={`✏️ ${selectedTrainingType.name}`}
-        open={open}
-        handleClose={() => {
-          setOpen(false);
-        }}
-        lastElm={
-          <p css={pageTemplate.back} onClick={() => setSelectedTrainingType(null)}>
-            ＜ カテゴリ選択に戻る
-          </p>
-        }
-      >
-        <SelectField formConf={{ name: 'trainingWeight', options: { required: true } }} title={'重量 (kg)'} texts={getNumArr(10, 200, 5)} marginBottom={42} isRequired />
-        <SelectField formConf={{ name: 'count', options: { required: true } }} title={'回数'} texts={getNumArr(1, 100, 1)} marginBottom={42} isRequired />
-        <SelectField formConf={{ name: 'set', options: { required: true } }} title={'セット数'} texts={getNumArr(1, 30, 1)} marginBottom={42} isRequired />
-      </FormContainer>
-    );
+    return <TrainingForm pageIndex={pageIndex} open={open} setOpen={setOpen} selectedTrainingType={selectedTrainingType} setSelectedTrainingType={setSelectedTrainingType} registerTraining={registerTraining} />;
   } else {
-    return (
-      <div css={pageTemplate.contentArea}>
-        <Carousel items={data?.training_categories} setState={setSelectedCategoryIndex} />
-        {getTrainingTypesFromCategoryIndex(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
-          return (
-            <CardWrapper handleClick={() => handleClick(training_type)} key={training_type.id} customCardCss={styles.card}>
-              {training_type.name}
-            </CardWrapper>
-          );
-        })}
-      </div>
-    );
+    return <TrainingSelection data={data} handleClick={handleClick} selectedCategoryIndex={selectedCategoryIndex} setSelectedCategoryIndex={setSelectedCategoryIndex} />;
   }
 };
 
 export default TrainingPage;
-
-const styles = {
-  card: css`
-    margin-bottom: 15px;
-  `,
-};

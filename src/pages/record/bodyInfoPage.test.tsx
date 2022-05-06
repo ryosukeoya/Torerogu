@@ -1,7 +1,7 @@
 import BodyInfoPage from './BodyInfoPage';
 import { screen, act, fireEvent } from '@testing-library/react';
 import { testRendererUsingApolloClientMock } from '~/tests/mocks/renders/testRendererUsingApolloClientMock';
-import { createBodyInfoHistories, recordPageVariables } from '~/tests/mocks/datum/createBodyInfoHistoriesMock';
+import { createBodyInfoHistoriesMock, recordPageVariables } from '~/tests/mocks/datum/createBodyInfoHistoriesMock';
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -13,7 +13,7 @@ jest.mock('next/router', () => ({
 jest.mock('~/components/PageSlider/useChangeSettingOnInWindowSize');
 
 describe('Integration Test', () => {
-  const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} />, [createBodyInfoHistories(recordPageVariables)]);
+  const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} />, [createBodyInfoHistoriesMock(recordPageVariables)]);
   
   it('必須項目が入力されている状態で送信ボタンをクリックした場合、登録処理が実行され、スナックバーが表示される', async () => {
     renderPage();
