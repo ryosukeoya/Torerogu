@@ -16,7 +16,7 @@ jest.mock('~/components/PageSlider/useChangeSettingOnInWindowSize');
 describe('Integration Test', () => {
   const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} />, [createBodyInfoHistories(planPageVariables)]);
 
-  it('必須項目が入力されている状態で送信ボタンをクリックした場合、スナックバーが表示される', async () => {
+  it('必須項目が入力されている状態で送信ボタンをクリックした場合、登録処理が実行され、スナックバーが表示される', async () => {
     renderPage();
     const submitButton = screen.getByTestId('submit');
     const dateInput: HTMLInputElement = screen.getByTestId('date');
