@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import type { VFC } from 'react';
+import React, { useState, useEffect, VFC } from 'react';
 import { InputField, SelectField, FormWrapper } from '~/components';
 import { SubmitHandler, useForm, FormProvider } from 'react-hook-form';
-import { GET_TRAINING_CATEGORY_WITH_TYPE } from '~/libs/graphql/queries';
 import { CREATE_TRAINING } from '~/libs/graphql/mutations';
-import type { GetTrainingCategoryWithTypeQuery, CreateTrainingMutation } from '~/types/generated/graphql';
+import { GetTrainingCategoryWithTypeDocument, GetTrainingCategoryWithTypeQuery, CreateBodyInfoHistoriesMutationVariables, CreateTrainingMutation } from '~/libs/graphql/generated/graphql';
 import { useQuery, useMutation } from '@apollo/client';
 import { getStringTypeDate, getNumArr, getTrainingTypesFromCategoryID } from '~/utils';
 
 type PlanTrainingFormValue = {
-  date: Date;
+  date: string;
   category: string;
   type: string;
   trainingWeight: string;
@@ -25,7 +23,7 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategoryID, setSelectedCategoryID] = useState<number>(1);
 
-  const { data } = useQuery<GetTrainingCategoryWithTypeQuery>(GET_TRAINING_CATEGORY_WITH_TYPE);
+  const { data } = useQuery<GetTrainingCategoryWithTypeQuery>(GetTrainingCategoryWithTypeDocument);
   const [insertTraining] = useMutation<CreateTrainingMutation>(CREATE_TRAINING, {
     onCompleted: () => setOpen(true),
   });
@@ -34,15 +32,22 @@ const TrainingPage: VFC<Props> = ({ pageIndex }) => {
   const categoryField: string = watch('category');
 
   useEffect(() => {
-    const categoryFieldArr: string[] = categoryField?.split(',');
-    if (categoryFieldArr?.length >= 2) {
-      setSelectedCategoryID(parseInt(categoryFieldArr[0]));
-    }
+    setSelectedCategoryID(parseInt(categoryField));
   }, [categoryField]);
 
   const registerTraining: SubmitHandler<Readonly<PlanTrainingFormValue>> = (data) => {
     //TODO:FIX user_id
-    insertTraining({ variables: { user_id: 1, training_type_id: data.type, training_weight: data.trainingWeight, training_count: data.count, training_set: data.set, is_finish: false, date: data.date } });
+    insertTraining({
+      variables: {
+        user_id: 1,
+        training_type_id: data.type,
+        training_weight: data.trainingWeight,
+        training_count: data.count,
+        training_set: data.set,
+        is_finish: false,
+        date: data.date,
+      },
+    });
   };
 
   const handleClose = () => {

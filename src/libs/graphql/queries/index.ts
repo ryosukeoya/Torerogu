@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_TRAINING_ONE_TYPE = gql`
-  query GetTrainingOneType($date: date) {
+  query GetTrainingOneType($date: date!) {
     trainings(where: { date: { _eq: $date } }) {
       id
       user_id

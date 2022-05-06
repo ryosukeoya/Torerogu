@@ -1,4 +1,4 @@
-import type { VFC, Dispatch, SetStateAction, ComponentProps } from 'react';
+import type { VFC, ComponentProps } from 'react';
 import { useRipple } from '~/hooks';
 import { rippleWrapper } from '~/styles/shares';
 import { ripple } from '~/styles/shares/ripple';
@@ -13,12 +13,11 @@ type InputProps = ComponentProps<'input'>;
 interface Props extends InputProps {
   title?: string;
   customCss?: SerializedStyles;
-  setState?: Dispatch<SetStateAction<unknown>>;
   unit?: string;
   formConf?: FormItemConf;
 }
 
-const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ...inputProps }) => {
+const InputField: VFC<Props> = ({ title, customCss, unit, formConf, ...inputProps }) => {
   const [coords, setCoords, isRippling] = useRipple(300);
 
   const {
@@ -65,7 +64,7 @@ const InputField: VFC<Props> = ({ title, customCss, setState, unit, formConf, ..
     default:
       return (
         <FormFieldWrapper title={title} unit={unit} formConf={formConf} errors={errors}>
-          <input {...inputProps} {...(formConf && { ...register(formConf.name, formConf.options) })} onChange={(e) => setState && setState(e.target.value)} css={[inputFieldStyle.input, customCss]} />
+          <input {...inputProps} {...(formConf && { ...register(formConf.name, formConf.options) })} css={[inputFieldStyle.input, customCss]} />
         </FormFieldWrapper>
       );
   }

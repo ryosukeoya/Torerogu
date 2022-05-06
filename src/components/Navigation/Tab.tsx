@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
-import type { VFC } from 'react';
+import React, { useState, useEffect, VFC } from 'react';
 import { css, keyframes, SerializedStyles } from '@emotion/react';
 import { getIcon } from './getIcon';
 import { PAGE_PATH } from '~/constants';
@@ -91,10 +90,10 @@ const styles = {
         border-radius: 30px;
         margin-bottom: 10px;
         @media (hover: hover) {
-        &:hover {
-          background-color: ${COLOR.HOVER_RED};
+          &:hover {
+            background-color: ${COLOR.HOVER_RED};
+          }
         }
-      }
       `,
     )}
   `,

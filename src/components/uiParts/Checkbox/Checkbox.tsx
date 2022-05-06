@@ -1,5 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
-import type { VFC } from 'react';
+import React, { Dispatch, SetStateAction, useState, VFC } from 'react';
 
 type Props = {
   initIsChecked?: boolean;

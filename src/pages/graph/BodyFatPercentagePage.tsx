@@ -1,5 +1,4 @@
-import React from 'react';
-import type { VFC } from 'react';
+import React, { VFC } from 'react';
 import { pageTemplate } from '~/styles/shares';
 
 const BodyFatPercentagePage: VFC = () => {

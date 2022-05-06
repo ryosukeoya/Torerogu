@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import type { VFC } from 'react';
+import { useState, useEffect, useRef, VFC } from 'react';
 import { ModalWrapper, PrimaryNavigationPresenter } from '~/components';
 import ModalContent from './ModalContent';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
@@ -8,8 +7,7 @@ import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
 import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate } from '~/utils';
 import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } from './types';
-import type { GetTrainingTrainingTypeQuery } from '~/types/generated/graphql';
-import { GET_TRAINING_TRAINING_TYPE } from '~/libs/graphql/queries';
+import { GetTrainingTrainingTypeDocument, GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
 import { media } from '~/styles/shares';
 
@@ -17,7 +15,7 @@ const SchedulePage: VFC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [activeIndex, setActiveIndex] = useState<number>(1);
-  const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GET_TRAINING_TRAINING_TYPE, {
+  const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GetTrainingTrainingTypeDocument, {
     fetchPolicy: 'network-only',
   });
   const [trainings, setTrainings] = useState<TrainingTrainingType>(data?.trainings);

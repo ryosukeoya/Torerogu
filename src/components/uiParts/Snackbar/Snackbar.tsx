@@ -1,6 +1,5 @@
 /* eslint-disable consistent-default-export-name/default-export-match-filename */
-import React, { forwardRef } from 'react';
-import type { VFC } from 'react';
+import React, { forwardRef, VFC } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 // eslint-disable-next-line consistent-default-export-name/default-import-match-filename
 import MuiAlert, { AlertProps } from '@mui/material/Alert';

@@ -1,9 +1,7 @@
-import React from 'react';
-import type { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { InputField, Snackbar } from '~/components';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
-import type { FieldValues, SubmitHandler } from 'react-hook-form';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider, FieldValues, SubmitHandler } from 'react-hook-form';
 
 type Props<T extends FieldValues> = {
   pageIndex: number;
@@ -29,7 +27,7 @@ const FormContainer = <T,>(props: Props<T>) => {
           {firstElm}
           <h2 css={pageTemplate.title}>{title}</h2>
           {children}
-          <InputField type='submit' value='' />
+          <InputField type='submit' value='' data-testid='submit' />
           <Snackbar pageIndex={pageIndex} text={'記録しました！'} open={open} handleClose={handleClose} />
           {lastElm}
         </div>

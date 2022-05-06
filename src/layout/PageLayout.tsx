@@ -1,5 +1,4 @@
-import React from 'react';
-import type { VFC, ReactNode } from 'react';
+import React, { VFC, ReactNode } from 'react';
 import { PrimaryNavigationGlobalState } from '~/components';
 import { media } from '~/styles/shares';
 import { css } from '@emotion/react';
@@ -14,7 +13,7 @@ const PageLayout: VFC<Props> = ({ mainContentWidth, children: mainContentChildre
   const tabNames = useGetTabTitleFromRoute();
 
   return (
-    <>
+    <div data-testid='page'>
       <PrimaryNavigationGlobalState
         titles={tabNames}
         theme='basicTab'
@@ -30,7 +29,7 @@ const PageLayout: VFC<Props> = ({ mainContentWidth, children: mainContentChildre
         }}
       />
       {mainContentChildren}
-    </>
+    </div>
   );
 };
 

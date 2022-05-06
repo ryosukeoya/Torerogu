@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
-import { GET_TRAINING_CATEGORY_WITH_TYPE } from '~/libs/graphql/queries';
-import type { GetTrainingCategoryWithTypeQuery } from '~/types/generated/graphql';
+import { GetTrainingCategoryWithTypeDocument, GetTrainingCategoryWithTypeQuery } from '~/libs/graphql/generated/graphql';
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
@@ -12,7 +11,7 @@ export async function getStaticProps() {
   const apolloClient = initializeApollo();
 
   const data = await apolloClient.query({
-    query: GET_TRAINING_CATEGORY_WITH_TYPE,
+    query: GetTrainingCategoryWithTypeDocument,
   });
 
   return {

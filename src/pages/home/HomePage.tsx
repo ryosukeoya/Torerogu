@@ -1,26 +1,28 @@
-import React from 'react';
-import type { VFC } from 'react';
+import React, { VFC } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { pageTemplate } from '../../styles/shares/pageTemplate';
-import type { GetTrainingOneTypeQuery } from '../../types/generated/graphql';
 import { CheckboxMU } from '~/components';
-import { UPDATE_TRAINING_IS_FINISH } from '~/libs/graphql/mutations';
 import { useMutation } from '@apollo/client';
-import type { UpdateTrainingIsFinishMutation } from '~/types/generated/graphql';
+import { UpdateTrainingIsFinishDocument, GetTrainingOneTypeQuery, UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables } from '~/libs/graphql/generated/graphql';
 
 type Props = {
   data?: GetTrainingOneTypeQuery;
 };
 
 const HomePage: VFC<Props> = ({ data }) => {
-  const [updateTraining, {}] = useMutation<UpdateTrainingIsFinishMutation>(UPDATE_TRAINING_IS_FINISH);
+  const [updateTraining, {}] = useMutation<UpdateTrainingIsFinishMutation>(UpdateTrainingIsFinishDocument);
 
   const handleClick = (id: number, is_finish: boolean) => {
-    updateTraining({ variables: { id: id, is_finish: !is_finish } });
+    updateTraining({
+      variables: {
+        id: id,
+        is_finish: !is_finish,
+      } as UpdateTrainingIsFinishMutationVariables,
+    });
   };
 
   return (
@@ -45,7 +47,7 @@ const HomePage: VFC<Props> = ({ data }) => {
           </div>
         );
       })}
-      {data?.trainings.length === 0 && <p>※ 本日予定のトレーニングはありません</p>}
+      {data?.trainings.length === 0 && <p data-testid='no-data'>※ 本日予定のトレーニングはありません</p>}
     </div>
   );
 };

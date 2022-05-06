@@ -3,7 +3,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer } fro
 import { PrimaryNavigationPresenter } from '~/components';
 import { COLOR } from '~/styles/const';
 import { getSortedDataFromDate, getDataExtractionInSpecifiedPeriod, getGraphPeriodFromActiveIndex } from '~/utils/graph';
-import type { GetTrainingWithBodyInfoQuery } from '~/types/generated/graphql';
+import type { GetTrainingWithBodyInfoQuery } from '~/libs/graphql/generated/graphql';
 import { pageTemplate } from '~/styles/shares';
 import { css } from '@emotion/react';
 

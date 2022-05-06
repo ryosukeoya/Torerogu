@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
-import type { VFC } from 'react';
+import React, { useState, VFC } from 'react';
 import { css, keyframes } from '@emotion/react';
 import { APP } from '~/constants';
 import { COLOR, FONT } from '~/styles/const';
