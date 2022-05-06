@@ -3,6 +3,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "no-duplicate-imports": "error",
     "no-console": ["error", { "allow": ["warn", "error", "info", "debug"] }],
     "no-var": "error",
     "default-case": ["warn", { "commentPattern": "^skip\\sdefault" }],
