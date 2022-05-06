@@ -23,7 +23,7 @@ const FormWrapper: VFC<Props> = ({ pageIndex, handleSubmit, submitFunc, title, o
         {firstElm}
         <h2 css={pageTemplate.title}>{title}</h2>
         {children}
-        <InputField type='submit' value='' />
+        <InputField type='submit' value='' data-testid='submit' />
         <Snackbar pageIndex={pageIndex} text={'記録しました！'} open={open} handleClose={handleClose} />
         {lastElm}
       </div>
