@@ -22,16 +22,12 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
   });
 
   const registerBodyInfo: SubmitHandler<PlanBodyInfoFormValues> = (data) => {
-    // TODO:FIX
-    const user_id = 1;
-
     insertBodyInfo({
       variables: {
         height: null,
         weight: Number(data.weight),
         body_fat_percentage: data.bodyFatPercentage !== '' ? Number(data.bodyFatPercentage) : null,
         date: data.date,
-        user_id: user_id,
         is_record: false,
       } as CreateBodyInfoHistoriesMutationVariables,
     });
