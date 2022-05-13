@@ -9,10 +9,10 @@ const CommonHead: VFC = () => {
       <meta name='theme-color' content='#333' />
       <meta property='og:type' content='website' />
       <meta property='og:title' content={APP.NAME} />
-      <meta property='og:url' content={process.env.APP_URL} />
+      <meta property='og:url' content={process.env.NEXT_PUBLIC_BASE_URL} />
       <meta property='og:description' content={APP.DESC} />
       <meta property='og:site_name' content={APP.NAME} />
-      <meta property='og:image' content={`${process.env.APP_URL}/ogp.png`} />
+      <meta property='og:image' content={`${process.env.NEXT_PUBLIC_BASE_URL}/ogp.png`} />
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='format-detection' content='telephone=no' />
       <link rel='preconnect' href='https://fonts.googleapis.com' />
