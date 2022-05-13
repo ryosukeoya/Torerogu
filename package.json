@@ -5,7 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "g-types": "graphql-codegen --require dotenv/config --config codegen.yml",
+    "g-types": "graphql-codegen --require dotenv/config --config codegen.js",
     "type": "tsc --noEmit",
     "type-lint": "tsc --noEmit && eslint .",
     "lint": "next lint --dir src",
