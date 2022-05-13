@@ -87,48 +87,8 @@ export type Body_Info_Data_Histories = {
   id: Scalars['Int'];
   is_record: Scalars['Boolean'];
   updated_at: Scalars['timestamptz'];
-  user_id: Scalars['Int'];
+  user_id: Scalars['String'];
   weight: Scalars['numeric'];
-};
-
-/** aggregated selection of "body_info_data_histories" */
-export type Body_Info_Data_Histories_Aggregate = {
-  __typename?: 'body_info_data_histories_aggregate';
-  aggregate?: Maybe<Body_Info_Data_Histories_Aggregate_Fields>;
-  nodes: Array<Body_Info_Data_Histories>;
-};
-
-/** aggregate fields of "body_info_data_histories" */
-export type Body_Info_Data_Histories_Aggregate_Fields = {
-  __typename?: 'body_info_data_histories_aggregate_fields';
-  avg?: Maybe<Body_Info_Data_Histories_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Body_Info_Data_Histories_Max_Fields>;
-  min?: Maybe<Body_Info_Data_Histories_Min_Fields>;
-  stddev?: Maybe<Body_Info_Data_Histories_Stddev_Fields>;
-  stddev_pop?: Maybe<Body_Info_Data_Histories_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Body_Info_Data_Histories_Stddev_Samp_Fields>;
-  sum?: Maybe<Body_Info_Data_Histories_Sum_Fields>;
-  var_pop?: Maybe<Body_Info_Data_Histories_Var_Pop_Fields>;
-  var_samp?: Maybe<Body_Info_Data_Histories_Var_Samp_Fields>;
-  variance?: Maybe<Body_Info_Data_Histories_Variance_Fields>;
-};
-
-
-/** aggregate fields of "body_info_data_histories" */
-export type Body_Info_Data_Histories_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Body_Info_Data_Histories_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** aggregate avg on columns */
-export type Body_Info_Data_Histories_Avg_Fields = {
-  __typename?: 'body_info_data_histories_avg_fields';
-  body_fat_percentage?: Maybe<Scalars['Float']>;
-  height?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
-  weight?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "body_info_data_histories". All fields are combined with a logical 'AND'. */
@@ -143,7 +103,7 @@ export type Body_Info_Data_Histories_Bool_Exp = {
   id?: InputMaybe<Int_Comparison_Exp>;
   is_record?: InputMaybe<Boolean_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-  user_id?: InputMaybe<Int_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
   weight?: InputMaybe<Numeric_Comparison_Exp>;
 };
 
@@ -158,7 +118,6 @@ export type Body_Info_Data_Histories_Inc_Input = {
   body_fat_percentage?: InputMaybe<Scalars['Int']>;
   height?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['Int']>;
-  user_id?: InputMaybe<Scalars['Int']>;
   weight?: InputMaybe<Scalars['numeric']>;
 };
 
@@ -171,34 +130,7 @@ export type Body_Info_Data_Histories_Insert_Input = {
   id?: InputMaybe<Scalars['Int']>;
   is_record?: InputMaybe<Scalars['Boolean']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
-  user_id?: InputMaybe<Scalars['Int']>;
   weight?: InputMaybe<Scalars['numeric']>;
-};
-
-/** aggregate max on columns */
-export type Body_Info_Data_Histories_Max_Fields = {
-  __typename?: 'body_info_data_histories_max_fields';
-  body_fat_percentage?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  date?: Maybe<Scalars['timestamptz']>;
-  height?: Maybe<Scalars['numeric']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
-  weight?: Maybe<Scalars['numeric']>;
-};
-
-/** aggregate min on columns */
-export type Body_Info_Data_Histories_Min_Fields = {
-  __typename?: 'body_info_data_histories_min_fields';
-  body_fat_percentage?: Maybe<Scalars['Int']>;
-  created_at?: Maybe<Scalars['timestamptz']>;
-  date?: Maybe<Scalars['timestamptz']>;
-  height?: Maybe<Scalars['numeric']>;
-  id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
-  weight?: Maybe<Scalars['numeric']>;
 };
 
 /** response of any mutation on the table "body_info_data_histories" */
@@ -266,48 +198,7 @@ export type Body_Info_Data_Histories_Set_Input = {
   id?: InputMaybe<Scalars['Int']>;
   is_record?: InputMaybe<Scalars['Boolean']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
-  user_id?: InputMaybe<Scalars['Int']>;
   weight?: InputMaybe<Scalars['numeric']>;
-};
-
-/** aggregate stddev on columns */
-export type Body_Info_Data_Histories_Stddev_Fields = {
-  __typename?: 'body_info_data_histories_stddev_fields';
-  body_fat_percentage?: Maybe<Scalars['Float']>;
-  height?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
-  weight?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Body_Info_Data_Histories_Stddev_Pop_Fields = {
-  __typename?: 'body_info_data_histories_stddev_pop_fields';
-  body_fat_percentage?: Maybe<Scalars['Float']>;
-  height?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
-  weight?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Body_Info_Data_Histories_Stddev_Samp_Fields = {
-  __typename?: 'body_info_data_histories_stddev_samp_fields';
-  body_fat_percentage?: Maybe<Scalars['Float']>;
-  height?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
-  weight?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate sum on columns */
-export type Body_Info_Data_Histories_Sum_Fields = {
-  __typename?: 'body_info_data_histories_sum_fields';
-  body_fat_percentage?: Maybe<Scalars['Int']>;
-  height?: Maybe<Scalars['numeric']>;
-  id?: Maybe<Scalars['Int']>;
-  user_id?: Maybe<Scalars['Int']>;
-  weight?: Maybe<Scalars['numeric']>;
 };
 
 /** update columns of table "body_info_data_histories" */
@@ -327,40 +218,8 @@ export enum Body_Info_Data_Histories_Update_Column {
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
-  UserId = 'user_id',
-  /** column name */
   Weight = 'weight'
 }
-
-/** aggregate var_pop on columns */
-export type Body_Info_Data_Histories_Var_Pop_Fields = {
-  __typename?: 'body_info_data_histories_var_pop_fields';
-  body_fat_percentage?: Maybe<Scalars['Float']>;
-  height?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
-  weight?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate var_samp on columns */
-export type Body_Info_Data_Histories_Var_Samp_Fields = {
-  __typename?: 'body_info_data_histories_var_samp_fields';
-  body_fat_percentage?: Maybe<Scalars['Float']>;
-  height?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
-  weight?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate variance on columns */
-export type Body_Info_Data_Histories_Variance_Fields = {
-  __typename?: 'body_info_data_histories_variance_fields';
-  body_fat_percentage?: Maybe<Scalars['Float']>;
-  height?: Maybe<Scalars['Float']>;
-  id?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
-  weight?: Maybe<Scalars['Float']>;
-};
 
 /** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
 export type Date_Comparison_Exp = {
@@ -382,62 +241,26 @@ export type Mutation_Root = {
   delete_body_info_data_histories?: Maybe<Body_Info_Data_Histories_Mutation_Response>;
   /** delete single row from the table: "body_info_data_histories" */
   delete_body_info_data_histories_by_pk?: Maybe<Body_Info_Data_Histories>;
-  /** delete data from the table: "training_categories" */
-  delete_training_categories?: Maybe<Training_Categories_Mutation_Response>;
-  /** delete single row from the table: "training_categories" */
-  delete_training_categories_by_pk?: Maybe<Training_Categories>;
-  /** delete data from the table: "training_types" */
-  delete_training_types?: Maybe<Training_Types_Mutation_Response>;
-  /** delete single row from the table: "training_types" */
-  delete_training_types_by_pk?: Maybe<Training_Types>;
   /** delete data from the table: "trainings" */
   delete_trainings?: Maybe<Trainings_Mutation_Response>;
   /** delete single row from the table: "trainings" */
   delete_trainings_by_pk?: Maybe<Trainings>;
-  /** delete data from the table: "users" */
-  delete_users?: Maybe<Users_Mutation_Response>;
-  /** delete single row from the table: "users" */
-  delete_users_by_pk?: Maybe<Users>;
   /** insert data into the table: "body_info_data_histories" */
   insert_body_info_data_histories?: Maybe<Body_Info_Data_Histories_Mutation_Response>;
   /** insert a single row into the table: "body_info_data_histories" */
   insert_body_info_data_histories_one?: Maybe<Body_Info_Data_Histories>;
-  /** insert data into the table: "training_categories" */
-  insert_training_categories?: Maybe<Training_Categories_Mutation_Response>;
-  /** insert a single row into the table: "training_categories" */
-  insert_training_categories_one?: Maybe<Training_Categories>;
-  /** insert data into the table: "training_types" */
-  insert_training_types?: Maybe<Training_Types_Mutation_Response>;
-  /** insert a single row into the table: "training_types" */
-  insert_training_types_one?: Maybe<Training_Types>;
   /** insert data into the table: "trainings" */
   insert_trainings?: Maybe<Trainings_Mutation_Response>;
   /** insert a single row into the table: "trainings" */
   insert_trainings_one?: Maybe<Trainings>;
-  /** insert data into the table: "users" */
-  insert_users?: Maybe<Users_Mutation_Response>;
-  /** insert a single row into the table: "users" */
-  insert_users_one?: Maybe<Users>;
   /** update data of the table: "body_info_data_histories" */
   update_body_info_data_histories?: Maybe<Body_Info_Data_Histories_Mutation_Response>;
   /** update single row of the table: "body_info_data_histories" */
   update_body_info_data_histories_by_pk?: Maybe<Body_Info_Data_Histories>;
-  /** update data of the table: "training_categories" */
-  update_training_categories?: Maybe<Training_Categories_Mutation_Response>;
-  /** update single row of the table: "training_categories" */
-  update_training_categories_by_pk?: Maybe<Training_Categories>;
-  /** update data of the table: "training_types" */
-  update_training_types?: Maybe<Training_Types_Mutation_Response>;
-  /** update single row of the table: "training_types" */
-  update_training_types_by_pk?: Maybe<Training_Types>;
   /** update data of the table: "trainings" */
   update_trainings?: Maybe<Trainings_Mutation_Response>;
   /** update single row of the table: "trainings" */
   update_trainings_by_pk?: Maybe<Trainings>;
-  /** update data of the table: "users" */
-  update_users?: Maybe<Users_Mutation_Response>;
-  /** update single row of the table: "users" */
-  update_users_by_pk?: Maybe<Users>;
 };
 
 
@@ -454,30 +277,6 @@ export type Mutation_RootDelete_Body_Info_Data_Histories_By_PkArgs = {
 
 
 /** mutation root */
-export type Mutation_RootDelete_Training_CategoriesArgs = {
-  where: Training_Categories_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Training_Categories_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Training_TypesArgs = {
-  where: Training_Types_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Training_Types_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
-
-/** mutation root */
 export type Mutation_RootDelete_TrainingsArgs = {
   where: Trainings_Bool_Exp;
 };
@@ -485,18 +284,6 @@ export type Mutation_RootDelete_TrainingsArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Trainings_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_UsersArgs = {
-  where: Users_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootDelete_Users_By_PkArgs = {
   id: Scalars['Int'];
 };
 
@@ -516,34 +303,6 @@ export type Mutation_RootInsert_Body_Info_Data_Histories_OneArgs = {
 
 
 /** mutation root */
-export type Mutation_RootInsert_Training_CategoriesArgs = {
-  objects: Array<Training_Categories_Insert_Input>;
-  on_conflict?: InputMaybe<Training_Categories_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Training_Categories_OneArgs = {
-  object: Training_Categories_Insert_Input;
-  on_conflict?: InputMaybe<Training_Categories_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Training_TypesArgs = {
-  objects: Array<Training_Types_Insert_Input>;
-  on_conflict?: InputMaybe<Training_Types_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Training_Types_OneArgs = {
-  object: Training_Types_Insert_Input;
-  on_conflict?: InputMaybe<Training_Types_On_Conflict>;
-};
-
-
-/** mutation root */
 export type Mutation_RootInsert_TrainingsArgs = {
   objects: Array<Trainings_Insert_Input>;
   on_conflict?: InputMaybe<Trainings_On_Conflict>;
@@ -554,20 +313,6 @@ export type Mutation_RootInsert_TrainingsArgs = {
 export type Mutation_RootInsert_Trainings_OneArgs = {
   object: Trainings_Insert_Input;
   on_conflict?: InputMaybe<Trainings_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_UsersArgs = {
-  objects: Array<Users_Insert_Input>;
-  on_conflict?: InputMaybe<Users_On_Conflict>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Users_OneArgs = {
-  object: Users_Insert_Input;
-  on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
 
@@ -588,38 +333,6 @@ export type Mutation_RootUpdate_Body_Info_Data_Histories_By_PkArgs = {
 
 
 /** mutation root */
-export type Mutation_RootUpdate_Training_CategoriesArgs = {
-  _inc?: InputMaybe<Training_Categories_Inc_Input>;
-  _set?: InputMaybe<Training_Categories_Set_Input>;
-  where: Training_Categories_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Training_Categories_By_PkArgs = {
-  _inc?: InputMaybe<Training_Categories_Inc_Input>;
-  _set?: InputMaybe<Training_Categories_Set_Input>;
-  pk_columns: Training_Categories_Pk_Columns_Input;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Training_TypesArgs = {
-  _inc?: InputMaybe<Training_Types_Inc_Input>;
-  _set?: InputMaybe<Training_Types_Set_Input>;
-  where: Training_Types_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Training_Types_By_PkArgs = {
-  _inc?: InputMaybe<Training_Types_Inc_Input>;
-  _set?: InputMaybe<Training_Types_Set_Input>;
-  pk_columns: Training_Types_Pk_Columns_Input;
-};
-
-
-/** mutation root */
 export type Mutation_RootUpdate_TrainingsArgs = {
   _inc?: InputMaybe<Trainings_Inc_Input>;
   _set?: InputMaybe<Trainings_Set_Input>;
@@ -632,22 +345,6 @@ export type Mutation_RootUpdate_Trainings_By_PkArgs = {
   _inc?: InputMaybe<Trainings_Inc_Input>;
   _set?: InputMaybe<Trainings_Set_Input>;
   pk_columns: Trainings_Pk_Columns_Input;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_UsersArgs = {
-  _inc?: InputMaybe<Users_Inc_Input>;
-  _set?: InputMaybe<Users_Set_Input>;
-  where: Users_Bool_Exp;
-};
-
-
-/** mutation root */
-export type Mutation_RootUpdate_Users_By_PkArgs = {
-  _inc?: InputMaybe<Users_Inc_Input>;
-  _set?: InputMaybe<Users_Set_Input>;
-  pk_columns: Users_Pk_Columns_Input;
 };
 
 /** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
@@ -683,47 +380,24 @@ export type Query_Root = {
   __typename?: 'query_root';
   /** fetch data from the table: "body_info_data_histories" */
   body_info_data_histories: Array<Body_Info_Data_Histories>;
-  /** fetch aggregated fields from the table: "body_info_data_histories" */
-  body_info_data_histories_aggregate: Body_Info_Data_Histories_Aggregate;
   /** fetch data from the table: "body_info_data_histories" using primary key columns */
   body_info_data_histories_by_pk?: Maybe<Body_Info_Data_Histories>;
   /** fetch data from the table: "training_categories" */
   training_categories: Array<Training_Categories>;
-  /** fetch aggregated fields from the table: "training_categories" */
-  training_categories_aggregate: Training_Categories_Aggregate;
   /** fetch data from the table: "training_categories" using primary key columns */
   training_categories_by_pk?: Maybe<Training_Categories>;
   /** fetch data from the table: "training_types" */
   training_types: Array<Training_Types>;
-  /** fetch aggregated fields from the table: "training_types" */
-  training_types_aggregate: Training_Types_Aggregate;
   /** fetch data from the table: "training_types" using primary key columns */
   training_types_by_pk?: Maybe<Training_Types>;
   /** An array relationship */
   trainings: Array<Trainings>;
-  /** An aggregate relationship */
-  trainings_aggregate: Trainings_Aggregate;
   /** fetch data from the table: "trainings" using primary key columns */
   trainings_by_pk?: Maybe<Trainings>;
-  /** fetch data from the table: "users" */
-  users: Array<Users>;
-  /** fetch aggregated fields from the table: "users" */
-  users_aggregate: Users_Aggregate;
-  /** fetch data from the table: "users" using primary key columns */
-  users_by_pk?: Maybe<Users>;
 };
 
 
 export type Query_RootBody_Info_Data_HistoriesArgs = {
-  distinct_on?: InputMaybe<Array<Body_Info_Data_Histories_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Body_Info_Data_Histories_Order_By>>;
-  where?: InputMaybe<Body_Info_Data_Histories_Bool_Exp>;
-};
-
-
-export type Query_RootBody_Info_Data_Histories_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Body_Info_Data_Histories_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -746,30 +420,12 @@ export type Query_RootTraining_CategoriesArgs = {
 };
 
 
-export type Query_RootTraining_Categories_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Training_Categories_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Training_Categories_Order_By>>;
-  where?: InputMaybe<Training_Categories_Bool_Exp>;
-};
-
-
 export type Query_RootTraining_Categories_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
 export type Query_RootTraining_TypesArgs = {
-  distinct_on?: InputMaybe<Array<Training_Types_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Training_Types_Order_By>>;
-  where?: InputMaybe<Training_Types_Bool_Exp>;
-};
-
-
-export type Query_RootTraining_Types_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Training_Types_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -792,39 +448,7 @@ export type Query_RootTrainingsArgs = {
 };
 
 
-export type Query_RootTrainings_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Trainings_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Trainings_Order_By>>;
-  where?: InputMaybe<Trainings_Bool_Exp>;
-};
-
-
 export type Query_RootTrainings_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
-
-export type Query_RootUsersArgs = {
-  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Users_Order_By>>;
-  where?: InputMaybe<Users_Bool_Exp>;
-};
-
-
-export type Query_RootUsers_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Users_Order_By>>;
-  where?: InputMaybe<Users_Bool_Exp>;
-};
-
-
-export type Query_RootUsers_By_PkArgs = {
   id: Scalars['Int'];
 };
 
@@ -832,47 +456,24 @@ export type Subscription_Root = {
   __typename?: 'subscription_root';
   /** fetch data from the table: "body_info_data_histories" */
   body_info_data_histories: Array<Body_Info_Data_Histories>;
-  /** fetch aggregated fields from the table: "body_info_data_histories" */
-  body_info_data_histories_aggregate: Body_Info_Data_Histories_Aggregate;
   /** fetch data from the table: "body_info_data_histories" using primary key columns */
   body_info_data_histories_by_pk?: Maybe<Body_Info_Data_Histories>;
   /** fetch data from the table: "training_categories" */
   training_categories: Array<Training_Categories>;
-  /** fetch aggregated fields from the table: "training_categories" */
-  training_categories_aggregate: Training_Categories_Aggregate;
   /** fetch data from the table: "training_categories" using primary key columns */
   training_categories_by_pk?: Maybe<Training_Categories>;
   /** fetch data from the table: "training_types" */
   training_types: Array<Training_Types>;
-  /** fetch aggregated fields from the table: "training_types" */
-  training_types_aggregate: Training_Types_Aggregate;
   /** fetch data from the table: "training_types" using primary key columns */
   training_types_by_pk?: Maybe<Training_Types>;
   /** An array relationship */
   trainings: Array<Trainings>;
-  /** An aggregate relationship */
-  trainings_aggregate: Trainings_Aggregate;
   /** fetch data from the table: "trainings" using primary key columns */
   trainings_by_pk?: Maybe<Trainings>;
-  /** fetch data from the table: "users" */
-  users: Array<Users>;
-  /** fetch aggregated fields from the table: "users" */
-  users_aggregate: Users_Aggregate;
-  /** fetch data from the table: "users" using primary key columns */
-  users_by_pk?: Maybe<Users>;
 };
 
 
 export type Subscription_RootBody_Info_Data_HistoriesArgs = {
-  distinct_on?: InputMaybe<Array<Body_Info_Data_Histories_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Body_Info_Data_Histories_Order_By>>;
-  where?: InputMaybe<Body_Info_Data_Histories_Bool_Exp>;
-};
-
-
-export type Subscription_RootBody_Info_Data_Histories_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Body_Info_Data_Histories_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -895,30 +496,12 @@ export type Subscription_RootTraining_CategoriesArgs = {
 };
 
 
-export type Subscription_RootTraining_Categories_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Training_Categories_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Training_Categories_Order_By>>;
-  where?: InputMaybe<Training_Categories_Bool_Exp>;
-};
-
-
 export type Subscription_RootTraining_Categories_By_PkArgs = {
   id: Scalars['Int'];
 };
 
 
 export type Subscription_RootTraining_TypesArgs = {
-  distinct_on?: InputMaybe<Array<Training_Types_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Training_Types_Order_By>>;
-  where?: InputMaybe<Training_Types_Bool_Exp>;
-};
-
-
-export type Subscription_RootTraining_Types_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Training_Types_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
@@ -941,39 +524,7 @@ export type Subscription_RootTrainingsArgs = {
 };
 
 
-export type Subscription_RootTrainings_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Trainings_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Trainings_Order_By>>;
-  where?: InputMaybe<Trainings_Bool_Exp>;
-};
-
-
 export type Subscription_RootTrainings_By_PkArgs = {
-  id: Scalars['Int'];
-};
-
-
-export type Subscription_RootUsersArgs = {
-  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Users_Order_By>>;
-  where?: InputMaybe<Users_Bool_Exp>;
-};
-
-
-export type Subscription_RootUsers_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Users_Order_By>>;
-  where?: InputMaybe<Users_Bool_Exp>;
-};
-
-
-export type Subscription_RootUsers_By_PkArgs = {
   id: Scalars['Int'];
 };
 
@@ -999,42 +550,6 @@ export type Training_Categories = {
   updated_at: Scalars['timestamptz'];
 };
 
-/** aggregated selection of "training_categories" */
-export type Training_Categories_Aggregate = {
-  __typename?: 'training_categories_aggregate';
-  aggregate?: Maybe<Training_Categories_Aggregate_Fields>;
-  nodes: Array<Training_Categories>;
-};
-
-/** aggregate fields of "training_categories" */
-export type Training_Categories_Aggregate_Fields = {
-  __typename?: 'training_categories_aggregate_fields';
-  avg?: Maybe<Training_Categories_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Training_Categories_Max_Fields>;
-  min?: Maybe<Training_Categories_Min_Fields>;
-  stddev?: Maybe<Training_Categories_Stddev_Fields>;
-  stddev_pop?: Maybe<Training_Categories_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Training_Categories_Stddev_Samp_Fields>;
-  sum?: Maybe<Training_Categories_Sum_Fields>;
-  var_pop?: Maybe<Training_Categories_Var_Pop_Fields>;
-  var_samp?: Maybe<Training_Categories_Var_Samp_Fields>;
-  variance?: Maybe<Training_Categories_Variance_Fields>;
-};
-
-
-/** aggregate fields of "training_categories" */
-export type Training_Categories_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Training_Categories_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** aggregate avg on columns */
-export type Training_Categories_Avg_Fields = {
-  __typename?: 'training_categories_avg_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
 /** Boolean expression to filter rows from the table "training_categories". All fields are combined with a logical 'AND'. */
 export type Training_Categories_Bool_Exp = {
   _and?: InputMaybe<Array<Training_Categories_Bool_Exp>>;
@@ -1046,77 +561,12 @@ export type Training_Categories_Bool_Exp = {
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
-/** unique or primary key constraints on table "training_categories" */
-export enum Training_Categories_Constraint {
-  /** unique or primary key constraint */
-  TrainingTypesPkey = 'training_types_pkey'
-}
-
-/** input type for incrementing numeric columns in table "training_categories" */
-export type Training_Categories_Inc_Input = {
-  id?: InputMaybe<Scalars['Int']>;
-};
-
-/** input type for inserting data into table "training_categories" */
-export type Training_Categories_Insert_Input = {
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  id?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** aggregate max on columns */
-export type Training_Categories_Max_Fields = {
-  __typename?: 'training_categories_max_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** aggregate min on columns */
-export type Training_Categories_Min_Fields = {
-  __typename?: 'training_categories_min_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  name?: Maybe<Scalars['String']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** response of any mutation on the table "training_categories" */
-export type Training_Categories_Mutation_Response = {
-  __typename?: 'training_categories_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Training_Categories>;
-};
-
-/** input type for inserting object relation for remote table "training_categories" */
-export type Training_Categories_Obj_Rel_Insert_Input = {
-  data: Training_Categories_Insert_Input;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Training_Categories_On_Conflict>;
-};
-
-/** on_conflict condition type for table "training_categories" */
-export type Training_Categories_On_Conflict = {
-  constraint: Training_Categories_Constraint;
-  update_columns?: Array<Training_Categories_Update_Column>;
-  where?: InputMaybe<Training_Categories_Bool_Exp>;
-};
-
 /** Ordering options when selecting data from "training_categories". */
 export type Training_Categories_Order_By = {
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: training_categories */
-export type Training_Categories_Pk_Columns_Input = {
-  id: Scalars['Int'];
 };
 
 /** select columns of table "training_categories" */
@@ -1131,68 +581,6 @@ export enum Training_Categories_Select_Column {
   UpdatedAt = 'updated_at'
 }
 
-/** input type for updating data in table "training_categories" */
-export type Training_Categories_Set_Input = {
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  id?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** aggregate stddev on columns */
-export type Training_Categories_Stddev_Fields = {
-  __typename?: 'training_categories_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Training_Categories_Stddev_Pop_Fields = {
-  __typename?: 'training_categories_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Training_Categories_Stddev_Samp_Fields = {
-  __typename?: 'training_categories_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate sum on columns */
-export type Training_Categories_Sum_Fields = {
-  __typename?: 'training_categories_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-};
-
-/** update columns of table "training_categories" */
-export enum Training_Categories_Update_Column {
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  UpdatedAt = 'updated_at'
-}
-
-/** aggregate var_pop on columns */
-export type Training_Categories_Var_Pop_Fields = {
-  __typename?: 'training_categories_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate var_samp on columns */
-export type Training_Categories_Var_Samp_Fields = {
-  __typename?: 'training_categories_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate variance on columns */
-export type Training_Categories_Variance_Fields = {
-  __typename?: 'training_categories_variance_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
 /** columns and relationships of "training_types" */
 export type Training_Types = {
   __typename?: 'training_types';
@@ -1206,8 +594,6 @@ export type Training_Types = {
   training_category_id: Scalars['Int'];
   /** An array relationship */
   trainings: Array<Trainings>;
-  /** An aggregate relationship */
-  trainings_aggregate: Trainings_Aggregate;
   updated_at: Scalars['timestamptz'];
 };
 
@@ -1219,55 +605,6 @@ export type Training_TypesTrainingsArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   order_by?: InputMaybe<Array<Trainings_Order_By>>;
   where?: InputMaybe<Trainings_Bool_Exp>;
-};
-
-
-/** columns and relationships of "training_types" */
-export type Training_TypesTrainings_AggregateArgs = {
-  distinct_on?: InputMaybe<Array<Trainings_Select_Column>>;
-  limit?: InputMaybe<Scalars['Int']>;
-  offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Trainings_Order_By>>;
-  where?: InputMaybe<Trainings_Bool_Exp>;
-};
-
-/** aggregated selection of "training_types" */
-export type Training_Types_Aggregate = {
-  __typename?: 'training_types_aggregate';
-  aggregate?: Maybe<Training_Types_Aggregate_Fields>;
-  nodes: Array<Training_Types>;
-};
-
-/** aggregate fields of "training_types" */
-export type Training_Types_Aggregate_Fields = {
-  __typename?: 'training_types_aggregate_fields';
-  avg?: Maybe<Training_Types_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Training_Types_Max_Fields>;
-  min?: Maybe<Training_Types_Min_Fields>;
-  stddev?: Maybe<Training_Types_Stddev_Fields>;
-  stddev_pop?: Maybe<Training_Types_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Training_Types_Stddev_Samp_Fields>;
-  sum?: Maybe<Training_Types_Sum_Fields>;
-  var_pop?: Maybe<Training_Types_Var_Pop_Fields>;
-  var_samp?: Maybe<Training_Types_Var_Samp_Fields>;
-  variance?: Maybe<Training_Types_Variance_Fields>;
-};
-
-
-/** aggregate fields of "training_types" */
-export type Training_Types_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Training_Types_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** aggregate avg on columns */
-export type Training_Types_Avg_Fields = {
-  __typename?: 'training_types_avg_fields';
-  id?: Maybe<Scalars['Float']>;
-  max_weight?: Maybe<Scalars['Float']>;
-  min_weight?: Maybe<Scalars['Float']>;
-  training_category_id?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "training_types". All fields are combined with a logical 'AND'. */
@@ -1286,80 +623,6 @@ export type Training_Types_Bool_Exp = {
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
-/** unique or primary key constraints on table "training_types" */
-export enum Training_Types_Constraint {
-  /** unique or primary key constraint */
-  TrainingCategoriesPkey = 'training_categories_pkey'
-}
-
-/** input type for incrementing numeric columns in table "training_types" */
-export type Training_Types_Inc_Input = {
-  id?: InputMaybe<Scalars['Int']>;
-  max_weight?: InputMaybe<Scalars['numeric']>;
-  min_weight?: InputMaybe<Scalars['numeric']>;
-  training_category_id?: InputMaybe<Scalars['Int']>;
-};
-
-/** input type for inserting data into table "training_types" */
-export type Training_Types_Insert_Input = {
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  id?: InputMaybe<Scalars['Int']>;
-  max_weight?: InputMaybe<Scalars['numeric']>;
-  min_weight?: InputMaybe<Scalars['numeric']>;
-  name?: InputMaybe<Scalars['String']>;
-  training_category?: InputMaybe<Training_Categories_Obj_Rel_Insert_Input>;
-  training_category_id?: InputMaybe<Scalars['Int']>;
-  trainings?: InputMaybe<Trainings_Arr_Rel_Insert_Input>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** aggregate max on columns */
-export type Training_Types_Max_Fields = {
-  __typename?: 'training_types_max_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  max_weight?: Maybe<Scalars['numeric']>;
-  min_weight?: Maybe<Scalars['numeric']>;
-  name?: Maybe<Scalars['String']>;
-  training_category_id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** aggregate min on columns */
-export type Training_Types_Min_Fields = {
-  __typename?: 'training_types_min_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  id?: Maybe<Scalars['Int']>;
-  max_weight?: Maybe<Scalars['numeric']>;
-  min_weight?: Maybe<Scalars['numeric']>;
-  name?: Maybe<Scalars['String']>;
-  training_category_id?: Maybe<Scalars['Int']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-};
-
-/** response of any mutation on the table "training_types" */
-export type Training_Types_Mutation_Response = {
-  __typename?: 'training_types_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Training_Types>;
-};
-
-/** input type for inserting object relation for remote table "training_types" */
-export type Training_Types_Obj_Rel_Insert_Input = {
-  data: Training_Types_Insert_Input;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Training_Types_On_Conflict>;
-};
-
-/** on_conflict condition type for table "training_types" */
-export type Training_Types_On_Conflict = {
-  constraint: Training_Types_Constraint;
-  update_columns?: Array<Training_Types_Update_Column>;
-  where?: InputMaybe<Training_Types_Bool_Exp>;
-};
-
 /** Ordering options when selecting data from "training_types". */
 export type Training_Types_Order_By = {
   created_at?: InputMaybe<Order_By>;
@@ -1371,11 +634,6 @@ export type Training_Types_Order_By = {
   training_category_id?: InputMaybe<Order_By>;
   trainings_aggregate?: InputMaybe<Trainings_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: training_types */
-export type Training_Types_Pk_Columns_Input = {
-  id: Scalars['Int'];
 };
 
 /** select columns of table "training_types" */
@@ -1396,98 +654,6 @@ export enum Training_Types_Select_Column {
   UpdatedAt = 'updated_at'
 }
 
-/** input type for updating data in table "training_types" */
-export type Training_Types_Set_Input = {
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  id?: InputMaybe<Scalars['Int']>;
-  max_weight?: InputMaybe<Scalars['numeric']>;
-  min_weight?: InputMaybe<Scalars['numeric']>;
-  name?: InputMaybe<Scalars['String']>;
-  training_category_id?: InputMaybe<Scalars['Int']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** aggregate stddev on columns */
-export type Training_Types_Stddev_Fields = {
-  __typename?: 'training_types_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
-  max_weight?: Maybe<Scalars['Float']>;
-  min_weight?: Maybe<Scalars['Float']>;
-  training_category_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Training_Types_Stddev_Pop_Fields = {
-  __typename?: 'training_types_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-  max_weight?: Maybe<Scalars['Float']>;
-  min_weight?: Maybe<Scalars['Float']>;
-  training_category_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Training_Types_Stddev_Samp_Fields = {
-  __typename?: 'training_types_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-  max_weight?: Maybe<Scalars['Float']>;
-  min_weight?: Maybe<Scalars['Float']>;
-  training_category_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate sum on columns */
-export type Training_Types_Sum_Fields = {
-  __typename?: 'training_types_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-  max_weight?: Maybe<Scalars['numeric']>;
-  min_weight?: Maybe<Scalars['numeric']>;
-  training_category_id?: Maybe<Scalars['Int']>;
-};
-
-/** update columns of table "training_types" */
-export enum Training_Types_Update_Column {
-  /** column name */
-  CreatedAt = 'created_at',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  MaxWeight = 'max_weight',
-  /** column name */
-  MinWeight = 'min_weight',
-  /** column name */
-  Name = 'name',
-  /** column name */
-  TrainingCategoryId = 'training_category_id',
-  /** column name */
-  UpdatedAt = 'updated_at'
-}
-
-/** aggregate var_pop on columns */
-export type Training_Types_Var_Pop_Fields = {
-  __typename?: 'training_types_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-  max_weight?: Maybe<Scalars['Float']>;
-  min_weight?: Maybe<Scalars['Float']>;
-  training_category_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate var_samp on columns */
-export type Training_Types_Var_Samp_Fields = {
-  __typename?: 'training_types_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-  max_weight?: Maybe<Scalars['Float']>;
-  min_weight?: Maybe<Scalars['Float']>;
-  training_category_id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate variance on columns */
-export type Training_Types_Variance_Fields = {
-  __typename?: 'training_types_variance_fields';
-  id?: Maybe<Scalars['Float']>;
-  max_weight?: Maybe<Scalars['Float']>;
-  min_weight?: Maybe<Scalars['Float']>;
-  training_category_id?: Maybe<Scalars['Float']>;
-};
-
 /** columns and relationships of "trainings" */
 export type Trainings = {
   __typename?: 'trainings';
@@ -1502,37 +668,7 @@ export type Trainings = {
   training_type_id: Scalars['Int'];
   training_weight?: Maybe<Scalars['numeric']>;
   updated_at: Scalars['timestamptz'];
-  user_id: Scalars['Int'];
-};
-
-/** aggregated selection of "trainings" */
-export type Trainings_Aggregate = {
-  __typename?: 'trainings_aggregate';
-  aggregate?: Maybe<Trainings_Aggregate_Fields>;
-  nodes: Array<Trainings>;
-};
-
-/** aggregate fields of "trainings" */
-export type Trainings_Aggregate_Fields = {
-  __typename?: 'trainings_aggregate_fields';
-  avg?: Maybe<Trainings_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Trainings_Max_Fields>;
-  min?: Maybe<Trainings_Min_Fields>;
-  stddev?: Maybe<Trainings_Stddev_Fields>;
-  stddev_pop?: Maybe<Trainings_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Trainings_Stddev_Samp_Fields>;
-  sum?: Maybe<Trainings_Sum_Fields>;
-  var_pop?: Maybe<Trainings_Var_Pop_Fields>;
-  var_samp?: Maybe<Trainings_Var_Samp_Fields>;
-  variance?: Maybe<Trainings_Variance_Fields>;
-};
-
-
-/** aggregate fields of "trainings" */
-export type Trainings_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Trainings_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
+  user_id: Scalars['String'];
 };
 
 /** order by aggregate values of table "trainings" */
@@ -1550,24 +686,6 @@ export type Trainings_Aggregate_Order_By = {
   variance?: InputMaybe<Trainings_Variance_Order_By>;
 };
 
-/** input type for inserting array relation for remote table "trainings" */
-export type Trainings_Arr_Rel_Insert_Input = {
-  data: Array<Trainings_Insert_Input>;
-  /** upsert condition */
-  on_conflict?: InputMaybe<Trainings_On_Conflict>;
-};
-
-/** aggregate avg on columns */
-export type Trainings_Avg_Fields = {
-  __typename?: 'trainings_avg_fields';
-  id?: Maybe<Scalars['Float']>;
-  training_count?: Maybe<Scalars['Float']>;
-  training_set?: Maybe<Scalars['Float']>;
-  training_type_id?: Maybe<Scalars['Float']>;
-  training_weight?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
-};
-
 /** order by avg() on columns of table "trainings" */
 export type Trainings_Avg_Order_By = {
   id?: InputMaybe<Order_By>;
@@ -1575,7 +693,6 @@ export type Trainings_Avg_Order_By = {
   training_set?: InputMaybe<Order_By>;
   training_type_id?: InputMaybe<Order_By>;
   training_weight?: InputMaybe<Order_By>;
-  user_id?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "trainings". All fields are combined with a logical 'AND'. */
@@ -1593,7 +710,7 @@ export type Trainings_Bool_Exp = {
   training_type_id?: InputMaybe<Int_Comparison_Exp>;
   training_weight?: InputMaybe<Numeric_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-  user_id?: InputMaybe<Int_Comparison_Exp>;
+  user_id?: InputMaybe<String_Comparison_Exp>;
 };
 
 /** unique or primary key constraints on table "trainings" */
@@ -1609,7 +726,6 @@ export type Trainings_Inc_Input = {
   training_set?: InputMaybe<Scalars['Int']>;
   training_type_id?: InputMaybe<Scalars['Int']>;
   training_weight?: InputMaybe<Scalars['numeric']>;
-  user_id?: InputMaybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "trainings" */
@@ -1620,25 +736,9 @@ export type Trainings_Insert_Input = {
   is_finish?: InputMaybe<Scalars['Boolean']>;
   training_count?: InputMaybe<Scalars['Int']>;
   training_set?: InputMaybe<Scalars['Int']>;
-  training_type?: InputMaybe<Training_Types_Obj_Rel_Insert_Input>;
   training_type_id?: InputMaybe<Scalars['Int']>;
   training_weight?: InputMaybe<Scalars['numeric']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
-  user_id?: InputMaybe<Scalars['Int']>;
-};
-
-/** aggregate max on columns */
-export type Trainings_Max_Fields = {
-  __typename?: 'trainings_max_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  date?: Maybe<Scalars['date']>;
-  id?: Maybe<Scalars['Int']>;
-  training_count?: Maybe<Scalars['Int']>;
-  training_set?: Maybe<Scalars['Int']>;
-  training_type_id?: Maybe<Scalars['Int']>;
-  training_weight?: Maybe<Scalars['numeric']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
 };
 
 /** order by max() on columns of table "trainings" */
@@ -1652,20 +752,6 @@ export type Trainings_Max_Order_By = {
   training_weight?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
-};
-
-/** aggregate min on columns */
-export type Trainings_Min_Fields = {
-  __typename?: 'trainings_min_fields';
-  created_at?: Maybe<Scalars['timestamptz']>;
-  date?: Maybe<Scalars['date']>;
-  id?: Maybe<Scalars['Int']>;
-  training_count?: Maybe<Scalars['Int']>;
-  training_set?: Maybe<Scalars['Int']>;
-  training_type_id?: Maybe<Scalars['Int']>;
-  training_weight?: Maybe<Scalars['numeric']>;
-  updated_at?: Maybe<Scalars['timestamptz']>;
-  user_id?: Maybe<Scalars['Int']>;
 };
 
 /** order by min() on columns of table "trainings" */
@@ -1752,18 +838,6 @@ export type Trainings_Set_Input = {
   training_type_id?: InputMaybe<Scalars['Int']>;
   training_weight?: InputMaybe<Scalars['numeric']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
-  user_id?: InputMaybe<Scalars['Int']>;
-};
-
-/** aggregate stddev on columns */
-export type Trainings_Stddev_Fields = {
-  __typename?: 'trainings_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
-  training_count?: Maybe<Scalars['Float']>;
-  training_set?: Maybe<Scalars['Float']>;
-  training_type_id?: Maybe<Scalars['Float']>;
-  training_weight?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "trainings" */
@@ -1773,18 +847,6 @@ export type Trainings_Stddev_Order_By = {
   training_set?: InputMaybe<Order_By>;
   training_type_id?: InputMaybe<Order_By>;
   training_weight?: InputMaybe<Order_By>;
-  user_id?: InputMaybe<Order_By>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Trainings_Stddev_Pop_Fields = {
-  __typename?: 'trainings_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-  training_count?: Maybe<Scalars['Float']>;
-  training_set?: Maybe<Scalars['Float']>;
-  training_type_id?: Maybe<Scalars['Float']>;
-  training_weight?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "trainings" */
@@ -1794,18 +856,6 @@ export type Trainings_Stddev_Pop_Order_By = {
   training_set?: InputMaybe<Order_By>;
   training_type_id?: InputMaybe<Order_By>;
   training_weight?: InputMaybe<Order_By>;
-  user_id?: InputMaybe<Order_By>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Trainings_Stddev_Samp_Fields = {
-  __typename?: 'trainings_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-  training_count?: Maybe<Scalars['Float']>;
-  training_set?: Maybe<Scalars['Float']>;
-  training_type_id?: Maybe<Scalars['Float']>;
-  training_weight?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "trainings" */
@@ -1815,18 +865,6 @@ export type Trainings_Stddev_Samp_Order_By = {
   training_set?: InputMaybe<Order_By>;
   training_type_id?: InputMaybe<Order_By>;
   training_weight?: InputMaybe<Order_By>;
-  user_id?: InputMaybe<Order_By>;
-};
-
-/** aggregate sum on columns */
-export type Trainings_Sum_Fields = {
-  __typename?: 'trainings_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-  training_count?: Maybe<Scalars['Int']>;
-  training_set?: Maybe<Scalars['Int']>;
-  training_type_id?: Maybe<Scalars['Int']>;
-  training_weight?: Maybe<Scalars['numeric']>;
-  user_id?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "trainings" */
@@ -1836,7 +874,6 @@ export type Trainings_Sum_Order_By = {
   training_set?: InputMaybe<Order_By>;
   training_type_id?: InputMaybe<Order_By>;
   training_weight?: InputMaybe<Order_By>;
-  user_id?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "trainings" */
@@ -1858,21 +895,8 @@ export enum Trainings_Update_Column {
   /** column name */
   TrainingWeight = 'training_weight',
   /** column name */
-  UpdatedAt = 'updated_at',
-  /** column name */
-  UserId = 'user_id'
+  UpdatedAt = 'updated_at'
 }
-
-/** aggregate var_pop on columns */
-export type Trainings_Var_Pop_Fields = {
-  __typename?: 'trainings_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-  training_count?: Maybe<Scalars['Float']>;
-  training_set?: Maybe<Scalars['Float']>;
-  training_type_id?: Maybe<Scalars['Float']>;
-  training_weight?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
-};
 
 /** order by var_pop() on columns of table "trainings" */
 export type Trainings_Var_Pop_Order_By = {
@@ -1881,18 +905,6 @@ export type Trainings_Var_Pop_Order_By = {
   training_set?: InputMaybe<Order_By>;
   training_type_id?: InputMaybe<Order_By>;
   training_weight?: InputMaybe<Order_By>;
-  user_id?: InputMaybe<Order_By>;
-};
-
-/** aggregate var_samp on columns */
-export type Trainings_Var_Samp_Fields = {
-  __typename?: 'trainings_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-  training_count?: Maybe<Scalars['Float']>;
-  training_set?: Maybe<Scalars['Float']>;
-  training_type_id?: Maybe<Scalars['Float']>;
-  training_weight?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "trainings" */
@@ -1902,18 +914,6 @@ export type Trainings_Var_Samp_Order_By = {
   training_set?: InputMaybe<Order_By>;
   training_type_id?: InputMaybe<Order_By>;
   training_weight?: InputMaybe<Order_By>;
-  user_id?: InputMaybe<Order_By>;
-};
-
-/** aggregate variance on columns */
-export type Trainings_Variance_Fields = {
-  __typename?: 'trainings_variance_fields';
-  id?: Maybe<Scalars['Float']>;
-  training_count?: Maybe<Scalars['Float']>;
-  training_set?: Maybe<Scalars['Float']>;
-  training_type_id?: Maybe<Scalars['Float']>;
-  training_weight?: Maybe<Scalars['Float']>;
-  user_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "trainings" */
@@ -1923,170 +923,6 @@ export type Trainings_Variance_Order_By = {
   training_set?: InputMaybe<Order_By>;
   training_type_id?: InputMaybe<Order_By>;
   training_weight?: InputMaybe<Order_By>;
-  user_id?: InputMaybe<Order_By>;
-};
-
-/** columns and relationships of "users" */
-export type Users = {
-  __typename?: 'users';
-  id: Scalars['Int'];
-};
-
-/** aggregated selection of "users" */
-export type Users_Aggregate = {
-  __typename?: 'users_aggregate';
-  aggregate?: Maybe<Users_Aggregate_Fields>;
-  nodes: Array<Users>;
-};
-
-/** aggregate fields of "users" */
-export type Users_Aggregate_Fields = {
-  __typename?: 'users_aggregate_fields';
-  avg?: Maybe<Users_Avg_Fields>;
-  count: Scalars['Int'];
-  max?: Maybe<Users_Max_Fields>;
-  min?: Maybe<Users_Min_Fields>;
-  stddev?: Maybe<Users_Stddev_Fields>;
-  stddev_pop?: Maybe<Users_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Users_Stddev_Samp_Fields>;
-  sum?: Maybe<Users_Sum_Fields>;
-  var_pop?: Maybe<Users_Var_Pop_Fields>;
-  var_samp?: Maybe<Users_Var_Samp_Fields>;
-  variance?: Maybe<Users_Variance_Fields>;
-};
-
-
-/** aggregate fields of "users" */
-export type Users_Aggregate_FieldsCountArgs = {
-  columns?: InputMaybe<Array<Users_Select_Column>>;
-  distinct?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** aggregate avg on columns */
-export type Users_Avg_Fields = {
-  __typename?: 'users_avg_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'. */
-export type Users_Bool_Exp = {
-  _and?: InputMaybe<Array<Users_Bool_Exp>>;
-  _not?: InputMaybe<Users_Bool_Exp>;
-  _or?: InputMaybe<Array<Users_Bool_Exp>>;
-  id?: InputMaybe<Int_Comparison_Exp>;
-};
-
-/** unique or primary key constraints on table "users" */
-export enum Users_Constraint {
-  /** unique or primary key constraint */
-  UsersPkey = 'users_pkey'
-}
-
-/** input type for incrementing numeric columns in table "users" */
-export type Users_Inc_Input = {
-  id?: InputMaybe<Scalars['Int']>;
-};
-
-/** input type for inserting data into table "users" */
-export type Users_Insert_Input = {
-  id?: InputMaybe<Scalars['Int']>;
-};
-
-/** aggregate max on columns */
-export type Users_Max_Fields = {
-  __typename?: 'users_max_fields';
-  id?: Maybe<Scalars['Int']>;
-};
-
-/** aggregate min on columns */
-export type Users_Min_Fields = {
-  __typename?: 'users_min_fields';
-  id?: Maybe<Scalars['Int']>;
-};
-
-/** response of any mutation on the table "users" */
-export type Users_Mutation_Response = {
-  __typename?: 'users_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Users>;
-};
-
-/** on_conflict condition type for table "users" */
-export type Users_On_Conflict = {
-  constraint: Users_Constraint;
-  update_columns?: Array<Users_Update_Column>;
-  where?: InputMaybe<Users_Bool_Exp>;
-};
-
-/** Ordering options when selecting data from "users". */
-export type Users_Order_By = {
-  id?: InputMaybe<Order_By>;
-};
-
-/** primary key columns input for table: users */
-export type Users_Pk_Columns_Input = {
-  id: Scalars['Int'];
-};
-
-/** select columns of table "users" */
-export enum Users_Select_Column {
-  /** column name */
-  Id = 'id'
-}
-
-/** input type for updating data in table "users" */
-export type Users_Set_Input = {
-  id?: InputMaybe<Scalars['Int']>;
-};
-
-/** aggregate stddev on columns */
-export type Users_Stddev_Fields = {
-  __typename?: 'users_stddev_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_pop on columns */
-export type Users_Stddev_Pop_Fields = {
-  __typename?: 'users_stddev_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate stddev_samp on columns */
-export type Users_Stddev_Samp_Fields = {
-  __typename?: 'users_stddev_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate sum on columns */
-export type Users_Sum_Fields = {
-  __typename?: 'users_sum_fields';
-  id?: Maybe<Scalars['Int']>;
-};
-
-/** update columns of table "users" */
-export enum Users_Update_Column {
-  /** column name */
-  Id = 'id'
-}
-
-/** aggregate var_pop on columns */
-export type Users_Var_Pop_Fields = {
-  __typename?: 'users_var_pop_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate var_samp on columns */
-export type Users_Var_Samp_Fields = {
-  __typename?: 'users_var_samp_fields';
-  id?: Maybe<Scalars['Float']>;
-};
-
-/** aggregate variance on columns */
-export type Users_Variance_Fields = {
-  __typename?: 'users_variance_fields';
-  id?: Maybe<Scalars['Float']>;
 };
 
 export type CreateBodyInfoHistoriesMutationVariables = Exact<{
@@ -2094,7 +930,6 @@ export type CreateBodyInfoHistoriesMutationVariables = Exact<{
   weight: Scalars['numeric'];
   body_fat_percentage?: InputMaybe<Scalars['Int']>;
   date: Scalars['timestamptz'];
-  user_id: Scalars['Int'];
   is_record: Scalars['Boolean'];
 }>;
 
@@ -2102,7 +937,6 @@ export type CreateBodyInfoHistoriesMutationVariables = Exact<{
 export type CreateBodyInfoHistoriesMutation = { __typename?: 'mutation_root', insert_body_info_data_histories_one?: { __typename?: 'body_info_data_histories', id: number } | null };
 
 export type CreateTrainingMutationVariables = Exact<{
-  user_id: Scalars['Int'];
   training_type_id: Scalars['Int'];
   training_weight: Scalars['numeric'];
   training_count: Scalars['Int'];
@@ -2134,12 +968,12 @@ export type GetTrainingOneTypeQueryVariables = Exact<{
 }>;
 
 
-export type GetTrainingOneTypeQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string, training_type: { __typename?: 'training_types', id: number, name: string } }> };
+export type GetTrainingOneTypeQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: string, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string, training_type: { __typename?: 'training_types', id: number, name: string } }> };
 
 export type GetTrainingTrainingTypeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTrainingTrainingTypeQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string, training_type: { __typename?: 'training_types', id: number, name: string } }> };
+export type GetTrainingTrainingTypeQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: string, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string, training_type: { __typename?: 'training_types', id: number, name: string } }> };
 
 export type GetTrainingCategoryWithTypeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2149,23 +983,23 @@ export type GetTrainingCategoryWithTypeQuery = { __typename?: 'query_root', trai
 export type GetTrainingWithBodyInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTrainingWithBodyInfoQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string }>, body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, weight: number, date: string, is_record: boolean }> };
+export type GetTrainingWithBodyInfoQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: string, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string }>, body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: string, weight: number, date: string, is_record: boolean }> };
 
 export type GetTrainingQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTrainingQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: number, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string }> };
+export type GetTrainingQuery = { __typename?: 'query_root', trainings: Array<{ __typename?: 'trainings', id: number, user_id: string, training_type_id: number, training_weight?: number | null, training_count?: number | null, training_set?: number | null, is_finish: boolean, date: string }> };
 
 export type GetBodyInfoDataHistoryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetBodyInfoDataHistoryQuery = { __typename?: 'query_root', body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: number, height?: number | null, weight: number, body_fat_percentage?: number | null, date: string, is_record: boolean }> };
+export type GetBodyInfoDataHistoryQuery = { __typename?: 'query_root', body_info_data_histories: Array<{ __typename?: 'body_info_data_histories', id: number, user_id: string, height?: number | null, weight: number, body_fat_percentage?: number | null, date: string, is_record: boolean }> };
 
 
 export const CreateBodyInfoHistoriesDocument = gql`
-    mutation CreateBodyInfoHistories($height: numeric, $weight: numeric!, $body_fat_percentage: Int, $date: timestamptz!, $user_id: Int!, $is_record: Boolean!) {
+    mutation CreateBodyInfoHistories($height: numeric, $weight: numeric!, $body_fat_percentage: Int, $date: timestamptz!, $is_record: Boolean!) {
   insert_body_info_data_histories_one(
-    object: {height: $height, body_fat_percentage: $body_fat_percentage, date: $date, weight: $weight, user_id: $user_id, is_record: $is_record}
+    object: {height: $height, body_fat_percentage: $body_fat_percentage, date: $date, weight: $weight, is_record: $is_record}
   ) {
     id
   }
@@ -2190,7 +1024,6 @@ export type CreateBodyInfoHistoriesMutationFn = Apollo.MutationFunction<CreateBo
  *      weight: // value for 'weight'
  *      body_fat_percentage: // value for 'body_fat_percentage'
  *      date: // value for 'date'
- *      user_id: // value for 'user_id'
  *      is_record: // value for 'is_record'
  *   },
  * });
@@ -2203,9 +1036,9 @@ export type CreateBodyInfoHistoriesMutationHookResult = ReturnType<typeof useCre
 export type CreateBodyInfoHistoriesMutationResult = Apollo.MutationResult<CreateBodyInfoHistoriesMutation>;
 export type CreateBodyInfoHistoriesMutationOptions = Apollo.BaseMutationOptions<CreateBodyInfoHistoriesMutation, CreateBodyInfoHistoriesMutationVariables>;
 export const CreateTrainingDocument = gql`
-    mutation CreateTraining($user_id: Int!, $training_type_id: Int!, $training_weight: numeric!, $training_count: Int!, $training_set: Int!, $is_finish: Boolean!, $date: date!) {
+    mutation CreateTraining($training_type_id: Int!, $training_weight: numeric!, $training_count: Int!, $training_set: Int!, $is_finish: Boolean!, $date: date!) {
   insert_trainings_one(
-    object: {user_id: $user_id, training_type_id: $training_type_id, training_weight: $training_weight, training_count: $training_count, training_set: $training_set, is_finish: $is_finish, date: $date}
+    object: {training_type_id: $training_type_id, training_weight: $training_weight, training_count: $training_count, training_set: $training_set, is_finish: $is_finish, date: $date}
   ) {
     id
   }
@@ -2226,7 +1059,6 @@ export type CreateTrainingMutationFn = Apollo.MutationFunction<CreateTrainingMut
  * @example
  * const [createTrainingMutation, { data, loading, error }] = useCreateTrainingMutation({
  *   variables: {
- *      user_id: // value for 'user_id'
  *      training_type_id: // value for 'training_type_id'
  *      training_weight: // value for 'training_weight'
  *      training_count: // value for 'training_count'
