@@ -16,7 +16,7 @@ jest.mock('~/components/PageSlider/useChangeSettingOnInWindowSize');
 describe('Integration Test', () => {
   const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} />, [createBodyInfoHistoriesMock(planPageVariables)]);
 
-  it('必須項目が入力されている状態で送信ボタンをクリックした場合、登録処理が実行され、スナックバーが表示される', async () => {
+  it('日付と体重(必須項目）を入力し送信ボタンをクリックすると、登録処理が実行され、「記録しました！」の文言が表示される', async () => {
     renderPage();
     const submitButton = screen.getByTestId('submit');
     const dateInput: HTMLInputElement = screen.getByTestId('date');
@@ -32,7 +32,7 @@ describe('Integration Test', () => {
     expect(screen.getByText('記録しました！'));
   });
 
-  it('体脂肪率のみ入力した状態で送信ボタンをクリックした場合、登録処理がが実行されず、スナックバーが表示されない', async () => {
+  it('体脂肪率のみを入力し送信ボタンをクリックすると、登録処理が実行されず、「記録しました！」の文言が表示されない', async () => {
     renderPage();
     const submitButton = screen.getByTestId('submit');
     const bodyFatPercentageInput: HTMLInputElement = screen.getByTestId('bodyFatPercentage');

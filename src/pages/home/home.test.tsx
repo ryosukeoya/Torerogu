@@ -15,7 +15,7 @@ jest.mock('~/components/PageSlider/useChangeSettingOnInWindowSize');
 jest.mock('./SchedulePage', () => () => 'SchedulePage');
 
 describe('Integration Test', () => {
-  it('loading画面表示され、データをフェッチし取得後pageがレンダリングされる', async () => {
+  it('loading要素が表示され、データをフェッチし取得後pageが表示される', async () => {
     const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingOneTypeMock(trainingOneType)]);
     renderPage();
     expect(screen.getByTestId('loading'));
