@@ -1,25 +1,28 @@
 import type { AppProps } from 'next/app';
 import React from 'react';
-import '../styles/globals.css';
-import '../styles/reset.css';
+import '~/styles/globals.css';
+import '~/styles/reset.css';
 import { useNprogress as progressBar } from '../hooks';
 import { Layout } from '../layout';
-import { ApolloProvider } from '@apollo/client';
-import { initializeApollo } from '../libs/graphql/apolloClient';
 import { RecoilRoot } from 'recoil';
 import { ErrorBoundary } from 'react-error-boundary';
-import { ErrorFallback } from '~/components/Error/index';
+import { ApolloProviderWithAuth0Token, ErrorFallback } from '~/components';
+import { Auth0Provider } from '@auth0/auth0-react';
 
+// TODO: register env vars　to vercel
 function MyApp({ Component, pageProps }: AppProps) {
   progressBar();
-  const client = initializeApollo();
+  const REDIRECT_URI = `${process.env['NEXT_PUBLIC_BASE_URL']}`;
+
   return (
     <RecoilRoot>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Layout>
-          <ApolloProvider client={client}>
-            <Component {...pageProps} />
-          </ApolloProvider>
+          <Auth0Provider domain={process.env['NEXT_PUBLIC_AUTH0_DOMAIN'] as string} clientId={process.env['NEXT_PUBLIC_AUTH0_CLIENT_ID'] as string} redirectUri={REDIRECT_URI} audience={process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}>
+            <ApolloProviderWithAuth0Token>
+              <Component {...pageProps} />
+            </ApolloProviderWithAuth0Token>
+          </Auth0Provider>
         </Layout>
       </ErrorBoundary>
     </RecoilRoot>
