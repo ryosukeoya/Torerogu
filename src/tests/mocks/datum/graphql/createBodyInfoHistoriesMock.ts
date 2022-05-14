@@ -6,16 +6,22 @@ export const planPageVariables = {
   weight: 55,
   body_fat_percentage: null,
   date: getStringTypeDate(new Date(), 'YYYY-MM-DD'),
-  user_id: 1,
   is_record: false,
 };
 
-export const recordPageVariables = {
+export const requiredRecordPageVariables = {
   height: null,
   weight: 55,
   body_fat_percentage: null,
   date: getStringTypeDate(new Date()),
-  user_id: 1,
+  is_record: true,
+};
+
+export const allRecordPageVariables = {
+  height: null,
+  weight: 55,
+  body_fat_percentage: 20,
+  date: getStringTypeDate(new Date()),
   is_record: true,
 };
 
