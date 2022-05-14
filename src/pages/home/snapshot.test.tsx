@@ -2,7 +2,7 @@ import React from 'react';
 import { act } from '@testing-library/react';
 import Home from '~/pages/home/index.p';
 import { testRendererUsingApolloClientMock } from '~/tests/mocks/renders';
-import { trainingOneType, getTrainingOneTypeMock } from '~/tests/mocks/datum/getTrainingOneTypeMock';
+import { trainingOneType, getTrainingOneTypeMock } from '~/tests/mocks/datum/graphql/getTrainingOneTypeMock';
 
 jest.mock('next/router', () => ({
   useRouter() {

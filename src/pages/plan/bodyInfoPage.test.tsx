@@ -1,7 +1,7 @@
 import BodyInfoPage from './BodyInfoPage';
 import { screen, act, fireEvent } from '@testing-library/react';
 import { testRendererUsingApolloClientMock } from '~/tests/mocks/renders/testRendererUsingApolloClientMock';
-import { createBodyInfoHistoriesMock, planPageVariables } from '~/tests/mocks/datum/createBodyInfoHistoriesMock';
+import { createBodyInfoHistoriesMock, planPageVariables } from '~/tests/mocks/datum/graphql/createBodyInfoHistoriesMock';
 import { getStringTypeDate } from '~/utils';
 
 jest.mock('next/router', () => ({
