@@ -16,3 +16,5 @@ export { ModalWrapper } from './uiParts/Modal';
 export { PrimaryNavigationLocalState, PrimaryNavigationGlobalState, PrimaryNavigationPresenter } from './uiParts/PrimaryNavigation';
 export { Snackbar } from './uiParts/Snackbar';
 export { Spacer } from './uiParts/Spacer';
+
+export { ApolloProviderWithAuth0Token } from './ApolloProviderWithAuth0Token';
