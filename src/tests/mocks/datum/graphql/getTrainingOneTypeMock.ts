@@ -3,11 +3,13 @@ import { GraphQLError } from 'graphql';
 import { GetTrainingOneTypeDocument, GetTrainingOneTypeQuery } from '~/libs/graphql/generated/graphql';
 import { getStringTypeDate } from '~/utils/app';
 
-export const trainingOneType: GetTrainingOneTypeQuery['trainings'] = [
+type TrainingOneType = Array<GetTrainingOneTypeQuery['trainings'][number]>;
+
+export const trainingOneType: TrainingOneType = [
   {
     __typename: 'trainings',
     id: 1,
-    user_id: 1,
+    user_id: '012345',
     training_type_id: 1,
     training_weight: 60,
     training_count: 10,
@@ -23,7 +25,7 @@ export const trainingOneType: GetTrainingOneTypeQuery['trainings'] = [
   {
     __typename: 'trainings',
     id: 2,
-    user_id: 1,
+    user_id: '012345',
     training_type_id: 10,
     training_weight: 30,
     training_count: 10,
@@ -38,7 +40,7 @@ export const trainingOneType: GetTrainingOneTypeQuery['trainings'] = [
   },
 ];
 
-export const getTrainingOneTypeMock = (trainingOneType: GetTrainingOneTypeQuery['trainings']) => {
+export const getTrainingOneTypeMock = (trainingOneType: TrainingOneType) => {
   return {
     request: {
       query: GetTrainingOneTypeDocument,
