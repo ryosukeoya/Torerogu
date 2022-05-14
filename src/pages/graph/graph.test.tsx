@@ -1,7 +1,7 @@
 import Graph from './index.p';
 import { act, screen } from '@testing-library/react';
 import { testRendererUsingApolloClientMock } from '~/tests/mocks/renders/testRendererUsingApolloClientMock';
-import { getTrainingWithBodyMock } from '~/tests/mocks/datum/graphql/getTrainingWithBodyInfoMock';
+import { getTrainingWithBody } from '~/tests/mocks/datum/graphql/getTrainingWithBodyInfo';
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -13,7 +13,7 @@ jest.mock('next/router', () => ({
 jest.mock('../../components/PageSlider/useChangeSettingOnInWindowSize');
 
 describe('Integration Test', () => {
-  const renderPage = testRendererUsingApolloClientMock(<Graph />, [getTrainingWithBodyMock]);
+  const renderPage = testRendererUsingApolloClientMock(<Graph />, [getTrainingWithBody]);
 
   it('loading画面表示され、データをフェッチし取得後pageがレンダリングされる', async () => {
     renderPage();

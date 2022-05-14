@@ -40,7 +40,7 @@ export const trainingOneType: TrainingOneType = [
   },
 ];
 
-export const getTrainingOneTypeMock = (trainingOneType: TrainingOneType) => {
+export const getTrainingOneType = (trainingOneType: TrainingOneType) => {
   return {
     request: {
       query: GetTrainingOneTypeDocument,

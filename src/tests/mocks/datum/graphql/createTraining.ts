@@ -19,7 +19,7 @@ export const requiredRecordPageVariables = {
   date: getStringTypeDate(new Date()),
 };
 
-export const createTrainingMock = (variables: CreateTrainingMutationVariables) => {
+export const createTraining = (variables: CreateTrainingMutationVariables) => {
   return {
     request: {
       query: CreateBodyInfoHistoriesDocument,

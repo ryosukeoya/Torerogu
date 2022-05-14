@@ -25,7 +25,7 @@ export const allRecordPageVariables = {
   is_record: true,
 };
 
-export const createBodyInfoHistoriesMock = (variables: CreateBodyInfoHistoriesMutationVariables) => {
+export const createBodyInfoHistories = (variables: CreateBodyInfoHistoriesMutationVariables) => {
   return {
     request: {
       query: CreateBodyInfoHistoriesDocument,

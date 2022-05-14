@@ -1,7 +1,7 @@
 import BodyInfoPage from './BodyInfoPage';
 import { screen, act, fireEvent } from '@testing-library/react';
 import { testRendererUsingApolloClientMock } from '~/tests/mocks/renders/testRendererUsingApolloClientMock';
-import { createBodyInfoHistoriesMock, requiredRecordPageVariables, allRecordPageVariables } from '~/tests/mocks/datum/graphql/createBodyInfoHistoriesMock';
+import { createBodyInfoHistories, requiredRecordPageVariables, allRecordPageVariables } from '~/tests/mocks/datum/graphql/createBodyInfoHistories';
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -13,7 +13,7 @@ jest.mock('next/router', () => ({
 jest.mock('~/components/PageSlider/useChangeSettingOnInWindowSize');
 
 describe('Integration Test', () => {
-  const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} />, [createBodyInfoHistoriesMock(requiredRecordPageVariables)]);
+  const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} />, [createBodyInfoHistories(requiredRecordPageVariables)]);
 
   it('体重を入力し送信ボタンをクリックすると、登録処理が実行され、「記録しました！」の文言が表示される', async () => {
     renderPage();
@@ -30,7 +30,7 @@ describe('Integration Test', () => {
 
   // TODO: refactor
   it('体重と体脂肪率を入力し送信ボタンをクリックすると、登録処理が実行され、「記録しました！」の文言が表示される', async () => {
-    const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} />, [createBodyInfoHistoriesMock(allRecordPageVariables)]);
+    const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} />, [createBodyInfoHistories(allRecordPageVariables)]);
     renderPage();
     const submitButton = screen.getByTestId('submit');
     const weightInput: HTMLInputElement = screen.getByTestId('weight');

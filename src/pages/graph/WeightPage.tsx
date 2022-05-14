@@ -18,7 +18,7 @@ type BodyInfo = GetTrainingWithBodyInfoQuery['body_info_data_histories'];
 const WeightPage: VFC<Props> = ({ bodyInfo }) => {
   const [activeIndex, setActiveIndex] = useState<number>(titles.length - 1);
 
-  // TODO:FIX
+  // TODO
   // 表示するデータがない時データがないことをわかるように
   // 1日で複数のデータがある場合はまとめる
   return (
