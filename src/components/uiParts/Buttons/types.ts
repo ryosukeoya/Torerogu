@@ -1,1 +1,1 @@
-export type ButtonTheme = 'simple' | 'toggle';
+export type HoverTheme = 'simple' | 'toggle';

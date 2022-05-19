@@ -1,24 +1,31 @@
 import Image from 'next/image';
-import React, { VFC } from 'react';
+import React, { VFC, useState } from 'react';
 import { css } from '@emotion/react';
 import { COLOR, HEADER } from '~/styles/const';
 import { media } from '~/styles/shares';
 import { useIsScrollDown, useGetTabTitleFromRoute } from '~/hooks';
 import { PrimaryNavigationGlobalState } from '~/components';
 import { default as Title } from './HeaderTitle';
+import { PopupMenu } from './PopupMenu';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Header: VFC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const isScrollDown: boolean = useIsScrollDown();
   const visibleState = isScrollDown ? visibility['hiddenPartial'] : visibility['visible'];
   const tabNames = useGetTabTitleFromRoute();
+  const { user, isAuthenticated, logout } = useAuth0();
 
   return (
     <header css={[styles.header, visibleState]}>
       <div css={styles.area}>
         <Title />
-        <p css={styles.profile}>
-          <Image src='/imgs/profile.png' width={28} height={28} alt={'プロフィール'} />
-        </p>
+        {isAuthenticated && (
+          <p css={styles.profile}>
+            <Image css={styles.avatar} src={user?.picture ? user.picture : '/imgs/avatar.png'} width={44} height={44} alt={'プロフィール'} onClick={() => setIsOpen(true)} />
+            {isOpen && <PopupMenu setIsOpen={setIsOpen} user={user} logout={logout} />}
+          </p>
+        )}
       </div>
       <PrimaryNavigationGlobalState
         titles={tabNames}
@@ -46,7 +53,7 @@ const styles = {
     height: ${HEADER.HEIGUT};
     position: fixed;
     top: 0;
-    z-index: 1000;
+    z-index: 100000;
     background: #fff;
     width: 100vw;
     padding: 10px 25px 0 25px;
@@ -58,8 +65,16 @@ const styles = {
   profile: css`
     float: right;
     border-radius: 50%;
+  `,
+  avatar: css`
+    float: right;
+    border-radius: 50%;
     background-color: #b6babb;
     padding: 8px;
+    cursor: pointer;
+  `,
+  human: css`
+    position: relative;
   `,
 };
 

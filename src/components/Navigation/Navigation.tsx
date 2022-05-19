@@ -24,7 +24,7 @@ export default Navigation;
 const styles = {
   navigation: css`
     // BottomNav
-    box-size: border-box;
+    box-sizing: border-box;
     position: fixed;
     bottom: 0;
     z-index: 1000;
@@ -52,7 +52,5 @@ const styles = {
         align-items: center;
       }
     `)}
-
-    }
   `,
 };

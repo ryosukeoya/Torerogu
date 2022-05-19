@@ -8,12 +8,18 @@ import { useGetElementWidth } from '~/hooks';
 import { default as BodyFatPercentagePage } from './BodyFatPercentagePage';
 import { default as TrainingPage } from './TrainingPage';
 import { default as WeightPage } from './WeightPage';
+import { useAuth0 } from '@auth0/auth0-react';
+import AuthenticationPage from '../home/AuthenticationPage';
 
 const Graph: VFC = () => {
   const { data, loading, error } = useQuery<GetTrainingWithBodyInfoQuery>(GetTrainingWithBodyInfoDocument, {
     fetchPolicy: 'cache-and-network',
   });
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(loading);
+
+  const { isAuthenticated } = useAuth0();
+
+  if (!isAuthenticated) return <AuthenticationPage />;
 
   if (loading) {
     return (
