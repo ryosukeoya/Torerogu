@@ -26,11 +26,9 @@ export const PopupMenu: VFC<Props> = ({ setIsOpen, user, logout }) => {
           <p css={styles.email}>{user?.email}</p>
           {/* <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim repellendus fugit explicabo voluptates labore excepturi illo sunt odio ipsum, quos nihil eligendi cum quo eaque sed natus iure quod consequatur.</p> */}
           <div css={styles.line}></div>
-          <div style={{ display: 'flex' }}>
+          <div css={styles.logout} onClick={() => logout({ returnTo: window.location.origin })}>
             <LogoutIcon />
-            <p css={styles.logout} onClick={() => logout({ returnTo: window.location.origin })}>
-              ログアウト
-            </p>
+            <p css={styles.logoutTitle}>ログアウト</p>
           </div>
         </div>
       </div>
@@ -126,6 +124,9 @@ const styles = {
     border-top: 1px solid ${COLOR.BORDER_GRAY};
   `,
   logout: css`
+    display: flex;
+  `,
+  logoutTitle: css`
     padding-left: 10px;
   `,
 };
