@@ -6,7 +6,7 @@ import { SwiperWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 import { useAuth0 } from '@auth0/auth0-react';
-import AuthenticationPage from '../home/AuthenticationPage';
+import AuthenticationPage from '../AuthenticationPage';
 
 const Plan: NextPage<VFC> = () => {
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>();

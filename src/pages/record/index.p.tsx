@@ -7,7 +7,7 @@ import { SwiperWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 import { useAuth0 } from '@auth0/auth0-react';
-import AuthenticationPage from '../home/AuthenticationPage';
+import AuthenticationPage from '../AuthenticationPage';
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo(undefined, process.env.ACCESS_TOKEN);

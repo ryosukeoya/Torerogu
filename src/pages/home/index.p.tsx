@@ -10,7 +10,7 @@ import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 // import '~/tests/mocks/starter';
 import { useAuth0 } from '@auth0/auth0-react';
-import AuthenticationPage from './AuthenticationPage';
+import AuthenticationPage from '../AuthenticationPage';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
