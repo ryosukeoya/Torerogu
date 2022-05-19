@@ -17,7 +17,7 @@ const createApolloClient = (getAccessTokenSilently?: GetAccessTokenSilently, ACC
       };
     } else if (getAccessTokenSilently) {
       const accessToken = await getAccessTokenSilently();
-      console.warn(accessToken);
+      // console.warn(accessToken);
       if (!accessToken) {
         return { headers };
       }
