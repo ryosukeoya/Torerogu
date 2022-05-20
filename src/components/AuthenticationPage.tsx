@@ -5,7 +5,7 @@ import { RippleButton } from '~/components';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { css } from '@emotion/react';
 
-const AuthenticationPage: VFC = () => {
+export const AuthenticationPage: VFC = () => {
   const { loginWithRedirect } = useAuth0();
 
   return (
@@ -28,8 +28,6 @@ const AuthenticationPage: VFC = () => {
     </div>
   );
 };
-
-export default AuthenticationPage;
 
 const styles = {
   section: css`
