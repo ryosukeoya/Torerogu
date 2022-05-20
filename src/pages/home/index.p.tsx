@@ -5,7 +5,7 @@ import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { getStringTypeDate } from '~/utils/app';
 import HomePage from './HomePage';
 import SchedulePage from './SchedulePage';
-import { SwiperWrapper } from '~/components';
+import { Slider } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 // import '~/tests/mocks/starter';
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     variables: { date: getStringTypeDate(new Date()) },
     fetchPolicy: 'network-only',
   });
-  const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
+  const [ref, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
 
   if (loading) {
     return (
@@ -29,14 +29,16 @@ const Home: NextPage = () => {
   if (error) throw new Error(error.message);
 
   return (
-    <Auth0AuthorizationHandler>
-      <PageLayout mainContentWidth={mainContentWidth}>
-        <SwiperWrapper elm={elm}>
-          <HomePage data={data} />
-          <SchedulePage />
-        </SwiperWrapper>
-      </PageLayout>
-    </Auth0AuthorizationHandler>
+    <div ref={ref}>
+      <Auth0AuthorizationHandler>
+        <PageLayout mainContentWidth={mainContentWidth}>
+          <Slider>
+            <HomePage data={data} />
+            <SchedulePage />
+          </Slider>
+        </PageLayout>
+      </Auth0AuthorizationHandler>
+    </div>
   );
 };
 

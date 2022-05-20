@@ -4,7 +4,7 @@ export { ErrorPage404, ErrorPage500, ErrorFallback } from './Error';
 export { Header } from './Header';
 export { Footer } from './Footer';
 export { Navigation } from './Navigation';
-export { SwiperWrapper } from './PageSlider';
+export { Slider } from './Slider';
 export { FormContainer, FormWrapper, InputField, SelectField, TextareaField } from './Form';
 export { CommonHead } from './Head';
 

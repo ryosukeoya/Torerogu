@@ -2,23 +2,25 @@ import type { NextPage } from 'next';
 import React, { VFC } from 'react';
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
-import { SwiperWrapper } from '~/components';
-import { useGetElementWidth } from '~/hooks';
+import { Slider } from '~/components';
 import { PageLayout } from '~/layout';
 import { Auth0AuthorizationHandler } from '~/components/Auth0AuthorizationHandler';
+import { useGetElementWidth } from '../../hooks';
 
 const Plan: NextPage<VFC> = () => {
-  const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
+  const [ref, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
 
   return (
-    <Auth0AuthorizationHandler>
-      <PageLayout mainContentWidth={mainContentWidth}>
-        <SwiperWrapper elm={elm}>
-          <BodyInfoPage pageIndex={0} />
-          <TrainingPage pageIndex={1} />
-        </SwiperWrapper>
-      </PageLayout>
-    </Auth0AuthorizationHandler>
+    <div ref={ref}>
+      <Auth0AuthorizationHandler>
+        <PageLayout mainContentWidth={mainContentWidth}>
+          <Slider>
+            <BodyInfoPage pageIndex={0} />
+            <TrainingPage pageIndex={1} />
+          </Slider>
+        </PageLayout>
+      </Auth0AuthorizationHandler>
+    </div>
   );
 };
 

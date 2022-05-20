@@ -1,4 +1,6 @@
 export { default as useActiveIndexFromPath } from './useActiveIndexFromPath';
+export { default as useCallbackRef } from './useCallbackRef';
+export { useGetElementProperty } from './useGetElementProperty';
 export { default as useGetElementWidth } from './useGetElementWidth';
 export { default as useGetTabTitleFromRoute } from './useGetTabTitleFromRoute';
 export { default as useGetWindowSize } from './useGetWindowSize';
