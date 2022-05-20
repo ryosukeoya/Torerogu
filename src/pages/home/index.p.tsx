@@ -9,8 +9,7 @@ import { SwiperWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 // import '~/tests/mocks/starter';
-import { useAuth0 } from '@auth0/auth0-react';
-import AuthenticationPage from '../AuthenticationPage';
+import { Auth0AuthorizationHandler } from '~/components/Auth0AuthorizationHandler';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
@@ -18,7 +17,6 @@ const Home: NextPage = () => {
     fetchPolicy: 'network-only',
   });
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
-  const { isAuthenticated } = useAuth0();
 
   if (loading) {
     return (
@@ -27,17 +25,18 @@ const Home: NextPage = () => {
       </div>
     );
   }
-  if (!isAuthenticated) return <AuthenticationPage />;
 
   if (error) throw new Error(error.message);
 
   return (
-    <PageLayout mainContentWidth={mainContentWidth}>
-      <SwiperWrapper elm={elm}>
-        <HomePage data={data} />
-        <SchedulePage />
-      </SwiperWrapper>
-    </PageLayout>
+    <Auth0AuthorizationHandler>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <SwiperWrapper elm={elm}>
+          <HomePage data={data} />
+          <SchedulePage />
+        </SwiperWrapper>
+      </PageLayout>
+    </Auth0AuthorizationHandler>
   );
 };
 

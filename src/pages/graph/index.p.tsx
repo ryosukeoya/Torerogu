@@ -8,18 +8,13 @@ import { useGetElementWidth } from '~/hooks';
 import { default as BodyFatPercentagePage } from './BodyFatPercentagePage';
 import { default as TrainingPage } from './TrainingPage';
 import { default as WeightPage } from './WeightPage';
-import { useAuth0 } from '@auth0/auth0-react';
-import AuthenticationPage from '../AuthenticationPage';
+import { Auth0AuthorizationHandler } from '~/components/Auth0AuthorizationHandler';
 
 const Graph: VFC = () => {
   const { data, loading, error } = useQuery<GetTrainingWithBodyInfoQuery>(GetTrainingWithBodyInfoDocument, {
     fetchPolicy: 'cache-and-network',
   });
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(loading);
-
-  const { isAuthenticated } = useAuth0();
-
-  if (!isAuthenticated) return <AuthenticationPage />;
 
   if (loading) {
     return (
@@ -31,13 +26,15 @@ const Graph: VFC = () => {
   if (error) throw new Error(error.message);
 
   return (
-    <PageLayout mainContentWidth={mainContentWidth}>
-      <SwiperWrapper elm={elm}>
-        <WeightPage bodyInfo={data?.body_info_data_histories} />
-        <BodyFatPercentagePage />
-        <TrainingPage />
-      </SwiperWrapper>
-    </PageLayout>
+    <Auth0AuthorizationHandler>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <SwiperWrapper elm={elm}>
+          <WeightPage bodyInfo={data?.body_info_data_histories} />
+          <BodyFatPercentagePage />
+          <TrainingPage />
+        </SwiperWrapper>
+      </PageLayout>
+    </Auth0AuthorizationHandler>
   );
 };
 

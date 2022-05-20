@@ -6,8 +6,7 @@ import { initializeApollo } from '~/libs/graphql/apolloClient';
 import { SwiperWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
-import { useAuth0 } from '@auth0/auth0-react';
-import AuthenticationPage from '../AuthenticationPage';
+import { Auth0AuthorizationHandler } from '~/components/Auth0AuthorizationHandler';
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo(undefined, process.env.ACCESS_TOKEN);
@@ -27,16 +26,16 @@ type Props = {
 
 const Record: NextPage<Props> = ({ data }) => {
   const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
-  const { isAuthenticated } = useAuth0();
-  
-  if (!isAuthenticated) return <AuthenticationPage />;
+
   return (
-    <PageLayout mainContentWidth={mainContentWidth}>
-      <SwiperWrapper elm={elm}>
-        <BodyInfoPage pageIndex={0} />
-        <TrainingPage data={data} pageIndex={1} />
-      </SwiperWrapper>
-    </PageLayout>
+    <Auth0AuthorizationHandler>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <SwiperWrapper elm={elm}>
+          <BodyInfoPage pageIndex={0} />
+          <TrainingPage data={data} pageIndex={1} />
+        </SwiperWrapper>
+      </PageLayout>
+    </Auth0AuthorizationHandler>
   );
 };
 
