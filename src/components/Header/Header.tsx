@@ -1,4 +1,4 @@
-import Image from 'next/Image';
+import Image from 'next/image';
 import React, { VFC, useState } from 'react';
 import { css } from '@emotion/react';
 import { COLOR, HEADER } from '~/styles/const';

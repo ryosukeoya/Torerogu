@@ -1,4 +1,4 @@
-import Image from 'next/Image';
+import Image from 'next/image';
 import type { VFC } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { RippleButton } from '~/components';
