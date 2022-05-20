@@ -18,3 +18,4 @@ export { Snackbar } from './uiParts/Snackbar';
 export { Spacer } from './uiParts/Spacer';
 
 export { ApolloProviderWithAuth0Token } from './ApolloProviderWithAuth0Token';
+export { Auth0AuthorizationHandler } from './Auth0AuthorizationHandler';
