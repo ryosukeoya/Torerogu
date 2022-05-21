@@ -1,2 +1,2 @@
-export { default as PrimaryButton } from './PrimaryButton';
-export { default as RippleButton } from './RippleButton';
+export { PrimaryButton } from './PrimaryButton';
+export { RippleButton } from './RippleButton';

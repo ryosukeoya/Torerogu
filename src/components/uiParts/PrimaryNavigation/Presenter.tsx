@@ -1,6 +1,6 @@
 // eslint-disable-next-line consistent-default-export-name/default-export-match-filename
 import type { VFC } from 'react';
-import Item from './Item';
+import { Item } from './Item';
 import { useGetCss } from './useGetCss';
 import { ContainerProps } from './types';
 import { SetterOrUpdater } from 'recoil';
@@ -10,7 +10,7 @@ interface Props extends ContainerProps {
   setActiveIndex: SetterOrUpdater<number>;
 }
 
-const PrimaryNavigationPresenter: VFC<Props> = ({ titles, theme, customCss, width, ...rest }) => {
+export const PrimaryNavigationPresenter: VFC<Props> = ({ titles, theme, customCss, width, ...rest }) => {
   const themeStyle = useGetCss(theme, width);
 
   return (
@@ -21,5 +21,3 @@ const PrimaryNavigationPresenter: VFC<Props> = ({ titles, theme, customCss, widt
     </ul>
   );
 };
-
-export default PrimaryNavigationPresenter;

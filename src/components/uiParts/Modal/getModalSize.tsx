@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { ModalSizeTheme } from './types';
 import { media } from '~/styles/shares';
 
-const getModalSize = (size: ModalSizeTheme) => {
+export const getModalSize = (size: ModalSizeTheme) => {
   switch (size) {
     case 'small':
       return small;
@@ -14,8 +14,6 @@ const getModalSize = (size: ModalSizeTheme) => {
       throw new Error('wrong size given');
   }
 };
-
-export default getModalSize;
 
 const small = css`
   max-height: 450px;

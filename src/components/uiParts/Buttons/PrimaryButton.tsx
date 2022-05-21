@@ -18,7 +18,7 @@ interface LinkButtonProps extends PropsBase<'isLinkButton'> {
   href: string;
 }
 
-const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ title, theme = 'simple', ...rest }) => {
+export const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ title, theme = 'simple', ...rest }) => {
   const themeCss = useGetTheme(theme);
 
   switch (rest.type) {
@@ -40,8 +40,6 @@ const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ title, theme = 'sim
       return null;
   }
 };
-
-export default PrimaryButton;
 
 const useGetTheme = (theme: HoverTheme) => {
   const themeCss = useCallback(() => {

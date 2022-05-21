@@ -8,10 +8,7 @@ type Props = {
   handleClick?: (id: number, isChecked: boolean) => void | Dispatch<SetStateAction<boolean>>;
 };
 
-/**
- * material ui
- */
-const CheckboxMU: VFC<Props> = ({ initIsChecked, id, handleClick }) => {
+export const CheckboxMU: VFC<Props> = ({ initIsChecked, id, handleClick }) => {
   const [isChecked, setIsChecked] = useState<boolean>(initIsChecked ? initIsChecked : false);
 
   const handleChange = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -33,5 +30,3 @@ const CheckboxMU: VFC<Props> = ({ initIsChecked, id, handleClick }) => {
     />
   );
 };
-
-export default CheckboxMU;

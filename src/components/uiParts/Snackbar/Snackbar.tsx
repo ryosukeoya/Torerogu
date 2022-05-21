@@ -18,7 +18,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) 
 /**
  * material ui
  */
-const SnackbarWrap: VFC<Props> = ({ text, open, handleClose }) => {
+export const SnackbarWrap: VFC<Props> = ({ text, open, handleClose }) => {
   return (
     <Snackbar open={open} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} autoHideDuration={2000} onClose={handleClose} sx={{ width: '100%', maxWidth: '400px' }}>
       <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
@@ -27,5 +27,3 @@ const SnackbarWrap: VFC<Props> = ({ text, open, handleClose }) => {
     </Snackbar>
   );
 };
-
-export default SnackbarWrap;
