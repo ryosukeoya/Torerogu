@@ -1,4 +1,4 @@
-import { VFC, ReactNode } from 'react';
+import type { VFC, ReactNode } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ApolloProvider } from '@apollo/client';
 import { initializeApollo } from '../libs/graphql/apolloClient';

@@ -20,4 +20,4 @@ export { Spacer } from './uiParts/Spacer';
 export { ApolloProviderWithAuth0Token } from './ApolloProviderWithAuth0Token';
 export { Auth0AuthorizationHandler } from './Auth0AuthorizationHandler';
 export { AuthenticationPage } from './AuthenticationPage';
-export { LoginStateHandler } from './LoginStateHandler';
+export { ApolloStateHandler } from './ApolloStateHandler';

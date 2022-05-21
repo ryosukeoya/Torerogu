@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import { Slider, Auth0AuthorizationHandler, LoginStateHandler } from '~/components';
+import { Slider, Auth0AuthorizationHandler, ApolloStateHandler } from '~/components';
 import { useQuery } from '@apollo/client';
 import { GetTrainingWithBodyInfoDocument, GetTrainingWithBodyInfoQuery } from '~/libs/graphql/generated/graphql';
 import { PageLayout } from '~/layout';
@@ -17,7 +17,7 @@ const Graph: VFC = () => {
   return (
     <div ref={ref}>
       <Auth0AuthorizationHandler>
-        <LoginStateHandler error={error} loading={loading}>
+        <ApolloStateHandler error={error} loading={loading}>
           <PageLayout mainContentWidth={mainContentWidth}>
             <Slider>
               <WeightPage bodyInfo={data?.body_info_data_histories} />
@@ -25,7 +25,7 @@ const Graph: VFC = () => {
               <TrainingPage />
             </Slider>
           </PageLayout>
-        </LoginStateHandler>
+        </ApolloStateHandler>
       </Auth0AuthorizationHandler>
     </div>
   );

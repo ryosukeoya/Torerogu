@@ -8,7 +8,7 @@ type Props = {
   loading: boolean;
 };
 
-export const LoginStateHandler: VFC<Props> = ({ children, error, loading }) => {
+export const ApolloStateHandler: VFC<Props> = ({ children, error, loading }) => {
   if (loading) {
     return (
       <div css={pageTemplate.contentArea} data-testid='loading'>
