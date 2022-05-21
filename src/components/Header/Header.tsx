@@ -9,7 +9,11 @@ import { default as Title } from './HeaderTitle';
 import { PopupMenu } from './PopupMenu';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const Header: VFC = () => {
+type Props = {
+  hasTab?: boolean;
+};
+
+const Header: VFC<Props> = ({ hasTab = true }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isScrollDown: boolean = useIsScrollDown();
   const visibleState = isScrollDown ? visibility['hiddenPartial'] : visibility['visible'];
@@ -17,7 +21,7 @@ const Header: VFC = () => {
   const { user, isAuthenticated, logout } = useAuth0();
 
   return (
-    <header css={[styles.header, visibleState]}>
+    <header css={[styles.header(hasTab), visibleState]}>
       <div css={styles.area}>
         <Title />
         {isAuthenticated && (
@@ -27,21 +31,23 @@ const Header: VFC = () => {
           </p>
         )}
       </div>
-      <PrimaryNavigationGlobalState
-        titles={tabNames}
-        theme={'basicTab'}
-        options={{ isSwiper: true, isToggle: true }}
-        customCss={{
-          nav: css`
-            border-bottom: none;
-          `,
-          item: media.pc(
-            css`
-              display: none;
+      {hasTab && (
+        <PrimaryNavigationGlobalState
+          titles={tabNames}
+          theme={'basicTab'}
+          options={{ isSwiper: true, isToggle: true }}
+          customCss={{
+            nav: css`
+              border-bottom: none;
             `,
-          ),
-        }}
-      />
+            item: media.pc(
+              css`
+                display: none;
+              `,
+            ),
+          }}
+        />
+      )}
     </header>
   );
 };
@@ -49,14 +55,14 @@ const Header: VFC = () => {
 export default Header;
 
 const styles = {
-  header: css`
-    height: ${HEADER.HEIGUT};
+  header: (hasTab: boolean) => css`
+    height: ${hasTab ? HEADER.HEIGUT : 'none'};
     position: fixed;
     top: 0;
     z-index: 100000;
     background: #fff;
     width: 100vw;
-    padding: 10px 25px 0 25px;
+    padding: ${hasTab ? '10px 25px 0 25px' : '15px 0'};
     border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
   `,
   area: css`
