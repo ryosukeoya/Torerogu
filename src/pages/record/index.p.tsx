@@ -3,7 +3,7 @@ import { GetTrainingCategoryWithTypeDocument, GetTrainingCategoryWithTypeQuery }
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
-import { Slider, Auth0AuthorizationHandler } from '~/components';
+import { Slider } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 
@@ -28,14 +28,12 @@ const Record: NextPage<Props> = ({ data }) => {
 
   return (
     <div ref={ref}>
-      <Auth0AuthorizationHandler>
-        <PageLayout mainContentWidth={mainContentWidth}>
-          <Slider>
-            <BodyInfoPage pageIndex={0} />
-            <TrainingPage data={data} pageIndex={1} />
-          </Slider>
-        </PageLayout>
-      </Auth0AuthorizationHandler>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <Slider>
+          <BodyInfoPage pageIndex={0} />
+          <TrainingPage data={data} pageIndex={1} />
+        </Slider>
+      </PageLayout>
     </div>
   );
 };

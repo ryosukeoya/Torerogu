@@ -4,7 +4,6 @@ import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
 import { Slider } from '~/components';
 import { PageLayout } from '~/layout';
-import { Auth0AuthorizationHandler } from '~/components/Auth0AuthorizationHandler';
 import { useGetElementWidth } from '../../hooks';
 
 const Plan: NextPage<VFC> = () => {
@@ -12,14 +11,12 @@ const Plan: NextPage<VFC> = () => {
 
   return (
     <div ref={ref}>
-      <Auth0AuthorizationHandler>
-        <PageLayout mainContentWidth={mainContentWidth}>
-          <Slider>
-            <BodyInfoPage pageIndex={0} />
-            <TrainingPage pageIndex={1} />
-          </Slider>
-        </PageLayout>
-      </Auth0AuthorizationHandler>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <Slider>
+          <BodyInfoPage pageIndex={0} />
+          <TrainingPage pageIndex={1} />
+        </Slider>
+      </PageLayout>
     </div>
   );
 };
