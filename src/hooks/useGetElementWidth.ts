@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useGetWindowSize } from '~/hooks';
 
-const useGetElementWidth = <T extends HTMLElement>(deps?: unknown) => {
+export const useGetElementWidth = <T extends HTMLElement>(deps?: unknown) => {
   const [width, setWidth] = useState<number | undefined>();
   const ref = useRef<T>(null);
   const windowSize = useGetWindowSize();
@@ -12,5 +12,3 @@ const useGetElementWidth = <T extends HTMLElement>(deps?: unknown) => {
 
   return [ref, width] as const;
 };
-
-export default useGetElementWidth;

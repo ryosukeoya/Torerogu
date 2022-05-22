@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useRipple = (time:number) => {
+export const useRipple = (time:number) => {
   const [coords, setCoords] = useState({ x: -1, y: -1 });
   const [isRippling, setIsRippling] = useState(false);
 
@@ -17,5 +17,3 @@ const useRipple = (time:number) => {
 
   return [coords, setCoords, isRippling] as const;
 };
-
-export default useRipple;

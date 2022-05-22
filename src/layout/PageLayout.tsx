@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode;
 };
 
-const PageLayout: VFC<Props> = ({ mainContentWidth, children: mainContentChildren }) => {
+export const PageLayout: VFC<Props> = ({ mainContentWidth, children: mainContentChildren }) => {
   const tabNames = useGetTabTitleFromRoute();
 
   return (
@@ -32,5 +32,3 @@ const PageLayout: VFC<Props> = ({ mainContentWidth, children: mainContentChildre
     </div>
   );
 };
-
-export default PageLayout;

@@ -1,7 +1,7 @@
 import React, { VFC } from 'react';
 import { APP } from '~/constants';
 
-const CommonHead: VFC = () => {
+export const CommonHead: VFC = () => {
   return (
     <>
       <meta name='description' content={APP.DESC} />
@@ -24,5 +24,3 @@ const CommonHead: VFC = () => {
     </>
   );
 };
-
-export default CommonHead;

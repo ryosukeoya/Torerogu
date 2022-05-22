@@ -1,1 +1,1 @@
-export { default as CommonHead } from './CommonHead';
+export { CommonHead } from './CommonHead';

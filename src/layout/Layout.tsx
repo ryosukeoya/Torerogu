@@ -8,7 +8,7 @@ type Props = {
   children: ReactNode;
 };
 
-const Layout: VFC<Props> = ({ children }) => {
+export const Layout: VFC<Props> = ({ children }) => {
   return (
     <>
       <Header />
@@ -19,8 +19,6 @@ const Layout: VFC<Props> = ({ children }) => {
     </>
   );
 };
-
-export default Layout;
 
 const styles = {
   pcContentArea: media.pc(css`

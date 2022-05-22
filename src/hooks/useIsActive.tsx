@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useIsActive = (isToggle: boolean, activeIndex: number, index: number) => {
+export const useIsActive = (isToggle: boolean, activeIndex: number, index: number) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -14,5 +14,3 @@ const useIsActive = (isToggle: boolean, activeIndex: number, index: number) => {
 
   return isActive;
 };
-
-export default useIsActive;
