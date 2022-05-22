@@ -23,7 +23,7 @@ type Props = {
   children: ReactNode;
 };
 
-const FormFieldWrapper: VFC<Props> = ({ title, unit, formConf, errors, children }) => {
+export const FormFieldWrapper: VFC<Props> = ({ title, unit, formConf, errors, children }) => {
   return (
     <div css={formFieldWrapperStyle.content({ paddingBottom: 10 })}>
       {title && (
@@ -38,8 +38,6 @@ const FormFieldWrapper: VFC<Props> = ({ title, unit, formConf, errors, children 
     </div>
   );
 };
-
-export default FormFieldWrapper;
 
 export const formFieldWrapperStyle = {
   content: (custom?: { paddingBottom: number }) => css`

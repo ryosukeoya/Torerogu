@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode[];
 };
 
-const SliderWrapper: VFC<Props> = ({ ref, children }) => {
+export const SliderWrapper: VFC<Props> = ({ ref, children }) => {
   useChangeSettingOnInWindowSize();
 
   return (
@@ -23,5 +23,3 @@ const SliderWrapper: VFC<Props> = ({ ref, children }) => {
     </div>
   );
 };
-
-export default SliderWrapper;

@@ -7,7 +7,7 @@ import SchedulePage from './SchedulePage';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 // import '~/tests/mocks/starter';
-import { Slider, ApolloStateHandler } from '~/components';
+import { SliderWrapper, ApolloStateHandler } from '~/components';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
@@ -20,10 +20,10 @@ const Home: NextPage = () => {
     <div ref={ref}>
       <ApolloStateHandler error={error} loading={loading}>
         <PageLayout mainContentWidth={mainContentWidth}>
-          <Slider>
+          <SliderWrapper>
             <HomePage data={data} />
             <SchedulePage />
-          </Slider>
+          </SliderWrapper>
         </PageLayout>
       </ApolloStateHandler>
     </div>

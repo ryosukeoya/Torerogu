@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import Tab from './Tab';
+import { Tab } from './Tab';
 import { PAGE_TITLE } from '~/constants';
 import type { PageTitle } from '~/types';
 import { css } from '@emotion/react';
@@ -7,7 +7,7 @@ import { COLOR, HEADER, NAVIGATION, CONTENT_AREA } from '~/styles/const';
 import { useActiveIndexFromPath } from '~/hooks';
 import { media } from '~/styles/shares';
 
-const Navigation: VFC = () => {
+export const Navigation: VFC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndexFromPath();
 
   return (
@@ -18,8 +18,6 @@ const Navigation: VFC = () => {
     </nav>
   );
 };
-
-export default Navigation;
 
 const styles = {
   navigation: css`

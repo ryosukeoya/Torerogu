@@ -1,5 +1,4 @@
 import React, { VFC } from 'react';
-import Head from 'next/head';
 import { APP } from '~/constants';
 
 const CommonHead: VFC = () => {

@@ -6,7 +6,7 @@ import { COLOR, FONT } from '~/styles/const';
 import { mainTabIndexAtom } from '~/store/atoms';
 import { useSetRecoilState } from 'recoil';
 
-const HeaderTitle: VFC = () => {
+export const Title: VFC = () => {
   const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom);
   const [fade, setFade] = useState(false);
 
@@ -24,8 +24,6 @@ const HeaderTitle: VFC = () => {
     </h1>
   );
 };
-
-export default HeaderTitle;
 
 const styles = {
   title: css`

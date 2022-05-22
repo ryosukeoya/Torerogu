@@ -1,1 +1,1 @@
-export { default as Slider } from './SliderWrapper';
+export { SliderWrapper } from './SliderWrapper';

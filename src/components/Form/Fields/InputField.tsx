@@ -3,7 +3,7 @@ import { useRipple } from '~/hooks';
 import { rippleWrapper } from '~/styles/shares';
 import { ripple } from '~/styles/shares/ripple';
 import { css, SerializedStyles } from '@emotion/react';
-import FormFieldWrapper from './FormFieldWrapper';
+import { FormFieldWrapper } from './FormFieldWrapper';
 import { useFormContext } from 'react-hook-form';
 import { COLOR, BREAKPOINT } from '~/styles/const';
 import type { FormItemConf } from '../formTypes';
@@ -17,7 +17,7 @@ interface Props extends InputProps {
   formConf?: FormItemConf;
 }
 
-const InputField: VFC<Props> = ({ title, customCss, unit, formConf, ...inputProps }) => {
+export const InputField: VFC<Props> = ({ title, customCss, unit, formConf, ...inputProps }) => {
   const [coords, setCoords, isRippling] = useRipple(300);
 
   const {
@@ -69,8 +69,6 @@ const InputField: VFC<Props> = ({ title, customCss, unit, formConf, ...inputProp
       );
   }
 };
-
-export default InputField;
 
 const inputFieldStyle = {
   input: css`

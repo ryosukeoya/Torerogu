@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import { Slider, ApolloStateHandler } from '~/components';
+import { SliderWrapper, ApolloStateHandler } from '~/components';
 import { useQuery } from '@apollo/client';
 import { GetTrainingWithBodyInfoDocument, GetTrainingWithBodyInfoQuery } from '~/libs/graphql/generated/graphql';
 import { PageLayout } from '~/layout';
@@ -18,11 +18,11 @@ const Graph: VFC = () => {
     <div ref={ref}>
       <ApolloStateHandler error={error} loading={loading}>
         <PageLayout mainContentWidth={mainContentWidth}>
-          <Slider>
+          <SliderWrapper>
             <WeightPage bodyInfo={data?.body_info_data_histories} />
             <BodyFatPercentagePage />
             <TrainingPage />
-          </Slider>
+          </SliderWrapper>
         </PageLayout>
       </ApolloStateHandler>
     </div>

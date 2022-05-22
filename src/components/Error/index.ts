@@ -1,3 +1,3 @@
-export { default as ErrorPage404 } from './ErrorPage404';
-export { default as ErrorPage500 } from './ErrorPage500';
-export { default as ErrorFallback } from './ErrorFallback';
+export { ErrorPage404 } from './ErrorPage404';
+export { ErrorPage500 } from './ErrorPage500';
+export { ErrorFallback } from './ErrorFallback';

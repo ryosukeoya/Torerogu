@@ -5,7 +5,7 @@ import { COLOR, HEADER } from '~/styles/const';
 import { media } from '~/styles/shares';
 import { useIsScrollDown, useGetTabTitleFromRoute } from '~/hooks';
 import { PrimaryNavigationGlobalState } from '~/components';
-import { default as Title } from './HeaderTitle';
+import { Title } from './Title';
 import { PopupMenu } from './PopupMenu';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -13,7 +13,7 @@ type Props = {
   hasTab?: boolean;
 };
 
-const Header: VFC<Props> = ({ hasTab = true }) => {
+export const Header: VFC<Props> = ({ hasTab = true }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isScrollDown: boolean = useIsScrollDown();
   const visibleState = isScrollDown ? visibility['hiddenPartial'] : visibility['visible'];
@@ -51,8 +51,6 @@ const Header: VFC<Props> = ({ hasTab = true }) => {
     </header>
   );
 };
-
-export default Header;
 
 const styles = {
   header: (hasTab: boolean) => css`

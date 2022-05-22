@@ -19,7 +19,7 @@ type Props = {
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: parentActiveIndex, setActiveIndex: parentSetActiveIndex }) => {
+export const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: parentActiveIndex, setActiveIndex: parentSetActiveIndex }) => {
   const [isTouchDevice, setIsTouchDevice] = useState<boolean | undefined>();
   const setActiveIndex = useSetRecoilState<number>(mainTabIndexAtom); /* eslint-disable-line @typescript-eslint/no-unused-vars */
   const isActive = useIsActive(!!isToggle, parentActiveIndex, index);
@@ -53,8 +53,6 @@ const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIndex: pa
     </Link>
   );
 };
-
-export default Tab;
 
 const rippleEffect = keyframes`
   0% {
