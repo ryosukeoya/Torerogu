@@ -4,7 +4,7 @@ import { Header, AuthenticationPage } from '~/components';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { Layout } from '../layout';
 import { useRecoilValue } from 'recoil';
-import { isAuthedAtom } from '~/store/atoms';
+import { isAuthenticatedAtom } from '~/store/atoms';
 
 type Props = {
   children: ReactNode;
@@ -12,7 +12,7 @@ type Props = {
 
 export const Auth0AuthorizationHandler: VFC<Props> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth0();
-  const isAuthed = useRecoilValue(isAuthedAtom);
+  const isAuthed = useRecoilValue(isAuthenticatedAtom);
 
   if (isLoading) {
     if (isAuthed) {

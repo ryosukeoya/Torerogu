@@ -9,7 +9,7 @@ import { PageLayout } from '~/layout';
 // import '~/tests/mocks/starter';
 import { SliderWrapper, ApolloStateHandler } from '~/components';
 import { useSetRecoilState } from 'recoil';
-import { isAuthedAtom } from '~/store/atoms';
+import { isAuthenticatedAtom } from '~/store/atoms';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
@@ -17,8 +17,8 @@ const Home: NextPage = () => {
     fetchPolicy: 'network-only',
   });
   const [ref, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
-  const setIsAuthed = useSetRecoilState(isAuthedAtom);
-  setIsAuthed(true);
+  const setIsAuthenticated = useSetRecoilState(isAuthenticatedAtom);
+  setIsAuthenticated(true);
 
   return (
     <div ref={ref}>

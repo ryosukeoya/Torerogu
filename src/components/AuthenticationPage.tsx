@@ -4,12 +4,12 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Header, RippleButton, Spacer } from '~/components';
 import { css } from '@emotion/react';
 import { useSetRecoilState } from 'recoil';
-import { isAuthedAtom } from '~/store/atoms';
+import { isAuthenticatedAtom } from '~/store/atoms';
 
 export const AuthenticationPage: VFC = () => {
   const { loginWithRedirect } = useAuth0();
-  const setIsAuthed = useSetRecoilState(isAuthedAtom);
-  setIsAuthed(false);
+  const setIsAuthenticated = useSetRecoilState(isAuthenticatedAtom);
+  setIsAuthenticated(false);
 
   return (
     <>
