@@ -24,7 +24,7 @@ export const AuthenticationPage: VFC = () => {
             <RippleButton title='新規登録' onClick={() => loginWithRedirect({ screen_hint: 'signup' })} />
           </div>
           <div css={styles.section}>
-            <Image css={styles.image} src='/imgs/record_training.png' width={300} height={250} layout='responsive' quality={100} objectFit='contain' alt='記録' />
+            <Image css={styles.image} src='/imgs/record_training.png' width={300} height={250} layout='responsive' quality={90} objectFit='contain' alt='記録' />
             <p css={styles.explain}>
               トレーニング記録アプリの「トレログ」を作りました!
               <br />
@@ -32,11 +32,11 @@ export const AuthenticationPage: VFC = () => {
             </p>
           </div>
           <div css={styles.section}>
-            <Image css={styles.image} src='/imgs/training_scedule.png' width={300} height={250} layout='responsive' quality={100} objectFit='contain' alt='スケジュール' />
+            <Image css={styles.image} src='/imgs/training_scedule.png' width={300} height={250} layout='responsive' quality={90} objectFit='contain' alt='スケジュール' />
             <p css={styles.explain}>カレンダーからスケジュールの確認ができます！</p>
           </div>
           <div css={styles.section}>
-            <Image css={styles.image} src='/imgs/weight_graph.png' width={300} height={250} layout='responsive' quality={100} objectFit='contain' alt='体重グラフ' />
+            <Image css={styles.image} src='/imgs/weight_graph.png' width={300} height={250} layout='responsive' quality={90} objectFit='contain' alt='体重グラフ' />
             <p css={styles.explain}>体重グラフで体重の遷移を確認することができます！</p>
           </div>
         </div>

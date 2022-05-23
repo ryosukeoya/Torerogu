@@ -11,7 +11,7 @@ jest.mock('next/router', () => ({
     };
   },
 }));
-jest.mock('~/components/PageSlider/useChangeSettingOnInWindowSize');
+jest.mock('~/components/Slider/useChangeSettingOnInWindowSize');
 jest.mock('./SchedulePage', () => () => 'SchedulePage');
 
 describe('Integration Test', () => {

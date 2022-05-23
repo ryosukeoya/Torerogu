@@ -10,7 +10,7 @@ jest.mock('next/router', () => ({
     };
   },
 }));
-jest.mock('~/components/PageSlider/useChangeSettingOnInWindowSize');
+jest.mock('~/components/Slider/useChangeSettingOnInWindowSize');
 
 describe('Integration Test', () => {
   const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} />, [createBodyInfoHistories(requiredRecordPageVariables)]);

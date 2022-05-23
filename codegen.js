@@ -5,7 +5,7 @@ module.exports = {
   overwrite: true,
   schema: [
     {
-      "https://workout-220216.hasura.app/v1/graphql": {
+      [process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT] : {
         headers: {
           Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
         },

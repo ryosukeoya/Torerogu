@@ -17,7 +17,7 @@ const createApolloClient = (getAccessTokenSilently?: GetAccessTokenSilently, ACC
       };
     } else if (getAccessTokenSilently) {
       const accessToken = await getAccessTokenSilently();
-      // console.warn(accessToken);
+      // process.env.NODE_ENV === 'development' && console.warn(accessToken);
       if (!accessToken) {
         return { headers };
       }
@@ -35,9 +35,6 @@ const createApolloClient = (getAccessTokenSilently?: GetAccessTokenSilently, ACC
   const link = authLink.concat(
     new HttpLink({
       uri: process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT,
-      headers: {
-        'x-hasura-admin-secret': process.env.NEXT_PUBLIC_HASURA_GRAPHQL_ADMIN_SECRET,
-      },
     }),
   );
 
