@@ -11,12 +11,11 @@ import { Auth0Provider } from '@auth0/auth0-react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   progressBar();
-  const REDIRECT_URI = `${process.env['NEXT_PUBLIC_BASE_URL']}`;
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <RecoilRoot>
-        <Auth0Provider domain={process.env['NEXT_PUBLIC_AUTH0_DOMAIN'] as string} clientId={process.env['NEXT_PUBLIC_AUTH0_CLIENT_ID'] as string} redirectUri={REDIRECT_URI} audience={process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}>
+        <Auth0Provider domain={process.env['NEXT_PUBLIC_AUTH0_DOMAIN'] as string} clientId={process.env['NEXT_PUBLIC_AUTH0_CLIENT_ID'] as string} redirectUri={typeof window !== 'undefined' ? window.location.origin : undefined} audience={process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}>
           <ApolloProviderWithAuth0Token>
             <Auth0AuthorizationHandler>
               <Layout>
