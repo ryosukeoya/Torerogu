@@ -7,7 +7,7 @@ type Props = {
   handleClick?: (id: number, isChecked: boolean) => void | Dispatch<SetStateAction<boolean>>;
 };
 
-const Checkbox: VFC<Props> = ({ initIsChecked, title, id, handleClick }) => {
+export const Checkbox: VFC<Props> = ({ initIsChecked, title, id, handleClick }) => {
   const [isChecked, setIsChecked] = useState<boolean>(initIsChecked ? initIsChecked : false);
   return (
     <>
@@ -27,5 +27,3 @@ const Checkbox: VFC<Props> = ({ initIsChecked, title, id, handleClick }) => {
     </>
   );
 };
-
-export default Checkbox;

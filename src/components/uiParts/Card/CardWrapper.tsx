@@ -10,15 +10,13 @@ type Props = {
   children: ReactNode;
 };
 
-const CardWrapper: VFC<PropsWithChildren<Props>> = ({ children, handleClick, customCardCss, hoverTheme }) => {
+export const CardWrapper: VFC<PropsWithChildren<Props>> = ({ children, handleClick, customCardCss, hoverTheme }) => {
   return (
     <div onClick={handleClick && handleClick} css={[cardStyle(hoverTheme), customCardCss]}>
       {children}
     </div>
   );
 };
-
-export default CardWrapper;
 
 const darkenHover = css`
   @media (hover: hover) {

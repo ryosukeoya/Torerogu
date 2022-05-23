@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
 
-const useIsScrollDown = () => {
+export const useIsScrollDown = () => {
   const [position, setPosition] = useState(process.browser && window.pageYOffset);
   const [isScrollDown, setIsScrollDown] = useState(false);
 
@@ -21,5 +21,3 @@ const useIsScrollDown = () => {
   });
   return isScrollDown;
 };
-
-export default useIsScrollDown;

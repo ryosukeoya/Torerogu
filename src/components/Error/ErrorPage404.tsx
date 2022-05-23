@@ -3,7 +3,7 @@ import type { VFC } from 'react';
 import { pageTemplate, link } from '~/styles/shares';
 import { errorPageStyle } from './errorPageStyle';
 
-const ErrorPage404: VFC = () => {
+export const ErrorPage404: VFC = () => {
   return (
     <div css={pageTemplate.contentArea}>
       <h1 css={errorPageStyle.title}>※ ご指定のページが見つかりませんでした</h1>
@@ -17,5 +17,3 @@ const ErrorPage404: VFC = () => {
     </div>
   );
 };
-
-export default ErrorPage404;

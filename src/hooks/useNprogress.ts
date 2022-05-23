@@ -14,7 +14,7 @@ const CONFIG: Config = {
   MINIMUM: 0.08,
 };
 
-const useNprogress = ():void => {
+export const useNprogress = ():void => {
   NProgress.configure({ showSpinner: CONFIG.SHOWSPINNER, speed: CONFIG.SPEED, minimum: CONFIG.MINIMUM });
 
   if (process.browser) {
@@ -25,5 +25,3 @@ const useNprogress = ():void => {
     NProgress.done();
   });
 };
-
-export default useNprogress;

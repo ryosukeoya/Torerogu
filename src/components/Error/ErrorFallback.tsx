@@ -4,7 +4,7 @@ import { PrimaryButton } from '~/components';
 import { css } from '@emotion/react';
 import { FONT } from '~/styles/const';
 
-const ErrorFallback: VFC<FallbackProps> = ({ error, resetErrorBoundary }) => {
+export const ErrorFallback: VFC<FallbackProps> = ({ error, resetErrorBoundary }) => {
   return (
     <div css={styles.contentArea}>
       <p css={styles.title}>申し訳ございません、予期せぬエラーが発生しました</p>
@@ -14,8 +14,6 @@ const ErrorFallback: VFC<FallbackProps> = ({ error, resetErrorBoundary }) => {
     </div>
   );
 };
-
-export default ErrorFallback;
 
 const styles = {
   contentArea: css`

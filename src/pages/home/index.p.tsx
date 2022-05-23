@@ -1,38 +1,36 @@
 import type { NextPage } from 'next';
 import { GetTrainingOneTypeDocument, GetTrainingOneTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
-import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { getStringTypeDate } from '~/utils/app';
 import HomePage from './HomePage';
 import SchedulePage from './SchedulePage';
-import { SwiperWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
 // import '~/tests/mocks/starter';
+import { SliderWrapper, ApolloStateHandler } from '~/components';
+import { useSetRecoilState } from 'recoil';
+import { isAuthenticatedAtom } from '~/store/atoms';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
     variables: { date: getStringTypeDate(new Date()) },
     fetchPolicy: 'network-only',
   });
-  const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
-
-  if (loading) {
-    return (
-      <div css={pageTemplate.contentArea} data-testid='loading'>
-        <p>Loading...</p>
-      </div>
-    );
-  }
-  if (error) throw new Error(error.message);
+  const [ref, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
+  const setIsAuthenticated = useSetRecoilState(isAuthenticatedAtom);
+  setIsAuthenticated(true);
 
   return (
-    <PageLayout mainContentWidth={mainContentWidth}>
-      <SwiperWrapper elm={elm}>
-        <HomePage data={data} />
-        <SchedulePage />
-      </SwiperWrapper>
-    </PageLayout>
+    <div ref={ref}>
+      <ApolloStateHandler error={error} loading={loading}>
+        <PageLayout mainContentWidth={mainContentWidth}>
+          <SliderWrapper>
+            <HomePage data={data} />
+            <SchedulePage />
+          </SliderWrapper>
+        </PageLayout>
+      </ApolloStateHandler>
+    </div>
   );
 };
 

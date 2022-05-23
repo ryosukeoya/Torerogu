@@ -7,7 +7,7 @@ type Props = {
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
-const RippleButton: VFC<Props> = ({ title, onClick }) => {
+export const RippleButton: VFC<Props> = ({ title, onClick }) => {
   const [coords, setCoords, isRippling] = useRipple(300);
 
   return (
@@ -34,5 +34,3 @@ const RippleButton: VFC<Props> = ({ title, onClick }) => {
     </button>
   );
 };
-
-export default RippleButton;

@@ -1,6 +1,6 @@
 import { useState, VFC } from 'react';
 // eslint-disable-next-line consistent-default-export-name/default-import-match-filename
-import PrimaryNavigationPresenter from './Presenter';
+import { PrimaryNavigationPresenter } from './Presenter';
 import type { ContainerProps } from './types';
 import { useRecoilState } from 'recoil';
 import { mainTabIndexAtom } from '~/store/atoms';

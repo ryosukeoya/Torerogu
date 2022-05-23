@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { VFC, useCallback } from 'react';
-import { ButtonTheme } from './types';
+import { HoverTheme } from './types';
 import { baseLookLikeButton } from '~/styles/shares';
 import { COLOR } from '~/styles/const';
 import { css } from '@emotion/react';
@@ -8,9 +8,8 @@ import { css } from '@emotion/react';
 interface PropsBase<T extends 'isButton' | 'isLinkButton'> {
   type: T;
   title: string;
-  theme?: ButtonTheme;
+  theme?: HoverTheme;
 }
-
 interface ButtonProps extends PropsBase<'isButton'> {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -19,7 +18,7 @@ interface LinkButtonProps extends PropsBase<'isLinkButton'> {
   href: string;
 }
 
-const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ title, theme = 'simple', ...rest }) => {
+export const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ title, theme = 'simple', ...rest }) => {
   const themeCss = useGetTheme(theme);
 
   switch (rest.type) {
@@ -42,9 +41,7 @@ const PrimaryButton: VFC<ButtonProps | LinkButtonProps> = ({ title, theme = 'sim
   }
 };
 
-export default PrimaryButton;
-
-const useGetTheme = (theme: ButtonTheme) => {
+const useGetTheme = (theme: HoverTheme) => {
   const themeCss = useCallback(() => {
     if (theme === 'simple') {
       return simpleButton();

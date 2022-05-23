@@ -1,8 +1,8 @@
 import type { VFC, ReactNode } from 'react';
 import { css, keyframes, SerializedStyles } from '@emotion/react';
 import type { ModalSizeTheme } from './types';
-import Portal from '../../Portal';
-import getModalSize from './getModalSize';
+import { Portal } from '../../Portal';
+import { getModalSize } from './getModalSize';
 import { SetterOrUpdater } from 'recoil';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
   children: ReactNode;
 };
 
-const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, size = 'normal', children }) => {
+export const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, size = 'normal', children }) => {
   if (!isOpen) return null;
 
   const sizeStyle = getModalSize(size);
@@ -25,8 +25,6 @@ const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, size = 'normal', children
     </Portal>
   );
 };
-
-export default ModalWrapper;
 
 const modalEffect = keyframes`
   0% {
@@ -66,7 +64,7 @@ const styles = {
     margin: auto;
     z-index: 30000;
     border: 1px solid #dedede;
-    overflow-y: scroll; 
+    overflow-y: scroll;
     box-shadow: 0 5px 15px 3px rgba(0, 0, 0, 0.2); //x軸 y軸 ぼかし 広がり カラー;
     animation: 0.2s ease 0s forwards ${modalEffect};
     cursor: default;

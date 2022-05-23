@@ -3,36 +3,43 @@ import { GetTrainingCategoryWithTypeDocument, GetTrainingCategoryWithTypeQuery }
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
-import { SwiperWrapper } from '~/components';
+import { SliderWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layout';
+import { useQuery } from '@apollo/client';
 
-export async function getStaticProps() {
-  const apolloClient = initializeApollo();
+// TODO
+// export async function getStaticProps() {
+//   const apolloClient = initializeApollo(undefined, process.env.ACCESS_TOKEN);
 
-  const data = await apolloClient.query({
-    query: GetTrainingCategoryWithTypeDocument,
-  });
+//   const data = await apolloClient.query({
+//     query: GetTrainingCategoryWithTypeDocument,
+//   });
 
-  return {
-    props: data,
-  };
-}
+//   return {
+//     props: data,
+//   };
+// }
 
 type Props = {
   data?: GetTrainingCategoryWithTypeQuery;
 };
 
-const Record: NextPage<Props> = ({ data }) => {
-  const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
+const Record: NextPage<Props> = () => {
+  const { data } = useQuery<GetTrainingCategoryWithTypeQuery>(GetTrainingCategoryWithTypeDocument, {
+    fetchPolicy: 'cache-first',
+  });
+  const [ref, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
 
   return (
-    <PageLayout mainContentWidth={mainContentWidth}>
-      <SwiperWrapper elm={elm}>
-        <BodyInfoPage pageIndex={0} />
-        <TrainingPage data={data} pageIndex={1} />
-      </SwiperWrapper>
-    </PageLayout>
+    <div ref={ref}>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <SliderWrapper>
+          <BodyInfoPage pageIndex={0} />
+          <TrainingPage data={data} pageIndex={1} />
+        </SliderWrapper>
+      </PageLayout>
+    </div>
   );
 };
 

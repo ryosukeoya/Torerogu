@@ -1,5 +1,5 @@
 import React, { VFC, ReactNode } from 'react';
-import { Header, Navigation, CommonHead } from '../components';
+import { Header, Navigation } from '../components';
 import { css } from '@emotion/react';
 import { COLOR, HEADER, NAVIGATION, CONTENT_AREA } from '../styles/const';
 import { media } from '../styles/shares';
@@ -8,10 +8,9 @@ type Props = {
   children: ReactNode;
 };
 
-const Layout: VFC<Props> = ({ children }) => {
+export const Layout: VFC<Props> = ({ children }) => {
   return (
     <>
-      <CommonHead />
       <Header />
       <div css={styles.pcContentArea}>
         <Navigation />
@@ -20,8 +19,6 @@ const Layout: VFC<Props> = ({ children }) => {
     </>
   );
 };
-
-export default Layout;
 
 const styles = {
   pcContentArea: media.pc(css`

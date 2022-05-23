@@ -1,1 +1,1 @@
-export { default as Snackbar } from './Snackbar';
+export { SnackbarWrap as Snackbar } from './Snackbar';

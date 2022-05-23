@@ -107,42 +107,8 @@ type body_info_data_histories {
   id: Int!
   is_record: Boolean!
   updated_at: timestamptz!
-  user_id: Int!
+  user_id: String!
   weight: numeric!
-}
-
-"""
-aggregated selection of "body_info_data_histories"
-"""
-type body_info_data_histories_aggregate {
-  aggregate: body_info_data_histories_aggregate_fields
-  nodes: [body_info_data_histories!]!
-}
-
-"""
-aggregate fields of "body_info_data_histories"
-"""
-type body_info_data_histories_aggregate_fields {
-  avg: body_info_data_histories_avg_fields
-  count(columns: [body_info_data_histories_select_column!], distinct: Boolean): Int!
-  max: body_info_data_histories_max_fields
-  min: body_info_data_histories_min_fields
-  stddev: body_info_data_histories_stddev_fields
-  stddev_pop: body_info_data_histories_stddev_pop_fields
-  stddev_samp: body_info_data_histories_stddev_samp_fields
-  sum: body_info_data_histories_sum_fields
-  var_pop: body_info_data_histories_var_pop_fields
-  var_samp: body_info_data_histories_var_samp_fields
-  variance: body_info_data_histories_variance_fields
-}
-
-"""aggregate avg on columns"""
-type body_info_data_histories_avg_fields {
-  body_fat_percentage: Float
-  height: Float
-  id: Float
-  user_id: Float
-  weight: Float
 }
 
 """
@@ -159,7 +125,7 @@ input body_info_data_histories_bool_exp {
   id: Int_comparison_exp
   is_record: Boolean_comparison_exp
   updated_at: timestamptz_comparison_exp
-  user_id: Int_comparison_exp
+  user_id: String_comparison_exp
   weight: numeric_comparison_exp
 }
 
@@ -178,7 +144,6 @@ input body_info_data_histories_inc_input {
   body_fat_percentage: Int
   height: numeric
   id: Int
-  user_id: Int
   weight: numeric
 }
 
@@ -193,31 +158,6 @@ input body_info_data_histories_insert_input {
   id: Int
   is_record: Boolean
   updated_at: timestamptz
-  user_id: Int
-  weight: numeric
-}
-
-"""aggregate max on columns"""
-type body_info_data_histories_max_fields {
-  body_fat_percentage: Int
-  created_at: timestamptz
-  date: timestamptz
-  height: numeric
-  id: Int
-  updated_at: timestamptz
-  user_id: Int
-  weight: numeric
-}
-
-"""aggregate min on columns"""
-type body_info_data_histories_min_fields {
-  body_fat_percentage: Int
-  created_at: timestamptz
-  date: timestamptz
-  height: numeric
-  id: Int
-  updated_at: timestamptz
-  user_id: Int
   weight: numeric
 }
 
@@ -302,43 +242,6 @@ input body_info_data_histories_set_input {
   id: Int
   is_record: Boolean
   updated_at: timestamptz
-  user_id: Int
-  weight: numeric
-}
-
-"""aggregate stddev on columns"""
-type body_info_data_histories_stddev_fields {
-  body_fat_percentage: Float
-  height: Float
-  id: Float
-  user_id: Float
-  weight: Float
-}
-
-"""aggregate stddev_pop on columns"""
-type body_info_data_histories_stddev_pop_fields {
-  body_fat_percentage: Float
-  height: Float
-  id: Float
-  user_id: Float
-  weight: Float
-}
-
-"""aggregate stddev_samp on columns"""
-type body_info_data_histories_stddev_samp_fields {
-  body_fat_percentage: Float
-  height: Float
-  id: Float
-  user_id: Float
-  weight: Float
-}
-
-"""aggregate sum on columns"""
-type body_info_data_histories_sum_fields {
-  body_fat_percentage: Int
-  height: numeric
-  id: Int
-  user_id: Int
   weight: numeric
 }
 
@@ -368,37 +271,7 @@ enum body_info_data_histories_update_column {
   updated_at
 
   """column name"""
-  user_id
-
-  """column name"""
   weight
-}
-
-"""aggregate var_pop on columns"""
-type body_info_data_histories_var_pop_fields {
-  body_fat_percentage: Float
-  height: Float
-  id: Float
-  user_id: Float
-  weight: Float
-}
-
-"""aggregate var_samp on columns"""
-type body_info_data_histories_var_samp_fields {
-  body_fat_percentage: Float
-  height: Float
-  id: Float
-  user_id: Float
-  weight: Float
-}
-
-"""aggregate variance on columns"""
-type body_info_data_histories_variance_fields {
-  body_fat_percentage: Float
-  height: Float
-  id: Float
-  user_id: Float
-  weight: Float
 }
 
 scalar date
@@ -434,32 +307,6 @@ type mutation_root {
   delete_body_info_data_histories_by_pk(id: Int!): body_info_data_histories
 
   """
-  delete data from the table: "training_categories"
-  """
-  delete_training_categories(
-    """filter the rows which have to be deleted"""
-    where: training_categories_bool_exp!
-  ): training_categories_mutation_response
-
-  """
-  delete single row from the table: "training_categories"
-  """
-  delete_training_categories_by_pk(id: Int!): training_categories
-
-  """
-  delete data from the table: "training_types"
-  """
-  delete_training_types(
-    """filter the rows which have to be deleted"""
-    where: training_types_bool_exp!
-  ): training_types_mutation_response
-
-  """
-  delete single row from the table: "training_types"
-  """
-  delete_training_types_by_pk(id: Int!): training_types
-
-  """
   delete data from the table: "trainings"
   """
   delete_trainings(
@@ -471,19 +318,6 @@ type mutation_root {
   delete single row from the table: "trainings"
   """
   delete_trainings_by_pk(id: Int!): trainings
-
-  """
-  delete data from the table: "users"
-  """
-  delete_users(
-    """filter the rows which have to be deleted"""
-    where: users_bool_exp!
-  ): users_mutation_response
-
-  """
-  delete single row from the table: "users"
-  """
-  delete_users_by_pk(id: Int!): users
 
   """
   insert data into the table: "body_info_data_histories"
@@ -508,50 +342,6 @@ type mutation_root {
   ): body_info_data_histories
 
   """
-  insert data into the table: "training_categories"
-  """
-  insert_training_categories(
-    """the rows to be inserted"""
-    objects: [training_categories_insert_input!]!
-
-    """upsert condition"""
-    on_conflict: training_categories_on_conflict
-  ): training_categories_mutation_response
-
-  """
-  insert a single row into the table: "training_categories"
-  """
-  insert_training_categories_one(
-    """the row to be inserted"""
-    object: training_categories_insert_input!
-
-    """upsert condition"""
-    on_conflict: training_categories_on_conflict
-  ): training_categories
-
-  """
-  insert data into the table: "training_types"
-  """
-  insert_training_types(
-    """the rows to be inserted"""
-    objects: [training_types_insert_input!]!
-
-    """upsert condition"""
-    on_conflict: training_types_on_conflict
-  ): training_types_mutation_response
-
-  """
-  insert a single row into the table: "training_types"
-  """
-  insert_training_types_one(
-    """the row to be inserted"""
-    object: training_types_insert_input!
-
-    """upsert condition"""
-    on_conflict: training_types_on_conflict
-  ): training_types
-
-  """
   insert data into the table: "trainings"
   """
   insert_trainings(
@@ -572,28 +362,6 @@ type mutation_root {
     """upsert condition"""
     on_conflict: trainings_on_conflict
   ): trainings
-
-  """
-  insert data into the table: "users"
-  """
-  insert_users(
-    """the rows to be inserted"""
-    objects: [users_insert_input!]!
-
-    """upsert condition"""
-    on_conflict: users_on_conflict
-  ): users_mutation_response
-
-  """
-  insert a single row into the table: "users"
-  """
-  insert_users_one(
-    """the row to be inserted"""
-    object: users_insert_input!
-
-    """upsert condition"""
-    on_conflict: users_on_conflict
-  ): users
 
   """
   update data of the table: "body_info_data_histories"
@@ -622,58 +390,6 @@ type mutation_root {
   ): body_info_data_histories
 
   """
-  update data of the table: "training_categories"
-  """
-  update_training_categories(
-    """increments the numeric columns with given value of the filtered values"""
-    _inc: training_categories_inc_input
-
-    """sets the columns of the filtered rows to the given values"""
-    _set: training_categories_set_input
-
-    """filter the rows which have to be updated"""
-    where: training_categories_bool_exp!
-  ): training_categories_mutation_response
-
-  """
-  update single row of the table: "training_categories"
-  """
-  update_training_categories_by_pk(
-    """increments the numeric columns with given value of the filtered values"""
-    _inc: training_categories_inc_input
-
-    """sets the columns of the filtered rows to the given values"""
-    _set: training_categories_set_input
-    pk_columns: training_categories_pk_columns_input!
-  ): training_categories
-
-  """
-  update data of the table: "training_types"
-  """
-  update_training_types(
-    """increments the numeric columns with given value of the filtered values"""
-    _inc: training_types_inc_input
-
-    """sets the columns of the filtered rows to the given values"""
-    _set: training_types_set_input
-
-    """filter the rows which have to be updated"""
-    where: training_types_bool_exp!
-  ): training_types_mutation_response
-
-  """
-  update single row of the table: "training_types"
-  """
-  update_training_types_by_pk(
-    """increments the numeric columns with given value of the filtered values"""
-    _inc: training_types_inc_input
-
-    """sets the columns of the filtered rows to the given values"""
-    _set: training_types_set_input
-    pk_columns: training_types_pk_columns_input!
-  ): training_types
-
-  """
   update data of the table: "trainings"
   """
   update_trainings(
@@ -698,32 +414,6 @@ type mutation_root {
     _set: trainings_set_input
     pk_columns: trainings_pk_columns_input!
   ): trainings
-
-  """
-  update data of the table: "users"
-  """
-  update_users(
-    """increments the numeric columns with given value of the filtered values"""
-    _inc: users_inc_input
-
-    """sets the columns of the filtered rows to the given values"""
-    _set: users_set_input
-
-    """filter the rows which have to be updated"""
-    where: users_bool_exp!
-  ): users_mutation_response
-
-  """
-  update single row of the table: "users"
-  """
-  update_users_by_pk(
-    """increments the numeric columns with given value of the filtered values"""
-    _inc: users_inc_input
-
-    """sets the columns of the filtered rows to the given values"""
-    _set: users_set_input
-    pk_columns: users_pk_columns_input!
-  ): users
 }
 
 scalar numeric
@@ -786,26 +476,6 @@ type query_root {
   ): [body_info_data_histories!]!
 
   """
-  fetch aggregated fields from the table: "body_info_data_histories"
-  """
-  body_info_data_histories_aggregate(
-    """distinct select on columns"""
-    distinct_on: [body_info_data_histories_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [body_info_data_histories_order_by!]
-
-    """filter the rows returned"""
-    where: body_info_data_histories_bool_exp
-  ): body_info_data_histories_aggregate!
-
-  """
   fetch data from the table: "body_info_data_histories" using primary key columns
   """
   body_info_data_histories_by_pk(id: Int!): body_info_data_histories
@@ -829,26 +499,6 @@ type query_root {
     """filter the rows returned"""
     where: training_categories_bool_exp
   ): [training_categories!]!
-
-  """
-  fetch aggregated fields from the table: "training_categories"
-  """
-  training_categories_aggregate(
-    """distinct select on columns"""
-    distinct_on: [training_categories_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [training_categories_order_by!]
-
-    """filter the rows returned"""
-    where: training_categories_bool_exp
-  ): training_categories_aggregate!
 
   """
   fetch data from the table: "training_categories" using primary key columns
@@ -875,26 +525,6 @@ type query_root {
     where: training_types_bool_exp
   ): [training_types!]!
 
-  """
-  fetch aggregated fields from the table: "training_types"
-  """
-  training_types_aggregate(
-    """distinct select on columns"""
-    distinct_on: [training_types_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [training_types_order_by!]
-
-    """filter the rows returned"""
-    where: training_types_bool_exp
-  ): training_types_aggregate!
-
   """fetch data from the table: "training_types" using primary key columns"""
   training_types_by_pk(id: Int!): training_types
 
@@ -916,69 +546,8 @@ type query_root {
     where: trainings_bool_exp
   ): [trainings!]!
 
-  """An aggregate relationship"""
-  trainings_aggregate(
-    """distinct select on columns"""
-    distinct_on: [trainings_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [trainings_order_by!]
-
-    """filter the rows returned"""
-    where: trainings_bool_exp
-  ): trainings_aggregate!
-
   """fetch data from the table: "trainings" using primary key columns"""
   trainings_by_pk(id: Int!): trainings
-
-  """
-  fetch data from the table: "users"
-  """
-  users(
-    """distinct select on columns"""
-    distinct_on: [users_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [users_order_by!]
-
-    """filter the rows returned"""
-    where: users_bool_exp
-  ): [users!]!
-
-  """
-  fetch aggregated fields from the table: "users"
-  """
-  users_aggregate(
-    """distinct select on columns"""
-    distinct_on: [users_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [users_order_by!]
-
-    """filter the rows returned"""
-    where: users_bool_exp
-  ): users_aggregate!
-
-  """fetch data from the table: "users" using primary key columns"""
-  users_by_pk(id: Int!): users
 }
 
 type subscription_root {
@@ -1003,26 +572,6 @@ type subscription_root {
   ): [body_info_data_histories!]!
 
   """
-  fetch aggregated fields from the table: "body_info_data_histories"
-  """
-  body_info_data_histories_aggregate(
-    """distinct select on columns"""
-    distinct_on: [body_info_data_histories_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [body_info_data_histories_order_by!]
-
-    """filter the rows returned"""
-    where: body_info_data_histories_bool_exp
-  ): body_info_data_histories_aggregate!
-
-  """
   fetch data from the table: "body_info_data_histories" using primary key columns
   """
   body_info_data_histories_by_pk(id: Int!): body_info_data_histories
@@ -1046,26 +595,6 @@ type subscription_root {
     """filter the rows returned"""
     where: training_categories_bool_exp
   ): [training_categories!]!
-
-  """
-  fetch aggregated fields from the table: "training_categories"
-  """
-  training_categories_aggregate(
-    """distinct select on columns"""
-    distinct_on: [training_categories_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [training_categories_order_by!]
-
-    """filter the rows returned"""
-    where: training_categories_bool_exp
-  ): training_categories_aggregate!
 
   """
   fetch data from the table: "training_categories" using primary key columns
@@ -1092,26 +621,6 @@ type subscription_root {
     where: training_types_bool_exp
   ): [training_types!]!
 
-  """
-  fetch aggregated fields from the table: "training_types"
-  """
-  training_types_aggregate(
-    """distinct select on columns"""
-    distinct_on: [training_types_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [training_types_order_by!]
-
-    """filter the rows returned"""
-    where: training_types_bool_exp
-  ): training_types_aggregate!
-
   """fetch data from the table: "training_types" using primary key columns"""
   training_types_by_pk(id: Int!): training_types
 
@@ -1133,69 +642,8 @@ type subscription_root {
     where: trainings_bool_exp
   ): [trainings!]!
 
-  """An aggregate relationship"""
-  trainings_aggregate(
-    """distinct select on columns"""
-    distinct_on: [trainings_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [trainings_order_by!]
-
-    """filter the rows returned"""
-    where: trainings_bool_exp
-  ): trainings_aggregate!
-
   """fetch data from the table: "trainings" using primary key columns"""
   trainings_by_pk(id: Int!): trainings
-
-  """
-  fetch data from the table: "users"
-  """
-  users(
-    """distinct select on columns"""
-    distinct_on: [users_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [users_order_by!]
-
-    """filter the rows returned"""
-    where: users_bool_exp
-  ): [users!]!
-
-  """
-  fetch aggregated fields from the table: "users"
-  """
-  users_aggregate(
-    """distinct select on columns"""
-    distinct_on: [users_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [users_order_by!]
-
-    """filter the rows returned"""
-    where: users_bool_exp
-  ): users_aggregate!
-
-  """fetch data from the table: "users" using primary key columns"""
-  users_by_pk(id: Int!): users
 }
 
 scalar timestamptz
@@ -1226,36 +674,6 @@ type training_categories {
 }
 
 """
-aggregated selection of "training_categories"
-"""
-type training_categories_aggregate {
-  aggregate: training_categories_aggregate_fields
-  nodes: [training_categories!]!
-}
-
-"""
-aggregate fields of "training_categories"
-"""
-type training_categories_aggregate_fields {
-  avg: training_categories_avg_fields
-  count(columns: [training_categories_select_column!], distinct: Boolean): Int!
-  max: training_categories_max_fields
-  min: training_categories_min_fields
-  stddev: training_categories_stddev_fields
-  stddev_pop: training_categories_stddev_pop_fields
-  stddev_samp: training_categories_stddev_samp_fields
-  sum: training_categories_sum_fields
-  var_pop: training_categories_var_pop_fields
-  var_samp: training_categories_var_samp_fields
-  variance: training_categories_variance_fields
-}
-
-"""aggregate avg on columns"""
-type training_categories_avg_fields {
-  id: Float
-}
-
-"""
 Boolean expression to filter rows from the table "training_categories". All fields are combined with a logical 'AND'.
 """
 input training_categories_bool_exp {
@@ -1268,88 +686,12 @@ input training_categories_bool_exp {
   updated_at: timestamptz_comparison_exp
 }
 
-"""
-unique or primary key constraints on table "training_categories"
-"""
-enum training_categories_constraint {
-  """unique or primary key constraint"""
-  training_types_pkey
-}
-
-"""
-input type for incrementing numeric columns in table "training_categories"
-"""
-input training_categories_inc_input {
-  id: Int
-}
-
-"""
-input type for inserting data into table "training_categories"
-"""
-input training_categories_insert_input {
-  created_at: timestamptz
-  id: Int
-  name: String
-  updated_at: timestamptz
-}
-
-"""aggregate max on columns"""
-type training_categories_max_fields {
-  created_at: timestamptz
-  id: Int
-  name: String
-  updated_at: timestamptz
-}
-
-"""aggregate min on columns"""
-type training_categories_min_fields {
-  created_at: timestamptz
-  id: Int
-  name: String
-  updated_at: timestamptz
-}
-
-"""
-response of any mutation on the table "training_categories"
-"""
-type training_categories_mutation_response {
-  """number of rows affected by the mutation"""
-  affected_rows: Int!
-
-  """data from the rows affected by the mutation"""
-  returning: [training_categories!]!
-}
-
-"""
-input type for inserting object relation for remote table "training_categories"
-"""
-input training_categories_obj_rel_insert_input {
-  data: training_categories_insert_input!
-
-  """upsert condition"""
-  on_conflict: training_categories_on_conflict
-}
-
-"""
-on_conflict condition type for table "training_categories"
-"""
-input training_categories_on_conflict {
-  constraint: training_categories_constraint!
-  update_columns: [training_categories_update_column!]! = []
-  where: training_categories_bool_exp
-}
-
 """Ordering options when selecting data from "training_categories"."""
 input training_categories_order_by {
   created_at: order_by
   id: order_by
   name: order_by
   updated_at: order_by
-}
-
-"""primary key columns input for table: training_categories"""
-input training_categories_pk_columns_input {
-  id: Int!
 }
 
 """
@@ -1367,68 +709,6 @@ enum training_categories_select_column {
 
   """column name"""
   updated_at
-}
-
-"""
-input type for updating data in table "training_categories"
-"""
-input training_categories_set_input {
-  created_at: timestamptz
-  id: Int
-  name: String
-  updated_at: timestamptz
-}
-
-"""aggregate stddev on columns"""
-type training_categories_stddev_fields {
-  id: Float
-}
-
-"""aggregate stddev_pop on columns"""
-type training_categories_stddev_pop_fields {
-  id: Float
-}
-
-"""aggregate stddev_samp on columns"""
-type training_categories_stddev_samp_fields {
-  id: Float
-}
-
-"""aggregate sum on columns"""
-type training_categories_sum_fields {
-  id: Int
-}
-
-"""
-update columns of table "training_categories"
-"""
-enum training_categories_update_column {
-  """column name"""
-  created_at
-
-  """column name"""
-  id
-
-  """column name"""
-  name
-
-  """column name"""
-  updated_at
-}
-
-"""aggregate var_pop on columns"""
-type training_categories_var_pop_fields {
-  id: Float
-}
-
-"""aggregate var_samp on columns"""
-type training_categories_var_samp_fields {
-  id: Float
-}
-
-"""aggregate variance on columns"""
-type training_categories_variance_fields {
-  id: Float
 }
 
 """
@@ -1462,58 +742,7 @@ type training_types {
     """filter the rows returned"""
     where: trainings_bool_exp
   ): [trainings!]!
-
-  """An aggregate relationship"""
-  trainings_aggregate(
-    """distinct select on columns"""
-    distinct_on: [trainings_select_column!]
-
-    """limit the number of rows returned"""
-    limit: Int
-
-    """skip the first n rows. Use only with order_by"""
-    offset: Int
-
-    """sort the rows by one or more columns"""
-    order_by: [trainings_order_by!]
-
-    """filter the rows returned"""
-    where: trainings_bool_exp
-  ): trainings_aggregate!
   updated_at: timestamptz!
-}
-
-"""
-aggregated selection of "training_types"
-"""
-type training_types_aggregate {
-  aggregate: training_types_aggregate_fields
-  nodes: [training_types!]!
-}
-
-"""
-aggregate fields of "training_types"
-"""
-type training_types_aggregate_fields {
-  avg: training_types_avg_fields
-  count(columns: [training_types_select_column!], distinct: Boolean): Int!
-  max: training_types_max_fields
-  min: training_types_min_fields
-  stddev: training_types_stddev_fields
-  stddev_pop: training_types_stddev_pop_fields
-  stddev_samp: training_types_stddev_samp_fields
-  sum: training_types_sum_fields
-  var_pop: training_types_var_pop_fields
-  var_samp: training_types_var_samp_fields
-  variance: training_types_variance_fields
-}
-
-"""aggregate avg on columns"""
-type training_types_avg_fields {
-  id: Float
-  max_weight: Float
-  min_weight: Float
-  training_category_id: Float
 }
 
 """
@@ -1534,91 +763,6 @@ input training_types_bool_exp {
   updated_at: timestamptz_comparison_exp
 }
 
-"""
-unique or primary key constraints on table "training_types"
-"""
-enum training_types_constraint {
-  """unique or primary key constraint"""
-  training_categories_pkey
-}
-
-"""
-input type for incrementing numeric columns in table "training_types"
-"""
-input training_types_inc_input {
-  id: Int
-  max_weight: numeric
-  min_weight: numeric
-  training_category_id: Int
-}
-
-"""
-input type for inserting data into table "training_types"
-"""
-input training_types_insert_input {
-  created_at: timestamptz
-  id: Int
-  max_weight: numeric
-  min_weight: numeric
-  name: String
-  training_category: training_categories_obj_rel_insert_input
-  training_category_id: Int
-  trainings: trainings_arr_rel_insert_input
-  updated_at: timestamptz
-}
-
-"""aggregate max on columns"""
-type training_types_max_fields {
-  created_at: timestamptz
-  id: Int
-  max_weight: numeric
-  min_weight: numeric
-  name: String
-  training_category_id: Int
-  updated_at: timestamptz
-}
-
-"""aggregate min on columns"""
-type training_types_min_fields {
-  created_at: timestamptz
-  id: Int
-  max_weight: numeric
-  min_weight: numeric
-  name: String
-  training_category_id: Int
-  updated_at: timestamptz
-}
-
-"""
-response of any mutation on the table "training_types"
-"""
-type training_types_mutation_response {
-  """number of rows affected by the mutation"""
-  affected_rows: Int!
-
-  """data from the rows affected by the mutation"""
-  returning: [training_types!]!
-}
-
-"""
-input type for inserting object relation for remote table "training_types"
-"""
-input training_types_obj_rel_insert_input {
-  data: training_types_insert_input!
-
-  """upsert condition"""
-  on_conflict: training_types_on_conflict
-}
-
-"""
-on_conflict condition type for table "training_types"
-"""
-input training_types_on_conflict {
-  constraint: training_types_constraint!
-  update_columns: [training_types_update_column!]! = []
-  where: training_types_bool_exp
-}
-
 """Ordering options when selecting data from "training_types"."""
 input training_types_order_by {
   created_at: order_by
@@ -1630,11 +774,6 @@ input training_types_order_by {
   training_category_id: order_by
   trainings_aggregate: trainings_aggregate_order_by
   updated_at: order_by
-}
-
-"""primary key columns input for table: training_types"""
-input training_types_pk_columns_input {
-  id: Int!
 }
 
 """
@@ -1664,101 +803,6 @@ enum training_types_select_column {
 }
 
 """
-input type for updating data in table "training_types"
-"""
-input training_types_set_input {
-  created_at: timestamptz
-  id: Int
-  max_weight: numeric
-  min_weight: numeric
-  name: String
-  training_category_id: Int
-  updated_at: timestamptz
-}
-
-"""aggregate stddev on columns"""
-type training_types_stddev_fields {
-  id: Float
-  max_weight: Float
-  min_weight: Float
-  training_category_id: Float
-}
-
-"""aggregate stddev_pop on columns"""
-type training_types_stddev_pop_fields {
-  id: Float
-  max_weight: Float
-  min_weight: Float
-  training_category_id: Float
-}
-
-"""aggregate stddev_samp on columns"""
-type training_types_stddev_samp_fields {
-  id: Float
-  max_weight: Float
-  min_weight: Float
-  training_category_id: Float
-}
-
-"""aggregate sum on columns"""
-type training_types_sum_fields {
-  id: Int
-  max_weight: numeric
-  min_weight: numeric
-  training_category_id: Int
-}
-
-"""
-update columns of table "training_types"
-"""
-enum training_types_update_column {
-  """column name"""
-  created_at
-
-  """column name"""
-  id
-
-  """column name"""
-  max_weight
-
-  """column name"""
-  min_weight
-
-  """column name"""
-  name
-
-  """column name"""
-  training_category_id
-
-  """column name"""
-  updated_at
-}
-
-"""aggregate var_pop on columns"""
-type training_types_var_pop_fields {
-  id: Float
-  max_weight: Float
-  min_weight: Float
-  training_category_id: Float
-}
-
-"""aggregate var_samp on columns"""
-type training_types_var_samp_fields {
-  id: Float
-  max_weight: Float
-  min_weight: Float
-  training_category_id: Float
-}
-
-"""aggregate variance on columns"""
-type training_types_variance_fields {
-  id: Float
-  max_weight: Float
-  min_weight: Float
-  training_category_id: Float
-}
-
-"""
 columns and relationships of "trainings"
 """
 type trainings {
@@ -1774,32 +818,7 @@ type trainings {
   training_type_id: Int!
   training_weight: numeric
   updated_at: timestamptz!
-  user_id: Int!
-}
-
-"""
-aggregated selection of "trainings"
-"""
-type trainings_aggregate {
-  aggregate: trainings_aggregate_fields
-  nodes: [trainings!]!
-}
-
-"""
-aggregate fields of "trainings"
-"""
-type trainings_aggregate_fields {
-  avg: trainings_avg_fields
-  count(columns: [trainings_select_column!], distinct: Boolean): Int!
-  max: trainings_max_fields
-  min: trainings_min_fields
-  stddev: trainings_stddev_fields
-  stddev_pop: trainings_stddev_pop_fields
-  stddev_samp: trainings_stddev_samp_fields
-  sum: trainings_sum_fields
-  var_pop: trainings_var_pop_fields
-  var_samp: trainings_var_samp_fields
-  variance: trainings_variance_fields
+  user_id: String!
 }
 
 """
@@ -1820,26 +839,6 @@ input trainings_aggregate_order_by {
 }
 
 """
-input type for inserting array relation for remote table "trainings"
-"""
-input trainings_arr_rel_insert_input {
-  data: [trainings_insert_input!]!
-
-  """upsert condition"""
-  on_conflict: trainings_on_conflict
-}
-
-"""aggregate avg on columns"""
-type trainings_avg_fields {
-  id: Float
-  training_count: Float
-  training_set: Float
-  training_type_id: Float
-  training_weight: Float
-  user_id: Float
-}
-
-"""
 order by avg() on columns of table "trainings"
 """
 input trainings_avg_order_by {
@@ -1848,7 +847,6 @@ input trainings_avg_order_by {
   training_set: order_by
   training_type_id: order_by
   training_weight: order_by
-  user_id: order_by
 }
 
 """
@@ -1868,7 +866,7 @@ input trainings_bool_exp {
   training_type_id: Int_comparison_exp
   training_weight: numeric_comparison_exp
   updated_at: timestamptz_comparison_exp
-  user_id: Int_comparison_exp
+  user_id: String_comparison_exp
 }
 
 """
@@ -1888,7 +886,6 @@ input trainings_inc_input {
   training_set: Int
   training_type_id: Int
   training_weight: numeric
-  user_id: Int
 }
 
 """
@@ -1901,24 +898,9 @@ input trainings_insert_input {
   is_finish: Boolean
   training_count: Int
   training_set: Int
-  training_type: training_types_obj_rel_insert_input
   training_type_id: Int
   training_weight: numeric
   updated_at: timestamptz
-  user_id: Int
-}
-
-"""aggregate max on columns"""
-type trainings_max_fields {
-  created_at: timestamptz
-  date: date
-  id: Int
-  training_count: Int
-  training_set: Int
-  training_type_id: Int
-  training_weight: numeric
-  updated_at: timestamptz
-  user_id: Int
 }
 
 """
@@ -1934,19 +916,6 @@ input trainings_max_order_by {
   training_weight: order_by
   updated_at: order_by
   user_id: order_by
-}
-
-"""aggregate min on columns"""
-type trainings_min_fields {
-  created_at: timestamptz
-  date: date
-  id: Int
-  training_count: Int
-  training_set: Int
-  training_type_id: Int
-  training_weight: numeric
-  updated_at: timestamptz
-  user_id: Int
 }
 
 """
@@ -2052,17 +1021,6 @@ input trainings_set_input {
   training_type_id: Int
   training_weight: numeric
   updated_at: timestamptz
-  user_id: Int
-}
-
-"""aggregate stddev on columns"""
-type trainings_stddev_fields {
-  id: Float
-  training_count: Float
-  training_set: Float
-  training_type_id: Float
-  training_weight: Float
-  user_id: Float
 }
 
 """
@@ -2074,17 +1032,6 @@ input trainings_stddev_order_by {
   training_set: order_by
   training_type_id: order_by
   training_weight: order_by
-  user_id: order_by
-}
-
-"""aggregate stddev_pop on columns"""
-type trainings_stddev_pop_fields {
-  id: Float
-  training_count: Float
-  training_set: Float
-  training_type_id: Float
-  training_weight: Float
-  user_id: Float
 }
 
 """
@@ -2096,17 +1043,6 @@ input trainings_stddev_pop_order_by {
   training_set: order_by
   training_type_id: order_by
   training_weight: order_by
-  user_id: order_by
-}
-
-"""aggregate stddev_samp on columns"""
-type trainings_stddev_samp_fields {
-  id: Float
-  training_count: Float
-  training_set: Float
-  training_type_id: Float
-  training_weight: Float
-  user_id: Float
 }
 
 """
@@ -2118,17 +1054,6 @@ input trainings_stddev_samp_order_by {
   training_set: order_by
   training_type_id: order_by
   training_weight: order_by
-  user_id: order_by
-}
-
-"""aggregate sum on columns"""
-type trainings_sum_fields {
-  id: Int
-  training_count: Int
-  training_set: Int
-  training_type_id: Int
-  training_weight: numeric
-  user_id: Int
 }
 
 """
@@ -2140,7 +1065,6 @@ input trainings_sum_order_by {
   training_set: order_by
   training_type_id: order_by
   training_weight: order_by
-  user_id: order_by
 }
 
 """
@@ -2173,19 +1097,6 @@ enum trainings_update_column {
 
   """column name"""
   updated_at
-
-  """column name"""
-  user_id
-}
-
-"""aggregate var_pop on columns"""
-type trainings_var_pop_fields {
-  id: Float
-  training_count: Float
-  training_set: Float
-  training_type_id: Float
-  training_weight: Float
-  user_id: Float
 }
 
 """
@@ -2197,17 +1108,6 @@ input trainings_var_pop_order_by {
   training_set: order_by
   training_type_id: order_by
   training_weight: order_by
-  user_id: order_by
-}
-
-"""aggregate var_samp on columns"""
-type trainings_var_samp_fields {
-  id: Float
-  training_count: Float
-  training_set: Float
-  training_type_id: Float
-  training_weight: Float
-  user_id: Float
 }
 
 """
@@ -2219,17 +1119,6 @@ input trainings_var_samp_order_by {
   training_set: order_by
   training_type_id: order_by
   training_weight: order_by
-  user_id: order_by
-}
-
-"""aggregate variance on columns"""
-type trainings_variance_fields {
-  id: Float
-  training_count: Float
-  training_set: Float
-  training_type_id: Float
-  training_weight: Float
-  user_id: Float
 }
 
 """
@@ -2241,172 +1130,4 @@ input trainings_variance_order_by {
   training_set: order_by
   training_type_id: order_by
   training_weight: order_by
-  user_id: order_by
-}
-
-"""
-columns and relationships of "users"
-"""
-type users {
-  id: Int!
-}
-
-"""
-aggregated selection of "users"
-"""
-type users_aggregate {
-  aggregate: users_aggregate_fields
-  nodes: [users!]!
-}
-
-"""
-aggregate fields of "users"
-"""
-type users_aggregate_fields {
-  avg: users_avg_fields
-  count(columns: [users_select_column!], distinct: Boolean): Int!
-  max: users_max_fields
-  min: users_min_fields
-  stddev: users_stddev_fields
-  stddev_pop: users_stddev_pop_fields
-  stddev_samp: users_stddev_samp_fields
-  sum: users_sum_fields
-  var_pop: users_var_pop_fields
-  var_samp: users_var_samp_fields
-  variance: users_variance_fields
-}
-
-"""aggregate avg on columns"""
-type users_avg_fields {
-  id: Float
-}
-
-"""
-Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'.
-"""
-input users_bool_exp {
-  _and: [users_bool_exp!]
-  _not: users_bool_exp
-  _or: [users_bool_exp!]
-  id: Int_comparison_exp
-}
-
-"""
-unique or primary key constraints on table "users"
-"""
-enum users_constraint {
-  """unique or primary key constraint"""
-  users_pkey
-}
-
-"""
-input type for incrementing numeric columns in table "users"
-"""
-input users_inc_input {
-  id: Int
-}
-
-"""
-input type for inserting data into table "users"
-"""
-input users_insert_input {
-  id: Int
-}
-
-"""aggregate max on columns"""
-type users_max_fields {
-  id: Int
-}
-
-"""aggregate min on columns"""
-type users_min_fields {
-  id: Int
-}
-
-"""
-response of any mutation on the table "users"
-"""
-type users_mutation_response {
-  """number of rows affected by the mutation"""
-  affected_rows: Int!
-
-  """data from the rows affected by the mutation"""
-  returning: [users!]!
-}
-
-"""
-on_conflict condition type for table "users"
-"""
-input users_on_conflict {
-  constraint: users_constraint!
-  update_columns: [users_update_column!]! = []
-  where: users_bool_exp
-}
-
-"""Ordering options when selecting data from "users"."""
-input users_order_by {
-  id: order_by
-}
-
-"""primary key columns input for table: users"""
-input users_pk_columns_input {
-  id: Int!
-}
-
-"""
-select columns of table "users"
-"""
-enum users_select_column {
-  """column name"""
-  id
-}
-
-"""
-input type for updating data in table "users"
-"""
-input users_set_input {
-  id: Int
-}
-
-"""aggregate stddev on columns"""
-type users_stddev_fields {
-  id: Float
-}
-
-"""aggregate stddev_pop on columns"""
-type users_stddev_pop_fields {
-  id: Float
-}
-
-"""aggregate stddev_samp on columns"""
-type users_stddev_samp_fields {
-  id: Float
-}
-
-"""aggregate sum on columns"""
-type users_sum_fields {
-  id: Int
-}
-
-"""
-update columns of table "users"
-"""
-enum users_update_column {
-  """column name"""
-  id
-}
-
-"""aggregate var_pop on columns"""
-type users_var_pop_fields {
-  id: Float
-}
-
-"""aggregate var_samp on columns"""
-type users_var_samp_fields {
-  id: Float
-}
-
-"""aggregate variance on columns"""
-type users_variance_fields {
-  id: Float
 }

@@ -1,4 +1,4 @@
-export const nextRouterMock = jest.mock('next/router', () => ({
+export const nextRouter = jest.mock('next/router', () => ({
   useRouter() {
     return {
       asPath: '/',

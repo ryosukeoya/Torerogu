@@ -1,5 +1,5 @@
 import type { VFC, ComponentProps } from 'react';
-import FormFieldWrapper from './FormFieldWrapper';
+import { FormFieldWrapper } from './FormFieldWrapper';
 import { css } from '@emotion/react';
 import { COLOR } from '~/styles/const';
 
@@ -9,15 +9,13 @@ interface Props extends TextareaProps {
   title: string;
 }
 
-const TextareaField: VFC<Props> = ({ title, ...textareaProps }) => {
+export const TextareaField: VFC<Props> = ({ title, ...textareaProps }) => {
   return (
     <FormFieldWrapper title={title}>
       <textarea {...textareaProps} css={textareaFieldStyle} />
     </FormFieldWrapper>
   );
 };
-
-export default TextareaField;
 
 const textareaFieldStyle = css`
   border: 1px solid ${COLOR.BORDER_GRAY};

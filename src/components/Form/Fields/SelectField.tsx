@@ -16,7 +16,7 @@ interface Props extends SelectProps {
   customCss?: SerializedStyles;
 }
 
-const SelectField: VFC<Props> = ({ isRequired, title, texts, formConf, marginBottom: mb = 0, customCss, ...selectProps }) => {
+export const SelectField: VFC<Props> = ({ isRequired, title, texts, formConf, marginBottom: mb = 0, customCss, ...selectProps }) => {
   const {
     register,
     formState: { errors },
@@ -41,8 +41,6 @@ const SelectField: VFC<Props> = ({ isRequired, title, texts, formConf, marginBot
     </div>
   );
 };
-
-export default SelectField;
 
 const disableDefaultStyle = css`
   -webkit-appearance: none;

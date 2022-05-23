@@ -1,2 +1,2 @@
-export { default as Checkbox } from './Checkbox';
-export { default as CheckboxMU } from './CheckboxMU';
+export { Checkbox } from './Checkbox';
+export { CheckboxMU } from './CheckboxMU';

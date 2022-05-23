@@ -2,20 +2,22 @@ import type { NextPage } from 'next';
 import React, { VFC } from 'react';
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
-import { SwiperWrapper } from '~/components';
-import { useGetElementWidth } from '~/hooks';
+import { SliderWrapper } from '~/components';
 import { PageLayout } from '~/layout';
+import { useGetElementWidth } from '../../hooks';
 
 const Plan: NextPage<VFC> = () => {
-  const [elm, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
+  const [ref, mainContentWidth] = useGetElementWidth<HTMLDivElement>();
 
   return (
-    <PageLayout mainContentWidth={mainContentWidth}>
-      <SwiperWrapper elm={elm}>
-        <BodyInfoPage pageIndex={0} />
-        <TrainingPage pageIndex={1} />
-      </SwiperWrapper>
-    </PageLayout>
+    <div ref={ref}>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <SliderWrapper>
+          <BodyInfoPage pageIndex={0} />
+          <TrainingPage pageIndex={1} />
+        </SliderWrapper>
+      </PageLayout>
+    </div>
   );
 };
 

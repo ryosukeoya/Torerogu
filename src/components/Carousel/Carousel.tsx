@@ -19,12 +19,15 @@ type Props = {
   setState?: Dispatch<SetStateAction<number>>;
 };
 
-const Carousel: VFC<Props> = ({ items, setState }) => {
+export const Carousel: VFC<Props> = ({ items, setState }) => {
   return (
     <Swiper
       centeredSlides={true}
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       loop={true}
+      onAfterInit={()=>{
+        setState && setState(0);
+      }}
       onRealIndexChange={(swiper) => {
         setState && setState(swiper.realIndex);
       }}
@@ -36,6 +39,7 @@ const Carousel: VFC<Props> = ({ items, setState }) => {
       slidesPerView={3.6}
       navigation
       pagination={{ clickable: true }}
+      initialSlide={4}
       css={sliderStyle.sliders(30)}
     >
       {items?.map((item: Pick<ItemType, 'id' | 'name'>) => {
@@ -44,8 +48,6 @@ const Carousel: VFC<Props> = ({ items, setState }) => {
     </Swiper>
   );
 };
-
-export default Carousel;
 
 const sliderStyle = {
   sliders: (marginBottom?: number) => css`

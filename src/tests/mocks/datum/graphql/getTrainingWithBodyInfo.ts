@@ -2,7 +2,7 @@
 import { GraphQLError } from 'graphql';
 import { GetTrainingWithBodyInfoDocument } from '~/libs/graphql/generated/graphql';
 
-export const getTrainingWithBodyMock = {
+export const getTrainingWithBody = {
   request: {
     query: GetTrainingWithBodyInfoDocument,
     variables: {},
@@ -15,7 +15,7 @@ export const getTrainingWithBodyMock = {
         {
           __typename: 'trainings',
           id: 1,
-          user_id: 1,
+          user_id: '012345',
           training_type_id: 1,
           training_weight: 60,
           training_count: 10,
@@ -32,7 +32,7 @@ export const getTrainingWithBodyMock = {
       body_info_data_histories: [
         {
           id: 1,
-          user_id: 1,
+          user_id: '012345',
           weight: 60,
           date: '2022-05-01',
           is_record: true,

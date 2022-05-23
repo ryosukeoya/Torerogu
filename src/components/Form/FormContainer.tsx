@@ -14,7 +14,7 @@ type Props<T extends FieldValues> = {
   children: ReactNode;
 };
 
-const FormContainer = <T,>(props: Props<T>) => {
+export const FormContainer = <T,>(props: Props<T>) => {
   const { pageIndex, submitFunc, title, open, handleClose, firstElm, lastElm, children } = props;
 
   const method = useForm<T>();
@@ -35,5 +35,3 @@ const FormContainer = <T,>(props: Props<T>) => {
     </FormProvider>
   );
 };
-
-export default FormContainer;

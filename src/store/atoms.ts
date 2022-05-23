@@ -21,3 +21,9 @@ export const swiperAtom = atom<SwiperType | undefined>({
   default: undefined,
   dangerouslyAllowMutability: true,
 });
+
+export const isAuthenticatedAtom = atom<boolean | undefined>({
+  key: 'isAuthenticatedKey',
+  default: undefined,
+  effects_UNSTABLE: [persistAtom],
+});

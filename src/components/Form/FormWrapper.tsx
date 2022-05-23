@@ -15,7 +15,7 @@ type Props = {
   children: ReactNode;
 };
 
-const FormWrapper: VFC<Props> = ({ pageIndex, handleSubmit, submitFunc, title, open, handleClose, firstElm, lastElm, children }) => {
+export const FormWrapper: VFC<Props> = ({ pageIndex, handleSubmit, submitFunc, title, open, handleClose, firstElm, lastElm, children }) => {
   return (
     <form onSubmit={handleSubmit(submitFunc)}>
       <div css={pageTemplate.contentArea}>
@@ -29,5 +29,3 @@ const FormWrapper: VFC<Props> = ({ pageIndex, handleSubmit, submitFunc, title, o
     </form>
   );
 };
-
-export default FormWrapper;
