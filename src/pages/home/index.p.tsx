@@ -10,6 +10,7 @@ import { PageLayout } from '~/layout';
 import { SliderWrapper, ApolloStateHandler } from '~/components';
 import { useSetRecoilState } from 'recoil';
 import { isAuthenticatedAtom } from '~/store/atoms';
+import { useEffect } from 'react';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
@@ -18,7 +19,10 @@ const Home: NextPage = () => {
   });
   const [ref, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
   const setIsAuthenticated = useSetRecoilState(isAuthenticatedAtom);
-  setIsAuthenticated(true);
+  
+  useEffect(() => {
+    setIsAuthenticated(true);
+  });
 
   return (
     <div ref={ref}>
