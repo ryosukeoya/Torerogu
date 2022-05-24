@@ -17,7 +17,7 @@ type Props = {
 const TrainingSelectionPage: VFC<Props> = ({ data, handleClick, selectedCategoryIndex, setSelectedCategoryIndex }) => {
   return (
     <div css={pageTemplate.contentArea}>
-      <Carousel items={data?.training_categories} setState={setSelectedCategoryIndex} />
+      {data?.training_categories && <Carousel items={data?.training_categories} setState={setSelectedCategoryIndex} />}
       {getTrainingTypesFromCategoryIndex(selectedCategoryIndex, data?.training_types, data?.training_categories)?.map((training_type) => {
         return (
           <CardWrapper
