@@ -11,12 +11,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 type Props = {
   hasTab?: boolean;
+  shouldHide?: true;
 };
 
-export const Header: VFC<Props> = ({ hasTab = true }) => {
+export const Header: VFC<Props> = ({ hasTab = true, shouldHide }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isScrollDown: boolean = useIsScrollDown();
-  const visibleState = isScrollDown ? visibility['hiddenPartial'] : visibility['visible'];
+  const visibleState = shouldHide && isScrollDown ? visibility['hiddenPartial'] : visibility['visible'];
   const tabNames = useGetTabTitleFromRoute();
   const { user, isAuthenticated, logout } = useAuth0();
 
