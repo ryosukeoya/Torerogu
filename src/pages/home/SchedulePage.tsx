@@ -191,7 +191,7 @@ const styles = {
   tags: css``,
   tag: (is_finish: boolean) => css`
     color:#fff;
-    background-color: ${is_finish ? `${COLOR.RED}73;` : '#12d4ff73;'}
+    background-color: ${is_finish ? `${COLOR.RED}73;` : '#12d4ff73;'};
     font-size: ${FONT.X_SMALL};
     border-radius: 10px;
     padding: 6px 0;
@@ -205,7 +205,7 @@ const styles = {
     }
   `,
   more: css`
-    textalign: left;
-    paddingleft: 20%;
+    text-align: left;
+    padding-left: 20%;
   `,
 };
