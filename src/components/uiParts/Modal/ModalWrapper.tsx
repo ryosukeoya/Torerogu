@@ -1,26 +1,22 @@
 import type { VFC, ReactNode } from 'react';
-import { css, keyframes, SerializedStyles } from '@emotion/react';
-import type { ModalSizeTheme } from './types';
+import { css, keyframes } from '@emotion/react';
 import { Portal } from '../../Portal';
-import { getModalSize } from './getModalSize';
 import { SetterOrUpdater } from 'recoil';
+import { media } from '~/styles/shares';
 
 type Props = {
   isOpen: boolean;
   setIsOpen: SetterOrUpdater<boolean>;
-  size?: ModalSizeTheme;
   children: ReactNode;
 };
 
-export const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, size = 'normal', children }) => {
+export const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, children }) => {
   if (!isOpen) return null;
-
-  const sizeStyle = getModalSize(size);
 
   return (
     <Portal>
       <div onClick={() => setIsOpen((prev) => !prev)} css={styles.background}>
-        <div css={styles.modal(sizeStyle)}>{children}</div>
+        <div css={styles.modal}>{children}</div>
       </div>
     </Portal>
   );
@@ -53,8 +49,13 @@ const styles = {
     background-color: #717171b3;
     cursor: pointer;
   `,
-  modal: (size: SerializedStyles) => css`
-    ${size};
+  modal: css`
+    max-height: 500px;
+    max-width: 500px;
+    width: 93vw;
+    height: 93vw;
+    border-radius: 25px;
+    padding: 30px;
     background-color: #fff;
     position: absolute;
     top: 0;
@@ -68,5 +69,10 @@ const styles = {
     box-shadow: 0 5px 15px 3px rgba(0, 0, 0, 0.2); //x軸 y軸 ぼかし 広がり カラー;
     animation: 0.2s ease 0s forwards ${modalEffect};
     cursor: default;
+    ${media.spHorizontal(
+      css`
+        max-height: 100vh;
+      `,
+    )}
   `,
 };
