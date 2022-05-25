@@ -14,7 +14,6 @@ type Props = {
 // FIXME
 // 日本語化
 // 縦揃ってない
-// リファクタリング
 
 export const PopupMenu: VFC<Props> = ({ setIsOpen, user, logout }) => {
   return (
@@ -34,7 +33,6 @@ export const PopupMenu: VFC<Props> = ({ setIsOpen, user, logout }) => {
   );
 };
 
-// TODO:Refactor
 const modalEffect = keyframes`
   0% {
     transform: scale(0.85);
