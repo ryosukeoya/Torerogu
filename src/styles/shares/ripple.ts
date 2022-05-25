@@ -6,7 +6,7 @@ import { COLOR } from '~/styles/const';
 export const rippleWrapper = (marginTop?: number, isShadow?: boolean) => css`
   ${baseLookLikeButton};
   position: relative;
-  z-index: 500;
+  z-index: 1;
   overflow: hidden;
   color: #fff;
   background: ${COLOR.ORANGE};
@@ -35,7 +35,7 @@ export const ripple = {
   `,
   content: css`
     position: relative;
-    z-index: 2;
+    z-index: 1;
   `,
 };
 

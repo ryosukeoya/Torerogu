@@ -3,7 +3,7 @@ import { Tab } from './Tab';
 import { PAGE_TITLE } from '~/constants';
 import type { PageTitle } from '~/types';
 import { css } from '@emotion/react';
-import { COLOR, HEADER, NAVIGATION, CONTENT_AREA } from '~/styles/const';
+import { COLOR, HEADER, NAVIGATION, CONTENT_AREA, Z_INDEX } from '~/styles/const';
 import { useActiveIndexFromPath } from '~/hooks';
 import { media } from '~/styles/shares';
 
@@ -25,7 +25,7 @@ const styles = {
     box-sizing: border-box;
     position: fixed;
     bottom: 0;
-    z-index: 1000;
+    z-index: ${Z_INDEX.NAVIGATION};
     background: white;
     display: flex;
     justify-content: space-around;

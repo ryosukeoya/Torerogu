@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { VFC, useState } from 'react';
 import { css } from '@emotion/react';
-import { COLOR, HEADER } from '~/styles/const';
+import { COLOR, HEADER, Z_INDEX } from '~/styles/const';
 import { media } from '~/styles/shares';
 import { useIsScrollDown, useGetTabTitleFromRoute } from '~/hooks';
 import { PrimaryNavigationGlobalState } from '~/components';
@@ -11,12 +11,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 type Props = {
   hasTab?: boolean;
+  shouldHide?: true;
 };
 
-export const Header: VFC<Props> = ({ hasTab = true }) => {
+export const Header: VFC<Props> = ({ hasTab = true, shouldHide }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isScrollDown: boolean = useIsScrollDown();
-  const visibleState = isScrollDown ? visibility['hiddenPartial'] : visibility['visible'];
+  const visibleState = shouldHide && isScrollDown ? visibility['hiddenPartial'] : visibility['visible'];
   const tabNames = useGetTabTitleFromRoute();
   const { user, isAuthenticated, logout } = useAuth0();
 
@@ -57,7 +58,7 @@ const styles = {
     height: ${hasTab ? HEADER.HEIGUT : 'none'};
     position: fixed;
     top: 0;
-    z-index: 100000;
+    z-index: ${Z_INDEX.HEADER};
     background: #fff;
     width: 100vw;
     padding: ${hasTab ? '10px 25px 0 25px' : '15px 0'};

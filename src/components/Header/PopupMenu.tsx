@@ -13,18 +13,15 @@ type Props = {
 
 // FIXME
 // 日本語化
-// Twitter認証
 // 縦揃ってない
-// リファクタリング
 
 export const PopupMenu: VFC<Props> = ({ setIsOpen, user, logout }) => {
   return (
     <>
-      <div onClick={() => setIsOpen(false)} css={styles.background}>
+      <div onClick={() => setIsOpen(false)} css={styles.backdrop}>
         <div css={styles.modal} onClick={(e) => e.stopPropagation()}>
           <h2 css={styles.name}>{user?.name}</h2>
           <p css={styles.email}>{user?.email}</p>
-          {/* <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim repellendus fugit explicabo voluptates labore excepturi illo sunt odio ipsum, quos nihil eligendi cum quo eaque sed natus iure quod consequatur.</p> */}
           <div css={styles.line}></div>
           <div css={styles.logout} onClick={() => logout({ returnTo: window.location.origin })}>
             <LogoutIcon />
@@ -36,7 +33,6 @@ export const PopupMenu: VFC<Props> = ({ setIsOpen, user, logout }) => {
   );
 };
 
-// TODO:Refactor
 const modalEffect = keyframes`
   0% {
     transform: scale(0.85);
@@ -53,18 +49,18 @@ const modalEffect = keyframes`
 `;
 
 const styles = {
-  background: css`
+  backdrop: css`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100000000;
+    z-index: 1;
     min-height: 100vh;
     min-width: 100vw;
     height: 100%;
     width: 100%;
     cursor: pointer;
   `,
-  modal: () => css`
+  modal: css`
     position: absolute;
     top: 70px;
     right: 20px;
@@ -75,7 +71,7 @@ const styles = {
     padding: 20px 20px;
     text-align: left;
     background-color: #fff;
-    z-index: 50000;
+    z-index: 1;
     border: 1px solid #dedede;
     box-shadow: 0 1px 5px 1px rgba(171, 171, 171, 0.2); //x軸 y軸 ぼかし 広がり カラー;
     animation: 50ms ease 0s forwards ${modalEffect};

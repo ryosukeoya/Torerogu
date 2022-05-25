@@ -1,4 +1,4 @@
-import { FONT, COLOR } from '~/styles/const';
+import { FONT, COLOR, Z_INDEX } from '~/styles/const';
 import { css, SerializedStyles } from '@emotion/react';
 import { media } from '~/styles/shares';
 
@@ -16,7 +16,7 @@ export const tabStyles = {
       position: fixed;
       top: auto;
       left: auto;
-      z-index: 2000;
+      z-index: ${Z_INDEX.PRIMARY_NAVIGATION};
       width: ${navWidth}px;
       border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
     `)}

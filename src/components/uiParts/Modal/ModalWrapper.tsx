@@ -1,26 +1,23 @@
 import type { VFC, ReactNode } from 'react';
-import { css, keyframes, SerializedStyles } from '@emotion/react';
-import type { ModalSizeTheme } from './types';
+import { css, keyframes } from '@emotion/react';
 import { Portal } from '../../Portal';
-import { getModalSize } from './getModalSize';
 import { SetterOrUpdater } from 'recoil';
+import { media } from '~/styles/shares';
+import { Z_INDEX } from '~/styles/const';
 
 type Props = {
   isOpen: boolean;
   setIsOpen: SetterOrUpdater<boolean>;
-  size?: ModalSizeTheme;
   children: ReactNode;
 };
 
-export const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, size = 'normal', children }) => {
+export const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, children }) => {
   if (!isOpen) return null;
-
-  const sizeStyle = getModalSize(size);
 
   return (
     <Portal>
-      <div onClick={() => setIsOpen((prev) => !prev)} css={styles.background}>
-        <div css={styles.modal(sizeStyle)}>{children}</div>
+      <div onClick={() => setIsOpen((prev) => !prev)} css={styles.backdrop}>
+        <div css={styles.modal}>{children}</div>
       </div>
     </Portal>
   );
@@ -42,10 +39,10 @@ const modalEffect = keyframes`
 `;
 
 const styles = {
-  background: css`
+  backdrop: css`
     position: fixed;
     top: 0;
-    z-index: 10000;
+    z-index: ${Z_INDEX.MODAL_BACKDROP};
     min-height: 100vh;
     min-width: 100vw;
     height: 100%;
@@ -53,8 +50,13 @@ const styles = {
     background-color: #717171b3;
     cursor: pointer;
   `,
-  modal: (size: SerializedStyles) => css`
-    ${size};
+  modal: css`
+    max-height: 500px;
+    max-width: 500px;
+    width: 93vw;
+    height: 93vw;
+    border-radius: 25px;
+    padding: 30px;
     background-color: #fff;
     position: absolute;
     top: 0;
@@ -62,11 +64,16 @@ const styles = {
     left: 0;
     right: 0;
     margin: auto;
-    z-index: 30000;
+    z-index: 1;
     border: 1px solid #dedede;
     overflow-y: scroll;
     box-shadow: 0 5px 15px 3px rgba(0, 0, 0, 0.2); //x軸 y軸 ぼかし 広がり カラー;
     animation: 0.2s ease 0s forwards ${modalEffect};
     cursor: default;
+    ${media.spHorizontal(
+      css`
+        max-height: 100vh;
+      `,
+    )}
   `,
 };
