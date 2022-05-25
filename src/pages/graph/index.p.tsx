@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import { SliderWrapper, ApolloStateHandler } from '~/components';
+import { SliderWrapper, Loading } from '~/components';
 import { useQuery } from '@apollo/client';
 import { GetTrainingWithBodyInfoDocument, GetTrainingWithBodyInfoQuery } from '~/libs/graphql/generated/graphql';
 import { PageLayout } from '~/layout';
@@ -14,17 +14,18 @@ const Graph: VFC = () => {
   });
   const [ref, mainContentWidth] = useGetElementWidth<HTMLDivElement>(loading);
 
+  if (loading) return <Loading />;
+  if (error) throw new Error(error.message);
+
   return (
     <div ref={ref}>
-      <ApolloStateHandler error={error} loading={loading}>
-        <PageLayout mainContentWidth={mainContentWidth}>
-          <SliderWrapper>
-            <WeightPage bodyInfo={data?.body_info_data_histories} />
-            <BodyFatPercentagePage />
-            <TrainingPage />
-          </SliderWrapper>
-        </PageLayout>
-      </ApolloStateHandler>
+      <PageLayout mainContentWidth={mainContentWidth}>
+        <SliderWrapper>
+          <WeightPage bodyInfo={data?.body_info_data_histories} />
+          <BodyFatPercentagePage />
+          <TrainingPage />
+        </SliderWrapper>
+      </PageLayout>
     </div>
   );
 };
