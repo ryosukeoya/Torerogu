@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { VFC, useState } from 'react';
 import { css } from '@emotion/react';
-import { COLOR, HEADER } from '~/styles/const';
+import { COLOR, HEADER, Z_INDEX } from '~/styles/const';
 import { media } from '~/styles/shares';
 import { useIsScrollDown, useGetTabTitleFromRoute } from '~/hooks';
 import { PrimaryNavigationGlobalState } from '~/components';
@@ -58,7 +58,7 @@ const styles = {
     height: ${hasTab ? HEADER.HEIGUT : 'none'};
     position: fixed;
     top: 0;
-    z-index: 100000;
+    z-index: ${Z_INDEX.HEADER};
     background: #fff;
     width: 100vw;
     padding: ${hasTab ? '10px 25px 0 25px' : '15px 0'};

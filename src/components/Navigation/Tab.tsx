@@ -115,7 +115,7 @@ const styles = {
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 100;
+    z-index: 1;
     top: 0;
     bottom: 0;
     left: 0;

@@ -45,3 +45,10 @@ export const NAVIGATION = {
 export const CONTENT_AREA = {
   PC_MIN_WIDTH: '800px',
 } as const;
+
+export const Z_INDEX = {
+  PRIMARY_NAVIGATION: 100,
+  NAVIGATION: 200,
+  HEADER: 300,
+  MODAL_BACKDROP: 400,
+} as const;

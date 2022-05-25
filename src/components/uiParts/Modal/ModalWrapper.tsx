@@ -3,6 +3,7 @@ import { css, keyframes } from '@emotion/react';
 import { Portal } from '../../Portal';
 import { SetterOrUpdater } from 'recoil';
 import { media } from '~/styles/shares';
+import { Z_INDEX } from '~/styles/const';
 
 type Props = {
   isOpen: boolean;
@@ -15,7 +16,7 @@ export const ModalWrapper: VFC<Props> = ({ isOpen, setIsOpen, children }) => {
 
   return (
     <Portal>
-      <div onClick={() => setIsOpen((prev) => !prev)} css={styles.background}>
+      <div onClick={() => setIsOpen((prev) => !prev)} css={styles.backdrop}>
         <div css={styles.modal}>{children}</div>
       </div>
     </Portal>
@@ -38,10 +39,10 @@ const modalEffect = keyframes`
 `;
 
 const styles = {
-  background: css`
+  backdrop: css`
     position: fixed;
     top: 0;
-    z-index: 10000;
+    z-index: ${Z_INDEX.MODAL_BACKDROP};
     min-height: 100vh;
     min-width: 100vw;
     height: 100%;
@@ -63,7 +64,7 @@ const styles = {
     left: 0;
     right: 0;
     margin: auto;
-    z-index: 30000;
+    z-index: 1;
     border: 1px solid #dedede;
     overflow-y: scroll;
     box-shadow: 0 5px 15px 3px rgba(0, 0, 0, 0.2); //x軸 y軸 ぼかし 広がり カラー;
