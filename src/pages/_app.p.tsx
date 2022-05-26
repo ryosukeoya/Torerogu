@@ -3,7 +3,7 @@ import React from 'react';
 import '~/styles/globals.css';
 import '~/styles/reset.css';
 import { useNprogress as progressBar } from '../hooks';
-import { Layout } from '../layout';
+import { Layout } from '../layouts';
 import { RecoilRoot } from 'recoil';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Auth0AuthorizationHandler, ApolloProviderWithAuth0Token, ErrorFallback } from '~/components';

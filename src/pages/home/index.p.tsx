@@ -5,7 +5,7 @@ import { getStringTypeDate } from '~/utils/app';
 import HomePage from './HomePage';
 import SchedulePage from './SchedulePage';
 import { useGetElementWidth } from '~/hooks';
-import { PageLayout } from '~/layout';
+import { PageLayout } from '~/layouts';
 // import '~/tests/mocks/starter';
 import { SliderWrapper, Loading } from '~/components';
 import { useSetRecoilState } from 'recoil';

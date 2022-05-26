@@ -5,7 +5,7 @@ import TrainingPage from './TrainingPage';
 import { initializeApollo } from '~/libs/graphql/apolloClient';
 import { SliderWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
-import { PageLayout } from '~/layout';
+import { PageLayout } from '~/layouts';
 import { useQuery } from '@apollo/client';
 
 // TODO
