@@ -2,7 +2,7 @@ import React, { VFC } from 'react';
 import { SliderWrapper, Loading } from '~/components';
 import { useQuery } from '@apollo/client';
 import { GetTrainingWithBodyInfoDocument, GetTrainingWithBodyInfoQuery } from '~/libs/graphql/generated/graphql';
-import { PageLayout } from '~/layout';
+import { PageLayout } from '~/layouts';
 import { useGetElementWidth } from '~/hooks';
 import { default as BodyFatPercentagePage } from './BodyFatPercentagePage';
 import { default as TrainingPage } from './TrainingPage';

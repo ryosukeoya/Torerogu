@@ -2,7 +2,7 @@ import type { VFC, ReactNode } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Header, AuthenticationPage } from '~/components';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
-import { Layout } from '../layout';
+import { Layout } from '../layouts';
 import { useRecoilValue } from 'recoil';
 import { isAuthenticatedAtom } from '~/store/atoms';
 

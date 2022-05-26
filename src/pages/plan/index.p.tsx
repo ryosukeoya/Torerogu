@@ -3,7 +3,7 @@ import React, { VFC } from 'react';
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
 import { SliderWrapper } from '~/components';
-import { PageLayout } from '~/layout';
+import { PageLayout } from '~/layouts';
 import { useGetElementWidth } from '../../hooks';
 
 const Plan: NextPage<VFC> = () => {
