@@ -19,7 +19,7 @@ type Props = {
 
 const ModalContent: VFC<Props> = ({ selectedDate, extractedTrainings, trainings, setTrainings, category }) => {
   const date = selectedDate && getDateInfo(selectedDate);
-  const [deleteTraining, { error }] = useMutation<DeleteTrainingMutation>(DeleteTrainingDocument, {
+  const [deleteTraining] = useMutation<DeleteTrainingMutation>(DeleteTrainingDocument, {
     // onCompleted: () => console.log('deleted'),
   });
 

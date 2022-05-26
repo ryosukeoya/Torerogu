@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import { GetTrainingCategoryWithTypeDocument, GetTrainingCategoryWithTypeQuery } from '~/libs/graphql/generated/graphql';
 import BodyInfoPage from './BodyInfoPage';
 import TrainingPage from './TrainingPage';
-import { initializeApollo } from '~/libs/graphql/apolloClient';
 import { SliderWrapper } from '~/components';
 import { useGetElementWidth } from '~/hooks';
 import { PageLayout } from '~/layouts';
