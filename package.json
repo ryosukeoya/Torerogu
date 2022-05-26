@@ -10,6 +10,7 @@
     "type-lint": "tsc --noEmit && eslint .",
     "lint": "next lint --dir src",
     "test": "jest",
+    "test:u": "jest --updateSnapshot",
     "test-Unit": "jest -t Unit",
     "test-Integration": "jest -t Integration",
     "test-Snapshot": "jest snapshot",
@@ -19,7 +20,7 @@
     "test:cc": "jest --clearCache",
     "test:cm": "jest --clearMocks",
     "prepare": "husky install",
-    "staged": "run-s lint type test"
+    "staged": "run-s lint type test:u"
   },
   "dependencies": {
     "@apollo/client": "^3.5.9",
