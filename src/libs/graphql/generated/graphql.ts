@@ -386,7 +386,7 @@ export type Query_Root = {
   training_categories: Array<Training_Categories>;
   /** fetch data from the table: "training_categories" using primary key columns */
   training_categories_by_pk?: Maybe<Training_Categories>;
-  /** fetch data from the table: "training_types" */
+  /** An array relationship */
   training_types: Array<Training_Types>;
   /** fetch data from the table: "training_types" using primary key columns */
   training_types_by_pk?: Maybe<Training_Types>;
@@ -462,7 +462,7 @@ export type Subscription_Root = {
   training_categories: Array<Training_Categories>;
   /** fetch data from the table: "training_categories" using primary key columns */
   training_categories_by_pk?: Maybe<Training_Categories>;
-  /** fetch data from the table: "training_types" */
+  /** An array relationship */
   training_types: Array<Training_Types>;
   /** fetch data from the table: "training_types" using primary key columns */
   training_types_by_pk?: Maybe<Training_Types>;
@@ -547,7 +547,19 @@ export type Training_Categories = {
   created_at: Scalars['timestamptz'];
   id: Scalars['Int'];
   name: Scalars['String'];
+  /** An array relationship */
+  training_types: Array<Training_Types>;
   updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "training_categories" */
+export type Training_CategoriesTraining_TypesArgs = {
+  distinct_on?: InputMaybe<Array<Training_Types_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Training_Types_Order_By>>;
+  where?: InputMaybe<Training_Types_Bool_Exp>;
 };
 
 /** Boolean expression to filter rows from the table "training_categories". All fields are combined with a logical 'AND'. */
@@ -558,6 +570,7 @@ export type Training_Categories_Bool_Exp = {
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  training_types?: InputMaybe<Training_Types_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -566,6 +579,7 @@ export type Training_Categories_Order_By = {
   created_at?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  training_types_aggregate?: InputMaybe<Training_Types_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
 };
 
@@ -607,6 +621,29 @@ export type Training_TypesTrainingsArgs = {
   where?: InputMaybe<Trainings_Bool_Exp>;
 };
 
+/** order by aggregate values of table "training_types" */
+export type Training_Types_Aggregate_Order_By = {
+  avg?: InputMaybe<Training_Types_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Training_Types_Max_Order_By>;
+  min?: InputMaybe<Training_Types_Min_Order_By>;
+  stddev?: InputMaybe<Training_Types_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Training_Types_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Training_Types_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Training_Types_Sum_Order_By>;
+  var_pop?: InputMaybe<Training_Types_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Training_Types_Var_Samp_Order_By>;
+  variance?: InputMaybe<Training_Types_Variance_Order_By>;
+};
+
+/** order by avg() on columns of table "training_types" */
+export type Training_Types_Avg_Order_By = {
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+};
+
 /** Boolean expression to filter rows from the table "training_types". All fields are combined with a logical 'AND'. */
 export type Training_Types_Bool_Exp = {
   _and?: InputMaybe<Array<Training_Types_Bool_Exp>>;
@@ -621,6 +658,28 @@ export type Training_Types_Bool_Exp = {
   training_category_id?: InputMaybe<Int_Comparison_Exp>;
   trainings?: InputMaybe<Trainings_Bool_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
+};
+
+/** order by max() on columns of table "training_types" */
+export type Training_Types_Max_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+};
+
+/** order by min() on columns of table "training_types" */
+export type Training_Types_Min_Order_By = {
+  created_at?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
 };
 
 /** Ordering options when selecting data from "training_types". */
@@ -653,6 +712,62 @@ export enum Training_Types_Select_Column {
   /** column name */
   UpdatedAt = 'updated_at'
 }
+
+/** order by stddev() on columns of table "training_types" */
+export type Training_Types_Stddev_Order_By = {
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+};
+
+/** order by stddev_pop() on columns of table "training_types" */
+export type Training_Types_Stddev_Pop_Order_By = {
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+};
+
+/** order by stddev_samp() on columns of table "training_types" */
+export type Training_Types_Stddev_Samp_Order_By = {
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+};
+
+/** order by sum() on columns of table "training_types" */
+export type Training_Types_Sum_Order_By = {
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+};
+
+/** order by var_pop() on columns of table "training_types" */
+export type Training_Types_Var_Pop_Order_By = {
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+};
+
+/** order by var_samp() on columns of table "training_types" */
+export type Training_Types_Var_Samp_Order_By = {
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+};
+
+/** order by variance() on columns of table "training_types" */
+export type Training_Types_Variance_Order_By = {
+  id?: InputMaybe<Order_By>;
+  max_weight?: InputMaybe<Order_By>;
+  min_weight?: InputMaybe<Order_By>;
+  training_category_id?: InputMaybe<Order_By>;
+};
 
 /** columns and relationships of "trainings" */
 export type Trainings = {

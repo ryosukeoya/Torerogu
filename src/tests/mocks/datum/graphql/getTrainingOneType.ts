@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { GraphQLError } from 'graphql';
 import { GetTrainingOneTypeDocument, GetTrainingOneTypeQuery } from '~/libs/graphql/generated/graphql';
-import { getStringTypeDate } from '~/utils/app';
+import { getStringTypeDate } from '~/utils';
 
 type TrainingOneType = Array<GetTrainingOneTypeQuery['trainings'][number]>;
 

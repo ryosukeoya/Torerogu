@@ -5,7 +5,7 @@ import { pageTemplate } from '~/styles/shares/pageTemplate';
 import Calendar from 'react-calendar';
 import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
-import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate } from '~/utils';
+import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate, getDateBeforeOneDay } from '~/utils';
 import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } from './types';
 import { GetTrainingTrainingTypeDocument, GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
@@ -33,7 +33,7 @@ const SchedulePage: VFC = () => {
   const trainingScheduleData: TrainingScheduleData = {
     ALL: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(trainings, new Date()),
     実施: trainings && getExtractedDataInIsFinishFlag(trainings, true),
-    予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), new Date()),
+    予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), getDateBeforeOneDay(new Date())),
   };
 
   if (loading) {
@@ -69,12 +69,14 @@ const SchedulePage: VFC = () => {
           }}
         />
         <Calendar
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           onClickDay={(value, event) => {
             setIsOpen(true);
             setSelectedDate(value);
           }}
           locale='ja-JP'
           value={new Date()}
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           tileContent={({ activeStartDate, date, view }) => {
             tileContentCount.current = 0;
             return view === 'month' ? (

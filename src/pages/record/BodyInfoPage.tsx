@@ -1,6 +1,6 @@
 import React, { useState, VFC } from 'react';
 import { FormContainer, InputField } from '~/components';
-import { getDateInfo, getStringTypeDate } from '~/utils/app';
+import { getDateInfo, getStringTypeDate } from '~/utils';
 import { useMutation } from '@apollo/client';
 import { CreateBodyInfoHistoriesMutationVariables, CreateBodyInfoHistoriesDocument, CreateBodyInfoHistoriesMutation } from '~/libs/graphql/generated/graphql';
 import { SubmitHandler } from 'react-hook-form';

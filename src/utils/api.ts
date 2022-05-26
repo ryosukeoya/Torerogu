@@ -1,6 +1,6 @@
 //API関連の共通したい関数とかを配置
 import type { GetTrainingCategoryWithTypeQuery } from '~/libs/graphql/generated/graphql';
-import { getStringTypeDate } from './app';
+import { getStringTypeDate } from './date';
 
 type TrainingCategory = GetTrainingCategoryWithTypeQuery['training_categories'] | undefined;
 type TrainingTypes = GetTrainingCategoryWithTypeQuery['training_types'] | undefined;

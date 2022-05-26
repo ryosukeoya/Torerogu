@@ -1,5 +1,5 @@
 import { graphql } from 'msw';
-import { getStringTypeDate } from '~/utils/app';
+import { getStringTypeDate } from '~/utils';
 import { GetTrainingOneTypeDocument } from '~/libs/graphql/generated/graphql';
 
 export const getTrainingOneTypeDefaultResponse = {

@@ -505,9 +505,7 @@ type query_root {
   """
   training_categories_by_pk(id: Int!): training_categories
 
-  """
-  fetch data from the table: "training_types"
-  """
+  """An array relationship"""
   training_types(
     """distinct select on columns"""
     distinct_on: [training_types_select_column!]
@@ -601,9 +599,7 @@ type subscription_root {
   """
   training_categories_by_pk(id: Int!): training_categories
 
-  """
-  fetch data from the table: "training_types"
-  """
+  """An array relationship"""
   training_types(
     """distinct select on columns"""
     distinct_on: [training_types_select_column!]
@@ -670,6 +666,24 @@ type training_categories {
   created_at: timestamptz!
   id: Int!
   name: String!
+
+  """An array relationship"""
+  training_types(
+    """distinct select on columns"""
+    distinct_on: [training_types_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [training_types_order_by!]
+
+    """filter the rows returned"""
+    where: training_types_bool_exp
+  ): [training_types!]!
   updated_at: timestamptz!
 }
 
@@ -683,6 +697,7 @@ input training_categories_bool_exp {
   created_at: timestamptz_comparison_exp
   id: Int_comparison_exp
   name: String_comparison_exp
+  training_types: training_types_bool_exp
   updated_at: timestamptz_comparison_exp
 }
 
@@ -691,6 +706,7 @@ input training_categories_order_by {
   created_at: order_by
   id: order_by
   name: order_by
+  training_types_aggregate: training_types_aggregate_order_by
   updated_at: order_by
 }
 
@@ -746,6 +762,33 @@ type training_types {
 }
 
 """
+order by aggregate values of table "training_types"
+"""
+input training_types_aggregate_order_by {
+  avg: training_types_avg_order_by
+  count: order_by
+  max: training_types_max_order_by
+  min: training_types_min_order_by
+  stddev: training_types_stddev_order_by
+  stddev_pop: training_types_stddev_pop_order_by
+  stddev_samp: training_types_stddev_samp_order_by
+  sum: training_types_sum_order_by
+  var_pop: training_types_var_pop_order_by
+  var_samp: training_types_var_samp_order_by
+  variance: training_types_variance_order_by
+}
+
+"""
+order by avg() on columns of table "training_types"
+"""
+input training_types_avg_order_by {
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  training_category_id: order_by
+}
+
+"""
 Boolean expression to filter rows from the table "training_types". All fields are combined with a logical 'AND'.
 """
 input training_types_bool_exp {
@@ -761,6 +804,32 @@ input training_types_bool_exp {
   training_category_id: Int_comparison_exp
   trainings: trainings_bool_exp
   updated_at: timestamptz_comparison_exp
+}
+
+"""
+order by max() on columns of table "training_types"
+"""
+input training_types_max_order_by {
+  created_at: order_by
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  name: order_by
+  training_category_id: order_by
+  updated_at: order_by
+}
+
+"""
+order by min() on columns of table "training_types"
+"""
+input training_types_min_order_by {
+  created_at: order_by
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  name: order_by
+  training_category_id: order_by
+  updated_at: order_by
 }
 
 """Ordering options when selecting data from "training_types"."""
@@ -800,6 +869,76 @@ enum training_types_select_column {
 
   """column name"""
   updated_at
+}
+
+"""
+order by stddev() on columns of table "training_types"
+"""
+input training_types_stddev_order_by {
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  training_category_id: order_by
+}
+
+"""
+order by stddev_pop() on columns of table "training_types"
+"""
+input training_types_stddev_pop_order_by {
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  training_category_id: order_by
+}
+
+"""
+order by stddev_samp() on columns of table "training_types"
+"""
+input training_types_stddev_samp_order_by {
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  training_category_id: order_by
+}
+
+"""
+order by sum() on columns of table "training_types"
+"""
+input training_types_sum_order_by {
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  training_category_id: order_by
+}
+
+"""
+order by var_pop() on columns of table "training_types"
+"""
+input training_types_var_pop_order_by {
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  training_category_id: order_by
+}
+
+"""
+order by var_samp() on columns of table "training_types"
+"""
+input training_types_var_samp_order_by {
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  training_category_id: order_by
+}
+
+"""
+order by variance() on columns of table "training_types"
+"""
+input training_types_variance_order_by {
+  id: order_by
+  max_weight: order_by
+  min_weight: order_by
+  training_category_id: order_by
 }
 
 """
