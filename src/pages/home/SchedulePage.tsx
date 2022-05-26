@@ -31,7 +31,7 @@ const SchedulePage: VFC = () => {
   };
 
   const trainingScheduleData: TrainingScheduleData = {
-    ALL: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(trainings, new Date()),
+    ALL: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(trainings, getDateBeforeOneDay(new Date())),
     実施: trainings && getExtractedDataInIsFinishFlag(trainings, true),
     予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), getDateBeforeOneDay(new Date())),
   };

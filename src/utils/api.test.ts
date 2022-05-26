@@ -7,19 +7,23 @@ describe('Unit Test', () => {
     expect(getDataSpecifiedDate(testData, new Date('2022-04-24'))).toEqual([{ date: '2022-04-24' }]);
   });
 
-  test('指定した日付以降で抽出されたデータが取得できる', () => {
+  test('終了フラグがfalseの場合は指定した日付以降のデータと終了フラグがtrueの場合は全てのデータの条件で抽出されたデータを取得できる', () => {
     const testData = [
       { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), - 40), 'YYYY-MM-DD'), is_finish: false },
+      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), - 40), 'YYYY-MM-DD'), is_finish: true },
       { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), - 1), 'YYYY-MM-DD'), is_finish: false },
       { date: getStringTypeDate(new Date(), 'YYYY-MM-DD'), is_finish: false },
       { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 1), 'YYYY-MM-DD'), is_finish: false },
       { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 40), 'YYYY-MM-DD'), is_finish: false },
+      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 40), 'YYYY-MM-DD'), is_finish: true },
     ];
 
     expect(getExtractedDataLaterThanTheSpecifiedDate(testData, getDateBeforeOneDay(new Date()))).toEqual([
-      testData[2],
+      testData[1],
       testData[3],
       testData[4],
+      testData[5],
+      testData[6],
     ]);
   });
 });
