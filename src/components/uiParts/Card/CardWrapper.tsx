@@ -2,6 +2,7 @@ import type { VFC, ReactNode, PropsWithChildren } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { HoverTheme } from './types';
 import { COLOR } from '~/styles/const';
+import { media } from '~/styles/shares';
 
 type Props = {
   handleClick?: VoidFunction;
@@ -41,11 +42,14 @@ const cardStyle = (hoverTheme: HoverTheme = 'scale') => css`
   box-shadow: 0 1px 1px 1px ${COLOR.BORDER_GRAY}; //x軸 y軸 ぼかし 広がり カラー;
   text-align: center;
   border-radius: 10px;
-  width: 90%;
+  width: 100%;
   max-width: 500px;
   margin: 0 auto;
   padding: 25px 15px;
   cursor: pointer;
   ${hoverTheme === 'darken' && darkenHover};
   ${hoverTheme === 'scale' && scaleHover};
+  ${media.pc(css`
+    width: 90%;
+  `)}
 `;
