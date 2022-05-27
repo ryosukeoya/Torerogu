@@ -2,7 +2,8 @@ import React, { VFC, ComponentProps } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 import { useFormContext } from 'react-hook-form';
 import { fieldStyle } from './fieldStyle';
-import { COLOR } from '~/styles/const';
+import { media } from '~/styles/shares';
+import { COLOR, FORM } from '~/styles/const';
 import type { FormItemConf } from '../formTypes';
 
 type SelectProps = ComponentProps<'select'>;
@@ -53,9 +54,15 @@ const selectFieldStyle = (marginBottom?: number) => css`
   color:black;
   width: 200px;
   border: 1px solid ${COLOR.BORDER_GRAY};
-  padding: 4px 10px;
+  padding: 0 10px;
+  height: ${FORM.INPUT_AND_SELECT.HEIGHT};
   margin-bottom: ${marginBottom}px;
   border-radius: 5px;
   background: url(/imgs/down-arrow.png) no-repeat right 10px center / 16px auto;
   cursor: pointer;
+  ${media.pc(
+    css`
+      padding: 4px 10px;
+    `,
+  )}
 `;

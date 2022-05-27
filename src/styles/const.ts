@@ -42,6 +42,10 @@ export const NAVIGATION = {
   SMALL_WIDTH: '80px',
 } as const;
 
+export const FORM = {
+  INPUT_AND_SELECT: { HEIGHT: '35px' },
+};
+
 export const CONTENT_AREA = {
   PC_MIN_WIDTH: '800px',
 } as const;
