@@ -13,12 +13,16 @@ type PlanBodyInfoFormValues = {
 
 type Props = {
   pageIndex: number;
+  _onCompletedTest?: () => void;
 };
 
-const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
+const BodyInfoPage: VFC<Props> = ({ pageIndex, _onCompletedTest }) => {
   const [open, setOpen] = useState(false);
   const [insertBodyInfo, {}] = useMutation<CreateBodyInfoHistoriesMutation>(CreateBodyInfoHistoriesDocument, {
-    onCompleted: () => setOpen(true),
+    onCompleted: () => {
+      setOpen(true);
+      _onCompletedTest && _onCompletedTest();
+    },
   });
 
   const registerBodyInfo: SubmitHandler<PlanBodyInfoFormValues> = (data) => {
