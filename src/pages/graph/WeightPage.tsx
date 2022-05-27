@@ -4,7 +4,7 @@ import { PrimaryNavigationPresenter } from '~/components';
 import { COLOR } from '~/styles/const';
 import { getSortedDataFromDate, getDataExtractionInSpecifiedPeriod, getGraphPeriodFromActiveIndex } from '~/utils/graph';
 import type { GetTrainingWithBodyInfoQuery } from '~/libs/graphql/generated/graphql';
-import { pageTemplate } from '~/styles/shares';
+import { pageTemplate, media } from '~/styles/shares';
 import { css } from '@emotion/react';
 
 const titles = ['1週間', '1ヶ月', '1年', '全て'];
@@ -26,7 +26,13 @@ const WeightPage: VFC<Props> = ({ bodyInfo }) => {
       css={[
         pageTemplate.contentArea,
         css`
-          padding: 50px 0 0 0 !important;
+          width: 100%;
+          padding: 35px 0 0 0 !important;
+          ${media.pc(
+            css`
+              width: 90%;
+            `,
+          )}
         `,
       ]}
     >
