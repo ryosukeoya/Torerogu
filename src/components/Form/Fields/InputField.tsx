@@ -84,6 +84,9 @@ const inputFieldStyle = {
     &:focus {
       border: 1.5px solid rgba(255, 153, 0, 0.7);
     }
+    &::placeholder {
+      color: black;
+    }
     ${media.pc(
       css`
         height: auto;
