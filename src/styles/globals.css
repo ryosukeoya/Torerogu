@@ -1,4 +1,4 @@
-html,
+/* html,
 body {
   font-family: 'Yomogi', cursive;
   position: relative;
@@ -43,13 +43,11 @@ hr {
   padding: 0;
 }
 
-/* NProgress */
 #nprogress .bar {
   background: rgb(255, 173, 21) !important;
   height: 3.2px !important;
 }
 
-/* Swiper */
 :root {
   --swiper-theme-color: #7e9b00 !important;
 }
@@ -62,7 +60,6 @@ hr {
   overflow-x: hidden;
 }
 
-/* Checkbox */
 input[type='checkbox'] {
   display: none;
 }
@@ -76,7 +73,6 @@ input[type='checkbox']:checked + .custom-style::after {
   padding: 5px 30px;
   cursor: pointer;
 }
-/* checkbox */
 .custom-style:before {
   width: 16px;
   height: 16px;
@@ -91,7 +87,6 @@ input[type='checkbox']:checked + .custom-style::after {
   content: '';
   top: 50%;
 }
-/* checkmark */
 .custom-style::after {
   position: absolute;
   width: 5px;
@@ -107,4 +102,4 @@ input[type='checkbox']:checked + .custom-style::after {
 }
 input[type='checkbox']:checked + .custom-style::after {
   opacity: 1;
-}
+} */
