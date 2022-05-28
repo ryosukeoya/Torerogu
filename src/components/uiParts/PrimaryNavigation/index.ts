@@ -1,3 +1,2 @@
-export { LocalStateContainer as PrimaryNavigationLocalState } from './Containers';
-export { GlobalStateContainer as PrimaryNavigationGlobalState } from './Containers';
-export { PrimaryNavigationPresenter } from './Presenter';
+export { PrimaryNavigationContainer } from './PrimaryNavigationContainer';
+export { PrimaryNavigationPresenter } from './PrimaryNavigationPresenter';

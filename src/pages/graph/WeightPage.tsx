@@ -50,7 +50,7 @@ const WeightPage: VFC<Props> = ({ bodyInfo }) => {
           <YAxis />
         </LineChart>
       </ResponsiveContainer>
-      <PrimaryNavigationPresenter titles={titles} theme='roundish' options={{ isToggle: true, isSwiper: false }} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+      <PrimaryNavigationPresenter titles={titles} activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
     </div>
   );
 };
