@@ -63,9 +63,9 @@ hr {
 }
 
 /* Checkbox */
-input[type='checkbox'] {
+/* input[type='checkbox'] {
   display: none;
-}
+} */
 
 input[type='checkbox']:checked + .custom-style::after {
   opacity: 1;
