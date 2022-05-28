@@ -34,16 +34,21 @@ const styles = {
     height: 65px;
     border-top: 1px solid ${COLOR.BORDER_GRAY};
     ${media.pc(css`
+      all: initial; //　スタイルリセット
       // Side bar
+      box-sizing: border-box;
+      position: fixed;
       top: 0;
       left: auto;
+      z-index: ${Z_INDEX.NAVIGATION};
+      background: white;
+      display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
       margin-top: ${HEADER.HEIGUT};
-      height: 100vh;
       width: ${NAVIGATION.WIDTH};
-      padding: calc(47px + 30px) 0 0 0;
+      padding: 60px 0 0 0;
       border-top: 0;
       @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
         width: ${NAVIGATION.SMALL_WIDTH};
