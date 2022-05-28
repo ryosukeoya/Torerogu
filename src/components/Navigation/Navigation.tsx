@@ -47,9 +47,11 @@ const styles = {
       justify-content: flex-start;
       align-items: flex-start;
       margin-top: ${HEADER.HEIGUT};
+      height: calc(100vh - ${HEADER.HEIGUT});
       width: ${NAVIGATION.WIDTH};
       padding: 60px 0 0 0;
       border-top: 0;
+      border-right: 1px solid ${COLOR.BORDER_GRAY};
       @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
         width: ${NAVIGATION.SMALL_WIDTH};
         align-items: center;
