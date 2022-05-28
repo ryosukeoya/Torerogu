@@ -35,6 +35,7 @@ const styles = {
       z-index: ${Z_INDEX.PRIMARY_NAVIGATION};
       width: ${navWidth}px;
       border-bottom: 0.3px solid ${COLOR.BORDER_GRAY};
+      background-color: #fff;
     `)}
   `,
 };
