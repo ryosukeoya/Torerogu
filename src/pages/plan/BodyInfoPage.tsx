@@ -42,8 +42,7 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex, _onCompletedTest }) => {
   // それかライブラリ使うか
   return (
     <FormContainer<PlanBodyInfoFormValues> pageIndex={pageIndex} submitFunc={registerBodyInfo} title={'✏️ 目標体重を設定する'} open={open} handleClose={() => setOpen(false)}>
-      <input type="date" />
-      <InputField required data-testid='date' type='date' title='日付' min={getStringTypeDate(new Date(), 'YYYY-MM-DD')} placeholder='YYYY-MM-DD' formConf={{ name: 'date', options: { required: true } }} />
+      <InputField required data-testid='date' type='date' title='日付' min={getStringTypeDate(new Date(), 'YYYY-MM-DD')} placeholder='yyyy-mm-dd' formConf={{ name: 'date', options: { required: true } }} pattern='\d{4}-\d{2}-\d{2}' />
       <InputField data-testid='weight' title='体重' type='text' unit='kg' placeholder='60' formConf={{ name: 'weight', options: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
       <InputField data-testid='bodyFatPercentage' title='体脂肪率' type='text' unit='%' placeholder='10' formConf={{ name: 'bodyFatPercentage', options: { maxLength: 2, pattern: /[0-9]/ } }} />
     </FormContainer>

@@ -16,9 +16,6 @@ const Plan: NextPage<VFC> = () => {
           <BodyInfoPage pageIndex={0} />
           <TrainingPage pageIndex={1} />
         </SliderWrapper>
-        <input type="date" />
-        <input type="date" required/>
-        <input type="date" placeholder="hoge"/>
       </PageLayout>
     </div>
   );
