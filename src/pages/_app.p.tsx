@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import React from 'react';
-import '~/styles/globals.css';
-import '~/styles/reset.css';
+// import '~/styles/globals.css';
+// import '~/styles/reset.css';
 import { useNprogress as progressBar } from '../hooks';
 import { Layout } from '../layouts';
 import { RecoilRoot } from 'recoil';
