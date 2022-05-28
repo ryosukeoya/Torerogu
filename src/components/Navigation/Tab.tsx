@@ -6,7 +6,7 @@ import { PAGE_PATH } from '~/constants';
 import type { PageTitle } from '~/types';
 import { useSetRecoilState } from 'recoil';
 import { mainTabIndexAtom } from '~/store/atoms';
-import { COLOR, FONT, CONTENT_AREA } from '~/styles/const';
+import { COLOR, FONT, CONTENT_AREA, CONTENT_AREA_PC_MIN_WIDTH_NUM } from '~/styles/const';
 import { media } from '~/styles/shares';
 import { useIsActive, useRipple, useGetWindowSize } from '~/hooks';
 
@@ -42,7 +42,7 @@ export const Tab: VFC<Props> = ({ isToggle, isResetIndex, title, index, activeIn
           setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
         }}
         onTouchStart={() => {
-          setIsTouchDevice(true);
+          windowSize.width <= CONTENT_AREA_PC_MIN_WIDTH_NUM && setIsTouchDevice(true);
         }}
         css={styles.box}
       >
