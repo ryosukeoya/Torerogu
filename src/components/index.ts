@@ -6,7 +6,7 @@ export { Footer } from './Footer';
 export { Navigation } from './Navigation';
 export { PageTabs } from './PageTabs';
 export { SliderWrapper } from './Slider';
-export { FormContainer, FormWrapper, InputField, SelectField, TextareaField } from './Form';
+export { FormContainer, FormWrapper, InputField, SelectField } from './Form';
 export { CommonHead } from './Head';
 
 // UIParts
