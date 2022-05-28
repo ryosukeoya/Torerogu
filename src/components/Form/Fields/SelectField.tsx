@@ -62,6 +62,7 @@ const selectFieldStyle = (marginBottom?: number) => css`
   cursor: pointer;
   ${media.pc(
     css`
+      height: auto;
       padding: 4px 10px;
     `,
   )}

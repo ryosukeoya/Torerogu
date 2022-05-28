@@ -5,7 +5,7 @@ import { ripple } from '~/styles/shares/ripple';
 import { css, SerializedStyles } from '@emotion/react';
 import { FormFieldWrapper } from './FormFieldWrapper';
 import { useFormContext } from 'react-hook-form';
-import { COLOR, BREAKPOINT,FONT,FORM } from '~/styles/const';
+import { COLOR, BREAKPOINT, FONT, FORM } from '~/styles/const';
 import type { FormItemConf } from '../formTypes';
 
 type InputProps = ComponentProps<'input'>;
@@ -86,6 +86,7 @@ const inputFieldStyle = {
     }
     ${media.pc(
       css`
+        height: auto;
         padding: 4px 10px;
       `,
     )}
