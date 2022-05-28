@@ -32,11 +32,11 @@ export const AuthenticationPage: VFC = () => {
             </p>
           </div>
           <div css={styles.section}>
-            <Image css={styles.image} src='/imgs/training_scedule.png' width={300} height={250} layout='responsive' quality={90} objectFit='contain' alt='スケジュール' />
+            <Image css={styles.image} src='/imgs/training_scedule.png' width={300} height={250} layout='responsive' quality={90} objectFit='contain' alt='スケジュール' priority />
             <p css={styles.explain}>カレンダーからスケジュールの確認ができます！</p>
           </div>
           <div css={styles.section}>
-            <Image css={styles.image} src='/imgs/weight_graph.png' width={300} height={250} layout='responsive' quality={90} objectFit='contain' alt='体重グラフ' />
+            <Image css={styles.image} src='/imgs/weight_graph.png' width={300} height={250} layout='responsive' quality={90} objectFit='contain' alt='体重グラフ' priority />
             <p css={styles.explain}>体重グラフで体重の遷移を確認することができます！</p>
           </div>
         </div>

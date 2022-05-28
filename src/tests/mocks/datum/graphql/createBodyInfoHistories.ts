@@ -1,5 +1,5 @@
 import { CreateBodyInfoHistoriesDocument, CreateBodyInfoHistoriesMutationVariables } from '~/libs/graphql/generated/graphql';
-import { getStringTypeDate } from '~/utils/app';
+import { getStringTypeDate } from '~/utils';
 
 export const planPageVariables = {
   height: null,

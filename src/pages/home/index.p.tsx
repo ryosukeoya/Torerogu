@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { GetTrainingOneTypeDocument, GetTrainingOneTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
-import { getStringTypeDate } from '~/utils/app';
+// import { getStringTypeDate } from '~/utils';
 import HomePage from './HomePage';
 import SchedulePage from './SchedulePage';
 import { useGetElementWidth } from '~/hooks';
@@ -11,6 +11,7 @@ import { SliderWrapper, Loading } from '~/components';
 import { useSetRecoilState } from 'recoil';
 import { isAuthenticatedAtom } from '~/store/atoms';
 import { useEffect } from 'react';
+import { getStringTypeDate } from '~/utils';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {

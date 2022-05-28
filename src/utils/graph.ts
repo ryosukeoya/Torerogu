@@ -11,7 +11,7 @@ type GraphPeriodValue = typeof GRAPH_PERIOD[keyof typeof GRAPH_PERIOD];
 export const getDataExtractionInSpecifiedPeriod = <T extends { date: string; is_record: boolean }[] & { [key: string]: unknown }[]>(data: T, specifyDatePeriod: GraphPeriodValue): T => {
   const currentDate = new Date();
   const date = new Date();
-  specifyDatePeriod !== 'all' && date.setDate(date.getDate() - specifyDatePeriod);
+  specifyDatePeriod !== 'all' && date.setDate(date.getDate() - (specifyDatePeriod - 1));
   const extractedData = data?.filter((d) => {
     if (specifyDatePeriod === 'all') {
       return d.is_record === true;

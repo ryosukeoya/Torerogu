@@ -9,7 +9,7 @@ const MyDocument = () => {
       </Head>
       <body>
         <Main />
-        <div id='modal' />
+        <div id='portal' />
         <NextScript />
       </body>
     </Html>

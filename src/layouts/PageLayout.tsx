@@ -1,7 +1,5 @@
 import React, { VFC, ReactNode } from 'react';
-import { PrimaryNavigationGlobalState } from '~/components';
-import { media } from '~/styles/shares';
-import { css } from '@emotion/react';
+import { PageTabs } from '~/components';
 import { useGetTabTitleFromRoute } from '~/hooks';
 
 type Props = {
@@ -14,19 +12,9 @@ export const PageLayout: VFC<Props> = ({ mainContentWidth, children: mainContent
 
   return (
     <div data-testid='page'>
-      <PrimaryNavigationGlobalState
+      <PageTabs
         titles={tabNames}
-        theme='basicTab'
-        options={{ isSwiper: true, isToggle: true }}
         width={mainContentWidth}
-        customCss={{
-          item: css`
-            width: 100%;
-            ${media.sp(css`
-              display: none;
-            `)}
-          `,
-        }}
       />
       {mainContentChildren}
     </div>

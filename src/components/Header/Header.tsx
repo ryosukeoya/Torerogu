@@ -2,9 +2,8 @@ import Image from 'next/image';
 import React, { VFC, useState } from 'react';
 import { css } from '@emotion/react';
 import { COLOR, HEADER, Z_INDEX } from '~/styles/const';
-import { media } from '~/styles/shares';
 import { useIsScrollDown, useGetTabTitleFromRoute } from '~/hooks';
-import { PrimaryNavigationGlobalState } from '~/components';
+import { Tabs } from './Tabs';
 import { Title } from './Title';
 import { PopupMenu } from './PopupMenu';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -33,20 +32,8 @@ export const Header: VFC<Props> = ({ hasTab = true, shouldHide }) => {
         )}
       </div>
       {hasTab && (
-        <PrimaryNavigationGlobalState
+        <Tabs
           titles={tabNames}
-          theme={'basicTab'}
-          options={{ isSwiper: true, isToggle: true }}
-          customCss={{
-            nav: css`
-              border-bottom: none;
-            `,
-            item: media.pc(
-              css`
-                display: none;
-              `,
-            ),
-          }}
         />
       )}
     </header>

@@ -1,11 +1,11 @@
 import type { VFC, ComponentProps } from 'react';
 import { useRipple } from '~/hooks';
-import { rippleWrapper } from '~/styles/shares';
+import { rippleWrapper, media } from '~/styles/shares';
 import { ripple } from '~/styles/shares/ripple';
 import { css, SerializedStyles } from '@emotion/react';
 import { FormFieldWrapper } from './FormFieldWrapper';
 import { useFormContext } from 'react-hook-form';
-import { COLOR, BREAKPOINT } from '~/styles/const';
+import { COLOR, BREAKPOINT, FONT, FORM } from '~/styles/const';
 import type { FormItemConf } from '../formTypes';
 
 type InputProps = ComponentProps<'input'>;
@@ -77,11 +77,19 @@ const inputFieldStyle = {
     background-color: #fff;
     border-radius: 5px;
     text-align: right;
-    padding: 4px 10px;
-    color:black;
+    padding: 0 10px;
+    height: ${FORM.INPUT_AND_SELECT.HEIGHT};
+    color: black;
+    font-size: ${FONT.BASE};
     &:focus {
-      border: 1.5px solid rgba(255,153,0,0.7)};
+      border: 1.5px solid rgba(255, 153, 0, 0.7);
     }
+    ${media.pc(
+      css`
+        height: auto;
+        padding: 4px 10px;
+      `,
+    )}
   `,
   inputTitle: css`
     position: absolute;

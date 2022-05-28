@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef, VFC } from 'react';
-import { ModalWrapper, PrimaryNavigationPresenter } from '~/components';
+import { ModalWrapper, PrimaryNavigationPresenter, Spacer } from '~/components';
 import ModalContent from './ModalContent';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import Calendar from 'react-calendar';
 import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
-import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate } from '~/utils';
+import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate, getDateBeforeOneDay } from '~/utils';
 import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } from './types';
 import { GetTrainingTrainingTypeDocument, GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
@@ -31,9 +31,9 @@ const SchedulePage: VFC = () => {
   };
 
   const trainingScheduleData: TrainingScheduleData = {
-    ALL: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(trainings, new Date()),
+    ALL: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(trainings, getDateBeforeOneDay(new Date())),
     実施: trainings && getExtractedDataInIsFinishFlag(trainings, true),
-    予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), new Date()),
+    予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), getDateBeforeOneDay(new Date())),
   };
 
   if (loading) {
@@ -53,28 +53,22 @@ const SchedulePage: VFC = () => {
       <div css={[pageTemplate.contentArea, styles.schedule]}>
         <PrimaryNavigationPresenter
           titles={Object.keys(trainingScheduleData)}
-          theme='roundish'
-          options={{ isToggle: true, isSwiper: false }}
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
           colors={[`${COLOR.ORANGE}E6`, `${COLOR.RED}B3`, '#12d4ffB3']}
           backgroundColors={[`${COLOR.ORANGE}B3`, `${COLOR.RED}73`, '#12d4ff73']}
           backgroundColorsAtHover={[`${COLOR.ORANGE}99`, `${COLOR.RED}59`, '#12d4ff59']}
-          customCss={{
-            nav: css`
-              justify-content: flex-start;
-              padding-left: 10%;
-              margin-bottom: 20px;
-            `,
-          }}
         />
+        <Spacer height={20} />
         <Calendar
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           onClickDay={(value, event) => {
             setIsOpen(true);
             setSelectedDate(value);
           }}
           locale='ja-JP'
           value={new Date()}
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           tileContent={({ activeStartDate, date, view }) => {
             tileContentCount.current = 0;
             return view === 'month' ? (
@@ -190,7 +184,7 @@ const styles = {
   `,
   tags: css``,
   tag: (is_finish: boolean) => css`
-    color:#fff;
+    color: #fff;
     background-color: ${is_finish ? `${COLOR.RED}73;` : '#12d4ff73;'};
     font-size: ${FONT.X_SMALL};
     border-radius: 10px;

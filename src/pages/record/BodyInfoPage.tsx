@@ -1,6 +1,6 @@
 import React, { useState, VFC } from 'react';
 import { FormContainer, InputField } from '~/components';
-import { getDateInfo, getStringTypeDate } from '~/utils/app';
+import { getDateInfo, getStringTypeDate } from '~/utils';
 import { useMutation } from '@apollo/client';
 import { CreateBodyInfoHistoriesMutationVariables, CreateBodyInfoHistoriesDocument, CreateBodyInfoHistoriesMutation } from '~/libs/graphql/generated/graphql';
 import { SubmitHandler } from 'react-hook-form';
@@ -12,12 +12,16 @@ type BodyInfoFormValues = {
 
 type Props = {
   pageIndex: number;
+  _onCompletedTest?: () => void;
 };
 
-const BodyInfoPage: VFC<Props> = ({ pageIndex }) => {
+const BodyInfoPage: VFC<Props> = ({ pageIndex, _onCompletedTest }) => {
   const [open, setOpen] = useState(false);
   const [insertBodyInfo, {}] = useMutation<CreateBodyInfoHistoriesMutation>(CreateBodyInfoHistoriesDocument, {
-    onCompleted: () => setOpen(true),
+    onCompleted: () => {
+      setOpen(true);
+      _onCompletedTest && _onCompletedTest();
+    },
   });
 
   const date = getDateInfo(new Date());

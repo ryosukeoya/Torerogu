@@ -23,10 +23,16 @@ export const Layout: VFC<Props> = ({ children }) => {
 const styles = {
   pcContentArea: media.pc(css`
     display: flex;
-    width: 80vw;
-    min-width: 800px;
-    max-width: 1300px;
+    width: 95vw;
+    min-width: 550px;
+    max-width: 1100px;
     margin: 0 auto;
+    @media (min-width: 870px) {
+      width: 90vw;
+    }
+    @media (min-width: 950px) {
+      width: 80vw;
+    }
   `),
   mainContent: css`
     min-height: 100vh;
@@ -34,7 +40,6 @@ const styles = {
     ${media.pc(css`
       width: calc(100% - ${NAVIGATION.WIDTH});
       margin-left: ${NAVIGATION.WIDTH};
-      border-left: 1px solid ${COLOR.BORDER_GRAY};
       border-right: 1px solid ${COLOR.BORDER_GRAY};
       @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
         width: calc(100% - ${NAVIGATION.SMALL_WIDTH});

@@ -7,6 +7,6 @@ type Props = {
 
 export const Portal: VFC<Props> = ({ children }) => {
   if (!process.browser) return null;
-  const element = document.querySelector('#modal');
+  const element = document.querySelector('#portal');
   return element ? ReactDOM.createPortal(children, element) : null;
 };
