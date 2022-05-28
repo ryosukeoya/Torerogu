@@ -46,8 +46,9 @@ const styles = {
       width: 100%;
       cursor: pointer;
       font-size: ${FONT.SMALL};
-      &:first-of-type {
-        border-right: 0.3px solid ${COLOR.BORDER_GRAY};
+      border-right: 0.3px solid ${COLOR.BORDER_GRAY};
+      &:last-of-type {
+        border-right: none;
       }
     `)}
     @media (hover: hover) {
