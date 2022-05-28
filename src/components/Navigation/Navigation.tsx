@@ -54,7 +54,6 @@ const styles = {
       border-right: 1px solid ${COLOR.BORDER_GRAY};
       @media (max-width: ${CONTENT_AREA.PC_MIN_WIDTH}) {
         width: ${NAVIGATION.SMALL_WIDTH};
-        align-items: center;
       }
     `)}
   `,
