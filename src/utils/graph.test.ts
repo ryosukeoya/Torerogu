@@ -1,57 +1,44 @@
 import { getDataExtractionInSpecifiedPeriod } from '~/utils/graph';
-import { getDateChangedSpecifiedDaysPart, getStringTypeDate } from './date';
+
+const mockData = new Date('2022-05-28 08:00:00');
+jest.useFakeTimers();
+jest.setSystemTime(mockData);
+
+afterEach(() => {
+  jest.useRealTimers();
+});
 
 describe('Unit Test', () => {
-  it('1週間分のデータが抽出できるか（シンプルなテストデータの場合）', () => {
+  it('1週間分のデータが抽出できるか', () => {
     const testData = [
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -8), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -7), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -6), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -5), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -4), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -3), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -2), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -1), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 0), 'YYYY-MM-DD'), is_record: true },
+      { date: '2022-05-20 00:00:00', is_record: true },
+      { date: '2022-05-21 00:00:00', is_record: false },
+      { date: '2022-05-21 00:00:00', is_record: true },
+      { date: '2022-05-22 07:59:00', is_record: true },
+      { date: '2022-05-22 08:00:00', is_record: true },
+      { date: '2022-05-22 08:01:00', is_record: true },
+      { date: '2022-05-23 00:00:00', is_record: true },
+      { date: '2022-05-24 00:00:00', is_record: true },
+      { date: '2022-05-25 00:00:00', is_record: true },
+      { date: '2022-05-25 00:00:00', is_record: false },
+      { date: '2022-05-26 00:00:00', is_record: true },
+      { date: '2022-05-27 00:00:00', is_record: true },
+      { date: '2022-05-28 07:59:00', is_record: true },
+      { date: '2022-05-28 08:00:00', is_record: true },
+      { date: '2022-05-28 08:01:00', is_record: true },
+      { date: '2022-05-28 08:01:00', is_record: false },
+      { date: '2022-05-31 00:00:00', is_record: false },
     ];
     expect(getDataExtractionInSpecifiedPeriod(testData, 7)).toEqual([
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -6), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -5), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -4), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -3), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -2), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -1), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 0), 'YYYY-MM-DD'), is_record: true },
-    ]);
-  });
-  it('1週間分のデータを抽出した場合の出力形式は正しいか', () => {
-    const testData = [
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -8), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -8), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -7), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -6), 'YYYY-MM-DD'), is_record: false },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -5), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -5), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -4), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -3), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -3), 'YYYY-MM-DD'), is_record: false },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -3), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -2), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -1), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 0), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 1), 'YYYY-MM-DD'), is_record: false },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 3), 'YYYY-MM-DD'), is_record: false },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 10), 'YYYY-MM-DD'), is_record: false },
-    ];
-    expect(getDataExtractionInSpecifiedPeriod(testData, 7)).toEqual([
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -5), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -5), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -4), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -3), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -3), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -2), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), -1), 'YYYY-MM-DD'), is_record: true },
-      { date: getStringTypeDate(getDateChangedSpecifiedDaysPart(new Date(), 0), 'YYYY-MM-DD'), is_record: true },
+      { date: '2022-05-22 08:00:00', is_record: true },
+      { date: '2022-05-22 08:01:00', is_record: true },
+      { date: '2022-05-23 00:00:00', is_record: true },
+      { date: '2022-05-24 00:00:00', is_record: true },
+      { date: '2022-05-25 00:00:00', is_record: true },
+      { date: '2022-05-26 00:00:00', is_record: true },
+      { date: '2022-05-27 00:00:00', is_record: true },
+      { date: '2022-05-28 07:59:00', is_record: true },
+      { date: '2022-05-28 08:00:00', is_record: true },
     ]);
   });
 });
