@@ -3,7 +3,7 @@ import { css, keyframes } from '@emotion/react';
 import { User, LogoutOptions } from '@auth0/auth0-react';
 import { COLOR } from '~/styles/const';
 import { media } from '~/styles/shares';
-import LogoutIcon from '/public/icons/logoutIcon.svg';
+import LogoutIcon from '/public/icons/logout_icon.svg';
 
 type Props = {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
