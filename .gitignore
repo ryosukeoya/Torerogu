@@ -36,4 +36,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
+docs/_plan.md
+
 *.snap
