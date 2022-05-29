@@ -15,8 +15,8 @@ export const CommonHead: VFC = () => {
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='format-detection' content='telephone=no' />
       <link rel='shortcut icon' type='image/x-icon' href='/icons/favicon.ico' sizes='192x192' />
-      <link rel='apple-touch-icon' sizes='180x180' href='/icons/apple-touch-icon180x180.png' />
-      <link rel='icon' type='image/png' href='/icons/android-touch-icon192x192.png' />
+      <link rel='apple-touch-icon' sizes='180x180' href='/icons/apple_touch_icon180x180.png' />
+      <link rel='icon' type='image/png' href='/icons/android_touch_icon192x192.png' />
       <link rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css' />
       <link rel='preconnect' href='https://fonts.googleapis.com' />
       <link rel='preconnect' href='https://fonts.gstatic.com' />

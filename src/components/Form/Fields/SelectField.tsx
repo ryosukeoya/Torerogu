@@ -58,7 +58,7 @@ const selectFieldStyle = (marginBottom?: number) => css`
   height: ${FORM.INPUT_AND_SELECT.HEIGHT};
   margin-bottom: ${marginBottom}px;
   border-radius: 5px;
-  background: url(/imgs/down-arrow.png) no-repeat right 10px center / 16px auto;
+  background: url(/imgs/down_arrow.png) no-repeat right 10px center / 16px auto;
   cursor: pointer;
   ${media.pc(
     css`
