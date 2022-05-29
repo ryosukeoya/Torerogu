@@ -1,29 +1,31 @@
-## 概要
+## 💻 概要
 
--   トレーニングアプリ「トレログ」を Next.js と Hasura で作りました。トレーニングや体重などの記録、編集、削除などができます。他にも、体重などの記録をグラフ表示、トレーニングなどの記録や予定をカレンダーから確認することができます 💪
+- トレーニングアプリ「トレログ」を Next.js と Hasura で作りました。トレーニングや体重などの記録、編集、削除などができます。他にも、体重などの記録をグラフ表示、トレーニングなどの記録や予定をカレンダーから確認することができます 💪
 
-## フロントエンド
+## 🎧 フロントエンド
 
--   TypeScript
--   emotion
--   Next.js
+- Typescript
+- Emotion
+- GraphQL(apollo/client)
+- Next.js
 
-## バックエンド
+## 🏀 バックエンド
 
--   Hasura(GraphQL Server)
+- Hasura(GraphQL Server)
 
-## インフラ
+## ⭐️ インフラ
 
--   Heroku
+- Vercel(フロントエンド)
+- Heroku(バックエンド)
 
-## DB
+## 💣 DB
 
--   PostgreSQL
+- PostgreSQL
 
-## 認証
+## 🔑 認証
 
 - Auth0
 
 ## 設計
 
--   [Docs](https://github.com/ryosuke1256/Torerogu/docs)
+- [Docs](https://github.com/ryosuke1256/Torerogu/docs)
