@@ -28,4 +28,4 @@
 
 ## 設計
 
-- [Docs](https://github.com/ryosuke1256/Torerogu/docs)
+- [Docs](https://github.com/ryosuke1256/Torerogu/tree/feature/doc/docs)
