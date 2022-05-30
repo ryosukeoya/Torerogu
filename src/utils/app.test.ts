@@ -1,4 +1,5 @@
-import { getNumArr, getDateInfo, getStringTypeDate, getPagePathIndex } from '~/utils';
+import { getNumArr, getPagePathIndex } from '~/utils/app';
+import { getDateInfo, getStringTypeDate } from '~/utils/date';
 
 describe('Unit Test:Black Box', () => {
   test('出力の形式が正しいか', () => {
