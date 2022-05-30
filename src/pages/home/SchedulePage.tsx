@@ -5,7 +5,7 @@ import { pageTemplate } from '~/styles/shares/pageTemplate';
 import Calendar from 'react-calendar';
 import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
-import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate, getDateBeforeOneDay } from '~/utils';
+import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate, getDateBeforeOneDay, getDateInRegexp } from '~/utils';
 import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } from './types';
 import { GetTrainingTrainingTypeDocument, GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
@@ -75,7 +75,8 @@ const SchedulePage: VFC = () => {
               <ul>
                 {Object.values(trainingScheduleData)[activeIndex]?.map(
                   (training) =>
-                    getStringTypeDate(date, 'YYYY-MM-DD') === training.date &&
+                  // TODO: 　タイムゾーン？
+                    getStringTypeDate(date, 'YYYY-MM-DD') === getDateInRegexp(training.date) &&
                     (() => {
                       if (tileContentCount.current <= 2) {
                         tileContentCount.current++;
