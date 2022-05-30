@@ -10,9 +10,11 @@ describe('Unit Test: getStringTypeDate', () => {
   test('Date型からString型に変換したものを返す', () => {
     expect(getStringTypeDate(new Date('2022-04-24'))).toBe('2022-4-24');
   });
-
   test('Date型からString型に変換したものを返す、フォーマットはYYYY-MM-DD', () => {
     expect(getStringTypeDate(new Date('2022-04-24'), 'YYYY-MM-DD')).toBe('2022-04-24');
+  });
+  test('Date型からString型に変換したものを返す、フォーマットはYYYY-MM-DD', () => {
+    expect(getStringTypeDate(new Date('2022-04-24 08:00:00'), 'YYYY-MM-DD')).toBe('2022-04-24');
   });
 });
 
