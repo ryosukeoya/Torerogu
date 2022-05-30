@@ -40,3 +40,9 @@ export const getDateChangedSpecifiedDaysPart = (date: Date, specifiedDays: numbe
   return date;
 };
 
+// ex: 先頭のYYYY-MM-DD
+export const getDateInRegexp = (date: string): string | undefined => {
+  const patterns = /^\d{4}-\d{2}-\d{2}/g;
+  const result = date.match(patterns);
+  return result?.[0];
+};
