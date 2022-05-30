@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { GraphQLError } from 'graphql';
 import { GetTrainingOneTypeDocument, GetTrainingOneTypeQuery } from '~/libs/graphql/generated/graphql';
-import { getDateBeforeOneDay, getStringTypeDate } from '~/utils';
+import { getStringTypeDate, getNextDayDate } from '~/utils';
 
 type TrainingOneType = Array<GetTrainingOneTypeQuery['trainings'][number]>;
 
@@ -45,8 +45,8 @@ export const getTrainingOneType = (trainingOneType: TrainingOneType) => {
     request: {
       query: GetTrainingOneTypeDocument,
       variables: {
-        gteDate: getStringTypeDate(getDateBeforeOneDay(new Date())),
-        lteDate: getStringTypeDate(new Date()),
+        gteDate: getStringTypeDate(new Date()),
+        lteDate: getStringTypeDate(getNextDayDate(new Date())),
       },
     },
     // 正常系
