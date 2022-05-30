@@ -14,7 +14,7 @@ export const getDateInfo = (date: Date) => {
   return dateInfo;
 };
 
-// Date型からString型に変換したものを返す
+// Date型からString型に変換しフォーマットしたものを返す
 export const getStringTypeDate = (date: Date, outputFormat?: 'YYYY-MM-DD' | 'normal'): string => {
   const year = date.getFullYear();
   if (outputFormat === 'YYYY-MM-DD') {
@@ -33,6 +33,11 @@ export const getDateBeforeOneDay = (date: Date): Date => {
   date.setDate(date.getDate() - 1);
   return date;
 };
+
+export const getNextDayDate = (date:Date):Date => {
+  date.setDate(date.getDate() + 1);
+  return date;
+}
 
 // 指定した日数分を変更した日付を取得する
 export const getDateChangedSpecifiedDaysPart = (date: Date, specifiedDays: number): Date => {
