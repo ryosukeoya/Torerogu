@@ -274,23 +274,6 @@ enum body_info_data_histories_update_column {
   weight
 }
 
-scalar date
-
-"""
-Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'.
-"""
-input date_comparison_exp {
-  _eq: date
-  _gt: date
-  _gte: date
-  _in: [date!]
-  _is_null: Boolean
-  _lt: date
-  _lte: date
-  _neq: date
-  _nin: [date!]
-}
-
 """mutation root"""
 type mutation_root {
   """
@@ -946,7 +929,7 @@ columns and relationships of "trainings"
 """
 type trainings {
   created_at: timestamptz!
-  date: date!
+  date: timestamptz!
   id: Int!
   is_finish: Boolean!
   training_count: Int
@@ -996,7 +979,7 @@ input trainings_bool_exp {
   _not: trainings_bool_exp
   _or: [trainings_bool_exp!]
   created_at: timestamptz_comparison_exp
-  date: date_comparison_exp
+  date: timestamptz_comparison_exp
   id: Int_comparison_exp
   is_finish: Boolean_comparison_exp
   training_count: Int_comparison_exp
@@ -1032,7 +1015,7 @@ input type for inserting data into table "trainings"
 """
 input trainings_insert_input {
   created_at: timestamptz
-  date: date
+  date: timestamptz
   id: Int
   is_finish: Boolean
   training_count: Int
@@ -1152,7 +1135,7 @@ input type for updating data in table "trainings"
 """
 input trainings_set_input {
   created_at: timestamptz
-  date: date
+  date: timestamptz
   id: Int
   is_finish: Boolean
   training_count: Int
