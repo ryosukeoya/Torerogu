@@ -1,4 +1,4 @@
-import { getDataExtractionInSpecifiedPeriod } from '~/utils/graph';
+import { getDataExtractionInSpecifiedPeriod } from './graph';
 
 const mockData = new Date('2022-05-28 08:00:00');
 jest.useFakeTimers();
