@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 import { getNextDayDate, getStringTypeDate } from '~/utils';
 
 const Home: NextPage = () => {
-  // FIXME: タイムゾーン
+  // FIXME: タイムゾーン？
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
     variables: { gteDate: getStringTypeDate(new Date()), lteDate: getStringTypeDate(getNextDayDate(new Date())) } as GetTrainingOneTypeQueryVariables,
     fetchPolicy: 'network-only',

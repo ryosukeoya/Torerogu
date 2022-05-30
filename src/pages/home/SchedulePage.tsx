@@ -75,6 +75,7 @@ const SchedulePage: VFC = () => {
               <ul>
                 {Object.values(trainingScheduleData)[activeIndex]?.map(
                   (training) =>
+                  // TODO: 　タイムゾーン？
                     getStringTypeDate(date, 'YYYY-MM-DD') === getDateInRegexp(training.date) &&
                     (() => {
                       if (tileContentCount.current <= 2) {
