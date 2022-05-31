@@ -22,9 +22,9 @@ describe('Integration Test', () => {
   const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} _onCompletedTest={_onCompletedTest} />, [createBodyInfoHistories(planPageVariables)]);
   it('日付と体重(必須項目）を入力し送信ボタンをクリックすると、登録処理が実行され、「記録しました！」の文言が表示される', async () => {
     renderPage();
-    const submitButton = screen.getByTestId('submit');
-    const dateInput: HTMLInputElement = screen.getByTestId('date');
-    const weightInput: HTMLInputElement = screen.getByTestId('weight');
+    const submitButton = screen.getByRole('submit');
+    const dateInput: HTMLInputElement = screen.getByRole('date');
+    const weightInput: HTMLInputElement = screen.getByRole('weight');
     fireEvent.input(dateInput, { target: { value: getStringTypeDate(new Date(), 'YYYY-MM-DD') } });
     fireEvent.input(weightInput, { target: { value: 55 } });
     expect(dateInput.value).toBe(getStringTypeDate(new Date(), 'YYYY-MM-DD'));
@@ -39,8 +39,8 @@ describe('Integration Test', () => {
 
   it('体脂肪率のみを入力し送信ボタンをクリックすると、登録処理が実行されず、「記録しました！」の文言が表示されない', async () => {
     renderPage();
-    const submitButton = screen.getByTestId('submit');
-    const bodyFatPercentageInput: HTMLInputElement = screen.getByTestId('bodyFatPercentage');
+    const submitButton = screen.getByRole('submit');
+    const bodyFatPercentageInput: HTMLInputElement = screen.getByRole('bodyFatPercentage');
     fireEvent.input(bodyFatPercentageInput, { target: { value: 20 } });
     expect(bodyFatPercentageInput.value).toBe('20');
     fireEvent.submit(submitButton);
@@ -57,9 +57,9 @@ describe('Integration Test:バリデーション', () => {
   const renderPage = testRendererUsingApolloClientMock(<BodyInfoPage pageIndex={0} _onCompletedTest={_onCompletedTest} />, [createBodyInfoHistories(planPageVariables)]);
   it('体重に文字列を入力すると、数値を入力することを促すエラー文言が表示され、登録処理が実施されない', async () => {
     renderPage();
-    const submitButton = screen.getByTestId('submit');
-    const dateInput: HTMLInputElement = screen.getByTestId('date');
-    const weightInput: HTMLInputElement = screen.getByTestId('weight');
+    const submitButton = screen.getByRole('submit');
+    const dateInput: HTMLInputElement = screen.getByRole('date');
+    const weightInput: HTMLInputElement = screen.getByRole('weight');
     fireEvent.input(dateInput, { target: { value: getStringTypeDate(new Date(), 'YYYY-MM-DD') } });
     fireEvent.input(weightInput, { target: { value: 'foo' } });
     fireEvent.submit(submitButton);
@@ -73,9 +73,9 @@ describe('Integration Test:バリデーション', () => {
 
   it('体重に4桁以上を入力すると、桁数を小さくすることを促すエラー文言が表示され、登録処理が実施されない', async () => {
     renderPage();
-    const submitButton = screen.getByTestId('submit');
-    const dateInput: HTMLInputElement = screen.getByTestId('date');
-    const weightInput: HTMLInputElement = screen.getByTestId('weight');
+    const submitButton = screen.getByRole('submit');
+    const dateInput: HTMLInputElement = screen.getByRole('date');
+    const weightInput: HTMLInputElement = screen.getByRole('weight');
     fireEvent.input(dateInput, { target: { value: getStringTypeDate(new Date(), 'YYYY-MM-DD') } });
     fireEvent.input(weightInput, { target: { value: 1000 } });
     expect(weightInput.value).toBe('1000');
@@ -90,9 +90,9 @@ describe('Integration Test:バリデーション', () => {
 
   it('体脂肪率に文字列を入力すると、数値を入力することを促すエラー文言が表示され、登録処理が実施されない', async () => {
     renderPage();
-    const submitButton = screen.getByTestId('submit');
-    const dateInput: HTMLInputElement = screen.getByTestId('date');
-    const bodyFatPercentageInput: HTMLInputElement = screen.getByTestId('bodyFatPercentage');
+    const submitButton = screen.getByRole('submit');
+    const dateInput: HTMLInputElement = screen.getByRole('date');
+    const bodyFatPercentageInput: HTMLInputElement = screen.getByRole('bodyFatPercentage');
     fireEvent.input(dateInput, { target: { value: getStringTypeDate(new Date(), 'YYYY-MM-DD') } });
     fireEvent.input(bodyFatPercentageInput, { target: { value: 'ho' } });
     fireEvent.submit(submitButton);
@@ -106,9 +106,9 @@ describe('Integration Test:バリデーション', () => {
 
   it('体脂肪率に3桁以上を入力すると、桁数を小さくすることを促すエラー文言が表示され、登録処理が実施されない', async () => {
     renderPage();
-    const submitButton = screen.getByTestId('submit');
-    const dateInput: HTMLInputElement = screen.getByTestId('date');
-    const bodyFatPercentageInput: HTMLInputElement = screen.getByTestId('bodyFatPercentage');
+    const submitButton = screen.getByRole('submit');
+    const dateInput: HTMLInputElement = screen.getByRole('date');
+    const bodyFatPercentageInput: HTMLInputElement = screen.getByRole('bodyFatPercentage');
     fireEvent.input(dateInput, { target: { value: getStringTypeDate(new Date(), 'YYYY-MM-DD') } });
     fireEvent.input(bodyFatPercentageInput, { target: { value: 100 } });
     expect(bodyFatPercentageInput.value).toBe('100');

@@ -27,7 +27,7 @@ export const FormContainer = <T,>(props: Props<T>) => {
           {firstElm}
           <h2 css={pageTemplate.title}>{title}</h2>
           {children}
-          <InputField type='submit' value='' data-testid='submit' />
+          <InputField type='submit' value='' role='submit' />
           <Snackbar pageIndex={pageIndex} text={'記録しました！'} open={open} handleClose={handleClose} />
           {lastElm}
         </div>

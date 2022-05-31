@@ -1,3 +1,4 @@
+import { getByRole } from '@testing-library/react';
 import { getDataSpecifiedDate, getExtractedDataLaterThanTheSpecifiedDate } from '~/utils/api';
 
 describe('Unit Test', () => {
@@ -6,6 +7,7 @@ describe('Unit Test', () => {
 
     expect(getDataSpecifiedDate(testData, new Date('2022-04-24'))).toEqual([{ date: '2022-04-24' }]);
   });
+  getByRole
 
   test('終了フラグがfalseの場合は指定した日付以降のデータと終了フラグがtrueの場合は全てのデータの条件で抽出されたデータを取得できる', () => {
     const testData = [

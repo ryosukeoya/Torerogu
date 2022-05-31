@@ -48,8 +48,8 @@ const BodyInfoPage: VFC<Props> = ({ pageIndex, _onCompletedTest }) => {
         setOpen(false);
       }}
     >
-      <InputField data-testid='weight' title='体重' type='text' unit='kg' placeholder='60' formConf={{ name: 'weight', options: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
-      <InputField data-testid='bodyFatPercentage' title='体脂肪率' type='text' unit='%' placeholder='10' formConf={{ name: 'bodyFatPercentage', options: { maxLength: 2, pattern: /[0-9]/ } }} />
+      <InputField role='weight' title='体重' type='text' unit='kg' placeholder='60' formConf={{ name: 'weight', options: { required: true, maxLength: 3, pattern: /[0-9]/ } }} />
+      <InputField role='bodyFatPercentage' title='体脂肪率' type='text' unit='%' placeholder='10' formConf={{ name: 'bodyFatPercentage', options: { maxLength: 2, pattern: /[0-9]/ } }} />
     </FormContainer>
   );
 };
