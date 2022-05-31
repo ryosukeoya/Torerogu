@@ -1246,7 +1246,7 @@ export type DeleteTrainingMutationResult = Apollo.MutationResult<DeleteTrainingM
 export type DeleteTrainingMutationOptions = Apollo.BaseMutationOptions<DeleteTrainingMutation, DeleteTrainingMutationVariables>;
 export const GetTrainingOneTypeDocument = gql`
     query GetTrainingOneType($gteDate: timestamptz!, $lteDate: timestamptz!) {
-  trainings(where: {date: {_gte: $gteDate, _lte: $lteDate}}) {
+  trainings(where: {date: {_gte: $gteDate, _lt: $lteDate}}) {
     id
     user_id
     training_type_id
