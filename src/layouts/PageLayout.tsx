@@ -11,7 +11,7 @@ export const PageLayout: VFC<Props> = ({ mainContentWidth, children: mainContent
   const tabNames = useGetTabTitleFromRoute();
 
   return (
-    <div data-testid='page'>
+    <div role='page'>
       <PageTabs
         titles={tabNames}
         width={mainContentWidth}

@@ -18,22 +18,22 @@ describe('Integration Test', () => {
   it('loading要素が表示され、データをフェッチし取得後pageが表示される', async () => {
     const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingOneType(trainingOneType)]);
     renderPage();
-    expect(screen.getByTestId('loading'));
+    expect(screen.getByRole('loading'));
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
-    expect(screen.getByTestId('page'));
+    expect(screen.getByRole('page'));
     // screen.debug();
   });
 
   it('データがない場合、Empty State用の要素が表示される(data-testid:no-data)', async () => {
     const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingOneType([])]);
     renderPage();
-    expect(screen.getByTestId('loading'));
+    expect(screen.getByRole('loading'));
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
-    expect(screen.getByTestId('no-data'));
+    expect(screen.getByRole('no-data'));
     // screen.debug();
   });
 });

@@ -17,11 +17,11 @@ describe('Integration Test', () => {
 
   it('loading画面表示され、データをフェッチし取得後pageがレンダリングされる', async () => {
     renderPage();
-    expect(screen.getByTestId('loading'));
+    expect(screen.getByRole('loading'));
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0));
     });
-    expect(screen.getByTestId('page'));
+    expect(screen.getByRole('page'));
     // screen.debug();
   });
 });
