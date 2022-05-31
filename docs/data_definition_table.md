@@ -38,18 +38,16 @@
 
 ## training_types
 
-|         Name         |           Type           | Nullable | Unique | Default | Description |
-| :------------------: | :----------------------: | :------: | :----: | :-----: | :---------: |
-|          id          |         integer          |    No    |  Yes   |  None   | primary key |
-| training_category_id |         integer          |    No    |   No   |  None   | foreign key |
-|         name         |           text           |    No    |  Yes   |  None   |             |
-|      max_weight      |         numeric          |   Yes    |   No   |  None   |             |
-|      min_weight      |         numeric          |   Yes    |   No   |  None   |             |
-|     kind_number      |         integer          |    No    |   No   |  None   |   ※ enum    |
-|      created_at      | timestamp with time zone |    No    |   No   |  now()  |             |
-|      updated_at      | timestamp with time zone |    No    |   No   |  now()  |             |
-
-[※ enum](https://github.com/ryosuke1256/Torerogu/blob/feature/doc/src/enums/training_types.ts)
+|         Name         |           Type           | Nullable | Unique | Default |                                          Description                                           |
+| :------------------: | :----------------------: | :------: | :----: | :-----: | :--------------------------------------------------------------------------------------------: |
+|          id          |         integer          |    No    |  Yes   |  None   |                                          primary key                                           |
+| training_category_id |         integer          |    No    |   No   |  None   |                                          foreign key                                           |
+|         name         |           text           |    No    |  Yes   |  None   |                                                                                                |
+|      max_weight      |         numeric          |   Yes    |   No   |  None   |                                                                                                |
+|      min_weight      |         numeric          |   Yes    |   No   |  None   |                                                                                                |
+|     kind_number      |         integer          |    No    |   No   |  None   | [※ enum](https://github.com/ryosuke1256/Torerogu/blob/feature/doc/src/enums/training_types.ts) |
+|      created_at      | timestamp with time zone |    No    |   No   |  now()  |                                                                                                |
+|      updated_at      | timestamp with time zone |    No    |   No   |  now()  |                                                                                                |
 
 ## training_categories
 
