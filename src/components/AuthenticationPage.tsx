@@ -17,7 +17,7 @@ export const AuthenticationPage: VFC = () => {
       <div css={styles.background}>
         <div css={styles.contentArea}>
           <div css={styles.section}>
-            <Image css={styles.image} src='/icons/android-touchicon192x192.png' width={200} height={160} alt='トレログのアイコン' />
+            <Image css={styles.image} src='/icons/android_touchicon192x192.png' width={200} height={160} alt='トレログのアイコン' />
             <Spacer height={30} />
             <RippleButton title='ログイン' onClick={() => loginWithRedirect()} />
             <Spacer height={20} />
