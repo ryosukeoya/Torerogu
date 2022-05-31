@@ -1,4 +1,4 @@
-import { getDataSpecifiedDate, getExtractedDataLaterThanTheSpecifiedDate } from './api';
+import { getDataSpecifiedDate, getExtractedDataLaterThanTheSpecifiedDate } from '~/utils/api';
 
 describe('Unit Test', () => {
   test('指定した日付のデータが取得できる', () => {
