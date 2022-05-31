@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, VFC } from 'react';
-import { ModalWrapper, PrimaryNavigationPresenter, Spacer } from '~/components';
+import { ModalWrapper, PrimaryNavigationPresenter, Spacer, Loading } from '~/components';
 import ModalContent from './ModalContent';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import Calendar from 'react-calendar';
@@ -36,13 +36,7 @@ const SchedulePage: VFC = () => {
     予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), new Date()),
   };
 
-  if (loading) {
-    return (
-      <div css={pageTemplate.contentArea}>
-        <p>Loading...</p>
-      </div>
-    );
-  }
+  if (loading) return <Loading />;
   if (error) throw new Error(error.message);
 
   return (
@@ -75,7 +69,7 @@ const SchedulePage: VFC = () => {
               <ul>
                 {Object.values(trainingScheduleData)[activeIndex]?.map(
                   (training) =>
-                  // TODO: 　タイムゾーン？
+                    // TODO: 　タイムゾーン？
                     getStringTypeDate(date, 'YYYY-MM-DD') === getDateInRegexp(training.date) &&
                     (() => {
                       if (tileContentCount.current <= 2) {
