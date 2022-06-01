@@ -1,4 +1,4 @@
-import { getDateInfo, getStringTypeDate, getDateInRegexp } from './date';
+import { getDateInfo, getStringTypeDate, getDateInRegexp, getDateClearedTime } from './date';
 
 describe('Unit Test: getDateInfo', () => {
   test('出力の形式が正しいか', () => {
@@ -14,7 +14,7 @@ describe('Unit Test: getStringTypeDate', () => {
     expect(getStringTypeDate(new Date('2022-04-24'), 'YYYY-MM-DD')).toBe('2022-04-24');
   });
   test('Date型からString型に変換したものを返す、フォーマットはYYYY-MM-DD', () => {
-    expect(getStringTypeDate(new Date('2022-04-24 08:00:00'), 'YYYY-MM-DD')).toBe('2022-04-24');
+    expect(getStringTypeDate(new Date('2022-04-24 '), 'YYYY-MM-DD')).toBe('2022-04-24');
   });
 });
 
@@ -30,5 +30,11 @@ describe('Unit Test: getDateInRegexp', () => {
   });
   it('月日などの0が省略されている場合はundefinedを返す', () => {
     expect(getDateInRegexp('2022-6-1T00:00:00+00:00')).toBeUndefined();
+  });
+});
+
+describe('Unit Test: getDateClearedTime', () => {
+  it('出力の形式が正しいか', () => {
+    expect(getDateClearedTime(new Date('2022-06-01 15:30:00'))).toStrictEqual(new Date('2022-06-01 00:00:00'));
   });
 });
