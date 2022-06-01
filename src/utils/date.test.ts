@@ -1,4 +1,4 @@
-import { getDateInfo, getStringTypeDate, getDateInRegexp } from './date';
+import { getDateInfo, getStringTypeDate, getDateInRegexp, getDateClearedTime, subMinutes, subHour } from './date';
 
 describe('Unit Test: getDateInfo', () => {
   test('出力の形式が正しいか', () => {
@@ -14,7 +14,7 @@ describe('Unit Test: getStringTypeDate', () => {
     expect(getStringTypeDate(new Date('2022-04-24'), 'YYYY-MM-DD')).toBe('2022-04-24');
   });
   test('Date型からString型に変換したものを返す、フォーマットはYYYY-MM-DD', () => {
-    expect(getStringTypeDate(new Date('2022-04-24 08:00:00'), 'YYYY-MM-DD')).toBe('2022-04-24');
+    expect(getStringTypeDate(new Date('2022-04-24 '), 'YYYY-MM-DD')).toBe('2022-04-24');
   });
 });
 
@@ -30,5 +30,23 @@ describe('Unit Test: getDateInRegexp', () => {
   });
   it('月日などの0が省略されている場合はundefinedを返す', () => {
     expect(getDateInRegexp('2022-6-1T00:00:00+00:00')).toBeUndefined();
+  });
+});
+
+describe('Unit Test: subHour', () => {
+  it('年月日を跨ぐ', () => {
+    expect(subHour(new Date('2022-01-01 02:00:00'), 3)).toStrictEqual(new Date('2021-12-31 23:00:00'));
+  });
+});
+
+describe('Unit Test: subMinutes', () => {
+  it('年月日を跨ぐ', () => {
+    expect(subMinutes(new Date('2022-01-01 02:00:00'), 150)).toStrictEqual(new Date('2021-12-31 23:30:00'));
+  });
+});
+
+describe('Unit Test: getDateClearedTime', () => {
+  it('シンプル', () => {
+    expect(getDateClearedTime(new Date('2022-06-01 15:30:00'))).toStrictEqual(new Date('2022-06-01 00:00:00'));
   });
 });

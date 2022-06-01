@@ -5,7 +5,7 @@ import { pageTemplate } from '~/styles/shares/pageTemplate';
 import Calendar from 'react-calendar';
 import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
-import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate, getDateInRegexp } from '~/utils';
+import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate, getDateClearedTime } from '~/utils';
 import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } from './types';
 import { GetTrainingTrainingTypeDocument, GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
 import { useQuery } from '@apollo/client';
@@ -31,9 +31,9 @@ const SchedulePage: VFC = () => {
   };
 
   const trainingScheduleData: TrainingScheduleData = {
-    ALL: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(trainings, new Date()),
+    ALL: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(trainings, getDateClearedTime(new Date())),
     実施: trainings && getExtractedDataInIsFinishFlag(trainings, true),
-    予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), new Date()),
+    予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), getDateClearedTime(new Date())),
   };
 
   if (loading) return <Loading />;
@@ -69,8 +69,7 @@ const SchedulePage: VFC = () => {
               <ul>
                 {Object.values(trainingScheduleData)[activeIndex]?.map(
                   (training) =>
-                    // TODO: 　タイムゾーン？
-                    getStringTypeDate(date, 'YYYY-MM-DD') === getDateInRegexp(training.date) &&
+                    getStringTypeDate(date, 'YYYY-MM-DD') === getStringTypeDate(new Date(training.date), 'YYYY-MM-DD') &&
                     (() => {
                       if (tileContentCount.current <= 2) {
                         tileContentCount.current++;

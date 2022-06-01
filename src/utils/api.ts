@@ -1,6 +1,6 @@
 //API関連の共通したい関数とかを配置
 import type { GetTrainingCategoryWithTypeQuery } from '~/libs/graphql/generated/graphql';
-import { getStringTypeDate,  getDateInRegexp } from './date';
+import { getStringTypeDate } from './date';
 
 type TrainingCategory = GetTrainingCategoryWithTypeQuery['training_categories'] | undefined;
 type TrainingTypes = GetTrainingCategoryWithTypeQuery['training_types'] | undefined;
@@ -22,7 +22,7 @@ export const getTrainingTypesFromCategoryIndex = (selectedCategoryIndex: number,
 
 // 指定した日付のデータを取得する
 export const getDataSpecifiedDate = <T extends { date: string }[] & { [key: string]: unknown }[]>(data: T, date: Date) => {
-  return data?.filter((d) => getDateInRegexp(d.date) === getStringTypeDate(date, 'YYYY-MM-DD')) as T;
+  return data?.filter((d) => getStringTypeDate(new Date(d.date), 'YYYY-MM-DD') === getStringTypeDate(date, 'YYYY-MM-DD')) as T;
 };
 
 export const getExtractedDataLaterThanTheSpecifiedDate = <T extends ({ date: string; is_finish: boolean }[] & { [key: string]: unknown }[]) | undefined>(data: T, date: Date) => {
