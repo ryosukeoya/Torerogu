@@ -16,10 +16,11 @@ type ItemType = {
 
 type Props = {
   items?: ItemType[];
+  initialIndex: number;
   setState?: Dispatch<SetStateAction<number>>;
 };
 
-export const Carousel: VFC<Props> = ({ items, setState }) => {
+export const Carousel: VFC<Props> = ({ items,initialIndex, setState }) => {
   return (
     <Swiper
       centeredSlides={true}
@@ -36,7 +37,7 @@ export const Carousel: VFC<Props> = ({ items, setState }) => {
       slidesPerView={3.6}
       navigation
       pagination={{ clickable: true }}
-      initialSlide={0}
+      initialSlide={initialIndex}
       css={sliderStyle.sliders(30)}
     >
       {items?.map((item: Pick<ItemType, 'id' | 'name'>) => {

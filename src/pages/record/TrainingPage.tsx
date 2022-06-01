@@ -11,7 +11,6 @@ type Props = {
   pageIndex: number;
 };
 
-// FIXME: カテゴリに戻るでバグるぞ
 const TrainingPage: VFC<Props> = ({ data, pageIndex }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState<number>(0);
