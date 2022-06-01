@@ -25,8 +25,6 @@ const SchedulePage: VFC = () => {
     setTrainings(data?.trainings);
   }, [data]);
 
-  // console.log(new Date('2022-06-02T00:00:00+00:00') === new Date('2022-06-02T00:00:00+00:00'));
-
   // isFinishフラグでデータを抽出したものを取得する
   const getExtractedDataInIsFinishFlag = (trainings: TrainingTrainingType, isFinishFlag: boolean) => {
     return trainings?.filter((training) => training.is_finish === isFinishFlag);
@@ -71,12 +69,8 @@ const SchedulePage: VFC = () => {
               <ul>
                 {Object.values(trainingScheduleData)[activeIndex]?.map(
                   (training) =>
-                    // TODO: 　タイムゾーン？
-                    // getStringTypeDate(date, 'YYYY-MM-DD') === getDateInRegexp(training.date) &&
                     getStringTypeDate(date, 'YYYY-MM-DD') === getStringTypeDate(new Date(training.date), 'YYYY-MM-DD') &&
-                    // getStringTypeDate(subMinutes(getDate(), -new Date().getTimezoneOffset()), 'YYYY-MM-DD HH:MM:SS'));
                     (() => {
-                      // console.log(training.date);
                       if (tileContentCount.current <= 2) {
                         tileContentCount.current++;
                         return (
