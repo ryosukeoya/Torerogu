@@ -29,7 +29,7 @@ const ModalContent: VFC<Props> = ({ selectedDate, extractedTrainings, trainings,
     const filteredTraining = trainings?.filter((training) => training.id !== pk);
     setTrainings(filteredTraining);
   };
-
+  // 指定した日付のトレーニングだけpropsで渡せばいいのに。。
   return (
     <>
       <h1 css={styles.title}>✏️ {`${date?.year}年${date?.month}月${date?.day}日${category !== 'ALL' ? category : ''}`}のトレーニング</h1>

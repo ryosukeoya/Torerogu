@@ -11,12 +11,15 @@ import { SliderWrapper, Loading } from '~/components';
 import { useSetRecoilState } from 'recoil';
 import { isAuthenticatedAtom } from '~/store/atoms';
 import { useEffect } from 'react';
-import { getNextDayDate, getStringTypeDate } from '~/utils';
+import { getNextDayDate, getStringTypeDate, subMinutes, getDateClearedTime } from '~/utils';
 
 const Home: NextPage = () => {
-  // FIXME: タイムゾーン？
+  // TODO: カレンダーから削除した時にリロードしないと反映されないぞ
   const { data, error, loading } = useQuery<GetTrainingOneTypeQuery>(GetTrainingOneTypeDocument, {
-    variables: { gteDate: getStringTypeDate(new Date()), lteDate: getStringTypeDate(getNextDayDate(new Date())) } as GetTrainingOneTypeQueryVariables,
+    variables: {
+      gteDate: getStringTypeDate(subMinutes(getDateClearedTime(new Date()), -new Date().getTimezoneOffset()), 'YYYY-MM-DD hh:mm:ss'),
+      lteDate: getStringTypeDate(getNextDayDate(subMinutes(getDateClearedTime(new Date()), -new Date().getTimezoneOffset())), 'YYYY-MM-DD hh:mm:ss'),
+    } as GetTrainingOneTypeQueryVariables,
     fetchPolicy: 'network-only',
   });
   const [ref, mainContentWidth] = useGetElementWidth<HTMLDivElement>(data);
