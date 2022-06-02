@@ -16,7 +16,7 @@ jest.mock('./SchedulePage', () => () => 'SchedulePage');
 
 describe('Snapshot Test', () => {
   it('ホームページのDOM要素の出力が変わっていない', async () => {
-    const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingTrainingType(trainingTrainingType)]);
+    const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingTrainingType(trainingTrainingType('2022-06-01T00:00:00+00:00'))]);
     const { asFragment } = renderPage();
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0));
