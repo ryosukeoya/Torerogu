@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, VFC } from 'react';
-import { ModalWrapper, PrimaryNavigationPresenter, Spacer, Loading } from '~/components';
+import { ModalWrapper, PrimaryNavigationPresenter, Spacer } from '~/components';
 import ModalContent from './ModalContent';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import Calendar from 'react-calendar';
@@ -7,23 +7,20 @@ import { css } from '@emotion/react';
 import { COLOR, FONT } from '~/styles/const';
 import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate, getDateClearedTime } from '~/utils';
 import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } from './types';
-import { GetTrainingTrainingTypeDocument, GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
-import { useQuery } from '@apollo/client';
 import { media } from '~/styles/shares';
+import { GetTrainingOneTypeQuery } from '~/libs/graphql/generated/graphql';
+import { SetterOrUpdater } from 'recoil';
 
-const SchedulePage: VFC = () => {
+type Props = {
+  trainings?: GetTrainingOneTypeQuery['trainings'];
+  setTrainings: SetterOrUpdater<GetTrainingOneTypeQuery['trainings'] | undefined>;
+};
+
+const SchedulePage: VFC<Props> = ({ trainings, setTrainings }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [activeIndex, setActiveIndex] = useState<number>(1);
-  const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GetTrainingTrainingTypeDocument, {
-    fetchPolicy: 'network-only',
-  });
-  const [trainings, setTrainings] = useState<TrainingTrainingType>(data?.trainings);
   const tileContentCount = useRef(0);
-
-  useEffect(() => {
-    setTrainings(data?.trainings);
-  }, [data]);
 
   // isFinishフラグでデータを抽出したものを取得する
   const getExtractedDataInIsFinishFlag = (trainings: TrainingTrainingType, isFinishFlag: boolean) => {
@@ -35,9 +32,6 @@ const SchedulePage: VFC = () => {
     実施: trainings && getExtractedDataInIsFinishFlag(trainings, true),
     予定: trainings && getExtractedDataLaterThanTheSpecifiedDate<TrainingTrainingType>(getExtractedDataInIsFinishFlag(trainings, false), getDateClearedTime(new Date())),
   };
-
-  if (loading) return <Loading />;
-  if (error) throw new Error(error.message);
 
   return (
     <>

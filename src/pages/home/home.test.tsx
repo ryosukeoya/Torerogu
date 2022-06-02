@@ -2,7 +2,7 @@ import React from 'react';
 import Home from './index.p';
 import { act, screen } from '@testing-library/react';
 import { testRendererUsingApolloClientMock } from '~/tests/mocks/renders/testRendererUsingApolloClientMock';
-import { trainingOneType, getTrainingOneType } from '~/tests/mocks/datum/graphql/getTrainingOneType';
+import { getTrainingTrainingType, trainingTrainingType } from '~/tests/mocks/datum/graphql';
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -16,7 +16,7 @@ jest.mock('./SchedulePage', () => () => 'SchedulePage');
 
 describe('Integration Test', () => {
   it('loading要素が表示され、データをフェッチし取得後pageが表示される', async () => {
-    const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingOneType(trainingOneType)]);
+    const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingTrainingType(trainingTrainingType)]);
     renderPage();
     expect(screen.getByRole('loading'));
     await act(async () => {
@@ -27,7 +27,7 @@ describe('Integration Test', () => {
   });
 
   it('データがない場合、Empty State用の要素が表示される(data-testid:no-data)', async () => {
-    const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingOneType([])]);
+    const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingTrainingType([])]);
     renderPage();
     expect(screen.getByRole('loading'));
     await act(async () => {

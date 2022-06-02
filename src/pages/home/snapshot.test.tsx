@@ -2,7 +2,7 @@ import React from 'react';
 import { act } from '@testing-library/react';
 import Home from '~/pages/home/index.p';
 import { testRendererUsingApolloClientMock } from '~/tests/mocks/renders';
-import { trainingOneType, getTrainingOneType } from '~/tests/mocks/datum/graphql/getTrainingOneType';
+import { getTrainingTrainingType, trainingTrainingType } from '~/tests/mocks/datum/graphql';
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -16,7 +16,7 @@ jest.mock('./SchedulePage', () => () => 'SchedulePage');
 
 describe('Snapshot Test', () => {
   it('ホームページのDOM要素の出力が変わっていない', async () => {
-    const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingOneType(trainingOneType)]);
+    const renderPage = testRendererUsingApolloClientMock(<Home />, [getTrainingTrainingType(trainingTrainingType)]);
     const { asFragment } = renderPage();
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 0));
