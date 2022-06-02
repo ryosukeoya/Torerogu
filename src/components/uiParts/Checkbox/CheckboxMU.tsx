@@ -1,20 +1,21 @@
-import React, { useState, VFC, Dispatch, SetStateAction } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import { orange } from '@mui/material/colors';
 
-type Props = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Props<T extends { [key: string]: any }> = {
   initIsChecked?: boolean;
-  id?: number;
-  handleClick?: (id: number, isChecked: boolean) => void | Dispatch<SetStateAction<boolean>>;
+  data: T;
+  handleClick?: (isChecked: boolean, data: T) => void | Dispatch<SetStateAction<boolean>>;
 };
 
-export const CheckboxMU: VFC<Props> = ({ initIsChecked, id, handleClick }) => {
+export const CheckboxMU = <T,>({ initIsChecked, data, handleClick }: Props<T>) => {
   const [isChecked, setIsChecked] = useState<boolean>(initIsChecked ? initIsChecked : false);
 
   const handleChange = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
-    id && handleClick && handleClick(id, isChecked);
-    setIsChecked((prev) => !prev);
+    handleClick && handleClick(isChecked, data);
+    setIsChecked((prevChecked: boolean) => !prevChecked);
   };
 
   return (

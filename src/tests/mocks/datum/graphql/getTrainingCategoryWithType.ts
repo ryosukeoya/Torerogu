@@ -1,6 +1,6 @@
 import { GetTrainingCategoryWithTypeQuery } from '~/libs/graphql/generated/graphql';
 
-export const GetTrainingCategoryWithType: GetTrainingCategoryWithTypeQuery = {
+export const getTrainingCategoryWithType: GetTrainingCategoryWithTypeQuery = {
   __typename: 'query_root',
   training_categories: [
     { __typename: 'training_categories', id: 1, name: '胸' },
