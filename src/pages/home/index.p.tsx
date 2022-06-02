@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import { useState, useEffect } from 'react';
-// import { getStringTypeDate } from '~/utils';
 import HomePage from './HomePage';
 import SchedulePage from './SchedulePage';
 import { useGetElementWidth } from '~/hooks';
@@ -11,6 +10,7 @@ import { useSetRecoilState } from 'recoil';
 import { isAuthenticatedAtom } from '~/store/atoms';
 import { useQuery } from '@apollo/client';
 import { GetTrainingTrainingTypeDocument, GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
+import { getDataSpecifiedDate } from '~/utils';
 
 const Home: NextPage = () => {
   const { data, error, loading } = useQuery<GetTrainingTrainingTypeQuery>(GetTrainingTrainingTypeDocument, {
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
     <div ref={ref}>
       <PageLayout mainContentWidth={mainContentWidth}>
         <SliderWrapper>
-          <HomePage trainings={trainings} setTrainings={setTrainings} />
+          <HomePage todaysTrainings={trainings && getDataSpecifiedDate(trainings, new Date())} setTrainings={setTrainings} />
           <SchedulePage trainings={trainings} setTrainings={setTrainings} />
         </SliderWrapper>
       </PageLayout>
