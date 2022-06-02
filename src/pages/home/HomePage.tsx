@@ -7,20 +7,20 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
 import { CheckboxMU } from '~/components';
 import { useMutation } from '@apollo/client';
-import { UpdateTrainingIsFinishDocument, GetTrainingOneTypeQuery, UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables } from '~/libs/graphql/generated/graphql';
+import { UpdateTrainingIsFinishDocument, GetTrainingTrainingTypeQuery, UpdateTrainingIsFinishMutation, UpdateTrainingIsFinishMutationVariables } from '~/libs/graphql/generated/graphql';
 import { getDataSpecifiedDate } from '~/utils';
 import { SetterOrUpdater } from 'recoil';
 
 type Props = {
-  trainings?: GetTrainingOneTypeQuery['trainings'];
-  setTrainings: SetterOrUpdater<GetTrainingOneTypeQuery['trainings'] | undefined>;
+  trainings?: GetTrainingTrainingTypeQuery['trainings'];
+  setTrainings: SetterOrUpdater<GetTrainingTrainingTypeQuery['trainings'] | undefined>;
 };
 
 const HomePage: VFC<Props> = ({ trainings, setTrainings }) => {
   const [updateTraining, {}] = useMutation<UpdateTrainingIsFinishMutation>(UpdateTrainingIsFinishDocument);
 
-  const onClickCheckbox = (isChecked: boolean, training: GetTrainingOneTypeQuery['trainings'][number]) => {
-    setTrainings((prevTrainings: GetTrainingOneTypeQuery['trainings'] | undefined) => prevTrainings?.map((prevTraining) => (prevTraining.id === training.id ? { ...prevTraining, ...{ is_finish: !isChecked } } : prevTraining)));
+  const onClickCheckbox = (isChecked: boolean, training: GetTrainingTrainingTypeQuery['trainings'][number]) => {
+    setTrainings((prevTrainings: GetTrainingTrainingTypeQuery['trainings'] | undefined) => prevTrainings?.map((prevTraining) => (prevTraining.id === training.id ? { ...prevTraining, ...{ is_finish: !isChecked } } : prevTraining)));
     updateTraining({
       variables: {
         id: training.id,
@@ -39,7 +39,7 @@ const HomePage: VFC<Props> = ({ trainings, setTrainings }) => {
               <Accordion sx={{ marginBottom: '5px' }}>
                 <AccordionSummary expandIcon={<ExpandMore />} aria-controls='panel1a-content' id='panel1a-header'>
                   <Typography>
-                    <CheckboxMU <GetTrainingOneTypeQuery['trainings'][number]> initIsChecked={training.is_finish} data={training} handleClick={onClickCheckbox} />
+                    <CheckboxMU<GetTrainingTrainingTypeQuery['trainings'][number]> initIsChecked={training.is_finish} data={training} handleClick={onClickCheckbox} />
                     <span>{training.training_type.name}</span>
                   </Typography>
                 </AccordionSummary>

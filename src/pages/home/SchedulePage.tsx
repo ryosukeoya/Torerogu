@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, VFC } from 'react';
+import { useState, useRef, VFC } from 'react';
 import { ModalWrapper, PrimaryNavigationPresenter, Spacer } from '~/components';
 import ModalContent from './ModalContent';
 import { pageTemplate } from '~/styles/shares/pageTemplate';
@@ -8,12 +8,12 @@ import { COLOR, FONT } from '~/styles/const';
 import { getStringTypeDate, getExtractedDataLaterThanTheSpecifiedDate, getDateClearedTime } from '~/utils';
 import type { TrainingTrainingType, TrainingScheduleData, ScheduleCategories } from './types';
 import { media } from '~/styles/shares';
-import { GetTrainingOneTypeQuery } from '~/libs/graphql/generated/graphql';
+import { GetTrainingTrainingTypeQuery } from '~/libs/graphql/generated/graphql';
 import { SetterOrUpdater } from 'recoil';
 
 type Props = {
-  trainings?: GetTrainingOneTypeQuery['trainings'];
-  setTrainings: SetterOrUpdater<GetTrainingOneTypeQuery['trainings'] | undefined>;
+  trainings?: GetTrainingTrainingTypeQuery['trainings'];
+  setTrainings: SetterOrUpdater<GetTrainingTrainingTypeQuery['trainings'] | undefined>;
 };
 
 const SchedulePage: VFC<Props> = ({ trainings, setTrainings }) => {
